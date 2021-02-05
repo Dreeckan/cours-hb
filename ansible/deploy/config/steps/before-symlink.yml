@@ -1,0 +1,11 @@
+---
+- name: build project
+  shell: chdir={{ansistrano_release_path.stdout}}
+    make update && make build
+
+- name: Ensure www-data group on every releases
+  file:
+    path: '{{ deploy_to }}'
+    state: directory
+    group: www-data
+    recurse: true

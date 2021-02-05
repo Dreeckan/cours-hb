@@ -1,0 +1,24 @@
+---
+-
+  name: Deploy Application
+  hosts: all
+  gather_facts: false
+  vars:
+    deploy_to: /var/www/formation.drakona.fr
+    app_name: E-vinrude
+    app_server: prod
+    app_host: formation.drakona.fr
+    ansistrano_deploy_from: "{{ playbook_dir }}/../../"
+    ansistrano_deploy_to: "{{ deploy_to }}"
+    ansistrano_keep_releases: 3
+    ansistrano_deploy_via: "git"
+    ansistrano_git_repo: git@188.165.219.57:drakona/interne/evinrude.git
+    ansistrano_git_identity_key_path: "{{ playbook_dir }}/keys/id_rsa"
+    ansistrano_allow_anonymous_stats: false
+    ansistrano_remove_rolled_back: yes
+    ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/config/steps/after-cleanup.yml"
+    ansistrano_before_setup_tasks_file: "{{ playbook_dir }}/config/steps/before-setup.yml"
+    ansistrano_before_symlink_tasks_file: "{{ playbook_dir }}/config/steps/before-symlink.yml"
+    ansistrano_before_update_code_tasks_file: "{{ playbook_dir }}/config/steps/before-update-code.yml"
+  roles:
+    - { role: ansistrano.deploy }

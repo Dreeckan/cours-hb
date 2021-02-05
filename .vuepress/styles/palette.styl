@@ -1,0 +1,36 @@
+$accentColor = #fcd238
+$textColor = #ccc
+$borderColor = #384c65
+$codeBgColor = #282c34
+$arrowBgColor = #2c3e50
+$badgeTipColor = #42b983
+$badgeWarningColor = darken(#ffe564, 35%)
+$badgeErrorColor = #DA5961
+
+$backgroundColor = #2B2D41
+$navbarHeight = 5rem
+
+.theme-container,
+.sidebar,
+body
+  background-color: $backgroundColor
+
+.navbar,
+.search-box input,
+.navbar .links,
+.search-box .suggestions
+  background-color: $textColor
+  color: $backgroundColor
+
+.search-box .suggestions a
+  color: $backgroundColor
+
+.search-box input
+  background-color: #fff
+
+.nav-links a:hover,
+.nav-links a.router-link-active
+  color: $borderColor
+
+body
+  min-height: 100vh

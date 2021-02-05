@@ -1,0 +1,8 @@
+---
+- name: Notify Discord
+  uri:
+    url: https://discordapp.com/api/webhooks/614418498323480602/RzEsLlwPJuqNTEz8nF3-ahxGX2qMisCIhrYpLm8QyPYDXDG6MwGBScr0hSPpDTnGrnRJ
+    body: "{ \"content\": \"**Début** du déploiement de {{ app_name }} sur le serveur **{{ app_server }}** !\" }"
+    body_format: json
+    method: POST
+    status_code: [200, 204]
