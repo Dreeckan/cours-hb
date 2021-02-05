@@ -1,8 +1,7 @@
 const glob = require('glob');
 
-let generalFiles = glob.sync('general/**/*.md').map(f => '/' + f.split('README.md')[0]);
-let phpFiles = glob.sync('php/**/*.md').map(f => '/' + f.split('README.md')[0]);
-let ciFiles = glob.sync('ci/**/*.md').map(f => '/' + f.split('README.md')[0]);
+let phpFiles = glob.sync('php/**/!(README).md');
+let ciFiles = glob.sync('ci/**/!(README).md');
 
 module.exports = {
   description: 'Les formations de Rémi Jarjat pour Human Booster',
@@ -18,12 +17,14 @@ module.exports = {
       '/linux/',
       {
         title: 'PHP',
+        path: '/php/',
         collapsable: true,
         sidebarDepth: 1,
         children: phpFiles
       },
       {
         title: 'Intégration continue',
+        path: '/ci/',
         collapsable: true,
         sidebarDepth: 1,
         children: ciFiles

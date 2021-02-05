@@ -1,14 +1,5 @@
 # Linux
 
-Rémi Jarjat / Développeur multi-rôles chez [Drakona](https://www.drakona.fr)
-
-- Linux, la théorie
-- Linux, en pratique
-- Virtualisation
-- Conteneurisation
-
-# Linux, théories
-
 ## Historique
 
 - Noyau développé en 1991 par Linus Torvalds
@@ -418,6 +409,6 @@ Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 - [Télécharger Virtualbox](https://www.virtualbox.org/wiki/Downloads) et [Vagrant](https://www.vagrantup.com/downloads)
 - [Télécharger Docker](https://docs.docker.com/docker-for-windows/install/)
 
-# Et voilà !
+## Et voilà !
 
 ![](https://media.giphy.com/media/3o8dFn5CXJlCV9ZEsg/giphy.gif)

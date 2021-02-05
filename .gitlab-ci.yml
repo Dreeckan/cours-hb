@@ -19,8 +19,8 @@ pages:
             - public
 
 # Un autre job, qui va déployer notre application sur le serveur de prod
-#deploy:
-#    stage: deploy # Ce job se lance lors du stage deploy
-#    script: make deploy # Le script à exécuter
-#    only: # Ce déploiement n'a lieu que si l'on fait une action sur main (commit, push, merge, etc.)
-#        - main
+deploy:
+    stage: deploy # Ce job se lance lors du stage deploy
+    script: make deploy # Le script à exécuter
+    only: # Ce déploiement n'a lieu que si l'on fait une action sur main (commit, push, merge, etc.)
+        - main
