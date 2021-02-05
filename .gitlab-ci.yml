@@ -1,24 +1,24 @@
-## Pour réaliser ce fichier, je me suis basé sur le tuto d'Eleven Labs : https://blog.eleven-labs.com/fr/introduction-gitlab-ci/
-#
-## On définit les différentes étapes (stages) à faire tourner dans le pipeline
-#stages:
-#  - build # cette étape (stage) va compiler l'application, permettant de vérifier qu'il n'y ait pas d'erreur dès la compilation
-#  - deploy # Déploie l'application sur le serveur approprié, si nécessaire
-#
-## On définit une tâche (job) qui pourra être lancée lors d'un stage
-#pages:
-#    stage: build # Ce job sera exécuté lors du stage build
-#    image: drakona/node:14-alpine # On va lancer ce job dans un container Docker. Ici, une image nodejs (officielle), en version 12
-#    cache: # On met certains dossiers en cache, pour les conserver d'une exécution à l'autre
-#        paths:
-#            - node_modules/ # Ici, on garde le dossier node_modules, afin de ne pas re-télécharger toutes les dépendances à chaque fois
-#    script: # Le script que va utiliser ce job. Ici, on profite de notre Makefile !
-#        - make update && make build
-#    artifacts:
-#        paths:
-#            - public
-#
-## Un autre job, qui va déployer notre application sur le serveur de prod
+# Pour réaliser ce fichier, je me suis basé sur le tuto d'Eleven Labs : https://blog.eleven-labs.com/fr/introduction-gitlab-ci/
+
+# On définit les différentes étapes (stages) à faire tourner dans le pipeline
+stages:
+  - build # cette étape (stage) va compiler l'application, permettant de vérifier qu'il n'y ait pas d'erreur dès la compilation
+  - deploy # Déploie l'application sur le serveur approprié, si nécessaire
+
+# On définit une tâche (job) qui pourra être lancée lors d'un stage
+pages:
+    stage: build # Ce job sera exécuté lors du stage build
+    image: drakona/node:14-alpine # On va lancer ce job dans un container Docker. Ici, une image nodejs (officielle), en version 12
+    cache: # On met certains dossiers en cache, pour les conserver d'une exécution à l'autre
+        paths:
+            - node_modules/ # Ici, on garde le dossier node_modules, afin de ne pas re-télécharger toutes les dépendances à chaque fois
+    script: # Le script que va utiliser ce job. Ici, on profite de notre Makefile !
+        - make update && make build
+    artifacts:
+        paths:
+            - public
+
+# Un autre job, qui va déployer notre application sur le serveur de prod
 #deploy:
 #    stage: deploy # Ce job se lance lors du stage deploy
 #    script: make deploy # Le script à exécuter
