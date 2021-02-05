@@ -1,21 +1,21 @@
 # Liste des cours
 
-## [Général](transverse/)
+- [Général](general/)
 
-Des cours généraux autour du métier de développeur
+> Des cours généraux autour du métier de développeur
 
-## [Linux](linux/)
+- [Linux](linux/)
 
-Des cours sur Linux et son maniement au quotidien dans le métier de développeur
+> Des cours sur Linux et son maniement au quotidien dans le métier de développeur
  
-## [Git](git/)
+- [Git](git/)
 
-La gestion de version avec Git 
+> La gestion de version avec Git 
 
-## [PHP](php/)
+- [PHP](php/)
 
-Php, des bases du langage (sous forme procédurale) à la programmation orientée objet avec le framework Symfony
+> Php, des bases du langage (sous forme procédurale) à la programmation orientée objet avec le framework Symfony
 
-## [Intégration continue](ci/)
+- [Intégration continue](ci/)
 
-Les grands principes et la mise en place de l'intégration continue, à l'aide de Gitlab. 
+> Les grands principes et la mise en place de l'intégration continue, à l'aide de Gitlab. 

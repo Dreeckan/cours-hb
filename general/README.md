@@ -1,7 +1,5 @@
 # Culture numérique
 
-Rémi Jarjat / Développeur multi-rôles chez [Drakona](https://www.drakona.fr)
-
 - Les métiers de l'informatique et du numérique
 - Les types d'entreprises
 - Enjeux du métier de développeur
