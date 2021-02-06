@@ -228,7 +228,7 @@ Ce que j'appelle layout : nous allons découper notre HTML pour en extraire les 
   - Un bonnet peut avoir plusieurs tailles disponibles
   - peut avoir plusieurs matières 
 
-## Liste et filtres (aides)
+### Aides
 
 - On va ajouter un formulaire pour ces filtres (3 champs, dont 2 champs `<select>`), que l'on va ajouter avant le tableau de `list.php`
 - Les tailles et les matières vont être rangées dans des constantes de classe et ce sont ces constantes qu'on va appeler pour afficher le contenu de nos `<select>`, en appelant le tableau `Beanie::AVAILABLE_SIZES` par exemple.

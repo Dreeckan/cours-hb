@@ -1,11 +1,13 @@
 # PHP Procédural
 
-Rémi Jarjat / Développeur multi-rôles chez [Drakona](https://www.drakona.fr)
-
 - Introduction et installation d'environnement
 - De l'algorithme au site
 - Procédures et fonctions
 - Interagir avec l'utilisateur
+
+Plusieurs jeux d'exercice ont été préparés :
+- [Créons un site de vente de bonnets, très basique](exercices.md)
+- [Des exercices de révision](https://github.com/Dreeckan/exercices-php/blob/main/revisions.md) pour revoir les grands principes
 
 ## Théorie du PHP
 
