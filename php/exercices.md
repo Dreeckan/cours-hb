@@ -246,3 +246,7 @@ Ce que j'appelle layout : nous allons découper notre HTML pour en extraire les 
 - Relisez le code et faites vos retours (vérifiez que le code valide bien les normes PSR-12 **et** PSR-4, par exemple)
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
+
+## Révisions
+
+Pour réviser tous ces points et les travailler avant de passer aux objets, vous pouvez [vous entrainer avec ces exercices de révision](https://github.com/Dreeckan/exercices-php/blob/main/revisions.md).

@@ -161,3 +161,7 @@ try {
 
 - [Un lien pour tester si Wamp est lancé](http://localhost/phpmyadmin/db_structure.php?server=1&db=cours)
 - Pour voir notre base de données et la manipuler
+
+## Exercices
+
+Pour vous entrainer à manipuler PDO, utiliser le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/#8-base-de-donn%C3%A9es). Les exercices à partir du numéro 8 sont dédiés à cela.

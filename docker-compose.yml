@@ -6,8 +6,6 @@ services:
     volumes:
       - .:/srv
     ports:
-      - "8000:80"
       - "8080:8080"
     tty: true
     working_dir: /srv
-    command: make install run

@@ -7,7 +7,8 @@
     "vuepress-plugin-robots": "^1.0.1"
   },
   "scripts": {
-    "docs:dev": "vuepress dev .",
-    "docs:build": "vuepress build ."
+    "dev": "vuepress dev .",
+    "watch": "vuepress dev .",
+    "build": "vuepress build ."
   }
 }

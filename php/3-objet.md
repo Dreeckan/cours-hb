@@ -312,3 +312,7 @@ class Test
     use TestTrait2;
 }
 ```
+
+## Exercices
+
+Pour vous entrainer à manipuler des objets PHP, utiliser le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/). Les exercices 1 à 7 concernent cette partie
