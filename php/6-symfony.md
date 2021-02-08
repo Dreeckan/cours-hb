@@ -45,3 +45,88 @@ Prenons d'abord les dossiers dans l'ordre d'apparition :
 - `translations` : les traductions de vos textes iront dans ce dossier
 - `var` : des fichiers temporaires (cache, logs, etc.) qui vont servir de ressources pour l'exécution de notre site
 - `vendor` : les librairies dont nous allons nous servir (dont Symfony !)
+
+Ensuite, nous avons quelques fichiers à regarder de plus près : 
+
+- `.env` et `.env.test` : ces fichiers contiennent des variables d'environnement, qui vont nous permettre de configurer notre site (identifiants de base de données, etc.) pour les différents **environnements** que nous allons utiliser
+- `composer.json`, `composer.lock` et `symfony.lock` vont nous permettre de gérer les versions de nos dépendances PHP (librairies externes)
+
+## Composer
+
+Comme nous n'en avons pas parlé jusqu'à maintenant, prenons le temps de voir ce qu'est Composer.
+
+Ils s'agit d'un outil de gestion de dépendances (dependency manager) pour PHP. Tout comme `npm` (javascript) et bien d'autres, il permet de choisir les paquets (librairies) dont nous allons avoir besoin et d'en choisir des versions plus ou moins précise. L'intérêt est ici de :
+- télécharger les librairies dont on a besoin, dans les bonnes versions, et de s'assurer de pouvoir facilement les mettre à jour
+- s'assurer facilement que les dépendances de notre projet sont toujours bien compatibles entre elles
+
+Ouvrons maintenant un fichier `composer.json` (morceaux choisis) :
+
+```json
+{
+    "require": {
+        "php": ">=7.2.5",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "sensio/framework-extra-bundle": "^5.1",
+        "symfony/asset": "*",
+        "symfony/console": "*",
+        "symfony/dotenv": "*",
+        "symfony/expression-language": "*",
+        "symfony/flex": "^1.3.1",
+        "symfony/form": "*",
+        "symfony/framework-bundle": "*",
+        "symfony/http-client": "*",
+        "symfony/intl": "*",
+        "symfony/mailer": "*",
+        "symfony/mime": "*",
+        "symfony/monolog-bundle": "^3.1",
+        "symfony/notifier": "*",
+        "symfony/orm-pack": "*",
+        "symfony/process": "*",
+        "symfony/security-bundle": "*",
+        "symfony/serializer-pack": "*",
+        "symfony/string": "*",
+        "symfony/translation": "*",
+        "symfony/twig-pack": "*",
+        "symfony/validator": "*",
+        "symfony/web-link": "*",
+        "symfony/yaml": "*"
+    },
+    "require-dev": {
+        "symfony/debug-pack": "*",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/profiler-pack": "*",
+        "symfony/test-pack": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ]
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "5.2.*"
+        }
+    }
+}
+```
+
+Les fichiers `.lock` sont là pour assurer les versions précises de nos dépendances. Ils sont versionnés afin d'assurer la cohérence entre développeurs et entre serveurs (on s'assure d'avoir exactement les mêmes versions partout).
