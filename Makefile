@@ -18,10 +18,10 @@ upgrade: ## Met à jour le projet, sa base de données, ses assets et les versio
 	npm upgrade
 
 run: ## Met à jour les assets et surveille leur modification.
-	npm run docs:dev
+	npm run dev
 
 build: ## Construit les fichiers finaux (prod)
-	npm run docs:build
+	npm run build
 
 start:
 	docker-compose up -d
