@@ -192,6 +192,59 @@ Les fichiers `.lock` sont là pour assurer les versions précises de nos dépend
 - Créer une page qui va être disponible sur l'uri `/page`
 - Afficher un lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a dolor eleifend, efficitur elit sed, auctor sapien. Nulla lobortis augue sagittis viverra cursus. Fusce laoreet.
 
+### Résolution
+
+- On crée notre projet (si ça n'est pas déjà fait), avec la commande `symfony new --full my_project`
+- On l'ouvre avec notre IDE et on lance le serveur Symfony (`symfony serve` dans un terminal)
+- On crée notre controller (nous sommes dans un projet neuf, nous n'en avons pas), avec la commande `php bin/console make:controller`. Nommons-le `DefaultController`
+- Nous avons une nouvelle classe créée dans `src/Controller/DefaultController.php` et un nouveau template (une nouvelle vue) dans `template/default/index.html.twig`
+- Regardons `src/Controller/DefaultController.php` :
+```php
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class DefaultController extends AbstractController
+{
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function index(): Response
+    {
+        return $this->render('default/index.html.twig', [
+            'controller_name' => 'DefaultController',
+        ]);
+    }
+}
+```
+- Il contient une classe `DefaultController` (qui étend `AbstractController`, venu de Symfony) et une méthode `index()` (c'est elle qui va particulièrement nous intéresser)
+- Cette méthode `index()` a une annotation (commentaire commençant par `@`) nommée `Route`. Il s'agit d'une annotation permettant à Symfony de faire le lien entre une URi et une méthode de controller (aussi appelée action) à exécuter. Ici, `index()` sera appelée si nous chargeons la racine du site (`http://127.0.0.1:8000/`, en somme).
+- `index()` va faire une seule chose : renvoyer un html, construit à partir du fichier `default/index.html.twig` (qui se trouve dans le dossier `templates`). Pour se faire, on va appeler la méthode `render()` du controller, qui va créer un rendu de notre fichier Twig (en faire un html), en utilisant le tableau de paramètres, passé en deuxième argument.
+
+Regardons maintenant notre fichier `templates/default/index.html.twig` (j'enlève le html présent, pour simplifier l'affichage) : 
+
+```twig
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+    <h1>Hello {{ controller_name }}! ✅</h1>
+{% endblock %}
+```
+
+Plusieurs choses à voir ici aussi : 
+- La syntaxe de Twig : 
+  - les tags `{% %}` : pour les divers mots clés du langage propre à Twig (conditions, extensions, blocs, etc.)
+  - les `{{ }}` (affectueusement appelées moustaches) : pour afficher une valeur (ici, le contenu d'une variable `controller_name`)
+- Ce fichier étend `templates/base.html.twig`, il en récupère donc les blocs et les étends. Il est impossible de mettre du texte en dehors d'un bloc, si vous étendez une vue.
+
+Voilà, vous avez fait votre première page avec Symfony !
+
 ## Exercice (apprivoiser le controller et la vue)
 
 - On veut créer une nouvelle page (avec l'URi `/page`, dans le controller `DefaultController`)
