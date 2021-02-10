@@ -3,7 +3,7 @@
 - Une représentation de la réalité
 - En objet, tout est classe
 
-[Des exercices pour bien avancer](https://github.com/Dreeckan/exercices-php/blob/main/revisions.md)
+[Des exercices pour bien avancer](https://github.com/Dreeckan/exercices-php)
 
 ## Une représentation de la réalité
 

@@ -19,14 +19,14 @@ module.exports = {
         title: 'PHP',
         path: '/php/',
         collapsable: true,
-        sidebarDepth: 1,
+        sidebarDepth: 2,
         children: phpFiles
       },
       {
         title: 'Intégration continue',
         path: '/ci/',
         collapsable: true,
-        sidebarDepth: 1,
+        sidebarDepth: 2,
         children: ciFiles
       },
     ]
