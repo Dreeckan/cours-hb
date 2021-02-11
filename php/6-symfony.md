@@ -1,6 +1,6 @@
 # Symfony
 
-Cette partie va reprendre en grande partie le fonctionnement de [la documentation officielle de Symfony](https://symfony.com/doc/current/index.html). Cette documentation servira de référence assez souvent tout au long de ce cours.
+Cette partie va reprendre en grande partie le fonctionnement de [la documentation officielle de Symfony](https://symfony.com/doc/current/index.html). Cette documentation servira de référence assez souvent tout au long de ce cours. Il existe également un certain nombre de [bonnes pratiques pour travailler avec Symfony](https://symfony.com/doc/current/best_practices.html), que nous allons suivre tout au long de ce cours.
 
 Un [dossier avec des vidéos explicatives du cours et des exercices](https://loom.com/share/folder/5c8d96796b7e466bbd24b9ce7d2a563b) est disponible
 
@@ -186,13 +186,36 @@ Ouvrons maintenant un fichier `composer.json` (morceaux choisis) :
 
 Les fichiers `.lock` sont là pour assurer les versions précises de nos dépendances. Ils sont versionnés afin d'assurer la cohérence entre développeurs et entre serveurs (on s'assure d'avoir exactement les mêmes versions partout). 
 
-## Créer une première page avec Symfony (exercice guidé)
+## De l'URL du navigateur 
+
+Lors de l'appel d'une URL par le navigateur (`https://formation-hb.drakolab.fr/php` par exemple), le serveur (Nginx ou Apache, la plupart du temps) va transmettre la requête (`/php`) au fichier `public/index.php`. Symfony va alors appeler différents éléments pour traiter la requête :
+- Le router, qui va faire le lien entre `/php` et un controller, grâce aux routes définies (si aucune route ne correspond, une erreur 404 est renvoyée)
+- Une fois ce lien fait, Symfony sait quelle action utiliser (méthode d'un controller situé dans `src/Controller`) et va l'appeler
+- L'action va faire ses traitements (appels à la BdD, calculs divers, etc.) et, pour rendre une page HTML, va en général appeler le moteur de rendu (Twig)
+- Twig prend le fichier `.twig` (`.html.twig` s'il doit être transformé en html, par exemple) demandé et le compile avec les données reçues. Twig renvoie alors ce html au controller
+- Le controller ajoute le rendu dans un objet `Response`, qu'il va renvoyer. 
+- Symfony se charge alors d'envoyer cette `Response` au serveur (Nginx ou Apache, la plupart du temps)
+- Le serveur transmet au navigateur
+- Le navigateur affiche le résultat (j'omets ici volontairement pas mal d'aller-retours, seuls nous intéressent les mécaniques de Symfony)
+
+## Le routing
+
+La [documentation officielle sur le Routing](https://symfony.com/doc/current/routing.html)
+
+Le but de ce routing : faire le lien entre une URL et une action de controller. Il nous permet également d'avoir des URLs très propres, comme `/lire/article/debuter-avec-symfony` plutôt que `index.php?article_id=42`.
+
+Nous allons utiliser les annotations pour définir nos routes directement dans nos controllers. Cela correspond à une [bonne pratique de Symfony](https://symfony.com/doc/current/best_practices.html).
+Avec une installation complète de Symfony (grâce à la commande `symfony new --full my_project`), nous pouvons utiliser directement les annotations pour définir nos routes dans nos controllers. Sans cela, nous aurions dû ajouter le module d'annotations dans le projet `composer require doctrine/annotations`.
+
+## Exercices
+
+### Créer une première page avec Symfony (exercice guidé)
 
 - Avoir un projet Symfony neuf (fraîchement créé, sans modification)
 - Créer une page qui va être disponible sur l'uri `/page`
 - Afficher un lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a dolor eleifend, efficitur elit sed, auctor sapien. Nulla lobortis augue sagittis viverra cursus. Fusce laoreet.
 
-### Résolution
+#### Résolution
 
 - On crée notre projet (si ça n'est pas déjà fait), avec la commande `symfony new --full my_project`
 - On l'ouvre avec notre IDE et on lance le serveur Symfony (`symfony serve` dans un terminal)
@@ -245,7 +268,7 @@ Plusieurs choses à voir ici aussi :
 
 Voilà, vous avez fait votre première page avec Symfony !
 
-## Exercice (apprivoiser le controller et la vue)
+### Exercice (apprivoiser le controller et la vue)
 
 - On veut créer une nouvelle page (avec l'URi `/page`, dans le controller `DefaultController`)
 - Dans la méthode du controller, déclarer une variable `$test` et l'initialiser à `false`
@@ -254,14 +277,14 @@ Voilà, vous avez fait votre première page avec Symfony !
 - Utiliser la fonction `dump()` pour afficher toutes les variables disponibles dans la vue si `$test` vaut `true`
 - Vérifier en faisant varier `$test` dans la méthode du controller
 
-## Exercice (apprivoiser Twig et sa documentation)
+### Exercice (apprivoiser Twig et sa documentation)
 
-- Nous allons continuer à tester dans le même projet Symfony
-- Dans le fichier zip joint ci-après, récupérer les fichiers et les insérer dans le dossier `public` de votre projet
-- Créer une route (dans le controller de votre choix, vous pouvez en créer un nouveau pour vous entrainer) et une action (attention, bien définir une nouvelle URi)
+- Nous allons continuer à expérimenter dans le même projet Symfony
+- Dans le [fichier zip joint](/assets/exercice-integration.zip), récupérer les fichiers et les insérer dans le dossier `public` de votre projet
+- Créer une route (dans le controller de votre choix, vous pouvez en créer un nouveau pour vous entrainer) et une action (attention, bien définir une nouvelle URi, comme `/page/devbook`)
 - Reprendre le contenu du fichier `index.html` et faire en sorte qu'il hérite de `base.html.twig` (utiliser les `block` définis dans ce fichier pour y ranger les js et css)
 - Vérifier l'affichage
-- Normalement, les images, css et javascripts ne devraient pas se charger correctement, il va falloir utiliser la [fonction `asset()` de Twig](https://symfony.com/doc/current/reference/twig_reference.html#asset) pour les charger 
+- Normalement, les images, css et javascripts ne devraient pas se charger correctement, il va falloir utiliser la [fonction asset() de Twig](https://symfony.com/doc/current/reference/twig_reference.html#asset) pour les charger 
 - Vérifier régulièrement l'affichage et que tout se charge
-- Une fois fait, découper votre fichier HTML en plusieurs fichiers (un fichier twig par section, par exemple, un fichier `hero-section.html.twig`) et inclure les différents fichiers à l'aide du [tag `include` de Twig](https://twig.symfony.com/doc/3.x/tags/include.html)
+- Une fois fait, découper votre fichier HTML en plusieurs fichiers (un fichier twig par section, par exemple, un fichier `hero-section.html.twig`) et inclure les différents fichiers à l'aide du [tag include de Twig](https://twig.symfony.com/doc/3.x/tags/include.html)
 - Normalement, votre affichage doit être le même qu'au début, mais vous avez découpé le tout en plusieurs fichiers (plus faciles à maintenir)

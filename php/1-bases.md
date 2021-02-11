@@ -6,7 +6,7 @@
 - Interagir avec l'utilisateur
 
 Plusieurs jeux d'exercice ont été préparés :
-- [Créons un site de vente de bonnets, très basique](exercices.md)
+- [Créons un site de vente de bonnets, très basique](3.1-exercices.md)
 - [Des exercices de révision](https://github.com/Dreeckan/exercices-php/blob/main/revisions.md) pour revoir les grands principes
 
 ## Théorie du PHP
