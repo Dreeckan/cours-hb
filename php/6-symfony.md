@@ -207,6 +207,214 @@ Le but de ce routing : faire le lien entre une URL et une action de controller. 
 Nous allons utiliser les annotations pour définir nos routes directement dans nos controllers. Cela correspond à une [bonne pratique de Symfony](https://symfony.com/doc/current/best_practices.html).
 Avec une installation complète de Symfony (grâce à la commande `symfony new --full my_project`), nous pouvons utiliser directement les annotations pour définir nos routes dans nos controllers. Sans cela, nous aurions dû ajouter le module d'annotations dans le projet `composer require doctrine/annotations`.
 
+Un exemple de déclaration de route (sous forme d'annotation) : 
+
+```php
+// src/Controller/BlogController.php
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+
+class BlogController extends AbstractController
+{
+    // ...
+    
+    /**
+     * Ici, on peut s'assurer que le paramètre page est un entier (l'expression régulière \d+ fait cette vérification)
+     * 
+     * @Route("/blog/{page}", name="blog_list", requirements={"page"="\d+"})
+     */
+    public function list(int $page = 1): Response
+    {
+        // ...
+    }
+
+    /**
+     * @Route("/blog/{slug}", name="blog_show")
+     */
+    public function show(string $slug): Response
+    {
+        // $slug va prendre la valeur déclarée dans l'url ({slug})
+        // Autrement dit, si l'uri est /blog/un-article, alors $slug='un-article'
+    }
+}
+```
+
+Un autre élément important : les préfixes. Le code suivant permet que :
+- toutes les routes d'un controller commencent par exemple par `blog`, vous pouvez faire ceci :
+- toutes les routes portent un nom commençant par `blog_`
+- toutes les routes contiennent un paramètre `_locale` et qu'il ne puisse prendre que certaines valeurs précises (`en`, `es` ou `fr`)
+
+```php
+// src/Controller/BlogController.php
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+/**
+ * Toutes les URi liées aux routes de ce controller commencent par /blog
+ * Les noms de toutes les routes commencent par blog_ (on a donc blog_list et blog_show ici)
+ * On force tous les paramètres _locale des différentes actions à 3 valeurs possibles : en, es ou fr
+ * 
+ * @Route("/blog", requirements={"_locale": "en|es|fr"}, name="blog_")
+ */
+class BlogController extends AbstractController
+{
+    /**
+     * @Route("/{_locale}", name="list")
+     */
+    public function list(): Response
+    {
+        // ...
+    }
+
+    /**
+     * @Route("/{_locale}/posts/{slug}", name="show")
+     */
+    public function show(string $slug): Response
+    {
+        // ...
+    }
+}
+```
+
+Vous noterez ici que la variable `_locale` n'apparait pas dans les paramètres de l'action (méthode de controller). Il existe plusieurs paramètres gérés directement par Symfony. Le paramètre `_locale` permet par exemple de gérer les traductions directement avec l'URL
+
+### Les sous-domaines
+
+Disons que notre blog, qui sera disponible sur le site `example.com` se trouve plus exactement sur `blog.example.com`. Nous ne sommes pas obligés de créer 2 sites différents pour `blog.example.com` ou `www.example.com`, mais pouvons dire que toutes les routes de notre BlogController doivent être appelées avec le sous-domaine `blog` : 
+
+```php
+// src/Controller/BlogController.php
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+/**
+ * @Route(host="blog.example.com", requirements={"_locale": "en|es|fr"}, name="blog_")
+ */
+class BlogController extends AbstractController
+{
+    /**
+     * @Route("/{_locale}", name="list")
+     */
+    public function list(): Response
+    {
+        // ...
+    }
+
+    /**
+     * @Route("/{_locale}/posts/{slug}", name="show")
+     */
+    public function show(string $slug): Response
+    {
+        // ...
+    }
+}
+```
+
+## Les controllers
+
+On appelle Controller (ou contrôleur en français) une fonction traitant les données de la requête HTTP et renvoyant une réponse au navigateur (la plupart du temps, une page web). Contrairement à cette définition (globale à PHP et d'autres langages), avec Symfony, on parle de controller pour désigner la classe contenant des actions (au sens strict, ce sont ces actions que l'on devrait appeler controllers).
+
+Dans la pratique, une classe Controller va contenir plusieurs méthodes (actions), qui vont correspondre à des routes (urls, comme nous l'avons vu plus haut). Ces actions vont recevoir toutes les informations de la requête (objet `Request` de Symfony) et envoyer une réponse (objet `Response` de Symfony, ou l'un de ses enfants).
+
+Décomposons et complétons notre exemple précédent :
+
+```php
+// src/Controller/BlogController.php
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+/**
+ * @Route(host="blog.example.com", requirements={"_locale": "en|es|fr"}, name="blog_")
+ */
+class BlogController extends AbstractController // Notre controller hérite du AbstractController de Symfony, ce qui nous permet d'avoir plusieurs méthodes très utiles. Ca n'est toutefois pas obligatoire, nous pourrions tout à fait définir des controllers qui n'étendent pas AbstractController.
+{
+    /**
+     * @Route("/{_locale}", name="list")
+     */
+    public function list(): Response
+    {
+        // Disons que nous avons une liste d'articles de blog
+        $posts = [
+            // Des articles
+        ];
+        
+        // On prépare le html à afficher à l'utilisateur
+        $html = '<html><body>Articles : '.implode($posts).'</body></html>';
+        
+        // On préparer un objet Response qui va non seulement contenir notre html, mais également toutes les informations HTTP nécessaires (headers par exemple)
+        $response = new Response($html);
+        
+        // On renvoie la réponse destinée au navigateur
+        return $response;
+    }
+    
+    // ...
+}
+```
+
+### Utiliser les routes
+
+Dans les controllers, nous n'utilisons les routes que par leur nom (ce qui évite également d'avoir à se rappeler des informations autres, comme l'URi correspondante).
+Pour récupérer l'url vers une route, le `AbstractController` nous fournit la méthode `generateUrl()` :
+
+```php
+$englishUrl = $this->generateUrl('blog_list', ['_locale' => 'en']);
+$frenchUrl = $this->generateUrl('blog_list', ['_locale' => 'fr']);
+```
+
+Il existe également plusieurs méthodes pour rediriger l'utilisateur vers une autre page (on renvoie alors l'un des enfants de l'objet `Response` : `RedirectResponse`) :
+
+```php
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+// ...
+public function index(): RedirectResponse
+{
+    // Redirige vers la route "homepage"
+    return $this->redirectToRoute('homepage');
+
+    // redirectToRoute est un raccourci pour :
+    // return new RedirectResponse($this->generateUrl('homepage'));
+
+    // Redirige de manière permanente vers la route "homepage" (Voir le statut HTTP 301)
+    return $this->redirectToRoute('homepage', [], 301);
+
+    // Redirige vers une route avec un paramètre
+    return $this->redirectToRoute('blog_index', ['page' => 2]);
+
+    // Redirige vers une route avec tous les paramètres $_GET présents
+    return $this->redirectToRoute('blog_index', $request->query->all());
+
+    // Redirige vers une page externe au site
+    return $this->redirect('http://symfony.com/doc');
+}
+```
+
+### Rendre une vue Twig
+
+La classe `AbstractController` fournit une méthode `render()` qui nous permet de générer une `Response` à partir d'un fichier Twig (et donc de compiler ce dernier).
+
+```php
+// Ici, on va récupérer notre template dans `templates/blog/index.html.twig`
+// Il est compilé (transformé, à l'aide de nos paramètres, en HTML) et renvoyé dans un objet Response
+return $this->render('blog/index.html.twig', ['page' => 3]);
+```
+
+Pour plus d'informations sur le fonctionnement de Twig, voir la partie dédiée.
+
+
+
 ## Exercices
 
 ### Créer une première page avec Symfony (exercice guidé)
