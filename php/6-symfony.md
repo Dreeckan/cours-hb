@@ -568,6 +568,69 @@ class MailController extends AbstractController
 
 L'un des services que nous allons le plus souvent injecter dans les controllers et l'objet `Request` de Symfony, mais nous en parlerons dans la partie sur les formulaires.
 
+Pour résumer, dans les paramètres de notre action, nous pouvons récupérer :
+- les paramètres de notre route
+- des services que nous injectons pour les utiliser dans l'action.
+
+L'un des principaux objectifs de ce découpage en services est de réduire le controller à son minimum et ce pourquoi il est fait : être un chef d'orchestre entre la requête et le rendu final.
+
+## Twig
+
+[La documentation officielle de Twig](https://twig.symfony.com/doc/) (qui présente également séparément ce qui vient de Twig ou qui est présent uniquement pour Symfony)
+
+Twig est un moteur de rendu (avec Symfony, vous pouvez tout aussi bien continuer à utiliser PHP, comme nous l'avons vu jusqu'à maintenant) dont le but est de vous simplifier la vie dans la gestion de votre HTML.
+
+### Syntaxe
+
+Twig a sa propre syntaxe, basée sur 5 éléments :
+- les tags `{% unExempleDeTag %}{% endunExempleDeTag %}` qui vont vous permettre de faire des calculs divers
+- les moustaches (appellation non-officielle) `{{  }}` qui sont là pour afficher du contenu (le contenu d'une variable, le retour d'une fonction ou d'un filtre, etc.)
+- les filtres `uneValeurOuVariable | unFiltre(unParamètreDuFiltre)` sont des fonctions dont le premier paramètre se trouve avant le `|` et les suivants dans les parenthèses
+- les fonctions `uneFonction(unParamètreDeLaFonction, unSecondParamètre)` plus classiques
+- les tests `if uneValeur is unTest(unParamètreDuTest)` vont servir dans des conditions (ainsi que les divers opérateurs, que je vous invite à aller voir par vous-même dans la documentation)
+
+Voyons quelques exemples avec la page d'accueil d'un blog.
+
+Un premier fichier `templates/base.html.twig` :
+
+```Twig
+{# Ceci est un commentaire dans Twig #}
+<!DOCTYPE html>
+<html dir="ltr" lang="fr">
+    <body>
+        {# Ici, nous définissons un ensemble de blocs, qui seront modifiables dans les templates qui héritent de templates/base.html.twig #}
+        {% block bodyHeader %}{% endblock %}
+        {% block body %}{% endblock body %}
+        {% block bodyFooter %}{% endblock %}
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
+```
+
+Un second fichier `templates/blog/layout.html.twig` :
+
+```Twig
+{% extends 'base.html.twig' %} {# On étend base.html.twig, on en récupère donc tout le contenu, mais nous ne pouvons plus écrire des choses en dehors de blocks #}
+
+{% block body %}
+
+    {# Ici, nous partons du principe que nous avons une variable articles (un tableau contenant des objets Article, par exemple) #}
+    <h1>
+        {{ articles|length }} {# on utilise le filtre |length qui nous renvoie la quantité d'élements dans le tableau #}
+        articles sur ce blog
+    </h1>
+    
+    {% for article in articles %} {# la syntaxe du for est encore différente du PHP, mais permet aussi beaucoup plus de souplesse (voir la doc pour les différentes utilisations possibles) #}
+        {% if article is not empty %} {# on utilise une condition et un test ici, pour vérifier que notre article n'est pas vide #}
+            {# On inclue un autre template en lui transmettant des paramètres #}
+            {# Ici, on lui dit qu'il n'aura que les paramètres globaux (app) et la variable article #}
+            {% include 'blog/_article.html.twig' with { article: article } only %}
+        {% endif %} {# Notez ici que les tags ont souvent un début et une fin, mais que l'on utilise plus d'accolades #}
+    {% endfor %}
+
+{% endblock body %} {# on n'est pas obligé d'indiquer le nom du block qu'on ferme, c'est simplement plus pratique pour s'y retrouver si le block contient beaucoup de choses #}
+```
 
 ## Exercices
 
