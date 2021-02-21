@@ -80,7 +80,6 @@ Après avoir ouvert un projet Symfony dans votre IDE, faites quelques étapes si
 Vous pouvez la laisser tourner en tâche de fond (et y revenir de temps en temps si vous avez des erreurs) et pour utiliser la ligne de commande, vous pouvez ouvrir un nouveau terminal (avec les deux IDE, il y a un bouton `+`).
 Et vous pouvez utiliser votre site à l'adresse indiqué par le serveur (en général [http://127.0.0.1:8000](http://127.0.0.1:8000) ou [https://127.0.0.1:8000](https://127.0.0.1:8000)).
 
-
 ## Un projet Symfony
 
 Regardons le contenu du projet que nous venons de créer. Il contient déjà de nombreux fichiers et dossiers :
@@ -611,34 +610,76 @@ Un premier fichier `templates/base.html.twig` :
 Un second fichier `templates/blog/layout.html.twig` :
 
 ```Twig
-{% extends 'base.html.twig' %} {# On étend base.html.twig, on en récupère donc tout le contenu, mais nous ne pouvons plus écrire des choses en dehors de blocks #}
+{# On étend base.html.twig, on en récupère donc tout le contenu, mais nous ne pouvons plus écrire des choses en dehors de blocks #}
+{% extends 'base.html.twig' %}
 
 {% block body %}
 
     {# Ici, nous partons du principe que nous avons une variable articles (un tableau contenant des objets Article, par exemple) #}
     <h1>
-        {{ articles|length }} {# on utilise le filtre |length qui nous renvoie la quantité d'élements dans le tableau #}
+        {# on utilise le filtre |length qui nous renvoie la quantité d'élements dans le tableau #}
+        {{ articles|length }}
         articles sur ce blog
     </h1>
     
-    {% for article in articles %} {# la syntaxe du for est encore différente du PHP, mais permet aussi beaucoup plus de souplesse (voir la doc pour les différentes utilisations possibles) #}
-        {% if article is not empty %} {# on utilise une condition et un test ici, pour vérifier que notre article n'est pas vide #}
+    {# la syntaxe du for est encore différente du PHP, mais permet aussi beaucoup plus de souplesse (voir la doc pour les différentes utilisations possibles) #}
+    {% for article in articles %}
+        {# on utilise une condition et un test ici, pour vérifier que notre article n'est pas vide #}
+        {% if article is not empty %}
+        
             {# On inclue un autre template en lui transmettant des paramètres #}
             {# Ici, on lui dit qu'il n'aura que les paramètres globaux (app) et la variable article #}
             {% include 'blog/_article.html.twig' with { article: article } only %}
-        {% endif %} {# Notez ici que les tags ont souvent un début et une fin, mais que l'on utilise plus d'accolades #}
-    {% endfor %}
 
-{% endblock body %} {# on n'est pas obligé d'indiquer le nom du block qu'on ferme, c'est simplement plus pratique pour s'y retrouver si le block contient beaucoup de choses #}
+        {# Notez ici que les tags ont souvent un début et une fin, mais que l'on utilise plus d'accolades #}
+        {% endif %} 
+    {% endfor %}
+    
+{# Il n'est pas obligatoire d'indiquer le nom du block qu'on ferme, c'est simplement plus pratique pour s'y retrouver si le block contient beaucoup de choses #}
+{% endblock body %}
+```
+
+### Spécifiques à Symfony
+
+Il y a quelques filtres et fonctions utiles à connaître pour travailler avec Twig dans Symfony : 
+- `asset()` qui permet de récupérer un fichier (css, image, javascript, etc.) dans le dossier `public` ou l'un de ses sous-dossiers
+- `path()` qui permet d'avoir l'URi vers une de vos routes
+- `url()` qui permet d'avoir une url (complète, avec le http(s), le nom de domaine, etc.)
+- `trans` (filtre ou tag, les deux existent) qui va nous permettre d'appeler nos traductions
+
+Poursuivons notre exemple avec le fichier `blog/_article.html.twig` :
+
+```html
+<article>
+    <header>
+        <h2>
+            {# Pour récupérer une propriété d'un objet, on utilise généralement cette notation : nomDeLaVariable.nomDeSaPropriete #}
+            {# Dans les faits, c'est la méthode getTitle() de notre objet Article qui va être appelée, il faut donc qu'elle soit définie. #}
+            {{ article.title }}{# on aurait aussi pu écrire article.getTitle() pour bien montrer l'appel au getter #}
+        </h2>
+        {# Ici, on charge l'image qui se trouve dans le dossier public/chemin/vers/une/image.jpg. L'avantage est que nous n'avons plus à gérer le dossier dans lequel nous nous trouvons, Symfony le fait pour nous #}
+        <img src="{{ asset('/chemin/vers/une/image.jpg') }}" alt="">
+    </header>
+    {# path nous permet d'avoir le lien (relatif) vers notre article. On utilise généralement le lien relatif car il est plus court à calculer et éviter beaucoup de calculs au navigateur. #}
+    {# path prend en premier paramètre le nom d'une route, et en second un "objet" avec les paramètres #}
+    <a href="{{ path('blog_show', { slug: article.slug }) }}">
+        {# le filtre trans s'applique sur une chaine de caractère (qui peut venir d'une variable), et prend 2 paramètres #}
+        {# Le premier est une liste de paramètres nécessaires à la traduction (que nous verrons dans une partie sur les traductions) #}
+        {# Le second est le nom du fichier où se trouve la traduction (ici, blog.fr.yaml si l'on est en français) #}
+        {{ "Lire l'article"|trans({}, 'blog') }}
+    </a>
+    {# url prend les mêmes paramètres que path, mais retourne une url absolue #}
+    Lien partageable vers l'article : {{ url('blog_show', { slug: article.slug }) }}
+</article>
 ```
 
 ## Exercices
 
-### Créer une première page avec Symfony (exercice guidé)
+### 1. Créer une première page avec Symfony (exercice guidé)
 
 - Avoir un projet Symfony neuf (fraîchement créé, sans modification)
 - Créer une page qui va être disponible sur l'uri `/page`
-- Afficher un lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a dolor eleifend, efficitur elit sed, auctor sapien. Nulla lobortis augue sagittis viverra cursus. Fusce laoreet.
+- Afficher un lorem ipsum `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a dolor eleifend, efficitur elit sed, auctor sapien. Nulla lobortis augue sagittis viverra cursus. Fusce laoreet.`
 
 #### Résolution
 
@@ -693,7 +734,7 @@ Plusieurs choses à voir ici aussi :
 
 Voilà, vous avez fait votre première page avec Symfony !
 
-### Exercice (apprivoiser le controller et la vue)
+### 2. Exercice (apprivoiser le controller et la vue)
 
 - On veut créer une nouvelle page (avec l'URi `/page`, dans le controller `DefaultController`)
 - Dans la méthode du controller, déclarer une variable `$test` et l'initialiser à `false`
@@ -702,7 +743,7 @@ Voilà, vous avez fait votre première page avec Symfony !
 - Utiliser la fonction `dump()` pour afficher toutes les variables disponibles dans la vue si `$test` vaut `true`
 - Vérifier en faisant varier `$test` dans la méthode du controller
 
-### Exercice (apprivoiser Twig et sa documentation)
+### 3. Exercice (apprivoiser Twig et sa documentation)
 
 - Nous allons continuer à expérimenter dans le même projet Symfony
 - Dans le [fichier zip joint](/assets/exercice-integration.zip), récupérer les fichiers et les insérer dans le dossier `public` de votre projet
@@ -713,3 +754,6 @@ Voilà, vous avez fait votre première page avec Symfony !
 - Vérifier régulièrement l'affichage et que tout se charge
 - Une fois fait, découper votre fichier HTML en plusieurs fichiers (un fichier twig par section, par exemple, un fichier `hero-section.html.twig`) et inclure les différents fichiers à l'aide du [tag include de Twig](https://twig.symfony.com/doc/3.x/tags/include.html)
 - Normalement, votre affichage doit être le même qu'au début, mais vous avez découpé le tout en plusieurs fichiers (plus faciles à maintenir)
+
+
+### 4.
