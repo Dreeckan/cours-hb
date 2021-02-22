@@ -755,5 +755,7 @@ Voilà, vous avez fait votre première page avec Symfony !
 - Une fois fait, découper votre fichier HTML en plusieurs fichiers (un fichier twig par section, par exemple, un fichier `hero-section.html.twig`) et inclure les différents fichiers à l'aide du [tag include de Twig](https://twig.symfony.com/doc/3.x/tags/include.html)
 - Normalement, votre affichage doit être le même qu'au début, mais vous avez découpé le tout en plusieurs fichiers (plus faciles à maintenir)
 
+### 4. Manier des assets, les controllers et Twig
 
-### 4.
+- Nous allons travailler sur votre Business Case
+- Le but est de créer les pages demandées (nous allons commencer par les pages statiques et sans formulaire), avec leurs images, css et javascripts.
