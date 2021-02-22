@@ -649,7 +649,7 @@ Il y a quelques filtres et fonctions utiles à connaître pour travailler avec T
 
 Poursuivons notre exemple avec le fichier `blog/_article.html.twig` :
 
-```html
+```Twig
 <article>
     <header>
         <h2>
