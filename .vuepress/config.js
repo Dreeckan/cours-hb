@@ -1,6 +1,7 @@
 const glob = require('glob');
 
-let phpFiles = glob.sync('php/**/!(README).md');
+let phpFiles = glob.sync('php/!(README).md');
+let symfonyFiles = glob.sync('symfony/!(README).md');
 let ciFiles = glob.sync('ci/**/!(README).md');
 
 module.exports = {
@@ -21,6 +22,13 @@ module.exports = {
         collapsable: true,
         sidebarDepth: 2,
         children: phpFiles
+      },
+      {
+        title: 'Symfony',
+        path: '/symfony/',
+        collapsable: true,
+        sidebarDepth: 2,
+        children: symfonyFiles
       },
       {
         title: 'Intégration continue',

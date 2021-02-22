@@ -14,7 +14,11 @@
 
 - [PHP](php/)
 
-> Php, des bases du langage (sous forme procédurale) à la programmation orientée objet avec le framework Symfony
+> Php, des bases du langage (sous forme procédurale) à la programmation orientée objet 
+
+- [Symfony](symfony/)
+
+> Grâce aux bases de PHP objet, utiliser le framework Symfony pour développer un site complet et complexe
 
 - [Intégration continue](ci/)
 
