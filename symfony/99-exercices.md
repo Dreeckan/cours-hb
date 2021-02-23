@@ -112,13 +112,13 @@ Voilà, vous avez fait votre première page avec Symfony !
   - `php bin/console doctrine:migrations:migrate` pour la lancer
   - Vérifier que les tables sont bien créées et que tous les champs sont bien présents
 - Créer une route pour le chemin `/composer` (et un nouveau controller) qui va :
-  - Prendre en paramètre `ComposerRepository`
+  - Prendre en paramètre `ComposerRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(ComposerRepository $composerRepository)`)
   - Récupérer la liste des compositeurs (`Composer`)
   - Les afficher dans un tableau html (ils vous avaient manqué, j'en suis sûr)
 - Créer une route pour le chemin `/composer/new` (dans le même controller que précédemment) qui va :
-  - Prendre en paramètre `ComposerRepository`
+  - Prendre en paramètre `ComposerRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(ComposerRepository $composerRepository)`)
   - Créer un ou des objets `Composer` (avec un `new Composer`) et les persister en base (méthodes `persist($object)` et `flush()` du service `EntityManagerInterface`)
   - Rediriger vers la page de liste `/composer`
 - Créer une route pour le chemin `/composer/{id}` (dans le même controller que précédemment) qui va :
   - Prendre en paramètre un objet `Composer`
-  - Créer un template qui va en afficher les différentes propriétés (y compris les différents objets `Music` associés)
+  - Créer un template qui va en afficher les différentes propriétés (y compris les différents objets `Music` associés, que vous pouvez récupérer avec `composer.musics` dans votre template)
