@@ -13,4 +13,5 @@ Les différentes parties du cours
 - [Le routing](5-routing.md)
 - [Les controllers](6-controllers.md)
 - [Twig](7-twig.md)
+- [Doctrine](8-doctrine.md)
 - [Exercices](99-exercices.md)
