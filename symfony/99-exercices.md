@@ -117,7 +117,7 @@ Voilà, vous avez fait votre première page avec Symfony !
   - Les afficher dans un tableau html (ils vous avaient manqué, j'en suis sûr)
 - Créer une route pour le chemin `/composer/new` (dans le même controller que précédemment) qui va :
   - Prendre en paramètre `ComposerRepository`
-  - Créer un ou des objets `Composer` (avec un `new Composer`) et les persister en base
+  - Créer un ou des objets `Composer` (avec un `new Composer`) et les persister en base (méthodes `persist($object)` et `flush()` du service `EntityManagerInterface`)
   - Rediriger vers la page de liste `/composer`
 - Créer une route pour le chemin `/composer/{id}` (dans le même controller que précédemment) qui va :
   - Prendre en paramètre un objet `Composer`
