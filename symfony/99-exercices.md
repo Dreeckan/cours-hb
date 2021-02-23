@@ -91,14 +91,14 @@ Voilà, vous avez fait votre première page avec Symfony !
 - Créons deux entités, à l'aide de la commande `php bin/console make:entity` :
   - `Composer` ayant 6 propriétés : 
     - `id` (entier, généré automatiquement)
-    - `name` (string, longueur de 255)
-    - `description` (texte)
+    - `name` (string, longueur de 255, non null)
+    - `description` (texte, non null)
     - `birth` (entier)
     - `death` (entier)
     - `birthCountry` (string, longueur de 128)
   - `Music` ayant 4 propriétés :
     - `id` (entier, généré automatiquement)
-    - `name` (string, longueur de 255)
+    - `name` (string, longueur de 255, non null)
     - `year` (entier)
     - `composer` (une relation avec `Composer` de type `ManyToOne`)
 - Regardons les fichiers générés par notre commande. Les deux premiers sont nos entités (objet PHP simple, avec des annotations pour le lien avec la BdD). Les suivants sont nos repositories (ce sont eux qui vont nous permettre de faire des requêtes).

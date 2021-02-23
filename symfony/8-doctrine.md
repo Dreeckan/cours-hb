@@ -101,3 +101,222 @@ doctrine:
                 prefix: 'App\Entity'
                 alias: App
 ```
+
+## Créer des entités
+
+Une entité est une classe PHP (rangée, dans notre cas, dans le dossier `src/Entity`) qui va correspondre à une table de notre BdD. Chaque ligne de cette table correspondra à un objet.
+
+Pour faire schématique :
+- Classe = table
+- Objet = ligne de cette table
+
+Nous allons créer 2 entités :
+- `Article` un article de blog, contenant un titre (string de 255 caractères), un contenu (text) et une catégorie (Tag)
+- `Tag` une catégorie, contenant un nom (string de 128 caractères), qui peut être liée à plusieurs articles
+
+Pour créer ces objets, nous avons 2 choix :
+- les écrire nous-même
+- les générer à l'aide de la commande `php bin/console make:entity`
+
+Je vous conseille toujours le second choix ;).
+
+Dans un premier temps, créons la classe `Article`.
+ 
+- On exécute la commande
+- On précise le nom de la classe qu'on veut créer : `Article`
+- Puis on ajoute nos champs
+  - `title` de type string, longueur 255 et non `null`
+  - `content` de type text et non `null`
+- Arrêtons-nous ici pour cette entité. Nous ajouterons la relation avec Tag en créant cette entité.
+
+Créons la classe `Tag`
+
+- On exécute la commande
+- On précise le nom de la classe qu'on veut créer : `Tag`
+- Puis on ajoute nos champs
+  - `name` de type string, longueur 128 et non `null`
+  - `articles` de type relation (nous serons ainsi guidés pour choisir le type de relation, ici nous voulons du `OneToMany` : 1 Tag lié à n Articles)
+    - La commande nous propose également de créer un champ `tag` dans `Article`. Profitons-en, ça pourra nous servir !
+    - La commande nous demande également si la propriété `tag` de `Article` peut être null. Disons que non (nos articles doivent obligatoirement avoir une catégorie).
+    - Contrairement à la vidéo, à la question d'activer `orphanRemoval` sur cette relation, dire non.
+    - La relation est ajoutée !
+    - Valider une dernière fois pour terminer les modifications
+
+Nous avons maintenant 4 fichiers créés, dont ces 2 entités : 
+
+- `src/Entity/Tag.php` : 
+
+```php
+<?php
+
+namespace App\Entity;
+
+use App\Repository\TagRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass=TagRepository::class)
+ */
+class Tag
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=128)
+     */
+    private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="tag")
+     */
+    private $articles;
+
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setTag($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getTag() === $this) {
+                $article->setTag(null);
+            }
+        }
+
+        return $this;
+    }
+}
+
+```
+
+
+- `src/Entity/Article.php` : 
+
+```php
+<?php
+
+namespace App\Entity;
+
+use App\Repository\ArticleRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ */
+class Article
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $content;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Tag::class, inversedBy="articles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $tag;
+
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    public function getTag(): ?Tag
+    {
+        return $this->tag;
+    }
+
+    public function setTag(?Tag $tag): self
+    {
+        $this->tag = $tag;
+
+        return $this;
+    }
+}
+```
+
+
+## Exercices liés
+
+Si vous êtes arrivés jusque-là, vous pouvez maintenant [faire les exercices 5 et 6](99-exercices.md)
