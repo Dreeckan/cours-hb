@@ -87,11 +87,15 @@ Voilà, vous avez fait votre première page avec Symfony !
 
 ## 5. Manier Doctrine pour utiliser une BdD
 
+### 5.1. Configuration et création de la base
+
 - Dans notre projet de test (dans lequel nous avons fait les exercices 1, 2 et 3), nous allons ajouter des entités et synchroniser notre BdD
 - Nous allons avoir besoin que Wamp/Mamp soit démarré pour avoir MySQL et PhpMyAdmin
 - Configurer votre base de données et la créer avec la ligne de commande 
   - Dans le fichier `.env`, mettre à jour le paramètre `DATABASE_URL` avec vos informations de connexion et le nom de votre BdD
   - Créer la BdD avec la commande `php bin/console doctrine:database:create`
+
+### 5.2. Création d'entités et de leurs champs
 
 - Créons deux entités, à l'aide de la commande `php bin/console make:entity` :
   - `Composer` ayant 6 propriétés : 
@@ -113,28 +117,42 @@ Voilà, vous avez fait votre première page avec Symfony !
   - `src/Repository/ComposerRepository.php`
   - `src/Repository/MusicRepository.php`
   
+### 5.3. Migration
+
 - Créer et jouer la migration qui correspond
   - `php bin/console doctrine:migrations:diff` pour créer la migration
   - Vérifier le fichier de migration correspondant (son nom est affiché par la commande)
   - `php bin/console doctrine:migrations:migrate` pour la lancer
   - Vérifier que les tables sont bien créées et que tous les champs sont bien présents
   
+### 5.4. Utiliser ces entités dans les controllers
+
+#### 5.4.1. Appeler le repository pour récupérer tous les objets Composer
+
 - Créer une route pour le chemin `/composer` (et un nouveau controller) qui va :
   - Prendre en paramètre `ComposerRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(ComposerRepository $composerRepository)`)
   - Récupérer la liste des compositeurs (`Composer`)
   - Les afficher dans un tableau html (ils vous avaient manqué, j'en suis sûr)
+
+#### 5.4.2. Créer des objets et les sauvegarder en base
   
 - Créer une route pour le chemin `/composer/new` (dans le même controller que précédemment) qui va :
   - Prendre en paramètre `EntityManagerInterface` (c'est-à-dire que votre action sera de cette forme `public function monAction(EntityManagerInterface $entityManager)`)
   - Créer un ou des objets `Composer` (avec un `new Composer`)
   - Les persister en base (méthodes `persist($object)` et `flush()` du service `EntityManagerInterface`)
   - Rediriger vers la page de liste `/composer`
+
+#### 5.4.3. Récupérer un objet par son identifiant
   
 - Créer une route pour le chemin `/composer/{id}` (dans le même controller que précédemment) qui va :
-  - Prendre en paramètre un objet `Composer`
+  - Prendre en paramètre un objet `Composer` (c'est-à-dire que votre action sera de cette forme `public function monAction(Composer $composer)`)
   - Créer un template qui va en afficher les différentes propriétés (y compris les différents objets `Music` associés, que vous pouvez récupérer avec `composer.musics` dans votre template)
   
-- Nous allons faire de même avec les objets `Music`
+#### 5.4.4. Aller un peu plus loin avec l'objet Music
+
+Pour tout ce qui a été fait jusqu'ici, il y a un [corrigé vidéo](https://www.loom.com/share/09a47cb371e24523ac05043d5fb54f53) si vous le souhaitez
+
+Nous allons faire de même avec les objets `Music`
   
 - Créer une route pour le chemin `/music` (et un nouveau controller `MusicController`) qui va :
   - Prendre en paramètre `MusicRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(MusicRepository $musicRepository)`)
@@ -145,6 +163,8 @@ Voilà, vous avez fait votre première page avec Symfony !
   - Prendre en paramètre `EntityManagerInterface` et `ComposerRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(EntityManagerInterface $entityManager, ComposerRepository $composerRepository)`)
   - Créer un ou des objets `Music` (avec un `new Music`)
   - Récupérer un ou des objets `Composer` et les associer à vos objets `Music` fraîchement créés
+    - Pour cela, nous allons utiliser `$composerRepository->findBy(['name' => "nom d'un compositeur que vous avez entré"])` pour chercher un compositeur
+    - `findBy` permet de faire une requête `SELECT` avec des `WHERE`, sans taper de SQL.
   - Les persister en base (méthodes `persist($object)` et `flush()` du service `EntityManagerInterface`)
   - Rediriger vers la page de liste `/music`
   
@@ -152,4 +172,4 @@ Voilà, vous avez fait votre première page avec Symfony !
   - Prendre en paramètre un objet `Music`
   - Créer un template qui va en afficher les différentes propriétés (y compris le nom du morceau, à l'aide de `music.composer.name`)
 
-- Compléter votre vue affichant un compositeur pour récupérer les musiques associées (et vérifier que tout fonctionne)
+- Compléter votre vue de l'exercice `5.4.3` pour récupérer les musiques associées (et/ou vérifier que tout fonctionne)

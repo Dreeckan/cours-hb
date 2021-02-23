@@ -62,6 +62,23 @@ Une fois configurée, lancer la commande `php bin/console doctrine:database:crea
 
 Si vous souhaitez afficher la liste des commandes disponibles avec Doctrine, lancer la commande `php bin/console list doctrine`.
 
+### Débug pour Mac et Mamp
+
+Si vous êtes sur Mac avec Mamp, la configuration est différente : 
+
+```dotenv
+DATABASE_URL="mysql://root:root@localhost:8889/exo-symfony?serverVersion=5.7"
+```
+
+Vous pouvez également avoir des soucis de version de php. Le conflit est entre la version de php de votre Mac et celle de Mamp.
+
+Pour les régler, voici une manipulation qui peut vous aider :
+
+- Trouver votre version de PHP dans Mamp (disons 7.4.12 pour la suite)
+- Trouver la version de PHP sur votre Mac (ouvrir un terminal et taper `php -v`). Si elle est différente de celle de Mamp, faire ce qui suit.
+- `sudo ln -s /Applications/MAMP/bin/php/php7.4.12/bin/php /usr/local/bin/php` (remplacer `php7.4.12` par votre version de PHP dans Mamp, ex `php7.4.9`)
+- Ouvrir un nouveau terminal et lancer la commande `php -v` pour vérifier que le changement a été effectué
+
 ## Configurer Doctrine
 
 Regardons le fichier `config/packages/doctrine.yaml`. Nous n'avons normalement rien besoin de modifier.
