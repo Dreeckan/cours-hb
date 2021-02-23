@@ -32,3 +32,9 @@ Après avoir ouvert un projet Symfony dans votre IDE, faites quelques étapes si
 
 Vous pouvez la laisser tourner en tâche de fond (et y revenir de temps en temps si vous avez des erreurs) et pour utiliser la ligne de commande, vous pouvez ouvrir un nouveau terminal (avec les deux IDE, il y a un bouton `+`).
 Et vous pouvez utiliser votre site à l'adresse indiqué par le serveur (en général [http://127.0.0.1:8000](http://127.0.0.1:8000) ou [https://127.0.0.1:8000](https://127.0.0.1:8000)).
+
+Pour utiliser un nom de domaine, ajouter dans le fichier `/etc/hosts` (Linux et Mac) ou `C:\windows\system32\drivers\etc\hosts` sous Windows :
+```
+127.0.0.1       www.test.test
+```
+et votre site sera accessible sur `www.test.test:8000`

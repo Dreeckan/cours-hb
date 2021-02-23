@@ -84,3 +84,41 @@ Voilà, vous avez fait votre première page avec Symfony !
 
 - Nous allons travailler sur votre Business Case
 - Le but est de créer les pages demandées (nous allons commencer par les pages statiques et sans formulaire), avec leurs images, css et javascripts.
+
+## 5. Manier Doctrine pour utiliser une BdD
+
+- Dans notre projet de test (dans lequel nous avons fait les exercices 1, 2 et 3), nous allons ajouter des entités et synchroniser notre BdD
+- Créons deux entités, à l'aide de la commande `php bin/console make:entity` :
+  - `Composer` ayant 6 propriétés : 
+    - `id` (entier, généré automatiquement)
+    - `name` (string, longueur de 255)
+    - `description` (texte)
+    - `birth` (entier)
+    - `death` (entier)
+    - `birthCountry` (string, longueur de 128)
+  - `Music` ayant 4 propriétés :
+    - `id` (entier, généré automatiquement)
+    - `name` (string, longueur de 255)
+    - `year` (entier)
+    - `composer` (une relation avec `Composer` de type `ManyToOne`)
+- Regardons les fichiers générés par notre commande. Les deux premiers sont nos entités (objet PHP simple, avec des annotations pour le lien avec la BdD). Les suivants sont nos repositories (ce sont eux qui vont nous permettre de faire des requêtes).
+  - `src/Entity/Composer.php`
+  - `src/Entity/Music.php`
+  - `src/Repository/ComposerRepository.php`
+  - `src/Repository/MusicRepository.php`
+- Créer et jouer la migration qui correspond
+  - `php bin/console doctrine:migrations:diff` pour créer la migration
+  - Vérifier le fichier de migration correspondant (son nom est affiché par la commande)
+  - `php bin/console doctrine:migrations:migrate` pour la lancer
+  - Vérifier que les tables sont bien créées et que tous les champs sont bien présents
+- Créer une route pour le chemin `/composer` (et un nouveau controller) qui va :
+  - Prendre en paramètre `ComposerRepository`
+  - Récupérer la liste des compositeurs (`Composer`)
+  - Les afficher dans un tableau html (ils vous avaient manqué, j'en suis sûr)
+- Créer une route pour le chemin `/composer/new` (dans le même controller que précédemment) qui va :
+  - Prendre en paramètre `ComposerRepository`
+  - Créer un ou des objets `Composer` (avec un `new Composer`) et les persister en base
+  - Rediriger vers la page de liste `/composer`
+- Créer une route pour le chemin `/composer/{id}` (dans le même controller que précédemment) qui va :
+  - Prendre en paramètre un objet `Composer`
+  - Créer un template qui va en afficher les différentes propriétés (y compris les différents objets `Music` associés)
