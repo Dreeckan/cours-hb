@@ -88,6 +88,11 @@ Voilà, vous avez fait votre première page avec Symfony !
 ## 5. Manier Doctrine pour utiliser une BdD
 
 - Dans notre projet de test (dans lequel nous avons fait les exercices 1, 2 et 3), nous allons ajouter des entités et synchroniser notre BdD
+- Nous allons avoir besoin que Wamp/Mamp soit démarré pour avoir MySQL et PhpMyAdmin
+- Configurer votre base de données et la créer avec la ligne de commande 
+  - Dans le fichier `.env`, mettre à jour le paramètre `DATABASE_URL` avec vos informations de connexion et le nom de votre BdD
+  - Créer la BdD avec la commande `php bin/console doctrine:database:create`
+
 - Créons deux entités, à l'aide de la commande `php bin/console make:entity` :
   - `Composer` ayant 6 propriétés : 
     - `id` (entier, généré automatiquement)
@@ -101,24 +106,50 @@ Voilà, vous avez fait votre première page avec Symfony !
     - `name` (string, longueur de 255, non null)
     - `year` (entier)
     - `composer` (une relation avec `Composer` de type `ManyToOne`)
+  
 - Regardons les fichiers générés par notre commande. Les deux premiers sont nos entités (objet PHP simple, avec des annotations pour le lien avec la BdD). Les suivants sont nos repositories (ce sont eux qui vont nous permettre de faire des requêtes).
   - `src/Entity/Composer.php`
   - `src/Entity/Music.php`
   - `src/Repository/ComposerRepository.php`
   - `src/Repository/MusicRepository.php`
+  
 - Créer et jouer la migration qui correspond
   - `php bin/console doctrine:migrations:diff` pour créer la migration
   - Vérifier le fichier de migration correspondant (son nom est affiché par la commande)
   - `php bin/console doctrine:migrations:migrate` pour la lancer
   - Vérifier que les tables sont bien créées et que tous les champs sont bien présents
+  
 - Créer une route pour le chemin `/composer` (et un nouveau controller) qui va :
   - Prendre en paramètre `ComposerRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(ComposerRepository $composerRepository)`)
   - Récupérer la liste des compositeurs (`Composer`)
   - Les afficher dans un tableau html (ils vous avaient manqué, j'en suis sûr)
+  
 - Créer une route pour le chemin `/composer/new` (dans le même controller que précédemment) qui va :
-  - Prendre en paramètre `ComposerRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(ComposerRepository $composerRepository)`)
-  - Créer un ou des objets `Composer` (avec un `new Composer`) et les persister en base (méthodes `persist($object)` et `flush()` du service `EntityManagerInterface`)
+  - Prendre en paramètre `EntityManagerInterface` (c'est-à-dire que votre action sera de cette forme `public function monAction(EntityManagerInterface $entityManager)`)
+  - Créer un ou des objets `Composer` (avec un `new Composer`)
+  - Les persister en base (méthodes `persist($object)` et `flush()` du service `EntityManagerInterface`)
   - Rediriger vers la page de liste `/composer`
+  
 - Créer une route pour le chemin `/composer/{id}` (dans le même controller que précédemment) qui va :
   - Prendre en paramètre un objet `Composer`
   - Créer un template qui va en afficher les différentes propriétés (y compris les différents objets `Music` associés, que vous pouvez récupérer avec `composer.musics` dans votre template)
+  
+- Nous allons faire de même avec les objets `Music`
+  
+- Créer une route pour le chemin `/music` (et un nouveau controller `MusicController`) qui va :
+  - Prendre en paramètre `MusicRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(MusicRepository $musicRepository)`)
+  - Récupérer la liste des morceaux (`Music`)
+  - Les afficher dans un tableau html (ils vous avaient manqué, j'en suis sûr)
+  
+- Créer une route pour le chemin `/music/new` (dans le même controller que précédemment) qui va :
+  - Prendre en paramètre `EntityManagerInterface` et `ComposerRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(EntityManagerInterface $entityManager, ComposerRepository $composerRepository)`)
+  - Créer un ou des objets `Music` (avec un `new Music`)
+  - Récupérer un ou des objets `Composer` et les associer à vos objets `Music` fraîchement créés
+  - Les persister en base (méthodes `persist($object)` et `flush()` du service `EntityManagerInterface`)
+  - Rediriger vers la page de liste `/music`
+  
+- Créer une route pour le chemin `/music/{id}` (dans le même controller que précédemment) qui va :
+  - Prendre en paramètre un objet `Music`
+  - Créer un template qui va en afficher les différentes propriétés (y compris le nom du morceau, à l'aide de `music.composer.name`)
+
+- Compléter votre vue affichant un compositeur pour récupérer les musiques associées (et vérifier que tout fonctionne)
