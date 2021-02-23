@@ -131,8 +131,9 @@ Voilà, vous avez fait votre première page avec Symfony !
 
 - Créer une route pour le chemin `/composer` (et un nouveau controller) qui va :
   - Prendre en paramètre `ComposerRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(ComposerRepository $composerRepository)`)
-  - Récupérer la liste des compositeurs (`Composer`)
-  - Les afficher dans un tableau html (ils vous avaient manqué, j'en suis sûr)
+  - Récupérer la liste des compositeurs (`Composer`) à l'aide de `$composerRepository->findAll()`
+  - Créer la vue correspondante (fichier Twig comme `templates/composer/index.html.twig`, par exemple) et utiliser la méthode `$this->render()` du controller pour renvoyer une `Response`
+  - Dans la vue, afficher vos objets dans un tableau html (ils vous avaient manqué, j'en suis sûr)
 
 #### 5.4.2. Créer des objets et les sauvegarder en base
   
@@ -150,14 +151,15 @@ Voilà, vous avez fait votre première page avec Symfony !
   
 #### 5.4.4. Aller un peu plus loin avec l'objet Music
 
-Pour tout ce qui a été fait jusqu'ici, il y a un [corrigé vidéo](https://www.loom.com/share/09a47cb371e24523ac05043d5fb54f53) si vous le souhaitez
+Pour tout ce qui a été fait jusqu'ici, il y a un [corrigé vidéo](https://www.loom.com/share/09a47cb371e24523ac05043d5fb54f53) si vous le souhaitez. Le corrigé de ce qui suit est [disponible dans cette vidéo](https://www.loom.com/share/2b370106884f405da6335ae8975091c1)
 
 Nous allons faire de même avec les objets `Music`
-  
+
 - Créer une route pour le chemin `/music` (et un nouveau controller `MusicController`) qui va :
   - Prendre en paramètre `MusicRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(MusicRepository $musicRepository)`)
-  - Récupérer la liste des morceaux (`Music`)
-  - Les afficher dans un tableau html (ils vous avaient manqué, j'en suis sûr)
+  - Récupérer la liste des morceaux (`Music`) à l'aide de `$musicRepository->findAll()`
+  - Créer la vue correspondante (fichier Twig comme `templates/music/index.html.twig`, par exemple) et utiliser la méthode `$this->render()` du controller pour renvoyer une `Response`
+  - Dans la vue, afficher vos objets dans un tableau html (ils vous avaient manqué, j'en suis sûr)
   
 - Créer une route pour le chemin `/music/new` (dans le même controller que précédemment) qui va :
   - Prendre en paramètre `EntityManagerInterface` et `ComposerRepository` (c'est-à-dire que votre action sera de cette forme `public function monAction(EntityManagerInterface $entityManager, ComposerRepository $composerRepository)`)
