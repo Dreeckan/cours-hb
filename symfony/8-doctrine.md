@@ -335,9 +335,208 @@ class Article
 
 ## Les migrations
 
+Si vous n'avez pas créé la BdD, Symfony met à votre disposition une commande pour le faire :
+
+```shell
+php bin/console doctrine:database:create
+```
+
 Lorsque nous créons des entités, nous voulons que nos changements apparaissent dans notre BdD (tel était notre objectif, au départ). Pour cela, nous avons plusieurs moyens, mais le plus propre d'entre eux est de créer des migrations.
 
-Une migration
+Une migration contient 2 ensemble de requêtes SQL, pour vous permettre de passer d'une version à l'autre de votre BdD. Son nom contient la date précise où vous l'avez générée et permet ainsi de savoir dans quel ordre les migrations doivent être exécutées.
+
+Elle contient 2 méthodes :
+- `up` : les requêtes à exécuter pour mettre à jour la base
+- `down` : les requêtes à exécuter pour annuler ces modifications (on s'en sert principalement en cas de problèmes)
+
+Pour générer une migration, il faut utiliser la commande (j'ajoute l'option `-n` pour éviter que la ligne de commande demande une confirmation) :
+
+```shell
+php bin/console doctrine:migrations:diff -n
+```
+
+La commande `php bin/console make:migration` fait exactement la même chose.
+
+Dans notre exemple, notre migration ressemblera à ceci :
+
+```php
+
+```
+
+Pour exécuter les migrations :
+
+```shell
+php bin/console doctrine:migrations:migrate -n
+```
+
+Cette commande exécutera toutes les migrations qui n'ont pas déjà été lancées (la liste des migrations déjà exécutées se trouve dans la table `doctrine_migration_versions` de votre BdD).
+
+## L'EntityManager pour sauvegarder
+
+Maintenant que nous avons notre schéma de BdD (nos tables et nos colonnes), voyons comment ajouter des entrées dans nos tables. Nous allons le faire depuis un controller, mais sachez que ce fonctionnement peut être utilisé dans n'importe quel service (classe se trouvant dans `src`, en dehors de notre dossier `src/Entity`).
+
+Un exemple détaillé d'utilisation : 
+
+```php
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Article;
+use App\Entity\Tag;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+/**
+ * @Route("/blog", name="blog_")
+ */
+class BlogController extends AbstractController
+{
+    // ...
+
+    /**
+     * @Route("/fixtures", name="fixtures")
+     * @param EntityManagerInterface $entityManager
+     *
+     * @return Response
+     */
+    public function fixtures(EntityManagerInterface $entityManager): Response
+    {
+        // On crée un objet Tag (nous n'en avons actuellement aucun)
+        $tag = new Tag();
+        $tag->setName('animaux');
+
+        // On crée un premier article et on donne des valeurs à ses différents champs
+        $article = new Article();
+        $article->setTitle('Les animaux fantastiques');
+        $article->setContent('Un contenu fabuleux pour un article fantastique');
+        // Ici, on fait le lien entre notre article et le tag que nous avons défini plus haut.
+        // Doctrine se chargera de retranscrire ce lien dans la BdD.
+        // Dans les faits, il mettra l'id de notre tag dans la colonne tag_id de notre article.
+        $article->setTag($tag);
+
+        // Ici, on dit à l'entity manager qu'il devra sauvegarder nos deux entités. Vous pouvez voir ce persist que le add de Git
+        // Noter qu'il faut appeler la méthode persist sur chacun de nos objets
+        // Il est possible de ne le faire qu'une fois, mais c'est une astuce que vous verrez plus tard ;)
+        $entityManager->persist($tag);
+        $entityManager->persist($article);
+
+        // Noter que les entrée n'existent pas encore en base.
+        // Elle n'existent qu'une fois que nous appelons la méthode flush de l'entity manager.
+        // Vous pouvez voir la méthode persist comme le commit de Git.
+        $entityManager->flush();
+
+        // Ici, j'ai choisi de rediriger vers l'accueil du blog
+        return $this->redirectToRoute('blog_index');
+    }
+}
+
+```
+
+Pour supprimer une entité de la base, utiliser la méthode `remove` :
+
+```php
+$entityManager->remove($article);
+$entityManager->flush();
+```
+
+Il faut donc bien retenir le fonctionnement des méthodes `persist` et `flush` qui font tout le travail.
+
+## Le ParamConverter de Doctrine
+
+Dans un controller, vous pouvez utiliser les paramètres de votre route pour récupérer directement une entité (une ligne de votre table)
+
+```php
+    /**
+     * @Route("/{id}", name="show")
+     *
+     * @param Article $article
+     *
+     * @return Response
+     */
+    public function show(Article $article): Response
+    {
+        return $this->render('blog/show.html.twig', [
+            'article' => $article,
+        ]);
+    }
+```
+
+Dans l'exemple ci-dessus, notre route contient un paramètre `id`, et nous demandons à Symfony de la convertir en un objet `Article`. Pour cela, Doctrine va utiliser ce que l'on appelle un ParamConverter (un objet qui converti les paramètres d'une route/action). Dans les faits, il va vérifier si le nom du paramètre de la route correspond à une propriété de l'objet. Si c'est le cas, il va faire une requête `SELECT` sur la table `article` pour récupérer l'entrée correspondante (avec un `WHERE id = $id`, en somme). 
+
+## Le Repository pour récupérer des entités
+
+La [documentation sur les Repositories](https://symfony.com/doc/current/doctrine.html#doctrine-queries)
+
+Un objet Repository est lié à une entité précise et permet de faire des requêtes `SELECT` sur la table liée.
+
+Dans l'exemple précédent, le ParamConverter utilise une méthode pratique et commune à tous les Repositories : `find($id)`. Il y a 4 méthodes disponibles dans tous les repositories, détaillons-les :
+
+- `find($id)` prend en paramètre un identifiant (colonne `id` d'une table) et renvoie l'objet correspondant
+- `findOneBy(array $criteria, array $orderBy = null)` prend 2 paramètres, un tableau de critères (les colonnes et les valeurs à mettre dans un `WHERE`) et un tableau pour ordonner (avec la colonne et l'ordre) et renvoie **un** objet correspondant aux critères.
+```php
+    /**
+     * @Route("/{title}", name="show")
+     * 
+     * On récupère le paramètre title de notre route
+     * et on injecte le repository dont nous allons avoir besoin.
+     * 
+     * Noter que l'on aurait pu utiliser le ParamConverter de Doctrine pour récupérer plus simplement l'article par son titre
+     */
+    public function show(string $title, ArticleRepository $repository): Response
+    {
+        // On ne veut récupérer qu'un seul article
+        $article = $repository->findOneBy([
+            // On passe un tableau de critères, ne contenant qu'une entrée :
+            // on cherche dans la colonne title de la table, avec la valeur $title
+            // Ce qui revient à faire en SQL : WHERE title = '$title'
+            'title' => $title,  
+        ], [
+            // On précise comment trier les résultats
+            // Ce qui revient à faire en SQL : ORDER BY id DESC
+            // Ce tri nous est utile si plusieurs articles ont le même titre
+            // On ne prend ainsi que celui ayant l'id le plus élevé
+            'id' => 'DESC',
+        ]);
+        return $this->render('blog/show.html.twig', [
+            'article' => $article,
+        ]);
+    }
+```
+- `findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)` : prend 4 paramètres, un tableau de critères, un tableau pour ordonner, la quantité maximum d'objets à retourner (`LIMIT` en SQL), et le premier élément à retourner (premier paramètre de `LIMIT`)
+```php
+    /**
+     * @Route("/{title}", name="show")
+     * 
+     * On récupère le paramètre title de notre route
+     * et on injecte le repository dont nous allons avoir besoin.
+     * 
+     * Noter que l'on aurait pu utiliser le ParamConverter de Doctrine pour récupérer plus simplement l'article par son titre
+     */
+    public function show(string $title, ArticleRepository $repository): Response
+    {
+        // On ne veut récupérer qu'un seul article
+        $article = $repository->findBy([
+            // On passe un tableau de critères, ne contenant qu'une entrée :
+            // on cherche dans la colonne title de la table, avec la valeur $title
+            // Ce qui revient à faire en SQL : WHERE title = '$title'
+            'title' => $title,  
+        ], [
+            // On précise comment trier les résultats
+            // Ce qui revient à faire en SQL : ORDER BY id DESC
+            'id' => 'DESC',
+        ],
+        5, // On veut récupérer 5 résultats maximum
+        0 // On commence au premier enregistrement, nous avons donc l'équivalent de LIMIT 0,5
+        );
+        return $this->render('blog/show.html.twig', [
+            'article' => $article,
+        ]);
+    }
+```
+
 
 ## Exercices liés
 
