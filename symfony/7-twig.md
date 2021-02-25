@@ -97,3 +97,13 @@ Poursuivons notre exemple avec le fichier `blog/_article.html.twig` :
     Lien partageable vers l'article : {{ url('blog_show', { slug: article.slug }) }}
 </article>
 ```
+
+## Transmettre des paramètres
+
+
+
+### Dé-buguer
+
+## Exercices liés
+
+Si vous êtes arrivés jusque-là, vous pouvez maintenant [faire les exercices 1, 2, 3 et 4](99-exercices.md) (et nous pratiquerons dans les autres exercices également)

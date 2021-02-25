@@ -333,6 +333,11 @@ class Article
 }
 ```
 
+## Les migrations
+
+Lorsque nous créons des entités, nous voulons que nos changements apparaissent dans notre BdD (tel était notre objectif, au départ). Pour cela, nous avons plusieurs moyens, mais le plus propre d'entre eux est de créer des migrations.
+
+Une migration
 
 ## Exercices liés
 
