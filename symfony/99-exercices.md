@@ -175,3 +175,18 @@ Nous allons faire de même avec les objets `Music`
   - Créer un template qui va en afficher les différentes propriétés (y compris le nom du morceau, à l'aide de `music.composer.name`)
 
 - Compléter votre vue de l'exercice `5.4.3` pour récupérer les musiques associées (et/ou vérifier que tout fonctionne)
+
+## 6. Manier le QueryBuilder
+
+Maintenant, nous allons écrire des requêtes, dans nos repositories, en utilisant le QueryBuilder de Doctrine.
+
+Pour chacune des requêtes demandées, les tester dans un controller, où vous avez préalablement injecté le repository.
+
+Dans `ComposerRespository`, écrire :
+- Une méthode `bornAfter(int $year)` qui prend en paramètre une année, et renvoie tous les compositeurs nés après l'année `$year`
+- Une méthode `bornBetween(int $start, int $end)` qui prend en paramètre deux années, une de début, une de fin, et renvoie tous les compositeurs nés après l'année `$start` et avant l'année `$end`
+- Une méthode `searchInName(string $name)` qui prend en paramètre un nom ou un morceau de nom, et renvoie tous les compositeurs dont le nom correspond à la recherche (utiliser `LIKE %recherche%`)
+
+Dans `MusicRepository`, écrire :
+- Une méthode `searchInName(string $name)` sur le même principe que la précédente
+- Une méthode `searchByComposerName(string $composerName)` qui prend en paramètre un nom ou un morceau de nom de compositeur et renvoie tous les morceaux correspondant.

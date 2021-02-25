@@ -446,6 +446,9 @@ Il faut donc bien retenir le fonctionnement des méthodes `persist` et `flush` q
 
 ## Le ParamConverter de Doctrine
 
+La [documentation officielle](https://symfony.com/doc/current/doctrine.html#automatically-fetching-objects-paramconverter)
+La [documentation des ParamConverter](https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/converters.html)
+
 Dans un controller, vous pouvez utiliser les paramètres de votre route pour récupérer directement une entité (une ligne de votre table)
 
 ```php
@@ -474,8 +477,9 @@ Un objet Repository est lié à une entité précise et permet de faire des requ
 
 Dans l'exemple précédent, le ParamConverter utilise une méthode pratique et commune à tous les Repositories : `find($id)`. Il y a 4 méthodes disponibles dans tous les repositories, détaillons-les :
 
-- `find($id)` prend en paramètre un identifiant (colonne `id` d'une table) et renvoie l'objet correspondant
-- `findOneBy(array $criteria, array $orderBy = null)` prend 2 paramètres, un tableau de critères (les colonnes et les valeurs à mettre dans un `WHERE`) et un tableau pour ordonner (avec la colonne et l'ordre) et renvoie **un** objet correspondant aux critères.
+- `findAll()` : Récupère tous les objets de la table (`SELECT * FROM article` par exemple)
+- `find($id)` prend en paramètre un identifiant (colonne `id` d'une table) et renvoie l'objet correspondant (`SELECT * FROM article WHERE id = $id` par exemple) 
+- `findOneBy(array $criteria, array $orderBy = null)` prend 2 paramètres, un tableau de critères (les colonnes et les valeurs à mettre dans un `WHERE`) et un tableau pour ordonner (avec la colonne et l'ordre) et renvoie **un** objet correspondant aux critères (`SELECT * FROM article WHERE title = $title ORDER BY id DESC LIMIT 1` par exemple).
 ```php
     /**
      * @Route("/{title}", name="show")
@@ -505,7 +509,7 @@ Dans l'exemple précédent, le ParamConverter utilise une méthode pratique et c
         ]);
     }
 ```
-- `findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)` : prend 4 paramètres, un tableau de critères, un tableau pour ordonner, la quantité maximum d'objets à retourner (`LIMIT` en SQL), et le premier élément à retourner (premier paramètre de `LIMIT`)
+- `findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)` : prend 4 paramètres, un tableau de critères, un tableau pour ordonner, la quantité maximum d'objets à retourner (`LIMIT` en SQL), et le premier élément à retourner (premier paramètre de `LIMIT`) (`SELECT * FROM article WHERE title = $title ORDER BY id DESC LIMIT 0,5` par exemple).
 ```php
     /**
      * @Route("/{title}", name="show")
@@ -537,6 +541,50 @@ Dans l'exemple précédent, le ParamConverter utilise une méthode pratique et c
     }
 ```
 
+### Le QueryBuilder : construire ses propres requêtes
+
+La [documentation sur le QueryBuilder](https://symfony.com/doc/current/doctrine.html#querying-with-the-query-builder)
+
+Nous allons presque toujours utiliser le QueryBuilder pour faire nos requêtes. Il s'agit d'un objet permettant de gérer des requêtes complexes, sans avoir à taper une requête SQL complexe, et d'utiliser la puissance de PHP (boucles, conditions, etc.) pour les construire. Prenons l'exemple fourni lorsqu'on génère un Repository : 
+
+```php
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('a') // On crée un objet QueryBuilder, en mettant "a" comme alias de notre table article
+            ->andWhere('a.exampleField = :val') // On ajoute un WHERE, avec un paramètre ":val" (voir le cours sur PDO et les paramètres nommés)
+            ->setParameter('val', $value) // On donne une valeur au paramètre. Contrairement à PDO, il n'est pas obligatoire de donner une variable ici, vous pourriez mettre une valeur directement.
+            ->orderBy('a.id', 'ASC') // On tri nos éléments par "id" croissant
+            ->setMaxResults(10) // On ne veut que 10 résultats maximum
+            ->getQuery() // On récupère la requête générée, qui va correspondre à quelque chose comme "SELECT * FROM article a WHERE a.exampleField = '$value' ORDER BY a.id LIMIT 10"
+            ->getResult() // On exécute la requête et on récupère les résultats. On les retourne sous la forme d'un tableau (qui contient des objets Article)
+        ;
+    }
+```
+
+Voyons comment ajouter une condition dans cet exemple :
+
+```php
+    // On ajoute un paramètre $inverseOrder : s'il vaut true, nous allons trier par ordre décroissant
+    public function findByExampleField($value, $inverseOrder = false)
+    {
+        $qb = $this->createQueryBuilder('a') // On crée un objet QueryBuilder, en mettant "a" comme alias de notre table article
+            ->andWhere('a.exampleField = :val') // On ajoute un WHERE, avec un paramètre ":val" (voir le cours sur PDO et les paramètres nommés)
+            ->setParameter('val', $value) // On donne une valeur au paramètre. Contrairement à PDO, il n'est pas obligatoire de donner une variable ici, vous pourriez mettre une valeur directement.
+            ->setMaxResults(10) // On ne veut que 10 résultats maximum
+        ;
+        if ($inverseOrder === true) {
+            $qb->orderBy('a.id', 'DESC'); // On tri nos éléments par "id" décroissant
+        } else {
+            $qb->orderBy('a.id', 'ASC'); // On tri nos éléments par "id" croissant
+        }
+        $qb
+            ->getQuery() // On récupère la requête générée, qui va correspondre à quelque chose comme "SELECT * FROM article a WHERE a.exampleField = '$value' ORDER BY a.id LIMIT 10"
+            ->getResult() // On exécute la requête et on récupère les résultats. On les retourne sous la forme d'un tableau (qui contient des objets Article)
+        ;
+    }
+```
+
+Ces QueryBuilder et les différentes méthodes de notre repository nous permettent de conserver les requêtes courantes en un point, et de ne pas avoir à les réécrire en cas de besoin. 
 
 ## Exercices liés
 
