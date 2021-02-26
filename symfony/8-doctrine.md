@@ -577,14 +577,69 @@ Voyons comment ajouter une condition dans cet exemple :
         } else {
             $qb->orderBy('a.id', 'ASC'); // On tri nos éléments par "id" croissant
         }
-        $qb
+        return $qb
             ->getQuery() // On récupère la requête générée, qui va correspondre à quelque chose comme "SELECT * FROM article a WHERE a.exampleField = '$value' ORDER BY a.id LIMIT 10"
             ->getResult() // On exécute la requête et on récupère les résultats. On les retourne sous la forme d'un tableau (qui contient des objets Article)
         ;
     }
 ```
 
-Ces QueryBuilder et les différentes méthodes de notre repository nous permettent de conserver les requêtes courantes en un point, et de ne pas avoir à les réécrire en cas de besoin. 
+Ces QueryBuilders et les différentes méthodes de notre repository nous permettent de conserver les requêtes courantes en un point, et de ne pas avoir à les réécrire.
+
+### Les jointures
+
+Imaginons que nous voulons créer un moteur de recherche pour notre blog et que nous voulons chercher à la fois dans les titres d'article, dans leur contenu, mais aussi dans les noms du tag associé. Dans ce cas, nous voulons faire notre recherche sur 2 tables, simultanément. Pour cela, nous allons utiliser une jointure :
+
+```php
+    public function search(string $text)
+    {
+        return $this->createQueryBuilder('a') // On crée un objet QueryBuilder, en mettant "a" comme alias de notre table article
+            ->join('a.tag', 't') // Ici, on suit les propriétés de notre entité : on demande à Doctrine une jointure sur la propriété tag de notre article (il se débrouille ensuite pour faire la correspondance par id), et on lui dit de l'appeler t dans la suite de la requête
+            ->where('a.content LIKE :val') // On ajoute un WHERE, avec un paramètre ":val" (voir le cours sur PDO et les paramètres nommés)
+            ->orWhere('a.title LIKE :val')
+            ->orWhere('t.name LIKE :val')// On peut ensuite utiliser notre table t (les tags) pour regarder le champs name
+            ->setParameter('val', '%'.$text.'%') // On donne une valeur au paramètre. Contrairement à PDO, il n'est pas obligatoire de donner une variable ici, vous pourriez mettre une valeur directement.
+            ->getQuery() // On récupère la requête générée
+            ->getResult() // On exécute la requête et on récupère les résultats. On les retourne sous la forme d'un tableau (qui contient des objets Article)
+        ;
+    }
+```
+
+Nous avons donc récupéré des objets Article grâce à notre recherche sur 3 colonnes différentes (dans 2 tables différentes !).
+
+## Tester nos requêtes
+
+En général, nous allons vouloir utiliser nos Repositories dans d'autres services (classes en dehors de `src/Entity`). Pour tester nos requêtes, nous pouvons par exemple appeler notre Repository dans un Controller : 
+
+```php
+// src/Controller/BlogController.php
+namespace App\Controller;
+
+use App\Repository\ArticleRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class BlogController extends AbstractController 
+{
+    /**
+     * @Route("/blog/search/{text}", name="blog_search")
+     */
+    public function search(ArticleRepository $repo, string $text): Response
+    {
+        $articles = $repo->search($text);
+        
+        dump($articles); // Cette fonction va afficher la variable $articles et son contenu (un peu comme un var_dump(), mais en plus beau et plus pratique)
+        dd($articles); // Cette fonction va afficher la variable $articles et son contenu, mais aussi arrêter le programme (dump and die) (comme un exit(var_dump()))
+        
+        return $this->render('blog/search.html.twig', [
+            'results' => $articles,
+        ]);
+    }
+    
+    // ...
+}
+```
 
 ## Exercices liés
 

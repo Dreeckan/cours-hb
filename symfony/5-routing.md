@@ -131,3 +131,10 @@ class BlogController extends AbstractController
     }
 }
 ```
+
+## Débuguer
+
+Si vous avez des problèmes avec vos routes (qui ne sont pas prises correctement en compte par exemple), deux commandes peuvent être utiles :
+
+- `php bin/console debug:router` qui vous permet de lister toutes les routes de votre application, avec cette variante pour ne pas avoir les routes du profiler et des outils de débug de Symfony : `php bin/console debug:router --env=prod`
+- `php bin/console router:match /un/chemin/a/tester` pour savoir quel controller et quelle action sont appelées pour le chemin donné
