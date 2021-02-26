@@ -190,3 +190,10 @@ Dans `ComposerRespository`, écrire :
 Dans `MusicRepository`, écrire :
 - Une méthode `searchInName(string $name)` sur le même principe que la précédente
 - Une méthode `searchByComposerName(string $composerName)` qui prend en paramètre un nom ou un morceau de nom de compositeur et renvoie tous les morceaux correspondant.
+
+Dans `ComposerRespository` de nouveau, écrire :
+- Une méthode `search(string $text)` qui prend en paramètre un nom ou un morceau de nom, et renvoie tous les compositeurs dont 
+  - le nom correspond à la recherche (utiliser `LIKE %recherche%`)
+  - ou le nom d'un morceau qu'il a composé correspond à la recherche
+- Tester ce repository dans un controller
+  
