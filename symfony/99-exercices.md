@@ -199,13 +199,25 @@ Dans `ComposerRespository` de nouveau, écrire :
 
 ## 7. Projet : outil de montage d'ordinateurs
 
-Nous sommes une entreprise de vente d'ordinateurs prêt à l'emploi et personnalisés. Notre objectif est que tous nos clients puissent avoir un ordinateur qui leur correspond et réponde à leurs besoins de manière efficace.
+Nous avons reçu ce cahier des charges :
 
-Pour répondre à cette demande, nos techniciens / monteurs souhaitent disposer d'un outil pour préparer les configurations à présenter à nos clients. Cet outil devra permettre de :
-- Créer des composants (CPU, RAM, carte graphique, boitier, alimentation, disque dur (ou SSD), carte mère, carte réseau), les modifier et les supprimer
-- Créer des périphériques (Clavier, souris, écran, enceintes, webcam), les modifier et les supprimer
-- Créer des ordinateurs, qui contiendront divers composants (un de chaque en général) et qui auront des périphériques associés (un de chaque également), les modifier et les supprimer
+> Nous sommes une entreprise de vente d'ordinateurs prêt à l'emploi et personnalisés. Notre objectif est que tous nos clients puissent avoir un ordinateur qui leur correspond et réponde à leurs besoins de manière efficace.
+> 
+> Pour répondre à cette demande, nos techniciens / monteurs souhaitent disposer d'un outil pour préparer les configurations à présenter à nos clients. Cet outil devra permettre de :
+> - Créer des composants (CPU, RAM, carte graphique, boitier, alimentation, disque dur (ou SSD), carte mère, carte réseau), les modifier et les supprimer
+> - Créer des périphériques (Clavier, souris, écran, enceintes, webcam), les modifier et les supprimer
+> - Créer des ordinateurs, qui contiendront divers composants (un de chaque en général) et qui auront des périphériques associés (un de chaque également), les modifier et les supprimer
+> 
+> Cet outil sera installé en interne et nous n'aurons pour le moment pas besoin de nous connecter / gérer des utilisateurs
+> 
+> Chaque élément aura un ensemble de caractéristiques (que nous verrons dans un deuxième cahier des charges), mais surtout un prix unitaire (en € HT). Notre programme devra calculer le prix des ordinateurs montés à partir du prix des pièces.
 
-Cet outil sera installé en interne et nous n'aurons pour le moment pas besoin de nous connecter / gérer des utilisateurs
-
-Chaque élément aura un ensemble de caractéristiques (que nous verrons dans un deuxième cahier des charges), mais surtout un prix unitaire (en € HT). Notre programme devra calculer le prix des ordinateurs montés à partir du prix des pièces.
+L'objectif est maintenant de découper cette demande pour pouvoir la traiter et se partager les tâches au sein de notre équipe. Pour cela il va falloir : 
+- Créer le projet sur Github
+- Inviter les différents participants
+- Déterminer les différentes fonctionnalités
+- Faire le MCD
+- Créer des tickets associés (Issues sur Github par exemple)
+  - ces tickets doivent être cours à traiter (2 à 4h grand maximum)
+- Se les répartir entre les différents développeurs
+- Avancer en parallèle (ou tous ensemble, les deux méthodes sont possibles)
