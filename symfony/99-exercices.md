@@ -215,7 +215,7 @@ Nous avons reçu ce cahier des charges :
 > Chaque élément aura un ensemble de caractéristiques (que nous verrons dans un deuxième cahier des charges), mais surtout un prix unitaire (en € HT). Notre programme devra calculer le prix des ordinateurs montés à partir du prix des pièces.
 
 L'objectif est maintenant de découper cette demande pour pouvoir la traiter et se partager les tâches au sein de notre équipe. Pour cela il va falloir : 
-- Faire le MCD (un exemple de ce qu'on a fait, [au format image](mcd-computer.png), ou [le fichier Looping](mcd-computer.loo))
+- Faire le MCD (un exemple de ce qu'on a fait, [au format image](/assets/mcd-computer.png), ou [le fichier Looping](/assets/mcd-computer.loo))
 - Déterminer les différentes fonctionnalités
 - Créer le projet sur Github
 - Inviter les différents participants
