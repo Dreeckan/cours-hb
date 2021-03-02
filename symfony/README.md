@@ -6,6 +6,7 @@ Un [dossier avec des vidéos explicatives du cours et des exercices](https://loo
 
 Les différentes parties du cours
 
+- [Des pense-bêtes](0-cheat-sheet.md)
 - [Installer Symfony et l'environnement de travail](1-installation.md)
 - [Symfony au quotidien](2-quotidien.md)
 - [Structure d'un projet Symfony](3-structure.md)
