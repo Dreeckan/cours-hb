@@ -14,3 +14,11 @@
 - `composer install` (pour mettre à jour le contenu du dossier `vendor` et récupérer les dépendances, telles que Symfony)
 - Vous êtes prêts à travailler
 
+## Générer des entités et des migrations
+
+- Pour générer/modifier une entité : `php bin/console make:entity`
+- Répéter autant que nécessaire
+- Générer une migration `php bin/console make:migration`
+- Appliquer les migrations `php bin/console doctrine:migrations:migrate -n`
+- Votre BdD est à jour
+

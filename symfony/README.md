@@ -15,4 +15,5 @@ Les différentes parties du cours
 - [Les controllers](6-controllers.md)
 - [Twig](7-twig.md)
 - [Doctrine](8-doctrine.md)
+- [Formulaires](9-formulaires.md)
 - [Exercices](99-exercices.md)
