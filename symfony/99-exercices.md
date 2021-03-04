@@ -245,6 +245,6 @@ De nouveau, il faut :
 - Les coder (une fois fait, créer des PR et les faire relire par les autres membres du groupe)
  
 Outils utiles : 
-- [KnpMenuBundle](https://symfony.com/doc/current/bundles/KnpMenuBundle/index.html) pour gérer le menu (et pouvoir ajouter des pages dynamiquement plus simplement)
+- Faire votre menu directement dans base.html.twig (utiliser KnpMenuBundle si vous êtes très courageux...)
 - `COUNT` et `SUM` peuvent être utilisées directement dans le `select()` du QueryBuilder
 - `->getQuery()->getSingleScalarResult()` vous permet de ne récupérer qu'un seul résultat (un nombre) avec des requêtes `SUM` / `COUNT`
