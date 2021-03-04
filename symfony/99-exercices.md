@@ -201,6 +201,8 @@ Dans `ComposerRespository` de nouveau, écrire :
 
 ## 7. Projet : outil de montage d'ordinateurs
 
+Un ["corrigé" de l'exercice](https://github.com/Dreeckan/symfony-computer) est disponible sur Github. Pour les tickets créés, voir la [liste des issues](https://github.com/Dreeckan/symfony-computer/issues?q=is%3Aissue).
+
 Nous avons reçu ce cahier des charges :
 
 > Nous sommes une entreprise de vente d'ordinateurs prêt à l'emploi et personnalisés. Notre objectif est que tous nos clients puissent avoir un ordinateur qui leur correspond et réponde à leurs besoins de manière efficace.
