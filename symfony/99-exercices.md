@@ -247,4 +247,4 @@ De nouveau, il faut :
 Outils utiles : 
 - [KnpMenuBundle](https://symfony.com/doc/current/bundles/KnpMenuBundle/index.html) pour gérer le menu (et pouvoir ajouter des pages dynamiquement plus simplement)
 - `COUNT` et `SUM` peuvent être utilisées directement dans le `select()` du QueryBuilder
-- `->getQUery()->getSingleScalarResult()` vous permet de ne récupérer qu'un seul résultat (un nombre) avec des requêtes `SUM` / `COUNT`
+- `->getQuery()->getSingleScalarResult()` vous permet de ne récupérer qu'un seul résultat (un nombre) avec des requêtes `SUM` / `COUNT`
