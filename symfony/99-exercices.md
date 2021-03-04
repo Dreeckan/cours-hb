@@ -223,3 +223,26 @@ L'objectif est maintenant de découper cette demande pour pouvoir la traiter et 
   - ces tickets doivent être cours à traiter (2 à 4h grand maximum)
 - Se les répartir entre les différents développeurs
 - Avancer en parallèle (ou tous ensemble, les deux méthodes sont possibles)
+
+### 7.1. Premières améliorations
+
+Notre client est content de nos avancées, et il a besoin de nouvelles fonctionnalités pour rendre son outil plus pratique. Voici ce qu'il a écrit :
+
+> Maintenant que nous pouvons travailler, il nous manque 2 choses 
+> - un menu pour naviguer entre les différentes pages (présent sur toutes les pages)
+> - Une page d'accueil pour voir les informations importantes :
+>   - Le nombre d'ordinateurs préparés (c'est-à-dire qui ont le bon nombre de périphériques et de composants)
+>   - Le prix moyen des ordinateurs qui ont été préparés (c'est-à-dire qui ont le bon nombre de périphériques et de composants)
+>   - Le prix total des composants en stock
+>   - Le prix total des périphériques en stock
+ 
+De nouveau, il faut :
+- Découper la demande en fonctionnalités
+- Créer des tickets (issues)
+- Les répartir
+- Les coder (une fois fait, créer des PR et les faire relire par les autres membres du groupe)
+ 
+Outils utiles : 
+- [KnpMenuBundle](https://symfony.com/doc/current/bundles/KnpMenuBundle/index.html) pour gérer le menu (et pouvoir ajouter des pages dynamiquement plus simplement)
+- `COUNT` et `SUM` peuvent être utilisées directement dans le `select()` du QueryBuilder
+- `->getQUery()->getSingleScalarResult()` vous permet de ne récupérer qu'un seul résultat (un nombre) avec des requêtes `SUM` / `COUNT`

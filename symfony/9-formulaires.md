@@ -305,7 +305,7 @@ On utilise la validation de manière assez constante :
 - On utilise le namespace des contraintes fournies par Symfony `use Symfony\Component\Validator\Constraints as Assert;`
 - On appelle des assertions en annotation de nos propriétés ou méthodes : `@Assert\NotBlank()`
 
-Vous trouverez une liste plus complète des assertions disponibles dans [la documentation sur la validation](https://symfony.com/doc/current/validation.html)
+Vous trouverez une liste plus complète des assertions disponibles dans [la documentation sur la validation](https://symfony.com/doc/current/validation.html#constraints)
 
 Ainsi, si on valide le formulaire de création de tag avec une valeur invalide, un message d'erreur sera affiché (ce message peut d'ailleurs être personnalisé, mais je vous invite à consulter la documentation pour voir comment).
 
