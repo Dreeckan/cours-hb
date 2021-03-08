@@ -16,4 +16,6 @@ Les différentes parties du cours
 - [Twig](07-twig.md)
 - [Doctrine](08-doctrine.md)
 - [Formulaires](09-formulaires.md)
+- [Un système de connexion](10-user.md)
+- [Traductions](11-translation.md)
 - [Exercices](99-exercices.md)
