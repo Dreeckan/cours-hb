@@ -77,3 +77,11 @@ Ouvrons maintenant un fichier `composer.json` (morceaux choisis) :
 ```
 
 Les fichiers `.lock` sont là pour assurer les versions précises de nos dépendances. Ils sont versionnés afin d'assurer la cohérence entre développeurs et entre serveurs (on s'assure d'avoir exactement les mêmes versions partout). 
+
+## Installer les dépendances d'un projet
+
+La commande `composer install` permet de récupérer les versions définies dans le fichier `.lock` (et de mettre à jour votre projet si ce fichier a été modifié).
+
+La commande `composer update` tente de mettre à jour vos dépendances, en fonction des contraintes définies dans le fichier `composer.json`. **Attention**, cette commande met à jour le fichier `.lock`.
+
+Si vous avez besoin d'installer une nouvelle dépendance, il faudra utiliser `composer require nomDuPaquetAInstaller`. La commande exacte est en général fournie dans la documentation d'installation de la dépendance (et il est préférable de suivre cette source).

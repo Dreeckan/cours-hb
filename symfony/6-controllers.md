@@ -255,3 +255,12 @@ Pour résumer, dans les paramètres de notre action, nous pouvons récupérer :
 - des services que nous injectons pour les utiliser dans l'action.
 
 L'un des principaux objectifs de ce découpage en services est de réduire le controller à son minimum et ce pourquoi il est fait : être un chef d'orchestre entre la requête et le rendu final.
+
+## Dé-buguer
+
+Avec Symfony, vous pouvez dé-buguer vos programmes de plusieurs manières :
+- Utiliser `exit`/`die` et `var_dump` comme nous l'avons fait jusqu'à présent (déconseillé si xDebug n'est pas installé et utilisable par la ligne de commande Symfony)
+- Utiliser `dump()` et `dd()` (dump and die) pour afficher les informations sur vos variables
+
+Ces fonctions `dump()` et `dd()` sont disponible dans n'importe quel fichier PHP de votre projet.
+La fonction `dump` ne va pas interrompre l'affichage ni le modifier, mais afficher un dump des variables demandées dans le `Profiler` de Symfony (la barre grise en bas de l'écran, quand vous chargez une page)

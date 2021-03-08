@@ -663,7 +663,7 @@ class BlogController extends AbstractController
     {
         $articles = $repo->search($text);
         
-        dump($articles); // Cette fonction va afficher la variable $articles et son contenu (un peu comme un var_dump(), mais en plus beau et plus pratique)
+        dump($articles); // Cette fonction va afficher la variable $articles et son contenu (un peu comme un var_dump(), mais en plus beau et plus pratique) dans le profiler de Symfony
         dd($articles); // Cette fonction va afficher la variable $articles et son contenu, mais aussi arrêter le programme (dump and die) (comme un exit(var_dump()))
         
         return $this->render('blog/search.html.twig', [

@@ -100,9 +100,24 @@ Poursuivons notre exemple avec le fichier `blog/_article.html.twig` :
 
 ## Transmettre des paramètres
 
+Depuis un controller (qui va *rendre* la vue, en utilisant la méthode `render()` disponible dans le `AbstractController` de Symfony), vous pouvez transmettre un tableau de paramètres à la vue. L'index dans ce tableau correspondra au nom de la variable dans le fichier Twig, la valeur à sa valeur.
 
+```php
+public function index(int $page = 1): Response 
+{
+    $listeDesArticles = [];
+    return $this->render('blog/index.html.twig', [
+        'page'     => $page,
+        'articles' => $listeDesArticles, // Ici, la vue Twig aura un paramètre articles, indépendant du nom de la variable dans le controller
+    ]);
+}
+```
 
 ### Dé-buguer
+
+Dans les vues Twig, vous disposez d'une fonction `dump()` qui vous permet d'afficher le contenu d'une variable et d'en voir le détail (un peu comme un `var_dump`, mais plus complet et mieux mis en forme). Utilisée sans paramètre, la fonction `dump()` affiche toutes es variables disponibles dans la vue.
+
+Il existe également une commande pour vérifier la validité de vos vues Twig 
 
 ## Exercices liés
 

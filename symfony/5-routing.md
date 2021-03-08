@@ -55,6 +55,8 @@ class BlogController extends AbstractController
 }
 ```
 
+### Préfixes et paramètres globaux à un controller
+
 Un autre élément important : les préfixes. Le code suivant permet que :
 - toutes les routes d'un controller commencent par exemple par `blog`, vous pouvez faire ceci :
 - toutes les routes portent un nom commençant par `blog_`
@@ -132,7 +134,7 @@ class BlogController extends AbstractController
 }
 ```
 
-## Débuguer
+## Dé-buguer
 
 Si vous avez des problèmes avec vos routes (qui ne sont pas prises correctement en compte par exemple), deux commandes peuvent être utiles :
 
