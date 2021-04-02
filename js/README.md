@@ -1,5 +1,7 @@
 # Javascript
 
+Tout ce qui est dit dans ce cours peut être résumé dans un [pense-bête de 13 pages](/assets/img/js/js-cheatsheet.pdf).
+
 ## 1. [Bases du langage](1-bases.md)
 
 ## 2. [Manipulation logique](2-logique.md)

@@ -2,23 +2,27 @@
 
 - [Général](general/)
 
-> Des cours généraux autour du métier de développeur
+> Des cours généraux autour du métier de développeur.
 
 - [Linux](linux/)
 
-> Des cours sur Linux et son maniement au quotidien dans le métier de développeur
+> Des cours sur Linux et son maniement au quotidien dans le métier de développeur.
  
 - [Git](git/)
 
-> La gestion de version avec Git 
+> La gestion de version avec Git.
 
 - [PHP](php/)
 
-> Php, des bases du langage (sous forme procédurale) à la programmation orientée objet 
+> Php, des bases du langage (sous forme procédurale) à la programmation orientée objet.
 
 - [Symfony](symfony/)
 
-> Grâce aux bases de PHP objet, utiliser le framework Symfony pour développer un site complet et complexe
+> Grâce aux bases de PHP objet, utiliser le framework Symfony pour développer un site complet et complexe.
+
+- [Javascript](js/)
+
+> Javascript, des bases du langage à la programmation orientée objet. 
 
 - [Intégration continue](ci/)
 

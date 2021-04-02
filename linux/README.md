@@ -12,7 +12,7 @@
 
 ## Rangement des fichiers
 
-![Le système de fichiers de Linux](linux-filesystem.png)
+![Le système de fichiers de Linux](/assets/img/linux/linux-filesystem.png)
 
 ### Les dossiers essentiels
 
