@@ -3,6 +3,7 @@ const glob = require('glob');
 let phpFiles = glob.sync('php/!(README).md');
 let symfonyFiles = glob.sync('symfony/!(README).md');
 let ciFiles = glob.sync('ci/**/!(README).md');
+let jsFiles = glob.sync('js/**/!(README).md');
 
 module.exports = {
   description: 'Les formations de Rémi Jarjat pour Human Booster',
@@ -29,6 +30,13 @@ module.exports = {
         collapsable: true,
         sidebarDepth: 2,
         children: symfonyFiles
+      },
+      {
+        title: 'Javascript',
+        path: '/js/',
+        collapsable: true,
+        sidebarDepth: 2,
+        children: jsFiles
       },
       {
         title: 'Intégration continue',
