@@ -309,7 +309,7 @@ tab.forEach((element) => {
 
 #### Noms d'animaux
 
-- [ ] Créer un tableau de données contenant les données suivantes (chaque ligne doit être un tableau associatif)
+- Créer un tableau de données contenant les données suivantes (chaque ligne doit être un tableau associatif)
 
       Animal : Chat | Nom : Lily
       Animal : Chien | Nom : Tango
@@ -317,9 +317,9 @@ tab.forEach((element) => {
       Animal : Vache | Nom : Françoise
       Animal : Raton | Nom : Rocket
 
-- [ ] Parcourir le tableau et générer l'affichage ci-dessus pour chacun des 4 types de boucle :
-  - [ ] while
-  - [ ] for
-  - [ ] for...of
-  - [ ] forEach
+- Parcourir le tableau et générer l'affichage ci-dessus pour chacun des 4 types de boucle :
+  1. while
+  2. for
+  3. for...of
+  4. forEach
   
