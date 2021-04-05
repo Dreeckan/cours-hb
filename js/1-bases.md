@@ -167,3 +167,165 @@ console.log(test); // Affiche 'test'
 En conclusion : utiliser `let` vous permet un code plus propre, où les variables sont déclarés dans le contexte **et** dans les blocs où elles sont nécessaires (visuellement plus rapide à retrouver et moins de risques d'erreur). 
 
 
+## Le mode strict de javascript
+
+Le mode strict de javascript (ES5) vous permet d'utiliser une version plus restrictive (et vous forçant à écrire du code plus propre) de javascript. Ce mode :
+- Élimine des erreurs silencieuses en les transformant en exceptions à l'exécution du code
+- Permet aux moteurs javascript des navigateurs d'effectuer des optimisations sans entraves (et donc votre code sera potentiellement plus rapide)
+
+Pour s'en servir, commencez vos fichier `.js` par `"use strict";` ou `'use strict';`.
+
+## Types de données complexes
+
+### Les tableaux
+
+[La documentation Mozilla sur les tableaux](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array).
+
+Un tableau est un ensemble de valeurs indexées. C'est-à-dire que pour chaque entrée du tableau (qui contient une valeur), un index y est associé et permet de le récupérer facilement.
+
+Créer un tableau : 
+
+```js
+// Méthode courte
+let tableau = [
+    'test',
+    42,
+    99.99,
+    [0]
+];
+
+// Méthode "longue" et strictement équivalente
+let tableau = new Array(
+    'test',
+    42,
+    99.99,
+    [0]
+);
+```
+
+Nous obtenons alors un tableau, indexé en 0 contenant nos valeurs.
+- 0: 'test',
+- 1: 42,
+- 2: 99.99,
+- 3: [0] (remarquez ici que l'on peut mettre n'importe quel type de valeur dans notre tableau)
+
+On peut également compter le nombre d'éléments contenu dans un tableau à l'aide de la propriété `.length`.
+
+```js
+let tableau = [
+    'test',
+    42,
+    99.99,
+    [0]
+];
+
+console.log(tableau.length); // affiche 4
+```
+
+### Les objets
+
+Les objets sont une structure de données complexe nous permettant de regrouper des valeurs tout en créant nos propres index (nommés propriétés). 
+
+```js
+// Méthode courte
+let student = {
+    firstname: "Test",
+    lastname: "Ouille",
+    number: "42"
+};
+
+// Méthode "longue" et strictement équivalente
+let student = new Object();
+student.firstname = "Test";
+student.lastname = "Ouille";
+student.number = "42";
+```
+
+Dans le cadre d'un objet, on ne parle pas d'index mais de propriété. Une propriété n'est pas une variable, elle n'existe que dans l'objet et il faut donc renseigner l'objet auquel elle appartient.
+
+```js
+// pour afficher le nom de famille, qui est à la propriété lastname
+console.log(student.lastname); // "Ouille"
+
+// on peut aussi l'écrire de cette façon là
+console.log(student["lastname"]); // "Ouille"
+```
+
+### Les fonctions
+
+[La documentation sur les fonctions de Mozilla](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/function)
+
+#### Déclaration
+
+Les fonctions contiennent du code (un groupe d'instructions) qui ne s'exécute que lorsque la fonction est appelée. On leur donne un nom, des paramètres (optionnels) et un corps. Une fonction peut être déclarée n'importe où dans le code, et peut même être appelée avant d'être déclarée.
+
+```js
+// Un appel de fonction, dont on met le résultat (retourné par le mot-clé return) dans une variable.
+let somme = sum(42, 73);
+
+// La déclaration, incluant le nom de la fonction et ses 2 paramètres
+function sum(number1, number2) {
+    // Ici est le corps de la fonction
+    let result = number1 + number2;
+    
+    return result; // cette fonction retourne une valeur, qui peut être utilisée plus tard lorsqu'on appelle la fonction
+}
+```
+
+Comme pour les variables, on utilise (par convention) des noms de fonction clairs (indiquant leur utilité), écrites en camel case et en anglais (pas d'accent ni caractères spéciaux dans le nom).
+
+#### Les paramètres
+
+Les [paramètres](https://developer.mozilla.org/fr/docs/Glossary/Parameter) (les noms dans les parenthèses de la fonction) sont des variables qui vont servir dans la fonction, dont les valeurs seront définies lors de l'appel de la fonction.
+
+Dans l'exemple précédent, `number1` est un paramètre et contient la valeur `42` lors de l'appel de l'exemple. On dit que 42 est un argument de `sum` (c'est-à-dire une valeur qu'on donne à la fonction).
+
+Un paramètre peut être optionnel et on peut lui donner une valeur par défaut (si aucun argument n'est fourni pour lui donner une valeur).
+
+```js
+function sum(number1, number2 = 0) {
+    return number1 + number2; // Revient à renvoyer number1 + 0 si number2 n'est pas défini
+}
+
+sum(42); // renvoie 42
+```
+
+#### Les instructions
+
+Le but premier d'une fonction est d'exécuter une série d'instructions (qui ne s'exécutent que lorsque la fonction est appelée). Ces instructions peuvent utiliser les variables des paramètres, en créer de nouvelles (toute variable déclarée n'existera pas en dehors de la fonction), etc.
+
+#### Renvoyer une valeur 
+
+Envoyer une valeur n'est pas obligatoire, mais peut se révéler utile, selon les cas. 
+On va en général retourner (avec le mot-clé `return`) le résultat d'un calcul (ou de diverses opérations).
+
+```js
+function sum(number1, number2 = 0) {
+    return number1 + number2; 
+}
+let total = sum(42, 73); // Renvoie 115
+let total2 = sum(2, 3); // Renvoie 5
+```
+
+#### Les fonctions anonymes
+
+Comme leur nom l'indique, les fonctions anonymes n'ont pas de nom. En général, ces fonctions sont utilisées une fois dans le code. Nous en verrons des exemples tout au long de ce cours, même s'il est préférable de créer une fonction nommée.
+
+#### Les fonctions fléchées
+
+Depuis la version 2015 de javascript, on peut utiliser des fonctions à la syntaxe plus courte, avec quelques différences importantes :
+- La syntaxe change
+- leur place dans le code est importante (il faut les déclarer **avant** de les appeler)
+- le contexte dans la fonction est le même qu'à l'extérieur de la fonction
+
+```js
+let sum = (number1, number2) => {
+    return number1 + number2;
+}
+```
+
+Il existe même une écriture plus courte dans ce cas (si la fonction ne contient qu'une seule instruction avec un `return`) :
+
+```js
+let sum = (number1, number2) => number1 + number2;
+```
