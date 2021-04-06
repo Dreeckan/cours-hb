@@ -42,6 +42,13 @@ result = result * 2; // Multiplie result par 2
 result *= 2; // Multiplie result par 2
 ```
 
+- Modulo `%` (reste de la division d'un nombre par un autre)
+```js
+let result = 5 % 4; // le reste de la division de 5 / 4 vaut 1
+result = result % 2; // le reste de 1 par 2 vaut 1
+result %= 2; // Idem
+```
+
 ## Comparaisons
 
 Une comparaison est une opération dont le résultat est un booléen (`true` ou `false`) :
@@ -53,10 +60,19 @@ Les opérateurs de comparaison :
 - `a == b` pour tester si les valeurs de `a` et `b` sont égales
 - `a === b` pour tester si les valeurs de `a` et `b` sont égales **et** de même type
 - `a != b` pour tester si les valeurs de `a` et `b` sont différentes
+- `a !== b` pour tester si les valeurs de `a` et `b` sont différentes **ou** de type différent
 - `a > b` pour tester si la valeur de `a` est strictement supérieure à celle de `b`
 - `a >= b` pour tester si la valeur de `a` est supérieure ou égale à celle de `b`
 - `a < b` pour tester si la valeur de `a` est strictement inférieure à celle de `b`
 - `a <= b` pour tester si la valeur de `a` est inférieure ou égale à celle de `b`
+
+### Vérifications de type
+
+Différentes fonctions fournies par Javascript permettent de tester le type d'une valeur (et retournent un booléen) :
+- `isNaN(x)` vérifie si la variable `x` contient une valeur autre qu'un nombre (retourne `true` si `x` n'est pas un nombre).
+- `isInteger(x)` vérifie si la variable `x` contient une valeur de type nombre entier (nombre sans virgule : retourne `true` si c'est le cas).
+- `Array.isArray(x)` retourne `true` si `x` est un objet de type `Array`
+- Beaucoup d'autres à découvrir ;) .
 
 ## Opérateurs logiques
 
@@ -87,7 +103,7 @@ let name = "world";
 console.log("Hello " + name + "!"); // Affiche "Hello world!"
 ```
 
-## Manière moderne (ES6)
+### Manière moderne (ES6)
 
 La chaîne se met entre anti-quotes et la chaîne à insérer se place dans les accolades : `${}`
 
@@ -220,6 +236,11 @@ console.log('fin');
 
 Les boucles sont le plus souvent utilisées pour parcourir des ensembles de données, comme les tableaux.
 
+3 éléments sont essentiels dans une boucle :
+- une initialisation (un contexte de départ, pour entrer dans la boucle)
+- une condition de sortie (on doit pouvoir sortir de la boucle)
+- un pas (à quel vitesse parcourt-on la boucle ? Parcourt-on tous les éléments ?)
+
 Nous allons voir comment parcourir le tableau suivant de différente manière :
 
 ```js
@@ -305,11 +326,20 @@ tab.forEach((element) => {
 });
 ```
 
-### Exercice avec les boucles
+## Exercice 1 : utiliser les conditions et les fonctions
 
-#### Noms d'animaux
+Une petite calculatrice de montant TTC à partir du HT :
 
-- Créer un tableau de données contenant les données suivantes (chaque ligne doit être un tableau associatif)
+- On va demander un montant HT (hors taxe) à l'utilisateur (avec la fonction `prompt`)
+- si ce que l'utilisateur a entré n'est pas un nombre (utiliser la fonction [isNaN()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/isNaN), afficher un message d'erreur avec `alert()`
+- sinon, calculer le montant TTC selon la formule suivante : `montantTTC = montantHT * 1.2`
+
+
+## Exercice 2 : les boucles 
+
+### 2.1. Liste d'animaux
+
+- Créer un tableau de données contenant les données suivantes (chaque ligne peut être un tableau ou un objet)
 
       Animal : Chat | Nom : Lily
       Animal : Chien | Nom : Tango
@@ -323,3 +353,14 @@ tab.forEach((element) => {
   3. for...of
   4. forEach
   
+### 2.2. Afficher des nombres pairs
+
+- Demander à l'utilisateur un nombre à l'aide de la fonction `prompt()`
+  - Ce nombre doit être compris entre 10 et 100. Si ça n'est pas le cas (ou si ça n'est pas un nombre), afficher un message d'erreur avec la fonction `alert()`
+- Afficher tous les nombres entiers pairs entre 2 et ce nombre à l'aide de `console.log()` et d'une boucle (à vous de voir laquelle)
+  
+### 2.2. Afficher des nombres pairs
+
+- Demander à l'utilisateur un nombre à l'aide de la fonction `prompt()`
+  - Ce nombre doit être compris entre 10 et 100. Si ça n'est pas le cas (ou si ça n'est pas un nombre), afficher un message d'erreur avec la fonction `alert()`
+- Afficher tous les nombres entiers pairs entre 2 et ce nombre à l'aide de `console.log()` et d'une boucle (à vous de voir laquelle)

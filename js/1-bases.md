@@ -83,19 +83,19 @@ Quelque exemple pour rendre ça plus clair :
 ```js
 // On défini une variable test dans le contexte global
 let test = 'test';
-function test() {
+function testFonction() {
     // on la modifie dans une fonction (elle ne sera modifiée que lors de l'appel de cette fonction)
     test = 'test2';
 }
 
 console.log(test); // affiche 'test'
-test();
+testFonction();
 console.log(test); // affiche 'test2'
 ```
 
 - Une variable locale
 ```js
-function test() {
+function testFonction() {
     // On déclare une variable locale, elle n'est disponible que dans la fonction
     let test = 'test1';
 }
@@ -107,14 +107,14 @@ console.log(test); // "Error: test is not defined" car la variable n'existe pas 
 ```js
 // On défini une variable test dans le contexte global
 let test = 'test';
-function test() {
+function testFonction() {
     // on la modifie dans une fonction (elle ne sera modifiée que lors de l'appel de cette fonction)
     let test = 'test2';
     console.log(test) // affiche 'test2'
 }
 
 console.log(test); // affiche 'test'
-test(); // le console.log() de la fonction est appelé et 'test2' est affiché
+testFonction(); // le console.log() de la fonction est appelé et 'test2' est affiché
 console.log(test); // affiche 'test'
 ```
 
@@ -180,6 +180,7 @@ Pour s'en servir, commencez vos fichier `.js` par `"use strict";` ou `'use stric
 ### Les tableaux
 
 [La documentation Mozilla sur les tableaux](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array).
+[Introduction aux tableaux](https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Arrays)
 
 Un tableau est un ensemble de valeurs indexées. C'est-à-dire que pour chaque entrée du tableau (qui contient une valeur), un index y est associé et permet de le récupérer facilement.
 
@@ -223,6 +224,8 @@ console.log(tableau.length); // affiche 4
 ```
 
 ### Les objets
+
+Une [liste des objets déjà définis dans Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects).
 
 Les objets sont une structure de données complexe nous permettant de regrouper des valeurs tout en créant nos propres index (nommés propriétés). 
 
