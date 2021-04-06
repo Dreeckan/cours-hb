@@ -1,6 +1,7 @@
 # Javascript
 
-Tout ce qui est dit dans ce cours peut être résumé dans un [pense-bête de 13 pages](/assets/img/js/js-cheatsheet.pdf).
+Toutes les bases de ce cours peuvent être résumées dans un [pense-bête de 13 pages](/assets/img/js/js-cheatsheet.pdf).
+Vous pourrez également retrouver toutes les vidéos (cours, corrigés d'exercice) dans [le dossier Loom dédié](https://loom.com/share/folder/e165172439f346549437df31f84c3c97).
 
 ## 1. [Bases du langage](1-bases.md)
 
