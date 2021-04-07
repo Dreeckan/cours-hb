@@ -359,8 +359,14 @@ Une petite calculatrice de montant TTC à partir du HT :
   - Ce nombre doit être compris entre 10 et 100. Si ça n'est pas le cas (ou si ça n'est pas un nombre), afficher un message d'erreur avec la fonction `alert()`
 - Afficher tous les nombres entiers pairs entre 2 et ce nombre à l'aide de `console.log()` et d'une boucle (à vous de voir laquelle)
   
-### 2.2. Afficher des nombres pairs
+### 2.3. Trouver le mot le plus court/long
 
-- Demander à l'utilisateur un nombre à l'aide de la fonction `prompt()`
-  - Ce nombre doit être compris entre 10 et 100. Si ça n'est pas le cas (ou si ça n'est pas un nombre), afficher un message d'erreur avec la fonction `alert()`
-- Afficher tous les nombres entiers pairs entre 2 et ce nombre à l'aide de `console.log()` et d'une boucle (à vous de voir laquelle)
+- Créer un tableau avec les mots suivants :
+  - Cucurbitacée
+  - Landau
+  - Chatons
+  - Morceau
+  - Gâteau
+  - Pâtisserie
+- Écrire une fonction renvoyant le mot de plus court et appeler cette fonction (afficher le résultat dans un `console.log()`)
+- Écrire une fonction renvoyant le mot de plus long et appeler cette fonction (afficher le résultat dans un `console.log()`)
