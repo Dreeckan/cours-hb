@@ -395,3 +395,7 @@ L'utilisateur va saisir le mot `pierre`, `feuille` ou `ciseau` (à l'aide de la 
 
 - Pour récupérer un nombre aléatoire, utiliser des méthodes de l'objet [Math](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math)
 - Il faut vérifier la saisie de l'utilisateur. Il peut également entrer les mots avec des majuscules (et il doit pouvoir le faire sans avoir d'erreur). (il existe une fonction en JS pour mettre un texte en minuscule)
+
+#### Pour aller plus loin
+
+- Une partie se joue en 2 manches gagnantes. Tant que personne n'a gagné 2 manches, demander à nouveau son choix à l'utilisateur (en indiquant les points de chaque joueur)
