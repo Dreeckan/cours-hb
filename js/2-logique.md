@@ -358,8 +358,10 @@ Une petite calculatrice de montant TTC à partir du HT :
 - Demander à l'utilisateur un nombre à l'aide de la fonction `prompt()`
   - Ce nombre doit être compris entre 10 et 100. Si ça n'est pas le cas (ou si ça n'est pas un nombre), afficher un message d'erreur avec la fonction `alert()`
 - Afficher tous les nombres entiers pairs entre 2 et ce nombre à l'aide de `console.log()` et d'une boucle (à vous de voir laquelle)
-  
-### 2.3. Trouver le mot le plus court/long
+
+## Exercice 3 : les fonctions
+
+### 3.1. Trouver le mot le plus court/long
 
 - Créer un tableau avec les mots suivants :
   - Cucurbitacée
