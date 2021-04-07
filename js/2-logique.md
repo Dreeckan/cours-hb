@@ -423,3 +423,10 @@ Créer vos fonctions et les tester directement dans votre code.
 #### Aller plus loin
 
 - Faire en sorte que ce soit l'utilisateur qui choisisse les opérations à effectuer sur la liste (entrer des données, et lesquelles, chercher une tâche, etc.)
+
+### 4. Un Jeu de Rôle
+
+L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choisir son arme et son armure, puis combattre le Maitre du Donjon.
+
+#### Règles du jeu
+
