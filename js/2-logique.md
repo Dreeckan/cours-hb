@@ -376,8 +376,8 @@ Une petite calculatrice de montant TTC à partir du HT :
 Indices / rappels utiles : 
 - Vous pouvez avoir la taille d'une chaine de caractères avec `.length` : 
 ```js
- let chaine = 'une chaine de caractères';
-console.log(chaine.length); // Renvoie le nombre de caractères
+    let string = 'une chaine de caractères';
+    console.log(string.length); // Renvoie le nombre de caractères
 ```
 
 ### 3.2. Chifoumi
@@ -399,3 +399,27 @@ L'utilisateur va saisir le mot `pierre`, `feuille` ou `ciseau` (à l'aide de la 
 #### Pour aller plus loin
 
 - Une partie se joue en 2 manches gagnantes. Tant que personne n'a gagné 2 manches, demander à nouveau son choix à l'utilisateur (en indiquant les points de chaque joueur)
+
+
+### 3.3. Liste de tâches
+
+#### Principe
+
+On veut créer une liste de tâches (qui s'affichera dans la console avec `console.log()`) et un ensemble de fonctions pour manipuler cette liste :
+- lister toutes les tâches (ainsi que leur nombre)
+- ajouter une tâche
+- chercher une tâche (on cherche une correspondance exacte dans le texte entré)
+- supprimer une tâche (à partir du numéro de la tâche)
+- supprimer toutes les tâches
+
+Dans un premier temps, il n'y a pas d'interface (pas de prompt), tout se passe dans votre code et la console.
+Créer vos fonctions et les tester directement dans votre code.
+
+#### Astuces
+
+- On va se servir des tableaux (voir l'objet [Array](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array)) pour stocker et manipuler la liste
+- Pas besoin de boucle pour afficher le tableau, un simple `console.log` permet de l'afficher en entier
+
+#### Aller plus loin
+
+- Faire en sorte que ce soit l'utilisateur qui choisisse les opérations à effectuer sur la liste (entrer des données, et lesquelles, chercher une tâche, etc.)
