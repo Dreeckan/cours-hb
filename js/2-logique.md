@@ -372,3 +372,10 @@ Une petite calculatrice de montant TTC à partir du HT :
   - Pâtisserie
 - Écrire une fonction renvoyant le mot de plus court et appeler cette fonction (afficher le résultat dans un `console.log()`)
 - Écrire une fonction renvoyant le mot de plus long et appeler cette fonction (afficher le résultat dans un `console.log()`)
+
+Indices / rappels utiles : 
+- Vous pouvez avoir la taille d'une chaine de caractères avec `.length` : 
+```js
+ let chaine = 'une chaine de caractères';
+console.log(chaine.length); // Renvoie le nombre de caractères
+```
