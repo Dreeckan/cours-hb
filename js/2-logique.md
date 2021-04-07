@@ -334,6 +334,7 @@ Une petite calculatrice de montant TTC à partir du HT :
 - si ce que l'utilisateur a entré n'est pas un nombre (utiliser la fonction [isNaN()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/isNaN), afficher un message d'erreur avec `alert()`
 - sinon, calculer le montant TTC selon la formule suivante : `montantTTC = montantHT * 1.2`
 
+Un [corrigé est disponible sur Github](https://github.com/Dreeckan/exercices-js/blob/main/bases/1-conditions.js)
 
 ## Exercice 2 : les boucles 
 
@@ -400,6 +401,8 @@ L'utilisateur va saisir le mot `pierre`, `feuille` ou `ciseau` (à l'aide de la 
 
 - Une partie se joue en 2 manches gagnantes. Tant que personne n'a gagné 2 manches, demander à nouveau son choix à l'utilisateur (en indiquant les points de chaque joueur)
 
+
+Un [corrigé est disponible sur Github](https://github.com/Dreeckan/exercices-js/blob/main/bases/3-2-chifoumi.js)
 
 ### 3.3. Liste de tâches
 
