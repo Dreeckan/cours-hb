@@ -379,3 +379,19 @@ Indices / rappels utiles :
  let chaine = 'une chaine de caractères';
 console.log(chaine.length); // Renvoie le nombre de caractères
 ```
+
+### 3.2. Chifoumi
+
+#### Principe
+
+L'utilisateur va saisir le mot `pierre`, `feuille` ou `ciseau` (à l'aide de la fonction `prompt`, toujours). L'ordinateur choisi aléatoirement l'une des 3 possibilités et il faut déterminer qui a gagné et l'afficher à l'utilisateur (`alert()` ou `console.log()`, comme vous préférez).
+
+- Si le joueur et l'ordinateur font le même choix on obtient une égalité.
+- Le ciseau est écrasé par la pierre (la pierre gagne, le ciseau perd).
+- La feuille est découpée par le ciseau (le ciseau gagne, la feuille perd).
+- La pierre est enveloppée par la feuille (la feuille gagne, la pierre perd).
+
+#### Astuces
+
+- Pour récupérer un nombre aléatoire, utiliser des méthodes de l'objet [Math](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math)
+- Il faut vérifier la saisie de l'utilisateur. Il peut également entrer les mots avec des majuscules (et il doit pouvoir le faire sans avoir d'erreur). (il existe une fonction en JS pour mettre un texte en minuscule)
