@@ -433,3 +433,15 @@ L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choi
 
 #### Règles du jeu
 
+- L'aventurier possède 100 points de vie
+- L'aventurier va avoir le choix entre 3 armes, chacune infligeant des dégâts plus ou moins élevés (bois: 2, fer: 5, magique: 10) et 3 armures, protégeant d'une certaine quantité de dégâts (bois : 1, fer: 3, magique: 5).
+- Une fois l'équipement choisi, le combat avec le Maitre du Donjon commence.
+  - Le Maitre du Donjon a 150 points de vie, inflige 6 points de dégâts par tour et possède une armure le protégeant de 4 points de dégâts
+  - Les deux combattants s'attaquent mutuellement (le Maitre du Donjon commence) jusqu'à ce que les points de vie de l'un des deux atteigne 0
+
+### Affichage 
+
+- Faire choisir l'équipement à l'aventurier
+- Lui annoncer les résultats de chaque attaque (qui attaque et combien de points de dégâts sont infligés)
+- Lui annoncer qui a gagné
+
