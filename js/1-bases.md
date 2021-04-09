@@ -27,6 +27,12 @@ typeof("Test") // "string"
 typeof("42") // "string"
 ```
 
+### Transformer certaines valeurs
+
+Plusieurs fonctions permettent de changer le type d'une valeur :
+- `parseInt()` pour convertir une chaîne de caractères en nombre entier ([documentation sur parseInt()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseInt))
+- `parseFloat()` pour convertir une chaîne de caractères en nombre flottant ([documentation sur parseFloat()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseFloat))
+
 ## Les variables
 
 Une variable est un élément qui **pointe** vers une valeur, et n'est pas une valeur. On dit qu'une variable "contient" une valeur.
@@ -166,7 +172,6 @@ console.log(test); // Affiche 'test'
 
 En conclusion : utiliser `let` vous permet un code plus propre, où les variables sont déclarés dans le contexte **et** dans les blocs où elles sont nécessaires (visuellement plus rapide à retrouver et moins de risques d'erreur). 
 
-
 ## Le mode strict de javascript
 
 Le mode strict de javascript (ES5) vous permet d'utiliser une version plus restrictive (et vous forçant à écrire du code plus propre) de javascript. Ce mode :
@@ -222,6 +227,31 @@ let tableau = [
 
 console.log(tableau.length); // affiche 4
 ```
+
+#### Vérifier si une valeur est dans le tableau (ou une string)
+
+La méthode `indexOf` permet de vérifier l'existence d'un ou plusieurs caractères dans un tableau ou une chaîne de caractères. 
+Elle retourne un nombre correspondant à l'index (la position) de la valeur. Si cette valeur n'est pas présente, la méthode renvoie `-1`.
+
+```js
+let array = [
+    'test',
+    42,
+    99.99,
+    [0]
+];
+
+console.log(array.indexOf(42)); // Affiche 1 (cette valeur est à l'index 1)
+console.log(array.indexOf('test2')); // Affiche -1 (cette valeur n'est pas dans le tableau)
+
+let string = "Une chaine de caractère plutôt longue, avec plein de mots et de lettres dedans.";
+
+console.log(string.indexOf('carac')); // Affiche 14 (existe à la position 14, soit la 15ème lettre)
+console.log(string.indexOf('fmdoskjmlskj')); // Affiche -1 (n'est pas dans la chaîne)
+console.log(string.indexOf('c')); // Affiche 3 (existe à la position 3, soit la 4ème lettre)
+
+```
+
 
 ### Les objets
 
@@ -332,3 +362,11 @@ Il existe même une écriture plus courte dans ce cas (si la fonction ne contien
 ```js
 let sum = (number1, number2) => number1 + number2;
 ```
+
+## Quand mettre un point-virgule ?
+
+Un certain nombre d'instructions se finissent pas un point-virgule `;`, mais pas toute. 
+La plus courante, l'affectation (`a = x;`) se termine toujours par un `;`. 
+Les instructions contenant des accolades `{}`, comme les conditions, les boucles, etc. ne prennent pas de `;`.
+
+Pour aller plus loin, [un article très intéressant sur les `;` en js](https://jeremymouzin.com/blog/les-points-virgules-en-javascript-le-guide-definitif/)
