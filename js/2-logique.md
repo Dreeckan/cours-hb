@@ -445,3 +445,10 @@ L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choi
 - Lui annoncer les résultats de chaque attaque (qui attaque et combien de points de dégâts sont infligés)
 - Lui annoncer qui a gagné
 
+### Aller plus loin
+
+- Ajouter un peu d'aléatoire :
+  - le Maître du Donjon possède entre 125 et 175 points de vie
+  - le joueur possède entre 100 et 125 points de vie
+  - à chaque fois que l'un des personnages (l'aventurier ou le maitre du donjon) attaque, les dégâts produits sont entre 1 et la puissance de l'arme (exemple : 1 à 5 points de dégâts pour l'épée magique)
+  - le fonctionnement de l'armure reste inchangé
