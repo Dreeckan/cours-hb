@@ -20,6 +20,12 @@ pages:
 
 # Un autre job, qui va déployer notre application sur le serveur de prod
 deploy:
+    before_script:
+        - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+        - eval $(ssh-agent -s)
+        - echo "$DEPLOY_SK" | tr -d '\r' | ssh-add -
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
     stage: deploy # Ce job se lance lors du stage deploy
     script: make deploy # Le script à exécuter
     only: # Ce déploiement n'a lieu que si l'on fait une action sur main (commit, push, merge, etc.)
