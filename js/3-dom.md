@@ -77,3 +77,58 @@ Si vous voulez récupérer plusieurs éléments, cette méthode reprend exacteme
 // Récupérons tous les liens ayant les classes van et dame, dans une balise (div) ayant l'id jean-claude
 let links = document.querySelectorAll('div#jean-claude a.van.dame');
 ```
+
+### Rechercher depuis un noeud
+
+Une fois que vous avez récupéré un noeud, plusieurs attributs permettent de naviguer dans les noeuds proches :
+- `element.children` renvoie la liste des enfants (directs) de `element`
+- `element.parent` renvoie l'élément parent (celui qui contient ce noeud)
+- `element.nextElementSibling` / `element.previousElementSibling` : permettent de naviguer vers les frères de notre élément (noeuds de même niveau, juste après ou avant dans le DOM)
+
+## Modifier le DOM
+
+### Modifier le contenu d'un noeud
+
+Deux propriétés vous permettent de modifier rapidement le contenu d'un noeud `element` que vous avez récupéré :
+- `element.innerHTML`: permet d'accéder/modifier le contenu (sous forme de html) de l'élément (conserve donc la balise) ([Documentation](https://developer.mozilla.org/fr/docs/Web/API/Element/innerHTML))
+- `element.textContent`: permet d'accéder/modifier le contenu (sous forme textuelle, sans balise) de l'élément (conserve donc la balise) ([Documentation](https://developer.mozilla.org/fr/docs/Web/API/Node/textContent))
+
+```js
+let element = document.getElementById('main');
+element.innerHTML = "<ul><li>Elément 1</li><li>Elément 2</li></ul>";
+console.log(element.innerHTML); // Affiche <ul><li>Elément 1</li><li>Elément 2</li></ul>
+```
+
+```js
+let element = document.getElementById('main');
+element.textContent = "Ceci est un texte, même si vous mettez des balises ici, elles seront ignorées";
+console.log(element.textContent); // Affiche Ceci est un texte, même si vous mettez des balises ici, elles seront ignorées
+```
+
+### Modifier les classes d'un noeud
+
+[Documentation](https://developer.mozilla.org/fr/docs/Web/API/Element/classList)
+
+La propriété `classList` d'un noeud `element` vous permet d'accéder / modifier la liste des classes d'un noeud. Quelques méthodes bien utiles :
+
+```js
+element.classList.add("nouvelleClasse"); // Ajoute la classe nouvelleClasse à l'élément
+element.classList.contains("nouvelleClasse"); // Renvoie true (nous venons d'ajouter la classe)
+element.classList.remove("nouvelleClasse"); // Enlève la classe nouvelleClasse
+element.classList.contains("nouvelleClasse"); // Renvoie false, nous venons de supprimer la classe
+element.classList.replace("oldClass", "newClass"); // Replace oldClass par newClass si la classe oldClass est présente
+```
+
+### Modifier le style d'un élément (CSS)
+
+[Documentation](https://developer.mozilla.org/fr/docs/Web/API/ElementCSSInlineStyle/style)
+
+La propriété `style` permet de modifier les propriétés CSS d'un élément. Attention, les propriétés CSS sont notés en camelCase (`background-color` devient `backgroundColor`).
+
+```js
+element.style.backgroundColor = '#00FF00';
+element.style.fontSize = '80px';
+```
+
+### Modifier les attributs
+
