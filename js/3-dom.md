@@ -278,3 +278,76 @@ En javascript, faire les modifications suivantes :
     </ul>        
 </header>
 ```
+
+## Les event listeners (écouteurs d'événements)
+
+- [addEventListener](https://developer.mozilla.org/fr/docs/Web/API/EventTarget/addEventListener)
+- [Les événements](https://developer.mozilla.org/fr/docs/Web/Events)
+
+Un événement est une **réaction** à une **action** de l'utilisateur. Vous pouvez par exemple détecter si un élément a été cliqué ou survolé par la souris, si un champs de formulaire a été modifié, etc. Je vous invite à regarder [la liste des événements disponibles](https://developer.mozilla.org/fr/docs/Web/Events).
+
+Le premier paramètre de cette méthode est le nom d'un événement, le second est une fonction (fonction de callback) ou le nom d'une fonction.
+
+L'un des plus courant : l'événement `onclick` qui se déclenche au clic de la souris dans un élément.
+
+```js
+// On récupère le lien dont l'attribut id est jean-claude
+let element = document.querySelector("a#jean-claude");
+
+// On va détecter le clic sur ce lien
+element.addEventListener('click', function() {
+    element.innerHTML = "I'm aware !";
+});
+```
+
+Dans notre exemple, vous remarquerez que la page se recharge et que notre texte ne s'affiche pas.
+
+### preventDefault()
+
+Il nous manque 2 choses pour éviter le comportement précédent : 
+- Un moyen de savoir ce qui a été cliqué
+- Un moyen d'empêcher le comportement normal de notre élément (éviter le rechargement de notre page)
+
+Heureusement, notre fonction de callback (le deuxième paramètre de `addEventListener`) prend un paramètre, l'`event` javascript qui a été produit. Cet objet contient de nombreuses informations et méthodes utiles, dont `preventDefault()`.
+
+```js
+// On récupère le lien dont l'attribut id est jean-claude
+let element = document.querySelector("a#jean-claude");
+
+// On va détecter le clic sur ce lien. On récupère le paramètre event, afin d'agir sur le navigateur
+element.addEventListener('click', function(event) {
+    // On prévient le navigateur que l'on ne veut pas suivre le lien
+    // (on dit qu'on empêche le comportement par défaut du lien)
+    // Notre page ne sera donc pas rechargée et notre texte s'affichera !
+    event.preventDefault();
+    element.innerHTML = "I'm aware !";
+});
+```
+
+### stopPropagation()
+
+Cette deuxième méthode de l'`event` nous permet d'éviter un autre comportement : la propagation d'un événement à son parent. 
+En effet, quand vous cliquez sur un élément, si cet élément à un parent avec un event listener, il sera également déclenché.
+
+```html
+<div id="van-dame">
+    <a href="" id="jean-claude">Envoyer</a>
+</div>
+```
+
+```js
+// On récupère le lien dont l'attribut id est jean-claude
+let parent = document.querySelector("div#van-dame");
+let element = document.querySelector("a#jean-claude");
+
+parent.addEventListener('click', function(event) {
+    alert('Van Dame !');
+});
+
+element.addEventListener('click', function(event) {
+    event.preventDefault();
+    // Grâce à cette ligne, si on clique sur le lien, le message d'alert ne sera pas affiché.
+    event.stopPropagation();
+    element.innerHTML = "I'm aware !";
+});
+```
