@@ -174,6 +174,50 @@ element.dataset.lastName = 'Van Dame';
 console.log(element.dataset.aware);
 ```
 
+### Créer des éléments
+
+[Documentation](https://developer.mozilla.org/fr/docs/Web/API/Document/createElement)
+
+La méthode `createElement()` vous permet de créer un élément à ajouter plus tard au DOM (attention, par défaut, il ne s'affiche nulle part et nous verront comment l'ajouter ensuite).
+
+```js
+const newElement = document.createElement("p");
+```
+
+#### Ajouter des enfants
+
+[Documentation](https://developer.mozilla.org/fr/docs/Web/API/Node/appendChild)
+
+```js
+// On crée notre élément
+const newElement = document.createElement("p");
+
+// On récupère son futur parent
+let element = document.getElementById("jean-claude");
+// On ajouter notre nouvel élément dans le noeud voulu (à la fin)
+element.appendChild(newElement);
+```
+
+#### Supprimer / remplacer des éléments
+
+- [removeChild()](https://developer.mozilla.org/fr/docs/Web/API/Node/removeChild)
+- [replaceChild()](https://developer.mozilla.org/fr/docs/Web/API/Node/replaceChild)
+
+```js
+// On crée notre élément
+const newElement = document.createElement("p");
+
+// On récupère son futur parent
+let element = document.getElementById("jean-claude");
+// On ajoute notre nouvel élément dans le noeud voulu (à la fin)
+element.appendChild(newElement);
+
+// On peut supprimer notre élément (il faut récupérer le noeud si on ne l'a pas déjà)
+element.removeChild(newElement);
+// Ou on peut remplace notre élément par un nouveau
+element.replaceChild(document.createElement("p"), newElement);
+```
+
 ## Exercice
 
 Prendre le HTML suivant :
