@@ -428,7 +428,7 @@ Utiliser le HTML suivant :
 ```
 
 - Créer des events listeners pour :
-  - au clic dans `#wrapper` (n'importe où), dupliquer le `<span>`
+  - au clic dans `#wrapper` (n'importe où), dupliquer le `<span>` (avec la méthode `cloneNode()` par exemple)
   - au clic sur le lien `#inner`, ajouter dans la console le texte "Le lien a été cliqué", mais sans dupliquer le span
   - lorsqu'on tape quelque chose dans le champ email, afficher le contenu du champ `#email` dans `#form-result` (pendant que l'on tape ou lorsqu'on sort du champ)
   - ajouter (en js) l'attribut `type="submit"` au bouton et afficher le contenu du champ email quand le formulaire est soumis (et éviter le rechargement de la page)
