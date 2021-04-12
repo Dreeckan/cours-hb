@@ -1,7 +1,7 @@
 # Le DOM
 
-Le DOM (Document Object Model ou modèle d'objet de document en français) est une représentation du HTML d'une page, qui permet d'accéder aux éléments et de les modifier en js.
-Nous allons donc pouvoir interagir avec ce DOM pour :
+Le DOM (Document Object Model ou modèle d'objet de document en français) est une représentation du HTML d'une page, qui permet d'accéder aux éléments et de les modifier en js. Nous allons donc pouvoir interagir avec ce DOM pour :
+
 - Modifier le contenu d'un élément (on parle aussi d'un noeud/node)
 - Modifier ses attributs (dont le style)
 - Créer ou supprimer des éléments
@@ -81,6 +81,7 @@ let links = document.querySelectorAll('div#jean-claude a.van.dame');
 ### Rechercher depuis un noeud
 
 Une fois que vous avez récupéré un noeud, plusieurs attributs permettent de naviguer dans les noeuds proches :
+
 - `element.children` renvoie la liste des enfants (directs) de `element`
 - `element.parent` renvoie l'élément parent (celui qui contient ce noeud)
 - `element.nextElementSibling` / `element.previousElementSibling` : permettent de naviguer vers les frères de notre élément (noeuds de même niveau, juste après ou avant dans le DOM)
@@ -90,6 +91,7 @@ Une fois que vous avez récupéré un noeud, plusieurs attributs permettent de n
 ### Modifier le contenu d'un noeud
 
 Deux propriétés vous permettent de modifier rapidement le contenu d'un noeud `element` que vous avez récupéré :
+
 - `element.innerHTML`: permet d'accéder/modifier le contenu (sous forme de html) de l'élément (conserve donc la balise) ([Documentation](https://developer.mozilla.org/fr/docs/Web/API/Element/innerHTML))
 - `element.textContent`: permet d'accéder/modifier le contenu (sous forme textuelle, sans balise) de l'élément (conserve donc la balise) ([Documentation](https://developer.mozilla.org/fr/docs/Web/API/Node/textContent))
 
@@ -151,12 +153,12 @@ element.removeAttribute("name");
 
 /!\ Il vaut mieux utiliser `removeAttribute` plutôt que de définir la valeur de l'attribut à `null` avec `setAttribute`.
 
-
 #### Cas particulier des data-attributs
 
 HTML limite les attributs à une liste précise de balises. Toutefois, des balises data-* nous permettent de créer nos propres attributs !
 
 ```html
+
 <div class="jean-claude" data-van-dame data-strength="too much" data-humour="unlimited" data-aware="Off curse">
     He is aware.
 </div>
@@ -234,7 +236,7 @@ L'un des plus courant : l'événement `onclick` qui se déclenche au clic de la 
 let element = document.querySelector("a#jean-claude");
 
 // On va détecter le clic sur ce lien
-element.addEventListener('click', function() {
+element.addEventListener('click', function () {
     element.innerHTML = "I'm aware !";
 });
 ```
@@ -243,7 +245,8 @@ Dans notre exemple, vous remarquerez que la page se recharge et que notre texte 
 
 ### preventDefault()
 
-Il nous manque 2 choses pour éviter le comportement précédent : 
+Il nous manque 2 choses pour éviter le comportement précédent :
+
 - Un moyen de savoir ce qui a été cliqué
 - Un moyen d'empêcher le comportement normal de notre élément (éviter le rechargement de notre page)
 
@@ -254,7 +257,7 @@ Heureusement, notre fonction de callback (le deuxième paramètre de `addEventLi
 let element = document.querySelector("a#jean-claude");
 
 // On va détecter le clic sur ce lien. On récupère le paramètre event, afin d'agir sur le navigateur
-element.addEventListener('click', function(event) {
+element.addEventListener('click', function (event) {
     // On prévient le navigateur que l'on ne veut pas suivre le lien
     // (on dit qu'on empêche le comportement par défaut du lien)
     // Notre page ne sera donc pas rechargée et notre texte s'affichera !
@@ -265,10 +268,10 @@ element.addEventListener('click', function(event) {
 
 ### stopPropagation()
 
-Cette deuxième méthode de l'`event` nous permet d'éviter un autre comportement : la propagation d'un événement à son parent. 
-En effet, quand vous cliquez sur un élément, si cet élément à un parent avec un event listener, il sera également déclenché.
+Cette deuxième méthode de l'`event` nous permet d'éviter un autre comportement : la propagation d'un événement à son parent. En effet, quand vous cliquez sur un élément, si cet élément à un parent avec un event listener, il sera également déclenché.
 
 ```html
+
 <div id="van-dame">
     <a href="" id="jean-claude">Envoyer</a>
 </div>
@@ -279,11 +282,11 @@ En effet, quand vous cliquez sur un élément, si cet élément à un parent ave
 let parent = document.querySelector("div#van-dame");
 let element = document.querySelector("a#jean-claude");
 
-parent.addEventListener('click', function(event) {
+parent.addEventListener('click', function (event) {
     alert('Van Dame !');
 });
 
-element.addEventListener('click', function(event) {
+element.addEventListener('click', function (event) {
     event.preventDefault();
     // Grâce à cette ligne, si on clique sur le lien, le message d'alert ne sera pas affiché.
     event.stopPropagation();
@@ -292,6 +295,7 @@ element.addEventListener('click', function(event) {
 ```
 
 ### Utiliser l'objet `event`
+
 [Documentation](https://developer.mozilla.org/fr/docs/Web/API/Event)
 
 L'objet `event` que nous venons de voir permet également de récupérer des informations sur l'action de l'utilisateur (notamment avec quel noeud il a interagit). Pour une liste complète des [propriétés et méthode de l'objet `Event`](https://developer.mozilla.org/fr/docs/Web/API/Event), je vous conseille la documentation.
@@ -301,7 +305,7 @@ Il y a différents objets `Event` possible, comme [MouseEvent](https://developer
 Par exemple, avec un événement au clic, on peut récupérer le noeud qui a été cliqué :
 
 ```js
-element.addEventListener('click', function(event) {
+element.addEventListener('click', function (event) {
     event.preventDefault();
     // Grâce à cette ligne, si on clique sur le lien, le message d'alert ne sera pas affiché.
     event.stopPropagation();
@@ -310,10 +314,10 @@ element.addEventListener('click', function(event) {
 });
 ```
 
-Sur un [événement au passage de la souris `mousemove`](https://developer.mozilla.org/fr/docs/Web/API/Element/mousemove_event), on peut avoir la position exacte du curseur de plusieurs manières : 
+Sur un [événement au passage de la souris `mousemove`](https://developer.mozilla.org/fr/docs/Web/API/Element/mousemove_event), on peut avoir la position exacte du curseur de plusieurs manières :
 
 ```js
-element.addEventListener('mousemove', function(event) {
+element.addEventListener('mousemove', function (event) {
     console.log(event.offsetX, event.offsetY); // position du curseur dans l'élément
     console.log(event.clientX, event.clientY); // position du curseur dans le DOM
     console.log(event.movementX, event.movementY); // position du curseur par rapport à la position du dernier événement mousemove
@@ -331,48 +335,54 @@ Prendre le HTML suivant :
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test de manipulation du HTML</title>
 </head>
 <body>
-    <header id="header">
-            
+<header id="header">
+
+</header>
+<main id="main">
+    <header class="main-header">
+        <h1>Ceci est un titre</h1>
+        <p class="paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget arcu in tellus auctor mattis. Maecenas in scelerisque diam. Praesent sollicitudin sem eu viverra sollicitudin. Nulla bibendum mi et semper convallis. Mauris scelerisque sapien ut velit blandit aliquet. Proin nec lacus ac risus laoreet suscipit quis commodo nunc. Class aptent taciti
+            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur ligula magna, ultricies non luctus at, placerat vel magna. Nullam nibh lorem, ornare ut ultrices at, malesuada nec risus. Cras dignissim, tortor in ullamcorper euismod, sem nibh consequat magna, eu volutpat ex leo vel tellus. Donec quis ex ac ligula varius porta.
+            Sed laoreet augue sit amet lectus viverra, eu vulputate massa lacinia. Nulla facilisi. Aenean eget diam id ex iaculis tristique ut sed eros. Cras varius erat nunc.
+        </p>
+        <p class="paragraph">
+            Nam vitae sapien magna. Nunc non consequat mi. Nullam non ante in elit vulputate dignissim. Proin hendrerit ut diam et tristique. Duis interdum dui sem, eget bibendum neque lacinia id. Pellentesque venenatis, nisl eu faucibus ultrices, libero arcu rhoncus augue, vel ultrices ex nisl vel nibh. Nullam vitae nibh id lorem condimentum rhoncus id non
+            diam. Aliquam ultricies et erat id mattis. Integer in egestas erat, porttitor blandit lectus. Phasellus dignissim, tellus pellentesque venenatis commodo, turpis tortor auctor leo, sed sagittis eros nisl sed ante.
+        </p>
+        <p class="paragraph paragraph--exception">
+            Duis accumsan turpis nec sollicitudin viverra. Donec non leo aliquam, faucibus risus vitae, egestas erat. Phasellus pulvinar nisi nec risus luctus, et dictum nisi varius. Aenean id euismod tellus. Proin lobortis vestibulum commodo. Sed elit odio, porta at odio eget, hendrerit efficitur massa. Curabitur iaculis sollicitudin nisi.
+        </p>
+        <p class="paragraph">
+            Fusce gravida neque justo, eget convallis nunc ultricies vitae. Integer hendrerit dolor nec finibus pharetra. Sed at est congue, pellentesque nulla vitae, imperdiet erat. Etiam eu fermentum lorem, eu porta tortor. Sed laoreet commodo eros gravida luctus. Integer ornare purus et augue maximus, semper efficitur lorem imperdiet. Nullam eget luctus
+            tortor. Fusce ut euismod dolor. Suspendisse posuere, ante id finibus vestibulum, sem purus ullamcorper est, nec malesuada elit orci et augue. Aenean eu lectus a dui posuere egestas quis sit amet tortor. Fusce at magna eget justo fermentum vulputate.
+        </p>
+        <p class="paragraph">
+            Morbi a risus sit amet lorem molestie bibendum. Sed porttitor non massa sed viverra. Ut vitae mollis turpis. Nunc non pellentesque dolor. Proin malesuada, erat eu sollicitudin vehicula, libero velit pharetra nunc, ac maximus tortor neque rhoncus dolor. Morbi ligula dolor, interdum nec ex in, commodo euismod ipsum. Integer quis mi lobortis,
+            venenatis lorem at, faucibus ligula. Nunc id tristique enim, sed pretium augue.
+        </p>
     </header>
-    <main id="main">
-        <header class="main-header">
-            <h1>Ceci est un titre</h1>
-            <p class="paragraph">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget arcu in tellus auctor mattis. Maecenas in scelerisque diam. Praesent sollicitudin sem eu viverra sollicitudin. Nulla bibendum mi et semper convallis. Mauris scelerisque sapien ut velit blandit aliquet. Proin nec lacus ac risus laoreet suscipit quis commodo nunc. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur ligula magna, ultricies non luctus at, placerat vel magna. Nullam nibh lorem, ornare ut ultrices at, malesuada nec risus. Cras dignissim, tortor in ullamcorper euismod, sem nibh consequat magna, eu volutpat ex leo vel tellus. Donec quis ex ac ligula varius porta. Sed laoreet augue sit amet lectus viverra, eu vulputate massa lacinia. Nulla facilisi. Aenean eget diam id ex iaculis tristique ut sed eros. Cras varius erat nunc.
-            </p>
-            <p class="paragraph">
-                Nam vitae sapien magna. Nunc non consequat mi. Nullam non ante in elit vulputate dignissim. Proin hendrerit ut diam et tristique. Duis interdum dui sem, eget bibendum neque lacinia id. Pellentesque venenatis, nisl eu faucibus ultrices, libero arcu rhoncus augue, vel ultrices ex nisl vel nibh. Nullam vitae nibh id lorem condimentum rhoncus id non diam. Aliquam ultricies et erat id mattis. Integer in egestas erat, porttitor blandit lectus. Phasellus dignissim, tellus pellentesque venenatis commodo, turpis tortor auctor leo, sed sagittis eros nisl sed ante.
-            </p>
-            <p class="paragraph paragraph--exception">
-                Duis accumsan turpis nec sollicitudin viverra. Donec non leo aliquam, faucibus risus vitae, egestas erat. Phasellus pulvinar nisi nec risus luctus, et dictum nisi varius. Aenean id euismod tellus. Proin lobortis vestibulum commodo. Sed elit odio, porta at odio eget, hendrerit efficitur massa. Curabitur iaculis sollicitudin nisi.
-            </p>
-            <p class="paragraph">
-                Fusce gravida neque justo, eget convallis nunc ultricies vitae. Integer hendrerit dolor nec finibus pharetra. Sed at est congue, pellentesque nulla vitae, imperdiet erat. Etiam eu fermentum lorem, eu porta tortor. Sed laoreet commodo eros gravida luctus. Integer ornare purus et augue maximus, semper efficitur lorem imperdiet. Nullam eget luctus tortor. Fusce ut euismod dolor. Suspendisse posuere, ante id finibus vestibulum, sem purus ullamcorper est, nec malesuada elit orci et augue. Aenean eu lectus a dui posuere egestas quis sit amet tortor. Fusce at magna eget justo fermentum vulputate.
-            </p>
-            <p class="paragraph">
-                Morbi a risus sit amet lorem molestie bibendum. Sed porttitor non massa sed viverra. Ut vitae mollis turpis. Nunc non pellentesque dolor. Proin malesuada, erat eu sollicitudin vehicula, libero velit pharetra nunc, ac maximus tortor neque rhoncus dolor. Morbi ligula dolor, interdum nec ex in, commodo euismod ipsum. Integer quis mi lobortis, venenatis lorem at, faucibus ligula. Nunc id tristique enim, sed pretium augue. 
-            </p>
-        </header>
-    </main>
-    <footer id="footer">
-        
-    </footer>
+</main>
+<footer id="footer">
+
+</footer>
 </body>
 </html>
 ```
 
-En javascript, faire les modifications suivantes : 
+En javascript, faire les modifications suivantes :
 
 - Cibler la balise `footer` de 2 manières : par son attribut `ìd` (avec la méthode dédiée et avec `querySelector`) et lui ajouter la classe `footer`
 - Ajouter une balise `p` à la fin de `main` contenant ce texte : `Ceci est un contenu <strong>très important</strong>`
 - Cibler toutes les balises `p` de la page et changer la couleur du texte (`#000F00`) et remplacer la classe `paragraph` par la classe `text`
-- Ajouter une balise `ul` dans la balise `header`, avec 4 `li` à l'intérieur pour obtenir le résultat suivant : 
+- Ajouter une balise `ul` dans la balise `header`, avec 4 `li` à l'intérieur pour obtenir le résultat suivant :
+
 ```html
 <header id="header">
     <ul class="list" id="important-list">
@@ -380,8 +390,45 @@ En javascript, faire les modifications suivantes :
         <li class="list__element" data-num="2">Ceci est l'élément n°1</li>
         <li class="list__element" data-num="3">Ceci est l'élément n°2</li>
         <li class="list__element" data-num="4">Ceci est l'élément n°3</li>
-    </ul>        
+    </ul>
 </header>
 ```
 
 Pour information : pour le nommage de mes classes, j'utilise la [convention de nommage BEM](http://getbem.com/).
+
+### 2. Utiliser les évènements
+
+Utiliser le HTML suivant :
+
+```html
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test de gestion des événements</title>
+</head>
+<body>
+    <div id="wrapper">
+        <a href="" id="inner">Un lien cliquable</a>
+        <span>Un texte qui va se dupliquer quand on clic dessus.</span>
+    </div>
+    
+    <form class="form">
+        <label for="email">Email</label>
+        <input type="email" id="email">
+        
+        <button>Valider</button>
+    </form>
+
+    <div id="form-result"></div>
+</body>
+</html>
+```
+
+- Créer des events listeners pour :
+  - au clic dans `#wrapper` (n'importe où), dupliquer le `<span>`
+  - au clic sur le lien `#inner`, ajouter dans la console le texte "Le lien a été cliqué", mais sans dupliquer le span
+  - lorsqu'on tape quelque chose dans le champ email, afficher le contenu du champ `#email` dans `#form-result` (pendant que l'on tape ou lorsqu'on sort du champ)
+  - ajouter (en js) l'attribut `type="submit"` au bouton et afficher le contenu du champ email quand le formulaire est soumis (et éviter le rechargement de la page)
