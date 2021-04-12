@@ -37,9 +37,9 @@ let jeanClaude = document.getElementsByClassName('jean-claude');
 
 // On récupère un élément / noeud
 let jeanClaude = document.getElementById('jean-claude');
-// Cherche tous les éléments ayant la classe van-dame, dans les enfant du noeud avec l'id jean-claude
+// Cherche tous les éléments ayant la classe van-dame, dans les enfants du noeud avec l'id jean-claude
 let vanDames = jeanClaude.getElementsByClassName('van-dame');
-// Cherche tous les éléments ayant les classes van et dame, dans les enfant du noeud avec l'id jean-claude
+// Cherche tous les éléments ayant les classes van et dame, dans les enfants du noeud avec l'id jean-claude
 let vanDames = jeanClaude.getElementsByClassName('van dame');
 ```
 
@@ -218,69 +218,6 @@ element.removeChild(newElement);
 element.replaceChild(document.createElement("p"), newElement);
 ```
 
-## Exercice
-
-Prendre le HTML suivant :
-
-```html
-<!doctype html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test de manipulation du HTML</title>
-</head>
-<body>
-    <header id="header">
-            
-    </header>
-    <main id="main">
-        <header class="main-header">
-            <h1>Ceci est un titre</h1>
-            <p class="paragraph">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget arcu in tellus auctor mattis. Maecenas in scelerisque diam. Praesent sollicitudin sem eu viverra sollicitudin. Nulla bibendum mi et semper convallis. Mauris scelerisque sapien ut velit blandit aliquet. Proin nec lacus ac risus laoreet suscipit quis commodo nunc. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur ligula magna, ultricies non luctus at, placerat vel magna. Nullam nibh lorem, ornare ut ultrices at, malesuada nec risus. Cras dignissim, tortor in ullamcorper euismod, sem nibh consequat magna, eu volutpat ex leo vel tellus. Donec quis ex ac ligula varius porta. Sed laoreet augue sit amet lectus viverra, eu vulputate massa lacinia. Nulla facilisi. Aenean eget diam id ex iaculis tristique ut sed eros. Cras varius erat nunc.
-            </p>
-            <p class="paragraph">
-                Nam vitae sapien magna. Nunc non consequat mi. Nullam non ante in elit vulputate dignissim. Proin hendrerit ut diam et tristique. Duis interdum dui sem, eget bibendum neque lacinia id. Pellentesque venenatis, nisl eu faucibus ultrices, libero arcu rhoncus augue, vel ultrices ex nisl vel nibh. Nullam vitae nibh id lorem condimentum rhoncus id non diam. Aliquam ultricies et erat id mattis. Integer in egestas erat, porttitor blandit lectus. Phasellus dignissim, tellus pellentesque venenatis commodo, turpis tortor auctor leo, sed sagittis eros nisl sed ante.
-            </p>
-            <p class="paragraph paragraph--exception">
-                Duis accumsan turpis nec sollicitudin viverra. Donec non leo aliquam, faucibus risus vitae, egestas erat. Phasellus pulvinar nisi nec risus luctus, et dictum nisi varius. Aenean id euismod tellus. Proin lobortis vestibulum commodo. Sed elit odio, porta at odio eget, hendrerit efficitur massa. Curabitur iaculis sollicitudin nisi.
-            </p>
-            <p class="paragraph">
-                Fusce gravida neque justo, eget convallis nunc ultricies vitae. Integer hendrerit dolor nec finibus pharetra. Sed at est congue, pellentesque nulla vitae, imperdiet erat. Etiam eu fermentum lorem, eu porta tortor. Sed laoreet commodo eros gravida luctus. Integer ornare purus et augue maximus, semper efficitur lorem imperdiet. Nullam eget luctus tortor. Fusce ut euismod dolor. Suspendisse posuere, ante id finibus vestibulum, sem purus ullamcorper est, nec malesuada elit orci et augue. Aenean eu lectus a dui posuere egestas quis sit amet tortor. Fusce at magna eget justo fermentum vulputate.
-            </p>
-            <p class="paragraph">
-                Morbi a risus sit amet lorem molestie bibendum. Sed porttitor non massa sed viverra. Ut vitae mollis turpis. Nunc non pellentesque dolor. Proin malesuada, erat eu sollicitudin vehicula, libero velit pharetra nunc, ac maximus tortor neque rhoncus dolor. Morbi ligula dolor, interdum nec ex in, commodo euismod ipsum. Integer quis mi lobortis, venenatis lorem at, faucibus ligula. Nunc id tristique enim, sed pretium augue. 
-            </p>
-        </header>
-    </main>
-    <footer id="footer">
-        
-    </footer>
-</body>
-</html>
-```
-
-En javascript, faire les modifications suivantes : 
-
-- Cibler la balise `footer` de 2 manières : par son attribut `ìd` (avec la méthode dédiée et avec `querySelector`) et lui ajouter la classe `footer`
-- Ajouter une balise `p` à la fin de `main` contenant ce texte : `Ceci est un contenu <strong>très important</strong>`
-- Cibler toutes les balises `p` de la page et changer la couleur du texte (`#000F00`) et remplacer la classe `paragraph` par la classe `text`
-- Ajouter une balise `ul` dans la balise `header`, avec 4 `li` à l'intérieur pour obtenir le résultat suivant : 
-```html
-<header id="header">
-    <ul class="list" id="important-list">
-        <li class="list__element" data-num="1">Ceci est l'élément n°0</li>
-        <li class="list__element" data-num="2">Ceci est l'élément n°1</li>
-        <li class="list__element" data-num="3">Ceci est l'élément n°2</li>
-        <li class="list__element" data-num="4">Ceci est l'élément n°3</li>
-    </ul>        
-</header>
-```
-
-Pour information : pour le nommage de mes classes, j'utilise la [convention de nommage BEM](http://getbem.com/).
-
 ## Les event listeners (écouteurs d'événements)
 
 - [addEventListener](https://developer.mozilla.org/fr/docs/Web/API/EventTarget/addEventListener)
@@ -353,3 +290,98 @@ element.addEventListener('click', function(event) {
     element.innerHTML = "I'm aware !";
 });
 ```
+
+### Utiliser l'objet `event`
+[Documentation](https://developer.mozilla.org/fr/docs/Web/API/Event)
+
+L'objet `event` que nous venons de voir permet également de récupérer des informations sur l'action de l'utilisateur (notamment avec quel noeud il a interagit). Pour une liste complète des [propriétés et méthode de l'objet `Event`](https://developer.mozilla.org/fr/docs/Web/API/Event), je vous conseille la documentation.
+
+Il y a différents objets `Event` possible, comme [MouseEvent](https://developer.mozilla.org/fr/docs/Web/API/MouseEvent) qui nous permettent d'avoir des informations très spécifiques à l'action en cours.
+
+Par exemple, avec un événement au clic, on peut récupérer le noeud qui a été cliqué :
+
+```js
+element.addEventListener('click', function(event) {
+    event.preventDefault();
+    // Grâce à cette ligne, si on clique sur le lien, le message d'alert ne sera pas affiché.
+    event.stopPropagation();
+    element.innerHTML = "I'm aware !";
+    console.log('clicked element : ', event.target);
+});
+```
+
+Sur un [événement au passage de la souris `mousemove`](https://developer.mozilla.org/fr/docs/Web/API/Element/mousemove_event), on peut avoir la position exacte du curseur de plusieurs manières : 
+
+```js
+element.addEventListener('mousemove', function(event) {
+    console.log(event.offsetX, event.offsetY); // position du curseur dans l'élément
+    console.log(event.clientX, event.clientY); // position du curseur dans le DOM
+    console.log(event.movementX, event.movementY); // position du curseur par rapport à la position du dernier événement mousemove
+    // Et bien d'autres...
+});
+```
+
+## Exercices
+
+### 1. Manipuler le HTML et les attributs
+
+Prendre le HTML suivant :
+
+```html
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test de manipulation du HTML</title>
+</head>
+<body>
+    <header id="header">
+            
+    </header>
+    <main id="main">
+        <header class="main-header">
+            <h1>Ceci est un titre</h1>
+            <p class="paragraph">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget arcu in tellus auctor mattis. Maecenas in scelerisque diam. Praesent sollicitudin sem eu viverra sollicitudin. Nulla bibendum mi et semper convallis. Mauris scelerisque sapien ut velit blandit aliquet. Proin nec lacus ac risus laoreet suscipit quis commodo nunc. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur ligula magna, ultricies non luctus at, placerat vel magna. Nullam nibh lorem, ornare ut ultrices at, malesuada nec risus. Cras dignissim, tortor in ullamcorper euismod, sem nibh consequat magna, eu volutpat ex leo vel tellus. Donec quis ex ac ligula varius porta. Sed laoreet augue sit amet lectus viverra, eu vulputate massa lacinia. Nulla facilisi. Aenean eget diam id ex iaculis tristique ut sed eros. Cras varius erat nunc.
+            </p>
+            <p class="paragraph">
+                Nam vitae sapien magna. Nunc non consequat mi. Nullam non ante in elit vulputate dignissim. Proin hendrerit ut diam et tristique. Duis interdum dui sem, eget bibendum neque lacinia id. Pellentesque venenatis, nisl eu faucibus ultrices, libero arcu rhoncus augue, vel ultrices ex nisl vel nibh. Nullam vitae nibh id lorem condimentum rhoncus id non diam. Aliquam ultricies et erat id mattis. Integer in egestas erat, porttitor blandit lectus. Phasellus dignissim, tellus pellentesque venenatis commodo, turpis tortor auctor leo, sed sagittis eros nisl sed ante.
+            </p>
+            <p class="paragraph paragraph--exception">
+                Duis accumsan turpis nec sollicitudin viverra. Donec non leo aliquam, faucibus risus vitae, egestas erat. Phasellus pulvinar nisi nec risus luctus, et dictum nisi varius. Aenean id euismod tellus. Proin lobortis vestibulum commodo. Sed elit odio, porta at odio eget, hendrerit efficitur massa. Curabitur iaculis sollicitudin nisi.
+            </p>
+            <p class="paragraph">
+                Fusce gravida neque justo, eget convallis nunc ultricies vitae. Integer hendrerit dolor nec finibus pharetra. Sed at est congue, pellentesque nulla vitae, imperdiet erat. Etiam eu fermentum lorem, eu porta tortor. Sed laoreet commodo eros gravida luctus. Integer ornare purus et augue maximus, semper efficitur lorem imperdiet. Nullam eget luctus tortor. Fusce ut euismod dolor. Suspendisse posuere, ante id finibus vestibulum, sem purus ullamcorper est, nec malesuada elit orci et augue. Aenean eu lectus a dui posuere egestas quis sit amet tortor. Fusce at magna eget justo fermentum vulputate.
+            </p>
+            <p class="paragraph">
+                Morbi a risus sit amet lorem molestie bibendum. Sed porttitor non massa sed viverra. Ut vitae mollis turpis. Nunc non pellentesque dolor. Proin malesuada, erat eu sollicitudin vehicula, libero velit pharetra nunc, ac maximus tortor neque rhoncus dolor. Morbi ligula dolor, interdum nec ex in, commodo euismod ipsum. Integer quis mi lobortis, venenatis lorem at, faucibus ligula. Nunc id tristique enim, sed pretium augue. 
+            </p>
+        </header>
+    </main>
+    <footer id="footer">
+        
+    </footer>
+</body>
+</html>
+```
+
+En javascript, faire les modifications suivantes : 
+
+- Cibler la balise `footer` de 2 manières : par son attribut `ìd` (avec la méthode dédiée et avec `querySelector`) et lui ajouter la classe `footer`
+- Ajouter une balise `p` à la fin de `main` contenant ce texte : `Ceci est un contenu <strong>très important</strong>`
+- Cibler toutes les balises `p` de la page et changer la couleur du texte (`#000F00`) et remplacer la classe `paragraph` par la classe `text`
+- Ajouter une balise `ul` dans la balise `header`, avec 4 `li` à l'intérieur pour obtenir le résultat suivant : 
+```html
+<header id="header">
+    <ul class="list" id="important-list">
+        <li class="list__element" data-num="1">Ceci est l'élément n°0</li>
+        <li class="list__element" data-num="2">Ceci est l'élément n°1</li>
+        <li class="list__element" data-num="3">Ceci est l'élément n°2</li>
+        <li class="list__element" data-num="4">Ceci est l'élément n°3</li>
+    </ul>        
+</header>
+```
+
+Pour information : pour le nommage de mes classes, j'utilise la [convention de nommage BEM](http://getbem.com/).
