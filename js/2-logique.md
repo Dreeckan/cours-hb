@@ -439,13 +439,13 @@ L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choi
   - Le Maitre du Donjon a 150 points de vie, inflige 6 points de dégâts par tour et possède une armure le protégeant de 4 points de dégâts
   - Les deux combattants s'attaquent mutuellement (le Maitre du Donjon commence) jusqu'à ce que les points de vie de l'un des deux atteigne 0
 
-### Affichage 
+#### Affichage 
 
 - Faire choisir l'équipement à l'aventurier
 - Lui annoncer les résultats de chaque attaque (qui attaque et combien de points de dégâts sont infligés)
 - Lui annoncer qui a gagné
 
-### Aller plus loin
+#### Aller plus loin
 
 - Ajouter un peu d'aléatoire :
   - le Maître du Donjon possède entre 125 et 175 points de vie

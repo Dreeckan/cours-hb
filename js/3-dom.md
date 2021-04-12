@@ -158,7 +158,6 @@ element.removeAttribute("name");
 HTML limite les attributs à une liste précise de balises. Toutefois, des balises data-* nous permettent de créer nos propres attributs !
 
 ```html
-
 <div class="jean-claude" data-van-dame data-strength="too much" data-humour="unlimited" data-aware="Off curse">
     He is aware.
 </div>
@@ -446,3 +445,51 @@ Use given HTML (see above) and create several event listeners :
 - If the user clicks on `inner` link, add in the console "The link has been clicked", but the `<span>` should not be duplicated
 - When the user enters something in the `email` field, display `email` field's content in `form-result` (either when typing or leaving the field)
 - Add the attribute `type="submit"` to the button. When this button is clicked, the page should not be reloaded and display the email field value (either in a `console.log` or in `form-result`)
+
+### 3. Récapitulatif (boss final)
+
+Nous allons reprendre le code / l'énoncé du code de [l'exercice "Jeu de rôle" de la partie précédente](https://formation-hb.drakolab.fr/js/2-logique.html#_4-un-jeu-de-role). Maintenant que nous avons la logique, nous allons mettre à jour l'interface pour rendre le jeu plus agréable à utiliser.
+
+L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choisir son arme et son armure, puis combattre le Maitre du Donjon.
+
+#### Règles du jeu
+
+- L'aventurier possède 20 points de vie
+- L'aventurier va avoir le choix entre 3 armes, chacune infligeant des dégâts plus ou moins élevés (bois: 2, fer: 5, magique: 10) et 3 armures, protégeant d'une certaine quantité de dégâts (bois : 1, fer: 3, magique: 5).
+- Une fois l'équipement choisi, le combat avec le Maitre du Donjon commence.
+  - Le Maitre du Donjon a 30 points de vie, inflige 6 points de dégâts par tour et possède une armure le protégeant de 4 points de dégâts
+  - Les deux combattants s'attaquent mutuellement (le Maitre du Donjon commence) jusqu'à ce que les points de vie de l'un des deux atteigne 0
+
+/!\ Attention : 
+- Aucun des deux personnages ne doit gagner de la vie si l'attaque de l'un n'est pas plus élevée que la défense de l'autre
+
+
+#### Affichage 
+
+- Nous allons supprimer les `prompt` et les `console.log` pour les remplacer par un formulaire
+- Créer un formulaire HTML avec les champs suivants 
+  1. `weapon` (`inputs` de type `radio`) pour choisir dans les armes
+  2. `armour` (`inputs` de type `radio`) pour choisir dans les armures
+  3. un bouton de validation (type `submit`) pour valider le formulaire
+- un titre `<h2>` pour afficher le résultat de la bataille
+```html
+  <h2>Vous avez triomphé du Maître du Donjon !</h2>
+```
+- une liste `<ol>` pour afficher les différents tours (plus besoin d'un compteur de tours) et ce qu'il s'y passe sous cette forme
+```html
+<ol>
+    <li>Le Maître du Donjon attaque ! Il vous inflige X points de dégâts ! Heureusement, il vous reste <strong>Y points de vie</strong></li>
+    <li>A votre tour ! vous infligez <strong>X points de dégâts</strong> au Maître. Malheureusement, il lui reste <strong>Y points de vie</strong></li>
+</ol>
+```
+
+#### Aller plus loin
+
+- Ajouter un peu d'aléatoire :
+  - le Maître du Donjon possède entre 125 et 175 points de vie
+  - le joueur possède entre 100 et 125 points de vie
+  - à chaque fois que l'un des personnages (l'aventurier ou le maitre du donjon) attaque, les dégâts produits sont entre 1 et la puissance de l'arme (exemple : 1 à 5 points de dégâts pour l'épée magique)
+  - le fonctionnement de l'armure reste inchangé
+- Un peu de style
+  - Ajouter [Bootstrap sur le projet](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+  - Mettre en forme le formulaire à l'aide des classes de Bootstrap (la [documentation pour les radios](https://getbootstrap.com/docs/5.0/forms/checks-radios/))
