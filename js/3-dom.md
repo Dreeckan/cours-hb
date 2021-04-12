@@ -428,7 +428,21 @@ Utiliser le HTML suivant :
 ```
 
 - Créer des events listeners pour :
-  - au clic dans `#wrapper` (n'importe où), dupliquer le `<span>` (avec la méthode `cloneNode()` par exemple)
-  - au clic sur le lien `#inner`, ajouter dans la console le texte "Le lien a été cliqué", mais sans dupliquer le span
-  - lorsqu'on tape quelque chose dans le champ email, afficher le contenu du champ `#email` dans `#form-result` (pendant que l'on tape ou lorsqu'on sort du champ)
+  - au clic dans le bloc `wrapper` (n'importe où), dupliquer le `<span>` (avec la méthode `cloneNode()` par exemple)
+  - au clic sur le lien `inner`, ajouter dans la console le texte "Le lien a été cliqué", mais sans dupliquer le span
+  - lorsqu'on tape quelque chose dans le champ `email`, afficher le contenu du champ `email` dans `form-result` (pendant que l'on tape ou lorsqu'on sort du champ)
   - ajouter (en js) l'attribut `type="submit"` au bouton et afficher le contenu du champ email quand le formulaire est soumis (et éviter le rechargement de la page)
+  
+#### Indices
+
+- lorsqu'on duplique un noeud avec `cloneNode()`, il faut lui donner un parent (comme nous l'avons fait avec `createElement()`)
+- le clic sur un lien (balise `a`) recharge la page, il faut empêcher ça grâce à une méthode de l'objet `event` (paramètre des fonctions callback des événements)
+- la méthode `addEventListener()` s'appelle exclusivement sur un noeud
+
+#### English version
+
+Use given HTML (see above) and create several event listeners :
+- If the user clicks anywhere in the `wrapper` block, duplicate the `<span>` (sur `cloneNode()` method)
+- If the user clicks on `inner` link, add in the console "The link has been clicked", but the `<span>` should not be duplicated
+- When the user enters something in the `email` field, display `email` field's content in `form-result` (either when typing or leaving the field)
+- Add the attribute `type="submit"` to the button. When this button is clicked, the page should not be reloaded and display the email field value (either in a `console.log` or in `form-result`)
