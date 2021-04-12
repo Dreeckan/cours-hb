@@ -229,7 +229,7 @@ Un événement est une **réaction** à une **action** de l'utilisateur. Vous po
 
 Le premier paramètre de cette méthode est le nom d'un événement, le second est une fonction (fonction de callback) ou le nom d'une fonction.
 
-L'un des plus courant : l'événement `onclick` qui se déclenche au clic de la souris dans un élément.
+L'un des plus courant : l'événement `click` qui se déclenche au clic de la souris dans un élément.
 
 ```js
 // On récupère le lien dont l'attribut id est jean-claude
