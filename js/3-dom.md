@@ -279,6 +279,8 @@ En javascript, faire les modifications suivantes :
 </header>
 ```
 
+Pour information : pour le nommage de mes classes, j'utilise la [convention de nommage BEM](http://getbem.com/).
+
 ## Les event listeners (écouteurs d'événements)
 
 - [addEventListener](https://developer.mozilla.org/fr/docs/Web/API/EventTarget/addEventListener)
