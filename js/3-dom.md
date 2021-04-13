@@ -463,6 +463,18 @@ L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choi
 /!\ Attention : 
 - Aucun des deux personnages ne doit gagner de la vie si l'attaque de l'un n'est pas plus élevée que la défense de l'autre
 
+##### English version
+
+- The player has 20 health points
+- The player has two choices 
+  - He has to choose between 3 weapons with different strength (wood: 2, iron: 5, magical: 10)
+  - He has to choose between 3 amours with different defense (wood : 1, iron: 3, magical: 5)
+- Once equipped the fight with the Dungeon Master starts
+  - The Dungeon Master has 30 health points, deals 6 damages each turn, and his armour protects him from 4 damages
+  - The two fighters attack each other until one of them has 0 health point
+  
+Warning :
+- if the armour of one fighter is greater than the strength of the other, the first one must not get health points back (a fighter that has been hurt can not heal)
 
 #### Affichage 
 
@@ -483,6 +495,35 @@ L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choi
 </ol>
 ```
 
+##### English version
+
+- We will delete every `prompt` and `console.log` from our code, to replace them with a form
+- Create a `<form>` with these fields :
+  1. `weapon` (`radio` inputs) to choose the weapon
+  2. `armour` (`radio` inputs) to choose the armour
+  3. a `submit` button to submit the form
+- A `<h2>` to display the battle's result
+```html
+  <h2>You vanquished the Evil Master!</h2>
+```
+- A `<ol>` to display every turn and its actions
+```html
+<ol>
+    <li>The Evil Master attacks! He deals X damages to you! Fortunately you still have<strong>Y health points</strong> left</li>
+    <li>Your turn! You deal <strong>X damages</strong> to the Master. Unfortunately, he still has <strong>Y health points</strong></li>
+</ol>
+```
+
+#### Indices
+
+- Événement `submit` sur le formulaire (pour empêcher le rechargement de la page et récupérer le contenu)
+- Utilisez le code de la partie 2 (le fonctionnement général est inchangé)
+
+##### English version
+
+- Use the `submit` event to avoid page reloading and get the form content
+- You can use the code from part 2 (we only change the way things are displayed)
+
 #### Aller plus loin
 
 - Ajouter un peu d'aléatoire :
@@ -493,3 +534,14 @@ L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choi
 - Un peu de style
   - Ajouter [Bootstrap sur le projet](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
   - Mettre en forme le formulaire à l'aide des classes de Bootstrap (la [documentation pour les radios](https://getbootstrap.com/docs/5.0/forms/checks-radios/))
+  
+##### English version
+
+- Add a bit of random (`Math.random()`):
+  - The Dungeon Master has between 125 and 175 health points
+  - The player has between 100 and 125 health points
+  - Each time a character attacks, he deals between 1 and his weapon's strength as damages (`damages = random(1, weapon.strength);`)
+  - Armour still works the same
+- Add Bootstrap to add some style:
+  - Add [Bootstrap CSS and JS](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+  - Use Bootstrap to make things more beautiful (here is [the doc for radio inputs](https://getbootstrap.com/docs/5.0/forms/checks-radios/))
