@@ -437,6 +437,11 @@ Utiliser le HTML suivant :
 - lorsqu'on duplique un noeud avec `cloneNode()`, il faut lui donner un parent (comme nous l'avons fait avec `createElement()`)
 - le clic sur un lien (balise `a`) recharge la page, il faut empêcher ça grâce à une méthode de l'objet `event` (paramètre des fonctions callback des événements)
 - la méthode `addEventListener()` s'appelle exclusivement sur un noeud
+- Récupérer l'input `radio` coché à partir de son attribut `name` :
+```js
+let checkedInput = document.querySelector('[name="jeSuisUnRadio"]:checked'); // On récupère l'input
+let checkedValue = checkedInput.value; // On récupère sa valeur (attribut value)
+```
 
 #### English version
 
