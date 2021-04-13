@@ -502,8 +502,7 @@ L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choi
 
 From the code [we did in previous section](https://formation-hb.drakolab.fr/js/2-logique.html#_4-un-jeu-de-role), we will try to make the same game, but better looking.
 
-The user is an adventurer, entering a dungeon. 
-L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choisir son arme et son armure, puis combattre le Maitre du Donjon.
+The user is an adventurer, entering a dungeon. He will first choose his weapon and armour, then fight the Dungeon Master.
 
 ##### Rules
 
