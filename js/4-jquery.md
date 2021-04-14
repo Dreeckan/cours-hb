@@ -276,3 +276,9 @@ let strength = jeanClaude.data('strength', 'more than that');
 - When hovering an article (`hover` event and/or method):
   - get its `data-id` attribute, 
   - update its `id` attribute: `id="article-X"` (replace X with the content of `data-id`)
+  
+## Exercices récapitulatifs
+
+### Conversion
+
+- Convertir le code de l'exercice "Jeu de Rôle" en JQuery (utiliser [ce fichier si vous préférez](https://github.com/Dreeckan/exercices-js/blob/main/dom/3-jdr.js))
