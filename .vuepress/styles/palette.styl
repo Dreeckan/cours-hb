@@ -1,4 +1,4 @@
-$accentColor = #fcd238
+$accentColor = #f9ad00
 $textColor = #ccc
 $borderColor = #384c65
 $codeBgColor = #282c34
@@ -7,8 +7,7 @@ $badgeTipColor = #42b983
 $badgeWarningColor = darken(#ffe564, 35%)
 $badgeErrorColor = #DA5961
 
-$backgroundColor = #2B2D41
-$navbarHeight = 5rem
+$backgroundColor = #1e1e1e
 
 .theme-container,
 .sidebar,
@@ -16,17 +15,19 @@ body
   background-color: $backgroundColor
 
 .navbar,
-.search-box input,
 .navbar .links,
-.search-box .suggestions
-  background-color: $textColor
-  color: $backgroundColor
-
+.search-box,
+.search-box .suggestions,
+.search-box .suggestions li:hover,
+.search-box .suggestions:hover,
+.search-box .suggestions:focus-within,
 .search-box .suggestions a
-  color: $backgroundColor
+  background-color: $backgroundColor
+  color: $textColor
 
 .search-box input
-  background-color: #fff
+  color: $backgroundColor
+  background-color: $textColor
 
 .nav-links a:hover,
 .nav-links a.router-link-active

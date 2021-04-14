@@ -10,7 +10,7 @@ module.exports = {
   searchPlaceholder: 'Chercher...',
   lastUpdated: 'Dernière mise à jour ',
   themeConfig: {
-    logo: '/assets/logo.gif',
+    logo: '/assets/LogoHB.png',
     smoothScroll: true,
     sidebar: [
       '/',
