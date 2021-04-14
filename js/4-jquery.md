@@ -60,6 +60,95 @@ let elements = $('.van-dame');
 let elements = $('div#jean-claude a.van.dame');
 ```
 
+### Parcourir le DOM
+
+Il arrive que l'on ait besoin de récupérer le parent d'un (ou plusieurs) élément récupéré avec JQuery (et donc, parcourir notre DOM).
+
+Plusieurs méthodes vont nous servir (où le paramètre `selecteur` peut être n'importe quel sélecteur CSS/JS) :
+
+- `children(selecteur)` pour récupérer les **enfants directs** de notre élément
+- `find(selecteur)` pour récupérer les **enfants à n'importe quel niveau** de notre élément (ce qui inclue les petits-enfants, etc.)
+- `parent()` pour récupérer le noeud parent
+- `parents(selecteur)` pour aller chercher dans les noeuds parents, grand-parents, etc.
+
+Imaginons ce HTML :
+
+```html
+
+<article>
+    <header>
+        <h2>Un titre</h2>
+    </header>
+    <p></p>
+    <p></p>
+</article>
+<article>
+    <header>
+        <h2>Un titre</h2>
+    </header>
+    <p></p>
+    <p></p>
+</article>
+```
+
+```js
+// On récupère des éléments dans notre DOM
+let articles = $('article');
+
+// On peut utiliser la méthode children() pour récupérer les enfants
+// Si l'on veut récupérer la balise header de nos articles : 
+let headers = articles.children('header');
+
+// Si on veut récupérer les balises h2, nous pouvons le faire de 2 manières:
+// En parcourant les enfants de headers
+let h2 = header.children('h2');
+// Directement depuis articles, avec find()
+h2 = articles.find('h2');
+
+// On va maintenant revenir en arrière et récupérer les articles depuis les h2
+// On récupère le noeud parent des h2 (header), puis les parents de ces parents (l'article)
+articles = h2.parent().parent();
+
+// On peut aussi aller chercher dans les parents, avec un sélecteur
+articles = h2.parents('article');
+```
+
+### Récupérer l'un des éléments ciblés
+
+Plusieurs méthodes permettent de récupérer un élément en particulier, dans le tableau des éléments récupérés.
+
+- `.last()` permet de récupérer le dernier élément (JQuery) de la liste (dernier dans le DOM)
+- `.fist()` permet de récupérer le premier élément (JQuery) de la liste (premier dans le DOM)
+- `.eq(number)` permet de récupérer l'élément (JQuery) à l'index `number` de la liste
+- `.get(number)` permet de récupérer l'élément (élément DOM, c’est-à-dire en VanillaJS/js classique)
+
+```html
+<article>
+    <p class="first"></p>
+    <p class="second"></p>
+    <p class="third"></p>
+    <p class="fourth"></p>
+</article>
+```
+
+```js
+// On récupère la liste des paragraphes
+let p = $('p');
+
+// Si on veut récupérer le premier élément
+let first = p.first(); // p.first est récupéré
+
+// Si on veut récupérer le dernier élément
+let last = p.last(); // p.fourth est récupéré
+
+// Si on veut récupérer le n-ème élément
+let nth = p.eq(n); // où n vaut entre 0 et 3 dans notre cas
+
+// Si on veut récupérer le n-ème élément, au format VanillaJS
+// (attention, on ne pourra dont pas utiliser les méthodes de JQuery directement dessus)
+let nthDom = p.get(n);
+```
+
 ### Exercice
 
 ```html
@@ -291,60 +380,23 @@ let strength = jeanClaude.data('strength', 'more than that');
   - get its `data-number` attribute,
   - update its `id` attribute: `id="article-X"` (replace X with the content of `data-number`)
 
-### Parcourir le DOM
+### Contenu d'un champ de formulaire
 
-Il arrive que l'on ait besoin de récupérer le parent d'un (ou plusieurs) élément récupéré avec JQuery (et donc, parcourir notre DOM).
-
-Plusieurs méthodes vont nous servir (où le paramètre `selecteur` peut être n'importe quel sélecteur CSS/JS) :
-- `children(selecteur)` pour récupérer les **enfants directs** de notre élément
-- `find(selecteur)` pour récupérer les **enfants à n'importe quel niveau** de notre élément (ce qui inclue les petits-enfants, etc.)
-- `parent()` pour récupérer le noeud parent
-- `parents(selecteur)` pour aller chercher dans les noeuds parents, grand-parents, etc.
-
-Imaginons ce HTML :
-
-```html
-
-<article>
-    <header>
-        <h2>Un titre</h2>
-    </header>
-    <p></p>
-    <p></p>
-</article>
-<article>
-    <header>
-        <h2>Un titre</h2>
-    </header>
-    <p></p>
-    <p></p>
-</article>
-```
+Vous pouvez récupérer / modifier la valeur d'un champ de formulaire avec la méthode `val()` de votre élément.
 
 ```js
-// On récupère des éléments dans notre DOM
-let articles = $('article');
+// On récupère notre champ de formulaire (ici, un input avec l'attribut name="test"
+let element = $('input[name="test"]');
 
-// On peut utiliser la méthode children() pour récupérer les enfants
-// Si l'on veut récupérer la balise header de nos articles : 
-let headers = articles.children('header');
+// On en récupère la valeur
+let value = element.val();
 
-// Si on veut récupérer les balises h2, nous pouvons le faire de 2 manières:
-// En parcourant les enfants de headers
-let h2 = header.children('h2');
-// Directement depuis articles, avec find()
-h2 = articles.find('h2');
-
-// On va maintenant revenir en arrière et récupérer les articles depuis les h2
-// On récupère le noeud parent des h2 (header), puis les parents de ces parents (l'article)
-articles = h2.parent().parent();
-
-// On peut aussi aller chercher dans les parents, avec un sélecteur
-articles = h2.parents('article');
+// On modifie la valeur
+element.val('Un texte de test');
 ```
 
 ## Exercices récapitulatifs
 
 ### Conversion
 
-- Convertir le code de l'exercice "Jeu de Rôle" en JQuery (utiliser [ce fichier si vous préférez](https://github.com/Dreeckan/exercices-js/blob/main/dom/3-jdr.js))
+- Convertir le code de l'exercice "Jeu de Rôle" en JQuery (utiliser [ce fichier si vous préférez](https://github.com/Dreeckan/exercices-js/blob/main/dom/3-jdr.js)) (voir [ma version en vidéo](https://www.loom.com/share/8a343f3a4ce1482a8643b2d50a136bf3))

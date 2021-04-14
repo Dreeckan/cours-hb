@@ -175,6 +175,21 @@ element.dataset.lastName = 'Van Dame';
 console.log(element.dataset.aware);
 ```
 
+### Contenu d'un champ de formulaire
+
+Vous pouvez récupérer / modifier la valeur d'un champ de formulaire avec la propriété `value` de votre élément.
+
+```js
+// On récupère notre champ de formulaire (ici, un input avec l'attribut name="test"
+let element = document.querySelector('input[name="test"]');
+
+// On en récupère la valeur
+let value = element.value;
+
+// On modifie la valeur
+element.value = 'Un texte de test';
+```
+
 ### Créer des éléments
 
 [Documentation](https://developer.mozilla.org/fr/docs/Web/API/Document/createElement)
@@ -323,6 +338,16 @@ element.addEventListener('mousemove', function (event) {
     // Et bien d'autres...
 });
 ```
+
+### Liste d'événements utiles
+
+- `click` : clic de la souris sur l'élément
+- `mouseenter` : la souris survole l'élément (attention, ne fonctionne pas sur mobile)
+- `mouseleave` : la souris ne survole plus l'élément (attention, ne fonctionne pas sur mobile)
+- `keydown` / `keyup`: lors de l'appui sur une touche du clavier (lorsque la touche est appuyée / relâchée)
+- `load`: lorsque le navigateur a fini de charger la page
+- `change`: lors du changement de valeur d'un champ de formulaire (s'applique uniquement sur les champs de formulaire `input`, `select`, `textarea`, etc.)
+- `submit`: lors de la soumission d'un formulaire (s'applique uniquement sur une balise `form`)
 
 ## Exercices
 
