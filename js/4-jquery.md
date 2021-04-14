@@ -63,13 +63,14 @@ let elements = $('div#jean-claude a.van.dame');
 ### Exercice
 
 ```html
+
 <header id="header" class="header">
     <h1 class="header__title">
         Test JQuery
     </h1>
 </header>
 <main id="main" class="main">
-    <article class="article" data-id="1">
+    <article class="article" data-number="1">
         <header class="article__header">
             <h2>Article 1</h2>
         </header>
@@ -78,7 +79,7 @@ let elements = $('div#jean-claude a.van.dame');
             <p class="paragraph">Phasellus bibendum non urna et hendrerit. Maecenas vestibulum cursus nisi sit amet luctus. Pellentesque molestie congue tempor. Nam venenatis mollis tortor, quis egestas ligula pellentesque eu.</p>
         </section>
     </article>
-    <article class="article" data-id="2">
+    <article class="article" data-number="2">
         <header class="article__header">
             <h2>Article 2</h2>
         </header>
@@ -102,6 +103,17 @@ let elements = $('div#jean-claude a.van.dame');
         </li>
     </ul>
 </footer>
+```
+
+et dans la balise `head` un peu de style :
+
+```html
+
+<style>
+    .paragraph--hovered {
+        color: red;
+    }
+</style>
 ```
 
 - Ajouter le HTML ci-dessus dans votre `<body>`
@@ -151,10 +163,10 @@ element.on('click', '.van.dame', function (event) {
 ### Exercices
 
 - Sur tous les liens, ajouter un event listener pour éviter que la page soit rechargée au clic (avec `preventDefault()`)
-- Sur le second paragraphe de chaque `article`, au survol de la souris (avec [la méthode `hover` de JQuery](https://api.jquery.com/hover/)), afficher : 
+- Sur le second paragraphe de chaque `article`, au survol de la souris (avec [la méthode `hover` de JQuery](https://api.jquery.com/hover/)), afficher :
   - un message `Vous entrez dans un article` dans la console quand la souris entre dans le paragraphe
   - un message `Vous sortez de l'article` dans la console quand la souris sort de le paragraphe
-  
+
 #### English version
 
 - On every link, add an event listener to avoir page reloading on click (using `preventDefault()`)
@@ -182,11 +194,11 @@ element.toggleClass('uneClasse');
 
 ### Exercices
 
-- Sur le second paragraphe de chaque `article`, au survol de la souris (avec [la méthode `hover` de JQuery](https://api.jquery.com/hover/)) : 
-  - Ajouter la classe `paragraph--hovered` quand la souris entre dans le paragraphe (pour le voir, ouvrez l'inspecteur)
-  - Enlever la classe `paragraph--hovered` quand la souris sort de le paragraphe (pour le voir, ouvrez l'inspecteur)
+- Sur le second paragraphe de chaque `article`, au survol de la souris (avec [la méthode `hover` de JQuery](https://api.jquery.com/hover/)) :
+  - Ajouter la classe `paragraph--hovered` sur l'élément survolé (et uniquement lui) quand la souris entre dans le paragraphe (pour le voir, ouvrez l'inspecteur)
+  - Enlever la classe `paragraph--hovered` sur l'élément survolé (et uniquement lui) quand la souris sort de le paragraphe (pour le voir, ouvrez l'inspecteur)
 - Faire la même chose à l'aide de `toggleClass()`
-  
+
 #### English version
 
 - On the second paragraphs of each `article` (using [`hover` method of JQuery](https://api.jquery.com/hover/)):
@@ -222,6 +234,7 @@ $('La <strong>classe</strong> !').prependTo('#jean-claude');
 
 - Au clic sur un lien du footer, remplacer le texte par `Ce lien a été cliqué` (utiliser `$(this)` pour récupérer l'élément cliqué)
 - Au chargement de la page, compter le nombre de balises `article` et ajouter ce HTML au début de la balise `main` (en remplaçant `X` par le nombre d'articles) :
+
 ```html
 <p>Il y a X articles dans cette page. Bonne lecture !</p>
 ```
@@ -230,6 +243,7 @@ $('La <strong>classe</strong> !').prependTo('#jean-claude');
 
 - When a footer link is clicked, replace its text with `This link has been clicked` (use `$(this)` to get clicked element)
 - On page load, count `article` nodes, and add this HTML on the beginning of `main` (replace `X` with that count):
+
 ```html
 <p>There are X articles on this page. Happy reading!</p>
 ```
@@ -268,15 +282,67 @@ let strength = jeanClaude.data('strength', 'more than that');
 ### Exercices
 
 - Au survol d'un `article` (méthode ou événement `hover`) :
-  - récupérer son attribut `data-id`,
-  - mettre à jour l'attribut `id` de cet article `id="article-X"` (remplacer X par l'id récupéré dans `data-id`)
+  - récupérer son attribut `data-number`,
+  - mettre à jour l'attribut `id` de cet article `id="article-X"` (remplacer X par l'id récupéré dans `data-number`)
 
 #### English version
 
 - When hovering an article (`hover` event and/or method):
-  - get its `data-id` attribute, 
-  - update its `id` attribute: `id="article-X"` (replace X with the content of `data-id`)
-  
+  - get its `data-number` attribute,
+  - update its `id` attribute: `id="article-X"` (replace X with the content of `data-number`)
+
+### Parcourir le DOM
+
+Il arrive que l'on ait besoin de récupérer le parent d'un (ou plusieurs) élément récupéré avec JQuery (et donc, parcourir notre DOM).
+
+Plusieurs méthodes vont nous servir (où le paramètre `selecteur` peut être n'importe quel sélecteur CSS/JS) :
+- `children(selecteur)` pour récupérer les **enfants directs** de notre élément
+- `find(selecteur)` pour récupérer les **enfants à n'importe quel niveau** de notre élément (ce qui inclue les petits-enfants, etc.)
+- `parent()` pour récupérer le noeud parent
+- `parents(selecteur)` pour aller chercher dans les noeuds parents, grand-parents, etc.
+
+Imaginons ce HTML :
+
+```html
+
+<article>
+    <header>
+        <h2>Un titre</h2>
+    </header>
+    <p></p>
+    <p></p>
+</article>
+<article>
+    <header>
+        <h2>Un titre</h2>
+    </header>
+    <p></p>
+    <p></p>
+</article>
+```
+
+```js
+// On récupère des éléments dans notre DOM
+let articles = $('article');
+
+// On peut utiliser la méthode children() pour récupérer les enfants
+// Si l'on veut récupérer la balise header de nos articles : 
+let headers = articles.children('header');
+
+// Si on veut récupérer les balises h2, nous pouvons le faire de 2 manières:
+// En parcourant les enfants de headers
+let h2 = header.children('h2');
+// Directement depuis articles, avec find()
+h2 = articles.find('h2');
+
+// On va maintenant revenir en arrière et récupérer les articles depuis les h2
+// On récupère le noeud parent des h2 (header), puis les parents de ces parents (l'article)
+articles = h2.parent().parent();
+
+// On peut aussi aller chercher dans les parents, avec un sélecteur
+articles = h2.parents('article');
+```
+
 ## Exercices récapitulatifs
 
 ### Conversion
