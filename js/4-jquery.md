@@ -48,16 +48,16 @@ Le principe est le même que `querySelectorAll()`, mais avec une syntaxe bien pl
 
 ```js
 // On appelle par une balise et on récupère tous les h1 de la page
-let element = $('h1');
+let elements = $('h1');
 
 // On utilise un id
-let element = $('#jean-claude');
+let elements = $('#jean-claude');
 
 // On utilise une classe
-let element = $('.van-dame');
+let elements = $('.van-dame');
 
 // Tout ça à la fois
-let element = $('div#jean-claude a.van.dame');
+let elements = $('div#jean-claude a.van.dame');
 ```
 
 ### Exercice
@@ -237,13 +237,13 @@ $('La <strong>classe</strong> !').prependTo('#jean-claude');
 ## Récupérer / modifier les attributs
 
 ```js
-let jeanClaude = $('.jean-claude');
+let jeanClaudes = $('.jean-claude');
 
 // Récupérer le contenu d'un attribut
-let id = jeanClaude.attr('id');
+let id = jeanClaudes.attr('id');
 
 // Mettre à jour un attribut
-jeanClaude.attr('id', 'chuck-norris');
+jeanClaudes.attr('id', 'chuck-norris');
 ```
 
 ### Récupérer/modifier les data-attributs
