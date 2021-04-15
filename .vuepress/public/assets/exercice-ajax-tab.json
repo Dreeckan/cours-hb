@@ -10,5 +10,17 @@
     "hp": 100,
     "defense": 5,
     "strength": 10
+  },
+  {
+    "name": "dungeonMaster",
+    "hp": 200,
+    "defense": 6,
+    "strength": 12
+  },
+  {
+    "name": "dungeonMaster2",
+    "hp": 150,
+    "defense": 10,
+    "strength": 5
   }
 ]

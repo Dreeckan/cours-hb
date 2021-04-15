@@ -149,6 +149,11 @@ Dans un premier temps, nous allons essayer de charger du contenu local (sur notr
 </li>
 ```
 
+#### Indices
+
+- Le fichier `exercice-ajax-single.json` contient un objet (JSON) avec les informations nécessaire. Il nous faut récupérer la donnée (et la convertir au format JSON si vous utilisez `fetch`) et créer un noeud HTML avec les données qu'elle contient.
+- Le fichier `exercice-ajax-tab.json` contient un tableau JSON, avec plusieurs objets qu'il va falloir traiter de la même manière (le fonctionnement va être très similaire, il y aura juste une boucle autour ;) )
+
 ### Utiliser une API pour récupérer des données complexes
 
 [API Météo](https://api.meteo-concept.com/documentation)
