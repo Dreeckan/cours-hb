@@ -135,15 +135,21 @@ $.ajax({
 Dans un premier temps, nous allons essayer de charger du contenu local (sur notre ordinateur), tant JSON que HTML.
 
 - Créer un fichier HTML et un fichier JS, lier les deux (`<script src=""></script>`)
-- Récupérer les fichiers nécessaires à l'exercice et ajoutez-les à votre projet (au même niveau que votre HTML et votre JS)
-  - `exercice-ajax-html.html`
+  - Ajouter ce code au début de votre `body`
 ```html
 <div class="uneClasse">
     <ul id="player-list">
     </ul>
 </div>
 ```
-  - `exercice-ajax-single.json`
+- Récupérer les fichiers nécessaires à l'exercice et ajoutez-les à votre projet (Rangez-les dans un dossier `data`)
+  - `data/exercice-ajax-html.html`
+```html
+<li data-name="player1" data-hp="125" id="player1" data-strength="2" data-defense="12">
+    Le joueur player1 a 125 points de vie, 2 points de force et 12 points de défense.
+</li>
+```
+  - `data/exercice-ajax-single.json`
 ```json
 {
   "name": "player1",
@@ -153,11 +159,11 @@ Dans un premier temps, nous allons essayer de charger du contenu local (sur notr
 }
 
 ```
-  - `exercice-ajax-tab.json`
+  - `data/exercice-ajax-tab.json`
 ```json
 [
   {
-    "name": "player1",
+    "name": "player1.1",
     "hp": 100,
     "defense": 5,
     "strength": 10
@@ -183,7 +189,7 @@ Dans un premier temps, nous allons essayer de charger du contenu local (sur notr
 ]
 ```
 - Nous allons faire 3 requêtes AJAX pour modifier notre HTML et/ou créer des noeuds dans notre page
-  - Une première, pour récupérer le HTML et l'intégrer dans le body (on le récupère avec `$.ajax` ou `fetch()` et on l'ajoute en tant que contenu à notre noeud `body`)
+  - Une première, pour récupérer le HTML et l'intégrer dans la liste (on le récupère avec `$.ajax` ou `fetch()` et on l'ajoute en tant que contenu à notre noeud `ul#player-list`)
   - Nous allons ensuite récupérer chaque fichier JSON (`exercice-ajax-single.json` et `exercice-ajax-tab.json`), récupérer les données, et créer des éléments pour les afficher dans notre DOM. Chaque fichier contient un ou des objets `player` et nous allons nous servir de ces données pour ajouter des `<li>` dans la liste que nous avons importé dans le premier appel AJAX.
     - Pour chaque objet dans le fichier JSON, créer un noeud `li` de cette forme :
 ```html
@@ -194,23 +200,29 @@ Dans un premier temps, nous allons essayer de charger du contenu local (sur notr
 
 #### Indices
 
-- Le fichier `exercice-ajax-single.json` contient un objet (JSON) avec les informations nécessaires. Il nous faut récupérer la donnée (et la convertir au format JSON si vous utilisez `fetch`) et créer un noeud HTML avec les données qu'elle contient.
-- Le fichier `exercice-ajax-tab.json` contient un tableau JSON, avec plusieurs objets qu'il va falloir traiter de la même manière (le fonctionnement va être très similaire, il y aura juste une boucle autour ;) ).
+- Le fichier `data/exercice-ajax-single.json` contient un objet (JSON) avec les informations nécessaires. Il nous faut récupérer la donnée (et la convertir au format JSON si vous utilisez `fetch`) et créer un noeud HTML avec les données qu'elle contient.
+- Le fichier `data/exercice-ajax-tab.json` contient un tableau JSON, avec plusieurs objets qu'il va falloir traiter de la même manière (le fonctionnement va être très similaire, il y aura juste une boucle autour ;) ).
 
 ### English version
 
 First, we will load some content from our computer, JSON and HTML.
 
 - Create an HTML file, and a JS file (use `script` tag to link them)
-- Download necessary files and add them to your project
-  - `exercice-ajax-html.html`
+  - Add this code at the beginning of its `body`
 ```html
-<div class="uneClasse">
+<div class="className">
     <ul id="player-list">
     </ul>
 </div>
 ```
-  - `exercice-ajax-single.json`
+- Download necessary files and add them to your project
+  - `data/exercice-ajax-html.html`
+```html
+<li data-name="player0" data-hp="125" id="player0" data-strength="2" data-defense="12">
+    The player0 player has 125 health points, 2 in strength and 12 in defense.
+</li>
+```
+  - data/`exercice-ajax-single.json`
 ```json
 {
   "name": "player1",
@@ -220,11 +232,11 @@ First, we will load some content from our computer, JSON and HTML.
 }
 
 ```
-  - `exercice-ajax-tab.json`
+  - `data/exercice-ajax-tab.json`
 ```json
 [
   {
-    "name": "player1",
+    "name": "player1.1",
     "hp": 100,
     "defense": 5,
     "strength": 10
@@ -250,7 +262,7 @@ First, we will load some content from our computer, JSON and HTML.
 ]
 ```
 - We will now make 3 AJAX requests to update our HTML page and/or create new nodes with JS
-  - First request: get the HTML file and update the `body` tag with its content (get it with `$.ajax` or `fetch()`, as you prefer)
+  - First request: get the HTML file and update the `ul#player-list` tag with its content (get it with `$.ajax` or `fetch()`, as you prefer)
   - Second and third : get the JSON files (`exercice-ajax-single.json` and `exercice-ajax-tab.json`), extract their data, create new nodes and add them to our DOM. Each file contains one or several `player` objects, and we will use these data to create `li` nodes (and add it to a `ul` node that we loaded in our first AJAX request).
     - For every object from our JSON, your `li` node should look like this:
 ```html
