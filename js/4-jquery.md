@@ -118,7 +118,7 @@ articles = h2.parents('article');
 Plusieurs méthodes permettent de récupérer un élément en particulier, dans le tableau des éléments récupérés.
 
 - `.last()` permet de récupérer le dernier élément (JQuery) de la liste (dernier dans le DOM)
-- `.fist()` permet de récupérer le premier élément (JQuery) de la liste (premier dans le DOM)
+- `.first()` permet de récupérer le premier élément (JQuery) de la liste (premier dans le DOM)
 - `.eq(number)` permet de récupérer l'élément (JQuery) à l'index `number` de la liste
 - `.get(number)` permet de récupérer l'élément (élément DOM, c’est-à-dire en VanillaJS/js classique)
 
