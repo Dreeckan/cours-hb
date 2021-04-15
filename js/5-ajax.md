@@ -152,7 +152,26 @@ Dans un premier temps, nous allons essayer de charger du contenu local (sur notr
 #### Indices
 
 - Le fichier `exercice-ajax-single.json` contient un objet (JSON) avec les informations nécessaires. Il nous faut récupérer la donnée (et la convertir au format JSON si vous utilisez `fetch`) et créer un noeud HTML avec les données qu'elle contient.
-- Le fichier `exercice-ajax-tab.json` contient un tableau JSON, avec plusieurs objets qu'il va falloir traiter de la même manière (le fonctionnement va être très similaire, il y aura juste une boucle autour ;) )
+- Le fichier `exercice-ajax-tab.json` contient un tableau JSON, avec plusieurs objets qu'il va falloir traiter de la même manière (le fonctionnement va être très similaire, il y aura juste une boucle autour ;) ).
+
+### English version
+
+First, we will load some content from our computer, JSON and HTML.
+
+- Create an HTML file, and a JS file (use `script` tag to link them)
+- Download necessary files and add them to your project
+  - [an HTML file](/asset/exercice-ajax-html.html)
+  - [a JSON file with one resource](/asset/exercice-ajax-single.json)
+  - [a JSON file with an array of resources](/asset/exercice-ajax-tab.json)
+- We will now make 3 AJAX requests to update our HTML page and/or create new nodes with JS
+  - First request: get the HTML file and update the `body` tag with its content (get it with `$.ajax` or `fetch()`, as you prefer)
+  - Second and third : get the JSON files (`exercice-ajax-single.json` and `exercice-ajax-tab.json`), extract their data, create new nodes and add them to our DOM. Each file contains one or several `player` objects, and we will use these data to create `li` nodes (and add it to a `ul` node that we loaded in our first AJAX request).
+    - For every object from our JSON, your `li` node should look like this:
+```html
+<li data-name="player1" data-hp="125" id="player1" data-strength="2" data-defense="12">
+    The player1 player has 125 health points, 2 in strength and 12 in defense.
+</li>
+```
 
 ### Utiliser une API pour récupérer des données complexes
 
