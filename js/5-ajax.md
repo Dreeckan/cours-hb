@@ -136,9 +136,9 @@ Dans un premier temps, nous allons essayer de charger du contenu local (sur notr
 
 - Créer un fichier HTML et un fichier JS, lier les deux (`<script src=""></script>`)
 - Récupérer les fichiers nécessaires à l'exercice et ajoutez-les à votre projet (au même niveau que votre HTML et votre JS)
-  - [Un fichier HTML](/asset/exercice-ajax-html.html)
-  - [Un fichier JSON contenant une donnée](/asset/exercice-ajax-single.json)
-  - [Un fichier JSON contenant un tableau de données](/asset/exercice-ajax-tab.json)
+  - [Un fichier HTML](/assets/exercice-ajax-html.html)
+  - [Un fichier JSON contenant une donnée](/assets/exercice-ajax-single.json)
+  - [Un fichier JSON contenant un tableau de données](/assets/exercice-ajax-tab.json)
 - Nous allons faire 3 requêtes AJAX pour modifier notre HTML et/ou créer des noeuds dans notre page
   - Une première, pour récupérer le HTML et l'intégrer dans le body (on le récupère avec `$.ajax` ou `fetch()` et on l'ajoute en tant que contenu à notre noeud `body`)
   - Nous allons ensuite récupérer chaque fichier JSON (`exercice-ajax-single.json` et `exercice-ajax-tab.json`), récupérer les données, et créer des éléments pour les afficher dans notre DOM. Chaque fichier contient un ou des objets `player` et nous allons nous servir de ces données pour ajouter des `<li>` dans la liste que nous avons importé dans le premier appel AJAX.
@@ -160,9 +160,9 @@ First, we will load some content from our computer, JSON and HTML.
 
 - Create an HTML file, and a JS file (use `script` tag to link them)
 - Download necessary files and add them to your project
-  - [an HTML file](/asset/exercice-ajax-html.html)
-  - [a JSON file with one resource](/asset/exercice-ajax-single.json)
-  - [a JSON file with an array of resources](/asset/exercice-ajax-tab.json)
+  - [an HTML file](/assets/exercice-ajax-html.html)
+  - [a JSON file with one resource](/assets/exercice-ajax-single.json)
+  - [a JSON file with an array of resources](/assets/exercice-ajax-tab.json)
 - We will now make 3 AJAX requests to update our HTML page and/or create new nodes with JS
   - First request: get the HTML file and update the `body` tag with its content (get it with `$.ajax` or `fetch()`, as you prefer)
   - Second and third : get the JSON files (`exercice-ajax-single.json` and `exercice-ajax-tab.json`), extract their data, create new nodes and add them to our DOM. Each file contains one or several `player` objects, and we will use these data to create `li` nodes (and add it to a `ul` node that we loaded in our first AJAX request).
