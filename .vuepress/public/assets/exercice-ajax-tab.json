@@ -1,0 +1,14 @@
+[
+  {
+    "name": "player1",
+    "hp": 100,
+    "defense": 5,
+    "strength": 10
+  },
+  {
+    "name": "player2",
+    "hp": 100,
+    "defense": 5,
+    "strength": 10
+  }
+]

@@ -128,6 +128,27 @@ $.ajax({
 });
 ```
 
-## Exercice
+## Exercices
+
+### Tests locaux
+
+Dans un premier temps, nous allons essayer de charger du contenu local (sur notre ordinateur), tant JSON que HTML.
+
+- Créer un fichier HTML et un fichier JS, lier les deux (`<script src=""></script>`)
+- Récupérer les fichiers nécessaires à l'exercice et ajoutez-les à votre projet (au même niveau que votre HTML et votre JS)
+  - [Un fichier HTML](/asset/exercice-ajax-html.html)
+  - [Un fichier JSON contenant une donnée](/asset/exercice-ajax-single.json)
+  - [Un fichier JSON contenant un tableau de données](/asset/exercice-ajax-tab.json)
+- Nous allons faire 3 requêtes AJAX pour modifier notre HTML et/ou créer des noeuds dans notre page
+  - Une première, pour récupérer le HTML et l'intégrer dans le body (on le récupère avec `$.ajax` ou `fetch()` et on l'ajoute en tant que contenu à notre noeud `body`)
+  - Nous allons ensuite récupérer chaque fichier JSON (`exercice-ajax-single.json` et `exercice-ajax-tab.json`), récupérer les données, et créer des éléments pour les afficher dans notre DOM. Chaque fichier contient un ou des objets `player` et nous allons nous servir de ces données pour ajouter des `<li>` dans la liste que nous avons importé dans le premier appel AJAX.
+    - Pour chaque objet dans le fichier JSON, créer un noeud `li` de cette forme :
+```html
+<li data-name="player1" data-hp="125" id="player1" data-strength="2" data-defense="12">
+    Le joueur player1 a 125 points de vie, 2 points de force et 12 points de défense.
+</li>
+```
+
+### Utiliser une API pour récupérer des données complexes
 
 [API Météo](https://api.meteo-concept.com/documentation)
