@@ -66,10 +66,11 @@ Il arrive que l'on ait besoin de récupérer le parent d'un (ou plusieurs) élé
 
 Plusieurs méthodes vont nous servir (où le paramètre `selecteur` peut être n'importe quel sélecteur CSS/JS) :
 
-- `children(selecteur)` pour récupérer les **enfants directs** de notre élément
-- `find(selecteur)` pour récupérer les **enfants à n'importe quel niveau** de notre élément (ce qui inclue les petits-enfants, etc.)
-- `parent()` pour récupérer le noeud parent
-- `parents(selecteur)` pour aller chercher dans les noeuds parents, grand-parents, etc.
+- `.children(selecteur)` pour récupérer les **enfants directs** de notre élément
+- `.find(selecteur)` pour récupérer les **enfants à n'importe quel niveau** de notre élément (ce qui inclue les petits-enfants, etc.)
+- `.parent()` pour récupérer le noeud parent
+- `.parents(selecteur)` pour aller chercher dans les noeuds parents, grand-parents, etc.
+- `.siblings(selecteur)` / `.next()` / `.previous()` pour récupérer les éléments adjacents (au même niveau dans le DOM, on peut aussi parler des noeuds frères)
 
 Imaginons ce HTML :
 
@@ -101,7 +102,7 @@ let headers = articles.children('header');
 
 // Si on veut récupérer les balises h2, nous pouvons le faire de 2 manières:
 // En parcourant les enfants de headers
-let h2 = header.children('h2');
+let h2 = headers.children('h2');
 // Directement depuis articles, avec find()
 h2 = articles.find('h2');
 
@@ -111,6 +112,15 @@ articles = h2.parent().parent();
 
 // On peut aussi aller chercher dans les parents, avec un sélecteur
 articles = h2.parents('article');
+
+// On veut récupérer tous les frères de nos balises <header>
+// Si on utilise l'argument de .siblings(), alors seuls les éléments correspondants
+// à ce sélecteurs seront retournés
+let headersSiblings = headers.siblings();
+
+// Pour récupérer l'élément juste après <header> dans le DOM, on utilise .next()
+// .previous() s'utilise de la même manière, mais pour récupérer l'élément juste avant dans le DOM
+let nextToHeader = headers.next();
 ```
 
 ### Récupérer l'un des éléments ciblés
@@ -415,6 +425,10 @@ let value = element.val();
 // On modifie la valeur
 element.val('Un texte de test');
 ```
+
+### Récupérer le contenu d'un formulaire
+
+`.serialize()`
 
 ## Exercices récapitulatifs
 
