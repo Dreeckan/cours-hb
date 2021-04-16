@@ -93,7 +93,7 @@ Une fois que vous avez récupéré un noeud, plusieurs attributs permettent de n
 Deux propriétés vous permettent de modifier rapidement le contenu d'un noeud `element` que vous avez récupéré :
 
 - `element.innerHTML`: permet d'accéder/modifier le contenu (sous forme de html) de l'élément (conserve donc la balise) ([Documentation](https://developer.mozilla.org/fr/docs/Web/API/Element/innerHTML))
-- `element.textContent`: permet d'accéder/modifier le contenu (sous forme textuelle, sans balise) de l'élément (conserve donc la balise) ([Documentation](https://developer.mozilla.org/fr/docs/Web/API/Node/textContent))
+- `element.textContent` ou `element.innerText`: permet d'accéder/modifier le contenu (sous forme textuelle, sans balise) de l'élément (conserve donc la balise) ([Documentation](https://developer.mozilla.org/fr/docs/Web/API/Node/textContent))
 
 ```js
 let element = document.getElementById('main');
@@ -194,10 +194,25 @@ element.value = 'Un texte de test';
 
 [Documentation](https://developer.mozilla.org/fr/docs/Web/API/Document/createElement)
 
-La méthode `createElement()` vous permet de créer un élément à ajouter plus tard au DOM (attention, par défaut, il ne s'affiche nulle part et nous verront comment l'ajouter ensuite).
+La méthode `.createElement()` vous permet de créer un élément à ajouter plus tard au DOM (attention, par défaut, il ne s'affiche nulle part et nous verront comment l'ajouter ensuite).
 
 ```js
 const newElement = document.createElement("p");
+```
+
+#### Copier un noeud existant
+
+[Documentation](https://developer.mozilla.org/fr/docs/Web/API/Node/cloneNode)
+
+La méthode `.cloneNode()` vous permet de copier un noeud. Comme pour toute création, il faut ensuite attacher ce noeud à un autre, pour qu'il apparaisse dans le HTML. Lorsqu'on copie un élément, les auditeurs/écouteurs d'événements (ajoutés avec `addEventListener()`) ne sont pas copiés.
+
+```js
+// On récupère un lien dont l'attribut id est test
+let element = document.querySelector("a#test");
+
+// On crée une copie de element
+// l'argument true permet de cloner également les enfants
+let cloneOfElement = element.cloneNode(true);
 ```
 
 #### Ajouter des enfants
@@ -212,6 +227,11 @@ const newElement = document.createElement("p");
 let element = document.getElementById("jean-claude");
 // On ajouter notre nouvel élément dans le noeud voulu (à la fin)
 element.appendChild(newElement);
+
+// On récupère son futur parent
+let element = document.getElementById("jean-claude");
+// On ajouter notre nouvel élément dans le noeud voulu (au début)
+element.prepend(newElement);
 ```
 
 #### Supprimer / remplacer des éléments
@@ -257,14 +277,14 @@ element.addEventListener('click', function () {
 
 Dans notre exemple, vous remarquerez que la page se recharge et que notre texte ne s'affiche pas.
 
-### preventDefault()
+### event.preventDefault()
 
 Il nous manque 2 choses pour éviter le comportement précédent :
 
 - Un moyen de savoir ce qui a été cliqué
 - Un moyen d'empêcher le comportement normal de notre élément (éviter le rechargement de notre page)
 
-Heureusement, notre fonction de callback (le deuxième paramètre de `addEventListener`) prend un paramètre, l'`event` javascript qui a été produit. Cet objet contient de nombreuses informations et méthodes utiles, dont `preventDefault()`.
+Heureusement, notre fonction de callback (le deuxième paramètre de `addEventListener`) prend un paramètre, l'`event` javascript qui a été produit. Cet objet contient de nombreuses informations et méthodes utiles, dont `event.preventDefault()`.
 
 ```js
 // On récupère le lien dont l'attribut id est jean-claude
@@ -280,7 +300,7 @@ element.addEventListener('click', function (event) {
 });
 ```
 
-### stopPropagation()
+### event.stopPropagation()
 
 Cette deuxième méthode de l'`event` nous permet d'éviter un autre comportement : la propagation d'un événement à son parent. En effet, quand vous cliquez sur un élément, si cet élément à un parent avec un event listener, il sera également déclenché.
 
@@ -452,14 +472,14 @@ Utiliser le HTML suivant :
 ```
 
 - Créer des events listeners pour :
-  - au clic dans le bloc `wrapper` (n'importe où), dupliquer le `<span>` (avec la méthode `cloneNode()` par exemple)
+  - au clic dans le bloc `wrapper` (n'importe où), dupliquer le `<span>` (avec la méthode `.cloneNode()` par exemple)
   - au clic sur le lien `inner`, ajouter dans la console le texte "Le lien a été cliqué", mais sans dupliquer le span
   - lorsqu'on tape quelque chose dans le champ `email`, afficher le contenu du champ `email` dans `form-result` (pendant que l'on tape ou lorsqu'on sort du champ)
   - ajouter (en js) l'attribut `type="submit"` au bouton et afficher le contenu du champ email quand le formulaire est soumis (et éviter le rechargement de la page)
   
 #### Indices
 
-- lorsqu'on duplique un noeud avec `cloneNode()`, il faut lui donner un parent (comme nous l'avons fait avec `createElement()`)
+- lorsqu'on duplique un noeud avec `.cloneNode()`, il faut lui donner un parent (comme nous l'avons fait avec `createElement()`)
 - le clic sur un lien (balise `a`) recharge la page, il faut empêcher ça grâce à une méthode de l'objet `event` (paramètre des fonctions callback des événements)
 - la méthode `addEventListener()` s'appelle exclusivement sur un noeud
 - Récupérer l'input `radio` coché à partir de son attribut `name` :

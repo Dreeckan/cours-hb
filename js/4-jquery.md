@@ -297,6 +297,8 @@ element.toggleClass('uneClasse');
 
 ## Modifier / ajouter du contenu
 
+Une fois qu'on a ciblé un ou des éléments avec JQuery, on peut en modifier le contenu (comme avec `.innerHTML()` et `.textContent()`) :
+
 ```js
 let element = $('#jean-claude');
 
@@ -305,7 +307,11 @@ element.text('La classe !');
 
 // Remplace le contenu de la balise par du html
 element.html('La <strong>classe</strong> !');
+```
 
+On peut également ajouter du contenu à la fin ou au début de notre élément
+
+```js
 // Ajoute le contenu à la fin de la balise
 element.append('La <strong>classe</strong> !');
 
@@ -317,6 +323,19 @@ element.prepend('La <strong>classe</strong> !');
 
 // Ou dans l'autre sens, on crée un nouveau noeud et on l'ajoute au début de notre Jean Claude
 $('La <strong>classe</strong> !').prependTo('#jean-claude');
+```
+
+On peut également créer une balise de zéro avec `$('<nomDeLaBalise>')`. Ici, ce sont les chevrons (`<` et `>`) qui nous permettent de distinguer la création de la sélection d'éléments. Pour résumer : `$('li')` sélectionne des noeuds `li` dans la page, `$('<li>')` crée un nouveau noeud. 
+/!\ Une balise ainsi créée n'apparait pas dans le DOM tant qu'elle n'a pas été attachée à une autre balise (avec `.append()` ou `.appendTo()` par exemple).
+
+```js 
+// Ici, on crée une nouvelle balise <span>, qu'on ajoute ensuite à la fin de notre element 
+let newSpan = $('<span>');
+// On lui donne un contenu
+newSpan.text('un texte de test');
+// On ajouter notre nouveau span dans notre element
+// Sans cela, il n'apparait pas dans la page !
+element.append(newSpan);
 ```
 
 ### Exercice
@@ -350,6 +369,8 @@ jeanClaudes.attr('id', 'chuck-norris');
 ```
 
 ### Récupérer/modifier les data-attributs
+
+/!\ Lorsqu'on utilise `.data('name', value)`, le DOM n'est pas mis à jour (l'attribut `data-name="value"` n'apparait pas dans le DOM). Pour cela, utiliser `.attr()`.
 
 ```html
 
