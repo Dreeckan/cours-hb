@@ -326,6 +326,27 @@ tab.forEach((element) => {
 });
 ```
 
+### For...in
+
+- Fonctionne sur les objets
+- Permet d'en parcourir les propriétés
+
+```js
+let player = {
+    name: 'Rémi',
+    hp: 100,
+    defense: 2,
+    strength: -1
+};
+
+for (const propriete in player) {
+    // La constante propriete contient le nom de la propriété
+    // Pour récupérer la valeur de la propriété, il faut utiliser 
+    // la notation player['nomDeLaPropriete'], qui est strictement équivalente à player.nomDeLaPropriete
+    console.log('Valeur lié à la propriété ' + propriete + ' : '+ player[propriete]);
+}
+```
+
 ## Exercice 1 : utiliser les conditions et les fonctions
 
 Une petite calculatrice de montant TTC à partir du HT :
