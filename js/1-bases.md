@@ -370,3 +370,23 @@ La plus courante, l'affectation (`a = x;`) se termine toujours par un `;`.
 Les instructions contenant des accolades `{}`, comme les conditions, les boucles, etc. ne prennent pas de `;`.
 
 Pour aller plus loin, [un article très intéressant sur les `;` en js](https://jeremymouzin.com/blog/les-points-virgules-en-javascript-le-guide-definitif/)
+
+## Le mot-clé `this`
+
+[Documentation](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/this)
+
+### Contexte global
+
+Dans le contexte global, c’est-à-dire en dehors de tout objet ou fonction, `this` vaut `window` (objet contenant les informations du navigateur)
+
+### Dans une fonction d'événement
+
+Dans une fonction d'événement, `this` fait référence au noeud/la balise qui a déclenché l'événement.
+
+```js
+<a id="unLien">Un texte</a>
+
+document.querySelector('#unLien').addEventListener('click', function() {
+    console.log(this); // Affiche <a id="unLien">Un texte</a>
+})
+```
