@@ -348,6 +348,14 @@ newSpan.text('un texte de test');
 element.append(newSpan);
 ```
 
+Il est également possible de copier un noeud existant. Comme avec VanillaJS, nous pouvons copier un noeud, à condition de l'attacher au DOM après copie.
+
+```js
+let cloneNode = $('#existingNode').clone();
+
+$('body').append(cloneNode);
+```
+
 ### Exercice
 
 - Au clic sur un lien du footer, remplacer le texte par `Ce lien a été cliqué` (utiliser `$(this)` pour récupérer l'élément cliqué)
