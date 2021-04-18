@@ -370,3 +370,51 @@ La plus courante, l'affectation (`a = x;`) se termine toujours par un `;`.
 Les instructions contenant des accolades `{}`, comme les conditions, les boucles, etc. ne prennent pas de `;`.
 
 Pour aller plus loin, [un article très intéressant sur les `;` en js](https://jeremymouzin.com/blog/les-points-virgules-en-javascript-le-guide-definitif/)
+
+## Le mot-clé `this`
+
+[Documentation](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/this)
+
+### Contexte global
+
+Dans le contexte global, c’est-à-dire en dehors de tout objet ou fonction, `this` vaut `window` (objet contenant les informations du navigateur)
+
+### Dans une fonction d'événement
+
+Dans une fonction d'événement, `this` fait référence au noeud/la balise qui a déclenché l'événement.
+
+```js
+<a id="unLien">Un texte</a>
+
+document.querySelector('#unLien').addEventListener('click', function() {
+    console.log(this); // Affiche <a id="unLien">Un texte</a>
+})
+```
+
+### Dans un objet
+
+Dans un objet, qu'il soit littéral ou avec une classe, `this` contient l'objet lui-même.
+
+Voir [la section sur la POO](6-poo.md) pour plus de détails.
+
+### Dans les fonctions fléchées
+
+Utiliser `this` dans une fonction fléchée fait référence au contexte parent. S'il s'agit du contexte global, `this` contient `window`.
+
+### Utiliser `.bind()` pour changer la valeur de `this`
+
+Il est possible de changer la valeur de `this` dans une fonction avec la méthode `.bind()`
+
+```js
+function onClickButton(){
+	console.log(this); //{prop: "toto"}
+}
+
+/* 
+	on change le contexte de la fonction onClickButton 
+	pour correspondra à l'objet contenu dans le bind 
+	et non plus à la balise qui a déclenché l'événement
+*/
+document.querySelector("#select")
+	.addEventListener("click", onClickButton.bind({prop: "toto"}));
+```
