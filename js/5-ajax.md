@@ -386,7 +386,7 @@ For every joke we get, create a HTML node, and add it to the `#jokes` node. (rep
 
 ### Boss de fin
 
-Nous allons récupérer des données depuis une API plus complexe : [https://pokeapi.co/docs](une API sur les Pokémon)
+Nous allons récupérer des données depuis une API plus complexe : [une API sur les Pokémon](https://pokeapi.co/docs)
 
 Dans un premier temps, nous allons récupérer la liste des pokémon de première génération : [les informations sur la première génération](https://pokeapi.co/api/v2/generation/1/).
 Nous allons récupérer uniquement la propriété `pokemon_species`, mais nous allons en parcourir tout le contenu (attention, nous allons récupérer les informations de 150 pokémons).
@@ -418,7 +418,7 @@ Au clic sur le lien `Plus d'informations`, appeler l'API `https://pokeapi.co/api
 
 #### English version
 
-Let's get some data from a far more complex API : [https://pokeapi.co/docs](a pokemon API)
+Let's get some data from a far more complex API : [a pokemon API](https://pokeapi.co/docs)
 
 First, let's get the list of pokemons from the first generation : [https://pokeapi.co/api/v2/generation/1/](https://pokeapi.co/api/v2/generation/1/).
 We will get the property `pokemon_species` and get all of its content (warning, we will receive informations for 150 pokemons).
