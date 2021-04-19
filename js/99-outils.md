@@ -28,7 +28,78 @@ $(document).ready(function () {
 
 ## LocalStorage / SessionStorage
 
+[Documentation](https://developer.mozilla.org/fr/docs/Web/API/Web_Storage_API)
+
+Ces deux fonctionnalités fonctionnent de la même manière, à une différence près : la durée de persistance des données dans le navigateur.
+- localStorage stocke les éléments durablement (ils sont conservés même plusieurs jours après, alors que le navigateur a été fermé)
+- sessionStorage stocke les éléments le temps de la session (dès que le navigateur est fermé, les données sont supprimées)
+
+Les deux fonctionnalités stockent les éléments dans un structure ressemblant à un tableau. 
+- On peut y ajouter des éléments avec la méthode `.setItem('nomDeLItem', 'valeurAssociée')`
+- On peut y récupérer des éléments avec la méthode `.getItem('nomDeLItem')`
+- On peut y supprimer des éléments avec la méthode `.removeItem('nomDeLItem')`
+- On peut en effacer tout le contenu avec la méthode `.clear()`
+
+La valeur que l'on souhaite stocker doit être une valeur textuelle. Nous allons donc le plus souvent devoir convertir nos éléments en JSON (avec `JSON.stringify()` par exemple).
+
+```js
+// On stocke un élément durablement
+localStorage.setItem('test', 'uneValeurDeTest');
+
+// On affiche cet élément
+console.log(localStorage.getItem('test')); // Affiche "uneValeurDeTest"
+
+
+// On stocke un élément pour la durée de la session
+sessionStorage.setItem('test', 'uneValeurDeTest');
+
+// On affiche cet élément
+console.log(sessionStorage.getItem('test')); // Affiche "uneValeurDeTest"
+```
+
 ## Les timers
+
+### Les intervalles
+
+[Documentation](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval)
+
+Un intervalle permet de répéter une action à intervalle régulier (toutes les secondes par exemple). Nous allons utiliser la fonction `setInterval()` pour ce genre d'opération. Elle attend 2 paramètres :
+- L'action à répéter (une fonction de callback ou une fonction anonyme)
+- Le délai (en millisecondes)
+
+```js
+// On peut récupérer l'identifiant de l'interval, pour nous permettre de l'arrêter un jour, par exemple.
+let idInterval = setInterval(
+    function() {
+        console.log(`Il s'est passé 1 seconde depuis mon dernier appel`);
+    },
+    1000 // Une seconde, en millisecondes
+);
+
+// Arrête l'exécution de l'intervalle
+clearInterval(idInterval);
+```
+
+### Les comptes à rebours
+
+[Documentation](https://developer.mozilla.org/fr/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
+
+À l'opposé, le compte à rebours permet d'attendre un temps (en millisecondes) avant d'effectuer une action. On utilise la fonction `setTimeout()` qui prend également 2 paramètres :
+- L'action à exécuter (une fonction de callback ou une fonction anonyme)
+- Le délai (en millisecondes)
+
+```js
+// On peut récupérer l'identifiant du compte à rebours, pour nous permettre de l'arrêter avant son exécution, par exemple.
+let idTimeout = setTimeout(
+    function() {
+        console.log(`Je me suis exécuté après 10 secondes d'attente`);
+    },
+    10000 // 10 secondes, en millisecondes
+);
+
+// Arrête l'exécution du compte à rebours
+clearTimeout(idTimeout);
+```
 
 ## Manier les dates en JS
 
