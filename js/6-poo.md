@@ -57,6 +57,8 @@ Les propriétés sont les caractéristiques de notre objet. Dans le cas de notre
 
 Nous pouvons définir ce qu'il se passe lors de l'appel de ce `new` et, si on le souhaite, lui donner des paramètres. Pour cela, nous ajoutons une méthode spéciale, **le constructeur**. Cette méthode est appelée **automatiquement** dès que l'on crée un nouvel objet avec `new`.
 
+Attention, il ne faut pas confondre une propriété et une variable. Une propriété est toujours précédée d'un objet (ou de `this`) et ne peut être appelée sans.
+
 ```js
 // Un exemple de constructeur pour notre objet Player, sans paramètres
 
@@ -168,3 +170,28 @@ let player2 = new Player('Joueur2', 125, 11, 5);
 let damage = player1.attack(player2);
 console.log(player1.name + ' inflige ' + damage + ' points de dégats à ' + player2.name);
 ```
+
+## Exercices
+
+### Conception et utilisation de classes
+
+Nous allons créer deux classes `Book` et `Author` pour représenter des livres et leurs auteurs.
+
+Pour cet exercice, vous allez également avoir besoin de [l'objet Date de Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date), dont vous pourrez également trouver [des exemples dans le cours](99-outils.md).
+
+Nous allons créer un fichier par classe : `Book.js` et `Author.js`.
+
+Les propriétés d'un livre :
+- un ISBN (chaine de caractères)
+- un titre
+- un ou des auteurs (tableau d'objets `Author`)
+- une date de parution (objet `Date`)
+- un résumé (4ème de couverture)
+
+Les propriétés d'un auteur :
+- un prénom
+- un nom
+- un ou des livres (tableau d'objets `Book`)
+- une date de naissance (objet `Date`)
+
+Créer au moins 2 instances de chacun de ces objets ([Si vous avez besoin d'inspiration](https://www.babelio.com/decouvrir.php?p=2))
