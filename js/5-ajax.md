@@ -327,8 +327,8 @@ Notre HTML de base :
     <title>Jokes API !</title>
 </head>
 <body>
-    <h1>Jokes API</h1>
-    <section id="jokes"></section>
+<h1>Jokes API</h1>
+<section id="jokes"></section>
 </body>
 </html>
 ```
@@ -336,6 +336,7 @@ Notre HTML de base :
 Pour chaque blague, nous allons créer un HTML de cette forme et l'ajouter dans `#jokes` (remplacer les données entre `{}` par celles de l'API).
 
 ```html
+
 <article id="joke-{id}" data-type="{type}">
     <h2>{setup}</h2>
     <p>{punchline}</p>
@@ -348,7 +349,7 @@ Let's get some data from an API : [https://official-joke-api.appspot.com/jokes/t
 
 Our goal is to get data and display them in a HTML page.
 
-Received JSON objects look like this: 
+Received JSON objects look like this:
 
 ```json
 {
@@ -371,8 +372,8 @@ Our base HTML:
     <title>Jokes API !</title>
 </head>
 <body>
-    <h1>Jokes API</h1>
-    <section id="jokes"></section>
+<h1>Jokes API</h1>
+<section id="jokes"></section>
 </body>
 </html>
 ```
@@ -380,6 +381,7 @@ Our base HTML:
 For every joke we get, create a HTML node, and add it to the `#jokes` node. (replace `{}` values with the ones from the API)
 
 ```html
+
 <article id="joke-{id}" data-type="{type}">
     <h2>{setup}</h2>
     <p>{punchline}</p>
@@ -391,10 +393,24 @@ For every joke we get, create a HTML node, and add it to the `#jokes` node. (rep
 Nous allons récupérer des données depuis une API plus complexe : [une API sur les Pokémon](https://pokeapi.co/docs/v2)
 
 Dans un premier temps, nous allons récupérer la liste des pokémon de première génération : [les informations sur la première génération](https://pokeapi.co/api/v2/generation/1/).
-Nous allons récupérer uniquement la propriété `pokemon_species`, mais nous allons en parcourir tout le contenu (attention, nous allons récupérer les informations de 150 pokémons).
-Une fois cette liste récupérée, récupérer leurs parents (propriété `evolves_from_species`) et afficher les noms français (tant pour le Pokémon que pour ses parents). 
 
-Afficher la liste des pokémons sous cette forme : 
+Nous allons récupérer uniquement la propriété `pokemon_species`, mais nous allons en parcourir le contenu avec une boucle (attention, nous allons récupérer les informations des 3 premiers pokémons dans un premier temps (boucle `for` par exemple). Il y en a 150 au total). 
+
+Cette propriété contient un tableau contenant des objets :
+
+```json
+{
+  "name": "bulbasaur",
+  "url": "https://pokeapi.co/api/v2/pokemon-species/1/"
+}
+```
+
+Pour chaque pokémon ainsi récupéré, nous allons récupérer des informations détaillées à partir de l'url fournie dans la propriété `url` (et donc faire un nouvel appel AJAX vers cette url) :
+
+- récupérer leurs parents (propriété `evolves_from_species`)
+- récupérer les noms français (tant pour le Pokémon que pour ses parents).
+
+Afficher la liste des pokémons sous cette forme :
 
 ```html
 <section data-id="{id}" data-url="{url}">
@@ -404,12 +420,13 @@ Afficher la liste des pokémons sous cette forme :
 </section>
 ```
 
-Remplacer les valeurs : 
-- `{id}` par l'identifiant du pokémon
-- `{url}` par l'url donnant les informations sur le pokémon
-- `{name}` le nom français du pokémon
-- `{parent}` le nom français du pokémon parent
-- `{parentUrl}` par l'url donnant les informations sur le(s) pokémon(s) parent(s)
+Remplacer les valeurs :
+
+- `{id}` par l'identifiant du pokémon (exemple : `1`)
+- `{url}` par l'url donnant les informations sur le pokémon (par exemple `https://pokeapi.co/api/v2/pokemon/1`)
+- `{name}` le nom français du pokémon (exemple : `Bulbizarre`)
+- `{parent}` le nom français du pokémon parent, s'il y en a un
+- `{parentUrl}` par l'url donnant les informations sur le(s) pokémon(s) parent(s), s'il y en a un (par exemple `https://pokeapi.co/api/v2/pokemon/1`)
 
 #### Aller plus loin
 
@@ -422,13 +439,13 @@ Au clic sur le lien `Plus d'informations`, appeler l'API `https://pokeapi.co/api
 
 Let's get some data from a far more complex API : [a pokemon API](https://pokeapi.co/docs/v2)
 
-First, let's get the list of pokemons from the first generation : [https://pokeapi.co/api/v2/generation/1/](https://pokeapi.co/api/v2/generation/1/).
-We will get the property `pokemon_species` and get all of its content (warning, we will receive informations for 150 pokemons).
-Once the list received and used, get informations about their parents (from property `evolves_from_species`) and display the french name of all of them (both the pokemon and its parents).
+First, let's get the list of pokemons from the first generation : [https://pokeapi.co/api/v2/generation/1/](https://pokeapi.co/api/v2/generation/1/). We will get the property `pokemon_species` and get all of its content (warning, we will receive informations for 150 pokemons). Once the list received and used, get informations about their parents (from
+property `evolves_from_species`) and display the french name of all of them (both the pokemon and its parents).
 
 Display every element of the list like this:
 
 ```html
+
 <section data-id="{id}" data-url="{url}">
     <h2>{name}</h2>
     {name} est une évolution de <span data-parent-url="{parentUrl}">{parent}</span>
@@ -436,7 +453,8 @@ Display every element of the list like this:
 </section>
 ```
 
-replace the values: 
+replace the values:
+
 - `{id}` with the pokemon's id
 - `{url}` with the url that gives you informations on this pokemon
 - `{name}` pokemon's french name
