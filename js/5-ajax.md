@@ -450,8 +450,23 @@ Au clic sur le lien `Plus d'informations`, appeler l'API `https://pokeapi.co/api
 
 Let's get some data from a far more complex API : [a pokemon API](https://pokeapi.co/docs/v2)
 
-First, let's get the list of pokemons from the first generation : [https://pokeapi.co/api/v2/generation/1/](https://pokeapi.co/api/v2/generation/1/). We will get the property `pokemon_species` and get all of its content (warning, we will receive informations for 150 pokemons). Once the list received and used, get informations about their parents (from
-property `evolves_from_species`) and display the french name of all of them (both the pokemon and its parents).
+First, let's get the list of pokemons from the first generation : [https://pokeapi.co/api/v2/generation/1/](https://pokeapi.co/api/v2/generation/1/). 
+
+We will only use the property `pokemon_species` and get its content (warning, we will only use the first 3 pokemons, with a `for` loop. There are 150 pokemons and it would be quite long to handle them all).
+
+The `pokemon_species` property is an array of objects :
+
+```json
+{
+  "name": "bulbasaur",
+  "url": "https://pokeapi.co/api/v2/pokemon-species/1/"
+}
+```
+
+For each of those (3) pokemons, we will use the `url` property to get more details about the pokemon. From these data, we will find :
+
+- The pokemon's parents name (from the `evolves_from_species` property)
+- The pokemon's name in French (and same for its parents')
 
 Display every element of the list like this:
 
@@ -466,12 +481,22 @@ Display every element of the list like this:
 
 replace the values:
 
-- `{id}` with the pokemon's id
-- `{url}` with the url that gives you informations on this pokemon
-- `{name}` pokemon's french name
+- `{id}` with the pokemon's id (example: `1`)
+- `{url}` with the url that gives you informations on this pokemon (example: `https://pokeapi.co/api/v2/pokemon/1`)
+- `{name}` pokemon's french name (example : `Bulbizarre`)
 - `{parent}` parent pokemon's french name
-- `{parentUrl}` with the url that gives you informations on this pokemon
+- `{parentUrl}` with the url that gives you informations on this pokemon (example: `https://pokeapi.co/api/v2/pokemon/1`)
 
+##### Algo / pseudo-code
+
+```
+variable list = getDataFrom('https://pokeapi.co/api/v2/generation/1/').pokemon_species
+For i from 0 to 3, do
+  variable url = list[i].url
+  variable pokemon = getDataFrom(url)
+  buildHTML(pokemon)
+EndFor
+```
 ##### Go further
 
 When the `Plus d'informations` link is clicked, call the API `https://pokeapi.co/api/v2/pokemon/{id}` to get more informations :
