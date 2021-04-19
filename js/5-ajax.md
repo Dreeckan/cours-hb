@@ -410,7 +410,7 @@ Pour chaque pokémon ainsi récupéré, nous allons récupérer des informations
 - récupérer leurs parents (propriété `evolves_from_species`)
 - récupérer les noms français (tant pour le Pokémon que pour ses parents).
 
-Afficher la liste des pokémons sous cette forme :
+Afficher chaque élément de la liste des pokémons sous cette forme :
 
 ```html
 <section data-id="{id}" data-url="{url}">
@@ -427,6 +427,17 @@ Remplacer les valeurs :
 - `{name}` le nom français du pokémon (exemple : `Bulbizarre`)
 - `{parent}` le nom français du pokémon parent, s'il y en a un
 - `{parentUrl}` par l'url donnant les informations sur le(s) pokémon(s) parent(s), s'il y en a un (par exemple `https://pokeapi.co/api/v2/pokemon/1`)
+
+#### Algo / pseudo-code
+
+```
+variable liste = récupérer('https://pokeapi.co/api/v2/generation/1/').pokemon_species
+Pour i allant de 0 à 3, faire
+  variable url = liste[i].url
+  variable pokemon = récupérer(url)
+  construireHMLT(pokemon)
+FinPour 
+```
 
 #### Aller plus loin
 
