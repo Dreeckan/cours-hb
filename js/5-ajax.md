@@ -218,7 +218,7 @@ Dans un premier temps, nous allons essayer de charger du contenu local (sur notr
 - Le fichier `data/exercice-ajax-single.json` contient un objet (JSON) avec les informations nécessaires. Il nous faut récupérer la donnée (et la convertir au format JSON si vous utilisez `fetch`) et créer un noeud HTML avec les données qu'elle contient.
 - Le fichier `data/exercice-ajax-tab.json` contient un tableau JSON, avec plusieurs objets qu'il va falloir traiter de la même manière (le fonctionnement va être très similaire, il y aura juste une boucle autour ;) ).
 
-### English version
+#### English version
 
 First, we will load some content from our computer, JSON and HTML.
 
@@ -420,7 +420,7 @@ Au clic sur le lien `Plus d'informations`, appeler l'API `https://pokeapi.co/api
 
 #### English version
 
-Let's get some data from a far more complex API : [a pokemon API](https://pokeapi.co/docs)
+Let's get some data from a far more complex API : [a pokemon API](https://pokeapi.co/docs/v2)
 
 First, let's get the list of pokemons from the first generation : [https://pokeapi.co/api/v2/generation/1/](https://pokeapi.co/api/v2/generation/1/).
 We will get the property `pokemon_species` and get all of its content (warning, we will receive informations for 150 pokemons).
