@@ -59,7 +59,9 @@ aussi bien envoyer des données pour les stocker/traiter).
 ### En Vanilla JS avec Fetch
 
 [Documentation formelle](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API) et [documentation pratique](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch)
-Un [cours complet de Pierre Giraud](https://www.pierre-giraud.com/javascript-apprendre-coder-cours/api-fetch/) sur le sujet
+Un [cours complet de Pierre Giraud](https://www.pierre-giraud.com/javascript-apprendre-coder-cours/api-fetch/) sur le sujet.
+
+Attention, `fetch()` n'est pas compatible avec Internet Explorer (voir [le tableau de compatibilité sur CanIUse](https://caniuse.com/?search=fetch)).
 
 La fonction `fetch()` prend en paramètre obligatoire l'URL du serveur à contacter et, comme paramètre optionnel un objet de configuration (qui inclue la méthode HTTP à utiliser, GET par défaut). Cette fonction retourne une promesse qui contient la réponse (brute, non utilisable) du serveur. On peut alors la convertir à l'aide des méthodes suivantes pour la
 traiter :
