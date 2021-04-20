@@ -252,7 +252,6 @@ console.log(string.indexOf('c')); // Affiche 3 (existe à la position 3, soit la
 
 ```
 
-
 ### Les objets
 
 Une [liste des objets déjà définis dans Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects).
@@ -262,16 +261,22 @@ Les objets sont une structure de données complexe nous permettant de regrouper 
 ```js
 // Méthode courte
 let student = {
-    firstname: "Test",
-    lastname: "Ouille",
-    number: "42"
+    firstName: "Test",
+    lastName: "Ouille",
+    number: "42",
+    greetings: function () {
+        return `Bonjour ${this.firstName} ${this.lastName}`; 
+    }
 };
 
 // Méthode "longue" et strictement équivalente
 let student = new Object();
-student.firstname = "Test";
-student.lastname = "Ouille";
+student.firstName = "Test";
+student.lastName = "Ouille";
 student.number = "42";
+student.greetings = function () {
+    return `Bonjour ${this.firstName} ${this.lastName}`;
+};
 ```
 
 Dans le cadre d'un objet, on ne parle pas d'index mais de propriété. Une propriété n'est pas une variable, elle n'existe que dans l'objet et il faut donc renseigner l'objet auquel elle appartient.
