@@ -195,3 +195,114 @@ In `revisions.js` :
 - Ask the user a number between 0 and 100 (with the `prompt()` function)
   - If the user enters something that is not a number, keep asking for a number
   - Display a message with the `alert()` function and tell the user if the number is a prime number or not ([Prime Number on Wikipedia](https://en.wikipedia.org/wiki/Prime_number))
+
+
+## 3. DOM, events and JQuery
+
+Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
+
+```html
+
+<form action="" class="form">
+    <div>
+        <label for="username">Nom d'utilisateur</label>
+        <input id="username" type="text">
+    </div>
+    <div>
+        <label for="password">Mot de passe</label>
+        <input id="password" type="password">
+    </div>
+    <button type="submit">Valider</button>
+</form>
+<article id="article-1">
+    <section class="section">
+        <header>
+            <h2 class="title">
+                Ceci est un titre
+            </h2>
+        </header>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu fringilla ante. Mauris dui leo, convallis sed semper vitae, commodo ultrices erat. Sed condimentum purus at maximus laoreet. Vestibulum in auctor tellus. Nulla placerat, magna in pulvinar sodales, arcu neque efficitur magna, a maximus enim orci eu sem. Cras faucibus sem quis nisl
+            tincidunt, at mollis magna blandit. Donec nec ornare libero. Nunc nec varius purus, ut feugiat neque. Sed dolor magna, sodales quis vehicula in, venenatis et augue. Integer varius augue ut ultricies efficitur. Maecenas eget elit gravida, rutrum risus sed, pulvinar velit. Nulla facilisi.
+        </p>
+        <p>
+            Maecenas vel convallis nunc. Proin urna felis, interdum vitae justo sit amet, scelerisque faucibus nisi. Curabitur sed nisl non diam vulputate suscipit sit amet nec nibh. Vivamus tincidunt tristique tempus. Cras pulvinar diam eu nisi tempus mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+            Praesent in porttitor enim. Phasellus consectetur dapibus metus, et fermentum dolor fringilla eget.
+        </p>
+        <p>
+            Duis in neque nec neque faucibus rutrum quis at erat. Sed pellentesque, ligula sed malesuada euismod, purus felis laoreet nibh, vel consectetur dolor ex eu orci. Quisque et semper ipsum. Nullam varius sapien quis mauris viverra, non euismod dui porttitor. Phasellus tincidunt accumsan ultricies. Fusce sodales porta rhoncus. Ut interdum leo at ante
+            aliquet gravida.
+        </p>
+    </section>
+    <section class="section">
+        <header>
+            <h2 class="title">
+                Ceci est un titre
+            </h2>
+        </header>
+        <p>
+            Nam fringilla metus a lorem sodales, non vestibulum sem volutpat. Phasellus suscipit nibh ultricies arcu feugiat, nec gravida nunc lobortis. Etiam urna sapien, rutrum sit amet aliquam sed, aliquet at neque. Fusce pellentesque tortor elit, non congue massa rhoncus nec. Etiam vel eleifend nisl, hendrerit gravida ipsum. Fusce ac ultricies lorem. In
+            sed tincidunt turpis. Curabitur scelerisque quam in porta pellentesque. Praesent egestas luctus erat. Nulla facilisi. Curabitur et dui urna. Nulla suscipit scelerisque metus. Etiam nec consectetur orci. Nulla interdum mollis pulvinar.
+        </p>
+        <p>
+            Vestibulum ac fermentum sem. Pellentesque tristique volutpat tortor non pharetra. Nullam risus nunc, tincidunt a eleifend eu, hendrerit id ex. Sed suscipit hendrerit nisl vel fermentum. Integer egestas leo ipsum, non scelerisque massa lacinia sed. Nam auctor felis dui, eu eleifend sem sollicitudin ut. Vivamus aliquam urna tincidunt, elementum
+            neque at, ornare lectus. Nullam eu metus at ligula tincidunt suscipit. Morbi malesuada neque vel elit ullamcorper fringilla. Aliquam interdum, turpis et pharetra commodo, lacus orci lacinia enim, nec suscipit lectus nunc efficitur ante. Curabitur id eros erat.
+        </p>
+        <p>
+            Cras eros sapien, dapibus sit amet varius iaculis, dictum non urna. Mauris consequat odio vitae vulputate tincidunt. Aenean vel laoreet augue. In arcu ipsum, volutpat quis pulvinar non, porta non nibh. Mauris eu suscipit urna, a placerat sem. Aliquam erat volutpat. Aliquam sed magna purus. Nullam volutpat sit amet est at facilisis. Morbi laoreet,
+            tellus nec pellentesque fringilla, felis est tempor nisi, ut aliquam urna nisl sit amet eros. Vivamus neque massa, luctus quis porttitor a, accumsan et nisi. Aliquam erat volutpat. Donec fringilla imperdiet sapien, laoreet porta metus euismod ac. Vestibulum eget eleifend dolor. Aliquam pulvinar risus at suscipit tincidunt. Phasellus at enim
+            pretium, condimentum orci in, lobortis nisl.
+        </p>
+    </section>
+    <section class="section">
+        <header>
+            <h2 class="title">
+                Ceci est un titre
+            </h2>
+        </header>
+        <p>
+            Donec at odio vulputate, ullamcorper lorem sit amet, pharetra magna. Nam quis dolor massa. Aenean vitae nisl lorem. Aenean non feugiat odio, id gravida sem. Sed fringilla euismod ornare. Nunc ac purus sit amet nulla bibendum dapibus et nec sapien. Mauris nec tempus eros, vestibulum condimentum metus. Donec euismod metus nunc, nec euismod neque
+            semper eu. Cras a magna in mauris tristique tincidunt. Pellentesque ut eros sit amet eros dictum malesuada eget sit amet magna.
+        </p>
+        <p>
+            Integer a mi nibh. Ut a elementum tellus, at finibus diam. Curabitur finibus ex sit amet purus rutrum, eu condimentum massa condimentum. Vivamus sed leo in dolor vehicula facilisis ac eget sem. Ut eget pellentesque nisl. Ut consectetur vulputate enim. Cras facilisis dui ut dui sagittis, a dignissim neque accumsan. Curabitur in magna justo. Proin
+            nec placerat massa. Curabitur id lacus nisi. Nam id diam magna. Maecenas elementum nisi nisl, sit amet rhoncus massa venenatis in.
+        </p>
+        <p>
+            Mauris mollis tellus est, non scelerisque ante cursus quis. Suspendisse mattis quam felis, ut faucibus lectus rutrum eget. Pellentesque id diam suscipit, consequat eros in, condimentum nunc. Nullam a nunc at metus rutrum mollis sollicitudin pretium est. Vestibulum ac eleifend nisi. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas. Duis ultricies tortor massa, eget semper ligula ornare nec. Ut faucibus, mauris vitae malesuada gravida, metus dolor pretium velit, at pretium leo metus eget dui. Fusce luctus urna ut est imperdiet, gravida auctor erat suscipit.
+        </p>
+    </section>
+</article>
+<article id="article-2">
+    <section class="section">
+        <header>
+            <h2 class="title">
+                Ceci est un titre
+            </h2>
+        </header>
+        <p>
+            Pellentesque congue aliquam vulputate. Nulla et leo varius, pellentesque purus quis, euismod odio. Sed ut ex at felis placerat pharetra. Proin lobortis vulputate ante. Mauris bibendum lorem non odio placerat, eu porta erat blandit. Suspendisse laoreet dolor eu ornare imperdiet. Vivamus pellentesque pretium diam, vitae varius justo vestibulum sit
+            amet.
+        </p>
+    </section>
+</article>
+```
+
+/!\ Warning
+
+Create a file named `dom.js`. We will work in this file for this section (warning, replace `revisions.js` by `dom.js` in `<script>` to avoid displaying `prompt()` calls on every page load).
+
+- Add JQuery to your project (and include necessary `<script>` tag before `dom.js`)
+
+- Select all paragraphs of the page
+  - with VanillaJS and add the class `paragraph` to all of them
+  - with JQuery and add the class `paragraph-jq` to all of them
+
+- Select every second paragraphs of each section
+  - with VanillaJS and add them the attribute `data-position` with the value `"second"`
+  - with JQuery and add them the attribute `data-position-jq` with the value `"second"`
+  
+- Add a `submit` event on the `form` node and avoid the reloading of the page when clicking on the `Valider` button
+  - Do it with VanillaJS
+  - Do it with JQuery
