@@ -65,6 +65,9 @@ Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
             <h2 class="title">
                 Ceci est un titre
             </h2>
+            <a href="" class="readMore">
+                Plus d'informations
+            </a>
         </header>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu fringilla ante. Mauris dui leo, convallis sed semper vitae, commodo ultrices erat. Sed condimentum purus at maximus laoreet. Vestibulum in auctor tellus. Nulla placerat, magna in pulvinar sodales, arcu neque efficitur magna, a maximus enim orci eu sem. Cras faucibus sem quis nisl
@@ -84,6 +87,9 @@ Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
             <h2 class="title">
                 Ceci est un titre
             </h2>
+            <a href="" class="readMore">
+                Plus d'informations
+            </a>
         </header>
         <p>
             Nam fringilla metus a lorem sodales, non vestibulum sem volutpat. Phasellus suscipit nibh ultricies arcu feugiat, nec gravida nunc lobortis. Etiam urna sapien, rutrum sit amet aliquam sed, aliquet at neque. Fusce pellentesque tortor elit, non congue massa rhoncus nec. Etiam vel eleifend nisl, hendrerit gravida ipsum. Fusce ac ultricies lorem. In
@@ -104,6 +110,9 @@ Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
             <h2 class="title">
                 Ceci est un titre
             </h2>
+            <a href="" class="readMore">
+                Plus d'informations
+            </a>
         </header>
         <p>
             Donec at odio vulputate, ullamcorper lorem sit amet, pharetra magna. Nam quis dolor massa. Aenean vitae nisl lorem. Aenean non feugiat odio, id gravida sem. Sed fringilla euismod ornare. Nunc ac purus sit amet nulla bibendum dapibus et nec sapien. Mauris nec tempus eros, vestibulum condimentum metus. Donec euismod metus nunc, nec euismod neque
@@ -125,6 +134,9 @@ Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
             <h2 class="title">
                 Ceci est un titre
             </h2>
+            <a href="" class="readMore">
+                Plus d'informations
+            </a>
         </header>
         <p>
             Pellentesque congue aliquam vulputate. Nulla et leo varius, pellentesque purus quis, euismod odio. Sed ut ex at felis placerat pharetra. Proin lobortis vulputate ante. Mauris bibendum lorem non odio placerat, eu porta erat blandit. Suspendisse laoreet dolor eu ornare imperdiet. Vivamus pellentesque pretium diam, vitae varius justo vestibulum sit
@@ -151,6 +163,31 @@ Nous allons également créer un fichier `dom.js` dans lequel nous allons travai
 - Ajouter un événement `submit` sur la balise `form` et empêcher le rechargement de la page lorsqu'on clique sur le bouton `Valider`
   - Avec VanillaJS
   - Avec JQuery
+  
+- Ajouter un événement `click` sur tous les liens avec la classe `readMore`, empêcher le changement de page lors du clic sur le lien et afficher le contenu du paragraphe `p` le plus proche avec `alert()`
+  - Avec VanillaJS
+  - Avec JQuery
+  
+## 4. AJAX
+
+Nous allons créer un fichier `ajax.js` dans lequel nous allons travailler (attention à bien remplacer `dom.js` par `ajax.js` dans votre balise `<script>`).
+
+Utilisons l'API fournie ici : [https://cataas.com/#/](https://cataas.com/#/)
+On y récupère des images de chats et nous allons récupérer les informations en json avant de les afficher.
+
+Ajouter le HTML suivant au début du body de votre fichier `revisions.html` : 
+```html
+<button id="cat-button" type="button">Give me a cat !</button>
+<img id="cat-image" src="" alt="">
+<div id="cat-tags"></div>
+```
+
+- Ajouter un événement au clic sur le bouton. Lors du clic :
+  - Récupérer en AJAX (avec VanillaJS ou JQuery, comme vous préférez), les informations de `https://cataas.com/cat/gif?json=true`
+    - Utiliser la propriété `url` de l'objet JSON récupéré pour remplacer l'attribut `src` de l'image
+    - Utiliser la propriété `tags` de l'objet JSON récupéré en AJAX
+      - remplacer le contenu de la `div` avec l'id `cat-tags`, 
+      - ajouter des éléments `<span class="catTag">{tag}</span>` (remplacer `{tag}` par une valeur réelle) pour chaque tag de la propriété `tags`
 
 ## English version
 
@@ -196,8 +233,7 @@ In `revisions.js` :
   - If the user enters something that is not a number, keep asking for a number
   - Display a message with the `alert()` function and tell the user if the number is a prime number or not ([Prime Number on Wikipedia](https://en.wikipedia.org/wiki/Prime_number))
 
-
-## 3. DOM, events and JQuery
+### 3. DOM, events and JQuery
 
 Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
 
@@ -220,6 +256,9 @@ Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
             <h2 class="title">
                 Ceci est un titre
             </h2>
+            <a href="" class="readMore">
+                Plus d'informations
+            </a>
         </header>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu fringilla ante. Mauris dui leo, convallis sed semper vitae, commodo ultrices erat. Sed condimentum purus at maximus laoreet. Vestibulum in auctor tellus. Nulla placerat, magna in pulvinar sodales, arcu neque efficitur magna, a maximus enim orci eu sem. Cras faucibus sem quis nisl
@@ -239,6 +278,9 @@ Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
             <h2 class="title">
                 Ceci est un titre
             </h2>
+            <a href="" class="readMore">
+                Plus d'informations
+            </a>
         </header>
         <p>
             Nam fringilla metus a lorem sodales, non vestibulum sem volutpat. Phasellus suscipit nibh ultricies arcu feugiat, nec gravida nunc lobortis. Etiam urna sapien, rutrum sit amet aliquam sed, aliquet at neque. Fusce pellentesque tortor elit, non congue massa rhoncus nec. Etiam vel eleifend nisl, hendrerit gravida ipsum. Fusce ac ultricies lorem. In
@@ -259,6 +301,9 @@ Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
             <h2 class="title">
                 Ceci est un titre
             </h2>
+            <a href="" class="readMore">
+                Plus d'informations
+            </a>
         </header>
         <p>
             Donec at odio vulputate, ullamcorper lorem sit amet, pharetra magna. Nam quis dolor massa. Aenean vitae nisl lorem. Aenean non feugiat odio, id gravida sem. Sed fringilla euismod ornare. Nunc ac purus sit amet nulla bibendum dapibus et nec sapien. Mauris nec tempus eros, vestibulum condimentum metus. Donec euismod metus nunc, nec euismod neque
@@ -280,6 +325,9 @@ Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
             <h2 class="title">
                 Ceci est un titre
             </h2>
+            <a href="" class="readMore">
+                Plus d'informations
+            </a>
         </header>
         <p>
             Pellentesque congue aliquam vulputate. Nulla et leo varius, pellentesque purus quis, euismod odio. Sed ut ex at felis placerat pharetra. Proin lobortis vulputate ante. Mauris bibendum lorem non odio placerat, eu porta erat blandit. Suspendisse laoreet dolor eu ornare imperdiet. Vivamus pellentesque pretium diam, vitae varius justo vestibulum sit
@@ -303,6 +351,30 @@ Create a file named `dom.js`. We will work in this file for this section (warnin
   - with VanillaJS and add them the attribute `data-position` with the value `"second"`
   - with JQuery and add them the attribute `data-position-jq` with the value `"second"`
   
-- Add a `submit` event on the `form` node and avoid the reloading of the page when clicking on the `Valider` button
+- Add a `submit` event on the `form` node and prevent page reloading when clicking on the `Valider` button
   - Do it with VanillaJS
   - Do it with JQuery
+  
+- Add a `click` event on every link with the `readMore` class, prevent page change on click on the link and display the content of the nearest `p` with `alert()`
+  - Do it with VanillaJS
+  - Do it with JQuery
+  
+### 4. AJAX
+
+Create a new file `ajax.js` in which we will work for this part (warning, replace `dom.js` by `ajax.js` in `<script>`)
+
+We will [get some data from this API](https://cataas.com/#/) as JSON objects, to display some cat's gifs.
+
+Add this HTML in `revisions.html` (at the beginning of your `body`): 
+```html
+<button id="cat-button" type="button">Give me a cat !</button>
+<img id="cat-image" src="" alt="">
+<div id="cat-tags"></div>
+```
+
+- Add a `click` event on the button:
+  - With AJAX (use JQuery ou VanillaJS, as you prefer), get some data from `https://cataas.com/cat/gif?json=true`
+    - Use the `url` property of the JSON object to replace the `src` attribute of the image
+    - Use the `tags` property of the JSON object
+      - Replace the content of the `div` node (the one with `cat-tags` id), 
+      - Add a node `<span class="catTag">{tag}</span>` (replace `{tag}` with a real value) for each tag in the `tags` property
