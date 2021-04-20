@@ -171,6 +171,27 @@ let damage = player1.attack(player2);
 console.log(player1.name + ' inflige ' + damage + ' points de dégats à ' + player2.name);
 ```
 
+#### Setters
+
+Dans beaucoup de langages de programmation, vous entendrez parler de méthodes dites `setters`. Il s'agit de méthodes permettant de manipuler une propriété d'un objet. Idéalement, pour mettre à jour une propriété, il faut passer par un `setter`. L'intérêt est de pouvoir appliquer des traitements (mettre du texte en majuscule, modifier une autre propriété en même temps, etc.) dès que l'on souhaite mettre à jour la propriété.
+
+```js
+class Player {
+    constructor(hp = 100) {
+        this.setHp(hp); // On appelle notre setter dès le constructeur
+    }
+    
+    setHp(hp) {
+        // Notre setter va nous permettre d'ajouter une vérification
+        // Ici, notre joueur ne peut pas avoir plus de 100 points de vie
+        if (hp > 100) {
+            hp = 100;
+        }
+        this.hp = hp;
+    }
+}
+```
+
 ### Le mot-clé this
 
 Dans les méthodes de vos classes, vous pouvez renvoyer la valeur de l'objet (l'instance) avec le mot-clé `this`. C'est ce que l'on fait dans le constructeur et différentes méthodes. 
@@ -180,11 +201,6 @@ class Player {
     constructor(hp = 100) {
         // Ici this vaut l'objet en cours (peut être la valeur contenue dans player1 ou dans player2, par exemple)
         this.hp = hp; 
-    }
-
-    // Notre Player sait s'il est en vie. C'est utile à notre programme ;) .
-    isAlive() {
-        return this.hp > 0;
     }
 }
 
