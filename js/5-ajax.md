@@ -439,13 +439,6 @@ Pour i allant de 0 à 3, faire
 FinPour 
 ```
 
-#### Aller plus loin
-
-Au clic sur le lien `Plus d'informations`, appeler l'API `https://pokeapi.co/api/v2/pokemon/{id}` pour aller chercher d'autres informations
-
-- les types du pokémon (`types`)
-- les différents `sprites` (images) et les afficher (balise `img`)
-
 #### English version
 
 Let's get some data from a far more complex API : [a pokemon API](https://pokeapi.co/docs/v2)
@@ -497,9 +490,3 @@ For i from 0 to 3, do
   buildHTML(pokemon)
 EndFor
 ```
-##### Go further
-
-When the `Plus d'informations` link is clicked, call the API `https://pokeapi.co/api/v2/pokemon/{id}` to get more informations :
-
-- pokemon's types (`types`)
-- get every available images `sprites` and display them (use an `img` node)
