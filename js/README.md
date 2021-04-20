@@ -14,3 +14,7 @@ Vous pourrez également retrouver toutes les vidéos (cours, corrigés d'exercic
 ## 5. [Traitements asynchrone avec AJAX et JSON](5-ajax.md)
 
 ## 6. [Programmation orientée objet](6-poo.md)
+
+## 7. [Outils utiles](98-outils.md)
+
+## [Révisions](99-revisions.md)
