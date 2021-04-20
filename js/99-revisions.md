@@ -9,10 +9,10 @@ Créer un fichier `revisions.html` (avec le squelette HTML de base) et y associe
 Dans `revisions.js` :
 
 - Écrire une fonction `square()` qui calcule le carré d'un nombre `n` (soit le calcul `n * n`) et le retourne
-  - Écrire 2 appels de cette fonction et afficher le résultat dans la console du navigateur
+  - Écrire 2 appels de cette fonction (appeler cette fonction avec des valeurs différentes) et afficher le résultat dans la console du navigateur
 
 - Écrire une fonction `compact()` qui prend 2 paramètres (`a` et `b` par exemple) et qui retourne un tableau composé de ces deux paramètres.
-  - Écrire 2 appels de cette fonction et afficher le résultat dans la console du navigateur
+  - Écrire 2 appels de cette fonction (appeler cette fonction avec des valeurs différentes) et afficher le résultat dans la console du navigateur
 
 - Créer un tableau contenant les valeurs `42`, `'test'`, `242.68`
 - Retourner l'index de la valeur `'test'` à l'aide d'une méthode des tableaux vue en cours
@@ -34,6 +34,13 @@ Dans `revisions.js` :
   - renvoie un nouveau tableau, avec les éléments dans l'ordre croissant (du plus petit au plus grand) 
   - Tester avec `[11, 2, 54, 50, 26, 8, 91, 011, 15]` ou un tableau de votre choix
   
+- Demander un nombre à l'utilisateur (fonction `prompt()`)
+  - S'il entre autre chose qu'un nombre, continuer à lui demander un nombre (afficher le message tant que la réponse n'est pas conforme aux attentes)
+  - Afficher avec `alert()` si le nombre qu'il a donné est pair ou impair
+  
+- Demander un nombre entre 0 et 100 à l'utilisateur (fonction `prompt()`)
+  - S'il entre autre chose qu'un nombre, continuer à lui demander un nombre (afficher le message tant que la réponse n'est pas conforme aux attentes)
+  - Afficher avec `alert()` si le nombre qu'il a donné est premier ou non (peut être divisé par un nombre plus petit, voir [une définition des nombres premiers pour plus d'information](https://fr.wikipedia.org/wiki/Nombre_premier))
 
 ## English version
 
@@ -70,3 +77,11 @@ In `revisions.js` :
   - Takes an array (with only numbers in it) as a parameter
   - Returns a new array, in which every elements are ordered (smallest first) 
   - Test with `[11, 2, 54, 50, 26, 8, 91, 011, 15]` or any array you want
+  
+- Ask the user a number (with the `prompt()` function)
+  - If the user enters something that is not a number, keep asking for a number
+  - Display a message with the `alert()` function and tell the user if the number was odd or not
+  
+- Ask the user a number between 0 and 100 (with the `prompt()` function)
+  - If the user enters something that is not a number, keep asking for a number
+  - Display a message with the `alert()` function and tell the user if the number is a prime number or not ([Prime Number on Wikipedia](https://en.wikipedia.org/wiki/Prime_number))
