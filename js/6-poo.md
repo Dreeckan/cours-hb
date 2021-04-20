@@ -177,9 +177,13 @@ console.log(player1.name + ' inflige ' + damage + ' points de dégats à ' + pla
 
 Nous allons créer deux classes `Book` et `Author` pour représenter des livres et leurs auteurs.
 
-Pour cet exercice, vous allez également avoir besoin de [l'objet Date de Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date), dont vous pourrez également trouver [des exemples dans le cours](99-outils.md).
+Pour cet exercice, vous allez également avoir besoin de [l'objet Date de Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date), dont vous pourrez également trouver [des exemples dans le cours](98-outils.md).
 
-Nous allons créer un fichier par classe : `Book.js` et `Author.js`.
+Nous allons créer un fichier par classe : `Book.js` et `Author.js`. Ne pas oublier d'inclure ces deux fichiers dans votre HTML : 
+```html
+<script type="text/javascript" src="Book.js"></script>
+```
+
 
 Les propriétés d'un livre :
 - un ISBN (chaine de caractères)
