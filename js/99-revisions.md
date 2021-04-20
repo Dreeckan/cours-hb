@@ -32,7 +32,7 @@ Dans `revisions.js` :
 - Écrire une fonction qui trie un tableau de nombres :
   - prend en paramètre un tableau (qui contient des nombres, normalement)
   - renvoie un nouveau tableau, avec les éléments dans l'ordre croissant (du plus petit au plus grand) 
-  - Tester avec `[11, 2, 54, 50, 26, 8, 91, 011, 15]`
+  - Tester avec `[11, 2, 54, 50, 26, 8, 91, 011, 15]` ou un tableau de votre choix
   
 
 ## English version
@@ -59,3 +59,14 @@ In `revisions.js` :
   - a property `b` with a value: `test`
   - a method named `fusion` returning the fusion of `a` and `b`
 - Call the `fusion()` method and check the result
+
+## Conditions and loops
+
+- Write a fonction `greaterThan()` with two parameters `a` and `b`
+  - This function must return the greater number
+  - If one of the parameters is not a number, return 0
+  
+- Write a function that will order an array
+  - Takes an array (with only numbers in it) as a parameter
+  - Returns a new array, in which every elements are ordered (smallest first) 
+  - Test with `[11, 2, 54, 50, 26, 8, 91, 011, 15]` or any array you want
