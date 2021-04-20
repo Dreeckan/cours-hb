@@ -171,6 +171,60 @@ let damage = player1.attack(player2);
 console.log(player1.name + ' inflige ' + damage + ' points de dégats à ' + player2.name);
 ```
 
+### Le mot-clé this
+
+Dans les méthodes de vos classes, vous pouvez renvoyer la valeur de l'objet (l'instance) avec le mot-clé `this`. C'est ce que l'on fait dans le constructeur et différentes méthodes. 
+
+```js
+class Player {
+    constructor(hp = 100) {
+        // Ici this vaut l'objet en cours (peut être la valeur contenue dans player1 ou dans player2, par exemple)
+        this.hp = hp; 
+    }
+
+    // Notre Player sait s'il est en vie. C'est utile à notre programme ;) .
+    isAlive() {
+        return this.hp > 0;
+    }
+}
+
+let player1 = new Player();
+let player2 = new Player();
+```
+
+/!\ Attention toutefois au contexte des variables ! Dans une fonction anonyme, `this` va avoir une autre valeur.
+
+```js
+class Test {
+    constructor(tests = []) {
+        tests.forEach(function(test) {
+            this.something = test; // Ici, this ne correspond pas à notre objet !
+        });
+    }
+}
+```
+
+Pour éviter ce problème : 
+
+```js
+class Test {
+    constructor(tests = []) {
+        tests.forEach(test => {
+            this.something = test; // Avec une fonction fléchée, this correspond bien à notre objet
+        });
+        
+        // Une autre solution : on déclare une variable intermédiaire qu'on utilisera dans la fonction
+        let self = this;
+        
+        tests.forEach(function(test) {
+            self.something = test; // On utilise notre variable intermédiaire pour contourner le problème
+        });
+        
+        // Vous pouvez également utiliser .bind(), comme indiqué dans la première partie du cours ;)
+    }
+}
+```
+
 ## Exercices
 
 ### Conception et utilisation de classes
@@ -183,7 +237,6 @@ Nous allons créer un fichier par classe : `Book.js` et `Author.js`. Ne pas oubl
 ```html
 <script type="text/javascript" src="Book.js"></script>
 ```
-
 
 Les propriétés d'un livre :
 - un ISBN (chaine de caractères)
