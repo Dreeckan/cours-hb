@@ -35,11 +35,11 @@ Dans `revisions.js` :
   - Tester avec `[11, 2, 54, 50, 26, 8, 91, 011, 15]` ou un tableau de votre choix
 
 - Demander un nombre à l'utilisateur (fonction `prompt()`)
-  - S'il entre autre chose qu'un nombre, continuer à lui demander un nombre (afficher le message tant que la réponse n'est pas conforme aux attentes)
+  - S'il entre autre chose qu'un nombre (vérifier avec `isNaN()`), continuer à lui demander un nombre (afficher le message tant que la réponse n'est pas conforme aux attentes)
   - Afficher avec `alert()` si le nombre qu'il a donné est pair ou impair
 
 - Demander un nombre entre 0 et 100 à l'utilisateur (fonction `prompt()`)
-  - S'il entre autre chose qu'un nombre, continuer à lui demander un nombre (afficher le message tant que la réponse n'est pas conforme aux attentes)
+  - S'il entre autre chose qu'un nombre (vérifier avec `isNaN()`), continuer à lui demander un nombre (afficher le message tant que la réponse n'est pas conforme aux attentes)
   - Afficher avec `alert()` si le nombre qu'il a donné est premier ou non (peut être divisé par un nombre plus petit, voir [une définition des nombres premiers pour plus d'information](https://fr.wikipedia.org/wiki/Nombre_premier))
 
 ## 3. DOM, événements et JQuery
@@ -226,11 +226,11 @@ In `revisions.js` :
   - Test with `[11, 2, 54, 50, 26, 8, 91, 011, 15]` or any array you want
 
 - Ask the user a number (with the `prompt()` function)
-  - If the user enters something that is not a number, keep asking for a number
+  - If the user enters something that is not a number (check with `isNaN()`), keep asking for a number
   - Display a message with the `alert()` function and tell the user if the number was odd or not
 
 - Ask the user a number between 0 and 100 (with the `prompt()` function)
-  - If the user enters something that is not a number, keep asking for a number
+  - If the user enters something that is not a number (check with `isNaN()`), keep asking for a number
   - Display a message with the `alert()` function and tell the user if the number is a prime number or not ([Prime Number on Wikipedia](https://en.wikipedia.org/wiki/Prime_number))
 
 ### 3. DOM, events and JQuery
