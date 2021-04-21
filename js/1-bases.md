@@ -256,30 +256,30 @@ console.log(string.indexOf('c')); // Affiche 3 (existe à la position 3, soit la
 
 Une [liste des objets déjà définis dans Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects).
 
-Les objets sont une structure de données complexe nous permettant de regrouper des valeurs tout en créant nos propres index (nommés propriétés). 
+Les objets sont une structure de données complexe nous permettant de regrouper des valeurs tout en créant nos propres index (nommés propriétés) et des fonctions internes (appelées méthodes). 
 
 ```js
 // Méthode courte
 let student = {
-    firstName: "Test",
+    firstName: "Test", // Une propriété
     lastName: "Ouille",
     number: "42",
-    greetings: function () {
+    greetings: function () { // Une méthode
         return `Bonjour ${this.firstName} ${this.lastName}`; 
     }
 };
 
 // Méthode "longue" et strictement équivalente
 let student = new Object();
-student.firstName = "Test";
+student.firstName = "Test"; // Une propriété
 student.lastName = "Ouille";
 student.number = "42";
-student.greetings = function () {
+student.greetings = function () { // Une méthode
     return `Bonjour ${this.firstName} ${this.lastName}`;
 };
 ```
 
-Dans le cadre d'un objet, on ne parle pas d'index mais de propriété. Une propriété n'est pas une variable, elle n'existe que dans l'objet et il faut donc renseigner l'objet auquel elle appartient.
+Dans le cadre d'un objet, on ne parle pas d'index mais de propriété. Une propriété n'est pas une variable, elle n'existe que dans l'objet et il faut donc renseigner l'objet auquel elle appartient. Il en va de même pour les méthodes.
 
 ```js
 // pour afficher le nom de famille, qui est à la propriété lastname
