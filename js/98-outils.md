@@ -137,3 +137,12 @@ let now = new Date();
 console.log(now.getDate() + '/' + parseInt(now.getMonth() + 1) + '/' + now.getFullYear() + " " + now.getHours() + ':' + now.getMinutes());// Affiche la date actuelle (21/04/2021 09:30 par exemple)
 console.log(now.toLocaleString()); // Pour récupérer une date formatée selon la langue en cours
 ```
+
+
+## Des librairies / outils du quotidien
+
+### Animations
+
+- [Avoir de bonnes bases sur l'animation CSS](https://openclassrooms.com/fr/courses/5919246-creez-des-animations-css-modernes) est important (et souvent suffisant pour les animations) ([documentation MDN sur le sujet](https://developer.mozilla.org/fr/docs/Web/CSS/animation))
+- [La méthode `animate()` de JQuery](https://api.jquery.com/animate/) est très pratique pour animer ce que vous voulez avec des propriétés CSS.
+- Pour aller beaucoup plus loin, vous pouvez utiliser [des librairies dédiées à l'animation en JS, comme GreenSock](https://greensock.com/)
