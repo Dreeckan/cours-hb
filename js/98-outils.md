@@ -141,8 +141,36 @@ console.log(now.toLocaleString()); // Pour récupérer une date formatée selon 
 
 ## Des librairies / outils du quotidien
 
+Un ensemble d'outils que l'équipe Drakona utilise pour embellir / améliorer ses sites. N'hésitez pas à nous en envoyer d'autres ;) .
+
+### Librairies générales
+
+- [Bootstrap](https://getbootstrap.com/)
+- [Foundation](https://get.foundation/)
+
 ### Animations
 
 - [Avoir de bonnes bases sur l'animation CSS](https://openclassrooms.com/fr/courses/5919246-creez-des-animations-css-modernes) est important (et souvent suffisant pour les animations) ([documentation MDN sur le sujet](https://developer.mozilla.org/fr/docs/Web/CSS/animation))
 - [La méthode `animate()` de JQuery](https://api.jquery.com/animate/) est très pratique pour animer ce que vous voulez avec des propriétés CSS.
 - Pour aller beaucoup plus loin, vous pouvez utiliser [des librairies dédiées à l'animation en JS, comme GreenSock](https://greensock.com/)
+
+### Améliorer les champs de formulaire
+
+- [Dropzone](https://www.dropzonejs.com/) pour les champs `file`
+- [Select2](select2.github.io/) ou [Choices](https://joshuajohnson.co.uk/Choices/) pour les champs `<select>` (permettent la recherche, sélection simple de plusieurs éléments, etc.)
+
+### Une mise en forme animée
+
+- [Isotope](https://isotope.metafizzy.co/) pour permettre de trier/filtrer des éléments d'une liste
+- [scrollReveal](https://scrollrevealjs.org/) : animations au scroll dans la page
+- [Slick](https://kenwheeler.github.io/slick/) ou [Swipper](https://swiperjs.com/) : carrousels pour faire défiler des contenus
+
+### Accessibilité et design
+
+- [Color.review](https://color.review/) pour vérifier si le contraste de vos couleurs est suffisant
+
+### Afficher des cartes interactives
+
+- [Google maps](https://developers.google.com/maps/documentation?hl=fr) (payant)
+- [MapBox](https://www.mapbox.com/) (payant)
+- [Leaflet](https://leafletjs.com/) (open-source mais plus complexe à prendre en main)
