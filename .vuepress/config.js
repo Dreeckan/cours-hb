@@ -1,6 +1,7 @@
 const glob = require('glob');
 
 let phpFiles = glob.sync('php/!(README).md');
+let phpCdaFiles = glob.sync('php-cda/!(README).md');
 let symfonyFiles = glob.sync('symfony/!(README).md');
 let ciFiles = glob.sync('ci/**/!(README).md');
 let jsFiles = glob.sync('js/**/!(README).md');
@@ -23,6 +24,13 @@ module.exports = {
         collapsable: true,
         sidebarDepth: 2,
         children: phpFiles
+      },
+      {
+        title: 'PHP pour les CDA',
+        path: '/php-cda/',
+        collapsable: true,
+        sidebarDepth: 2,
+        children: phpCdaFiles
       },
       {
         title: 'Symfony',
