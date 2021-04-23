@@ -7,8 +7,6 @@ PHP est principalement utilisé pour la création de sites webs, mais peut égal
 
 La [documentation de PHP, un resource essentielle](https://www.php.net/manual/fr/) et disponible en français.
 
-Je vous montre un peu l'intéret du CI !
-
 ## Environnement de travail
 
 Nous allons travailler avec [Wamp](https://sourceforge.net/projects/wampserver/files/latest/download) pour avoir un serveur Apache, MySQL, PHP et PhpMyAdmin sur notre Windows. Tout ce que nous allons voir fonctionne aussi avec [Xampp](https://www.apachefriends.org/fr/index.html), [Mamp](https://www.mamp.info/en/downloads/) ou un équivalent.
