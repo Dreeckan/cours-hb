@@ -306,7 +306,7 @@ echo doubleIt(8); // Renvoie 16
 ## Portée des variables
 
 ```php
-$a = 1; // Portée globale, disponible partout, hors fonctions
+$a = 1; // Disponible dans l'espace de nom par défaut, disponible partout, hors fonctions
 
 function doubleIt($argument = 1)
 {
@@ -321,7 +321,7 @@ function doubleIt($argument = 1)
 On peut déclarer une variable comme globale, à n'importe quel endroit du code. Elle sera disponible après que le code ait été exécuté (un peu comme `var` en Javascript).
 
 ```php
-$a = 1; // Portée globale, disponible partout, hors fonctions
+$a = 1; // Disponible dans l'espace de nom par défaut, disponible partout, hors fonctions
 
 function foo($argument) {
     global $c;
