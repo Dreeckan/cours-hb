@@ -149,7 +149,7 @@ header("Location: index.php");
 - Créer un script `home.php` qui va contenir notre page d'accueil (renommer le fichier `index.php` en `home.php`)
 - Ranger les fichiers de pages qu'on a jusqu'à présent (list, login, home, etc.) dans un dossier `pages`
 - Dans `index.php`, nous allons récupérer un paramètre `GET`, nommé `page`, qui contiendra la page à charger (page d'accueil, liste des produits, panier, etc.)
-- Mettre à jour les autres pages en conséquence
+- Mettre à jour les autres pages en conséquence pour réduire autant que possible le code des pages
 
 ## 21. Ajouter des éléments au panier
 
