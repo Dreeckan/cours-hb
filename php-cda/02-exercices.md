@@ -145,8 +145,9 @@ header("Location: index.php");
 
 ## 20. Créer un front controller
 
-- Nous allons maintenant utiliser notre fichier `index.php` en tant qu'unique script PHP appelé. C'est-à-dire que nous n'appellerons plus `list.php` (et les autres pages) directement, mais en passant par elle.
-- Créer un script `home.php` qui va contenir notre page d'accueil
+- Nous allons maintenant utiliser notre fichier `index.php` en tant qu'unique script PHP appelé. C'est-à-dire que nous n'appellerons plus `list.php` (et les autres pages) directement, mais en passant par elle. (en appelant `index.php?page=list`)
+- Créer un script `home.php` qui va contenir notre page d'accueil (renommer le fichier `index.php` en `home.php`)
+- Ranger les fichiers de pages qu'on a jusqu'à présent (list, login, home, etc.) dans un dossier `pages`
 - Dans `index.php`, nous allons récupérer un paramètre `GET`, nommé `page`, qui contiendra la page à charger (page d'accueil, liste des produits, panier, etc.)
 - Mettre à jour les autres pages en conséquence
 
