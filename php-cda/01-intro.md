@@ -409,6 +409,11 @@ echo $_POST['boutonValidation']; // Valider
 - Appeler la fonction `session_start()` au début de toutes les pages pour que la session fonctionne correctement
 - le contenu de la session se trouve dans la variable superglobale `$_SESSION`
 - On peut y ajouter/modifier/supprimer des éléments en modifiant ce tableau
+```php
+$_SESSION['login'] = 'unLogin';
+echo $_SESSION['login']; 
+// etc.
+```
 
 ### Les cookies
 

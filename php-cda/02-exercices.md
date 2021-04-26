@@ -75,7 +75,7 @@ Ce que j'appelle layout : nous allons découper notre HTML pour en extraire les 
 ## 11. Création d'une page d'accueil
 
 - Renommer le fichier contenant la liste des bonnets en `list.php` (surtout si, comme moi, vous l'avez appelé `ìndex.php`)
-- Créer un nouveau fichier `index.php` et y appeler nos header et footer (pour inclure les éléments communs à toutes les pages)
+- Créer un nouveau fichier `index.php` et y appeler nos header et footer avec `include` ou `include_once` (pour inclure les éléments communs à toutes les pages)
 - Inclure le style et le js de Bootstrap (version 4), [disponible ici](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
 - Inclure sur cette page une liste des 3 premiers bonnets de notre liste (chacun prendra 1/3 de la page en largeur)
 - Leur trouver une image pour les rendre plus jolis (je laisse ça à votre jugement ;)) et ajouter le lien de cette image dans les données
@@ -150,7 +150,7 @@ Ce que j'appelle layout : nous allons découper notre HTML pour en extraire les 
 - Gérer l'ajout au panier d'un élément (passer un identifiant (à ajouter dans la liste des produits) qui sera récupéré avec `$_GET`)
 - Les éléments doivent être présents dans la session
 
-### Exemple de format de `$_SESSION['cart']`
+**Exemple de format de `$_SESSION['cart']`**
 
 ```php
 [
@@ -188,7 +188,7 @@ Ce que j'appelle layout : nous allons découper notre HTML pour en extraire les 
   - Email valide (non vide et de la forme `test@test.test`)
   - Message non vide (Attention au cas `' '`)
 
-### 25. Formulaire de contact, indices
+**Indices**
 
 - Il existe une fonction PHP qui va vérifier la validité d'une variable (dont un email)
 - Il faut passer les données en POST dans votre formulaire
