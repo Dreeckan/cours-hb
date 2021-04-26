@@ -116,17 +116,23 @@ Ce que j'appelle layout : nous allons découper notre HTML pour en extraire les 
 ## 17. Créer une page de déconnexion
 
 - Créer une page `logout.php`
-- Chercher comment déconnecter un utilisateur (fermer sa session)
-- L'appliquer sur cette page et ajouter un message pour l'utilisateur (`Vous êtes bien déconnecté.e`)
-- Mettre en forme avec Bootstrap (composant [alerts](https://getbootstrap.com/docs/4.5/components/alerts/) par exemple)
+- Cette page ne va contenir que quelques lignes
+- Utiliser la fonction `session_destroy()` pour détruire les données en session
+- une fois la fonction appelée (avec succès ;) ), utiliser la fonction `header()` pour rediriger vers la page `index.php` (et donc, pas besoin d'appeler quoique ce soit d'autre)
+```php
+// Cette fonction a une utilisation assez particulière,
+// Voici l'écriture pour rediriger vers la page index.php
+header("Location: index.php");
+```
 
 ## 18. Vérification du mot de passe
 
-- Ajouter (dans `vars.php` par exemple) une valeur de mot de passe attendue (par exemple 'toto')
+- Ajouter (dans `variables.php` par exemple) une valeur de mot de passe attendue (par exemple 'toto')
 - Dans le formulaire de connexion, vérifier que le mot de passe est correct
   - Si ça n'est pas le cas, afficher un message d'erreur
   - Si c'est le cas, afficher un message de réussite et ajouter le login dans la session
 - Vérifier également que le login n'est pas vide (et afficher un message d'erreur)
+- Mettre en forme les messages avec Bootstrap (composant [alerts](https://getbootstrap.com/docs/4.5/components/alerts/) par exemple)
 
 ## 19. Créer une PR (Pull Request)
 
