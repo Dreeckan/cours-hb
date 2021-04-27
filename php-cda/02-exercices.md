@@ -258,6 +258,14 @@ header("Location: index.php");
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
+## 32. Continuer la conversion en objets
+
+- Créer les classes suivantes et les utiliser dans le code existant (dans tous les cas, je vous laisse libre pour les propriétés et les méthodes) :
+  - `Contact` un objet de gestion des messages de contact (lui passer un tableau de paramètres dans le constructeur, pour faire le lien plus rapidement entre le formulaire et l'objet)
+  - `BeanieFilter` un objet pour le formulaire de filtres des bonnets
+  - `Cart` un objet pour gérer le panier et le mettre en session
+- Si du code est répété, créer un/des traits pour factoriser (les ranger dans un sous-dossier de `classes`)
+
 ## Révisions
 
 Pour réviser tous ces points et les travailler avant de passer aux objets, vous pouvez [vous entrainer avec ces exercices de révision](https://github.com/Dreeckan/exercices-php/blob/main/revisions.md).
