@@ -5,21 +5,29 @@
 
 ## Une classe
 
-- Un nom
-- Des constantes
-- Des propriétés 
-- Des méthodes
-- 1 classe = 1 fichier
-- Classe ou objet ?
+En PHP, une classe se nomme en PascalCase, est l'unique contenu d'un fichier (par convention, ça n'est pas obligatoire) et peut avoir :
+
+- des constantes
+- des propriétés
+- des méthodes
+- des appels de traits
+
+/!\ Ne pas confondre classe et objet. Une classe est un plan de fabrication, l'objet est une instance (une version concrète) de cette classe.
 
 ```php
 // classes/Beanie.php
+
 // Nom avec une majuscule entre chaque mot et dès le premier mot
 class Beanie
 {
-    protected $material; // Une propriété
+    // Une propriété.
+    // On ne peut pas en définir le type directement,
+    // mais on peut l'indiquer en annotation 
+    protected $material; 
 
      // Une méthode
+     // sans type de retour, mais on pourrait l'ajouter
+     // et/ou l'indiquer en annotation
     public function getMaterial()
     {
         return $this->material;
@@ -27,11 +35,15 @@ class Beanie
 }
 
 // index.php
+// Instanciation d'un objet
+// Et appel d'une méthode
 $beanie = new Beanie();
 echo $beanie->getMaterial();
 ```
 
 ## Utiliser nos classes
+
+En PHP, par défaut, les classes ne sont pas chargées automatiquement, il faut les charger nous-même (soit avec `require`/`require_once`, soit avec un autoloader qui le fera pour nous).
 
 ```php
 require 'classes/MaClasse.php';
@@ -53,6 +65,10 @@ spl_autoload_register(function ($class) {
 
 ## Documenter ses classes
 
+Les annotations et le typage sont très utiles pour définir les types des propriétés, paramètres et valeurs de retour. Hélas, en PHP 7, nous ne pouvons pas toujours typer directement les propriétés. Nous sommes obligés d'utiliser les annotations pour le faire (c'est disponible à partir de PHP 7.4 seulement).
+
+En PHP, une variable peut également avoir plusieurs types possibles. On notera alors ces types en annotation, dans la plupart des cas (`int|float` par exemple). Pour le cas d'une valeur pouvant être `null`, on ajoutera un `?` avant le type (`?int` par exemple).
+
 ```php
 class Beanie 
 {
@@ -72,6 +88,9 @@ class Beanie
 ```
 
 ## `$this` : pseudo-variable, vraie utilité
+
+`$this` permet d'accéder à l'objet en cours. Toujours utile pour le mettre à jour !
+Il est nécessaire pour assurer l'encapsulation de nos propriétés (on ne les modifie jamais directement, mais toujours *via* des méthodes).
 
 ```php
 class Beanie 
@@ -161,8 +180,10 @@ class EarflapBeanie extends Beanie
     // pour ajouter des comportements
     public function __construct()
     {
-        parent::__construct(); // On peut appeler le constructeur du parent (pour en garder le fonctionnement)
-        $this->uneProprieteEnPlus = true; // En général, on veut ajouter des comportements spécifiques après l'appel du constructeur parent
+        // On peut appeler le constructeur du parent (pour en garder le fonctionnement)
+        parent::__construct();
+        // En général, on veut ajouter des comportements spécifiques après l'appel du constructeur parent
+        $this->uneProprieteEnPlus = true; 
     }
     
     public function uneMethodeEnPlus()
@@ -188,15 +209,17 @@ class EarflapBeanie extends Beanie
 }
 ```
 
-## La fonction get_class()
+## La fonction `get_class()`
 
 ```php
 abstract class Bar
 {
     public function __construct()
     {
-        var_dump(get_class($this)); // On récupère l'objet réellement en cours
-        var_dump(get_class()); // On récupère l'objet où la déclaration est faite
+        // On récupère l'objet réellement en cours
+        var_dump(get_class($this));
+        // On récupère l'objet où la déclaration est faite
+        var_dump(get_class());
     }
 }
 
