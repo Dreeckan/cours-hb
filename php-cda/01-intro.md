@@ -90,6 +90,8 @@ $mesProduits = [
 
 - Accéder à une entrée
 
+On utilise alors l'index correspondant à la ligne qu'on veut récupérer.
+
 ```php
 $mesProduits = [
     0           => 'foo',
@@ -110,10 +112,13 @@ $mesProduits = [
     'uneEntrée' => 2,
 ];
 
+// On peut ajouter une entrée à un index précis
 $mesProduits[2] = 'un texte de test';
-// ou
+// ou dire à PHP de gérer l'index (ici, le texte sera ajouté à l'index 2)
 $mesProduits[] = 'un texte de test';
 ```
+
+Note : le dernier exemple ci-dessus (`$mesProduits[] = $value`) est équivalent à `.push(value)` de Javascript. Un index numérique est calculé (PHP récupère le dernier index numérique, et l'incrémente pour avoir le nouvel index) et `$value` est ajouté à cet index. 
 
 - Modifier une entrée
 
@@ -124,6 +129,7 @@ $mesProduits = [
     'uneEntrée' => 2,
 ];
 
+// On modifie l'élément à l'index 0
 $mesProduits[0] = 'no more foo';
 ```
 
