@@ -264,7 +264,51 @@ header("Location: index.php");
   - `Contact` un objet de gestion des messages de contact (lui passer un tableau de paramètres dans le constructeur, pour faire le lien plus rapidement entre le formulaire et l'objet)
   - `BeanieFilter` un objet pour le formulaire de filtres des bonnets
   - `Cart` un objet pour gérer le panier et le mettre en session
+  - `Page` un objet pour les informations d'une page
 - Si du code est répété, créer un/des traits pour factoriser (les ranger dans un sous-dossier de `classes`)
+
+## 33. Pull Request
+
+- Créez une Pull Request
+- Invitez quelqu'un.e sur votre projet
+- Faites vous inviter par cette personne également
+- Relisez le code et faites vos retours (vérifiez que le code valide bien les normes PSR-12 **et** PSR-4, par exemple)
+- Approuvez (ou non) sa PR
+- Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
+
+## 34. Créer une base de données
+
+- Ouvrir [PhpMyAdmin](http://localhost/phpmyadmin/)
+- Y créer une base de données `exo_beanies`
+- Créer des tables pour les objets 
+  - `Contact` (nommer la table `contact`)
+  - `Beanie` (nommer la table `beanie`)
+- Créer un fichier de connexion à la BdD `includes/config.inc.php` et faire en sorte d'avoir une connexion fonctionnelle dans toutes vos pages.
+- Insérer des données dans la table `beanie` à l'aide de l'une des deux méthodes suivantes :
+  - dans PhpMyAdmin, ajouter des données dans la table `beanie` (avec les valeurs de votre fichiers `variables.php` par exemple)
+  - écrire un script PHP `includes/fixtures.php` insérant les données
+  
+## 35. Formulaire de contact, en BdD
+
+- Modifier votre page de contact pour insérer les données du formulaire dans la table `contact`
+  - N'insérer les données **que** si aucune erreur n'est remontée
+  
+## 36. Utiliser les données de la BdD
+
+- Créer une classe `BeanieFactory` dans `classes/Factory/BeanieFactory.php` qui va avoir une méthode `create()` 
+  - ayant pour paramètre un tableau (une ligne récupérée dans la BdD) 
+  - renvoyant un objet `Beanie` contenant les données venues de la table
+- Modifier vos pages pour récupérer les données depuis la table `beanie`, plutôt qu'une variable
+  - Adapter le code des différentes pages pour utiliser la BdD plutôt que le tableau (fixe) qu'on utilisait jusqu'à présent
+
+## 37. Pull Request
+
+- Créez une Pull Request
+- Invitez quelqu'un.e sur votre projet
+- Faites vous inviter par cette personne également
+- Relisez le code et faites vos retours (vérifiez que le code valide bien les normes PSR-12 **et** PSR-4, par exemple)
+- Approuvez (ou non) sa PR
+- Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
 ## Révisions
 
