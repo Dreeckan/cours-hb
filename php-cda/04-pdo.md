@@ -271,6 +271,19 @@ while($result = $pdoStatement->fetch(PDO::FETCH_ASSOC)) {
 }
 ```
 
+## Récupérer l'identifiant du dernier élément enregistré
+
+```php
+$stmt = $connection->prepare("INSERT INTO truc (bidule, machin) VALUES(:bidule, :machin)");
+$isDone = $stmt->execute();
+if (!$isDone) {
+  throw new Exception('Erreur lors de la requête : '.$statement->errorInfo()[2]);
+}
+
+// Ici, on récupère l'id du dernier élément inséré dans truc 
+$id = $connection->lastInsertId();
+```
+
 ## PHPMyAdmin et la console MySQL de Wamp
 
 - [Un lien pour tester si Wamp est lancé](http://localhost/phpmyadmin/db_structure.php?server=1&db=cours)
