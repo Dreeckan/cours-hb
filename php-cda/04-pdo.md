@@ -28,14 +28,7 @@ SGBD : Système de Gestion de Base de Données
 - Les transactions (faire plusieurs requête et les annuler facilement en cas de souci dans l'une d'entre elles)
 - Un paquet d'outils pour faciliter les requêtes
 
-## Requêtes
-
-- Requêtes directes ou préparées
-- Passer des arguments
-- Constantes utiles
-- Marqueurs et paramètres nommés
-
-### Se connecter à la base
+## Se connecter à la base
 
 - Créer une instance de PDO à utiliser dans le reste du site
 - Utiliser nos identifiants une seule fois
@@ -55,7 +48,38 @@ try {
 }
 ```
 
-### Requêtes directes
+## Gérer les erreurs
+
+- La [documentation officielle sur la classe PDOException](https://www.php.net/manual/fr/class.pdoexception.php)
+- Le [chapitre de la documentation sur les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
+
+Les méthodes qui exécutent peuvent renvoyer `false` si la requête SQL s'est mal passée. Pour récupérer le détail de l'erreur, vous pouvez utilise la méthode `errorInfo()` de PDO :
+
+```php
+if (!$isDone) {
+    var_dump($connection->errorInfo());
+    // Pour afficher seulement le message d'erreur, vous pouvez utiliser directement l'index 2 du tableau.
+    throw new Exception('Erreur lors de la requête : '.$connection->errorInfo()[2]);
+}
+```
+
+Dans la connexion, vous allez principalement avoir un seul type d'exception `PDOException`, mais vous pourriez avoir d'autres types d'exception :
+
+```php
+$dsn = 'mysql:dbname=cours;host=127.0.0.1';
+$user = 'root'; // Utilisateur par défaut
+$password = ''; // Par défaut, pas de mot de passe sur Wamp
+
+try {
+    $connection = new PDO($dsn, $user, $password);
+} catch (PDOException $e) {
+    echo 'Connexion échouée : ' . $e->getMessage();
+} catch (Exception $e) {
+    echo 'Connexion échouée : ' . $e->getMessage();
+}
+```
+
+## Requêtes directes
 
 - Avec `PDO::query()` pour les `SELECT`
 - Avec `PDO::exec()` pour celles qui ne renvoient pas de résultats
@@ -78,7 +102,7 @@ $statement = $connection->query($sql);
 // Si $result contient false, on a eu une erreur et on l'affiche
 if (!$statement) {
     // Vous n'êtes bien sûr pas obligés d'arrêter l'exécution du programme 
-    exit(var_dump($connection->errorInfo()));
+    throw new Exception('Erreur lors de la requête : '.$connection->errorInfo()[2]);
 }
 
 // Si on souhaite récupérer tous nos résultats dans un tableau associatif,
@@ -101,10 +125,11 @@ foreach  ($results as $result) {
 // On écrit une requête, où on insère 3 éléments
 $sql = "INSERT INTO `student`(`fullname`) VALUES ('Rémi Jarjat'), ('Jean-Claude Duss'), ('Marc-André du Gaz de Schiste')";
 // On l'exécute et on récupère le nombre de lignes mises à jour
-$count = $connection->exec($sql); // $count contient 3
+$count = $connection->exec($sql); // $count contient 3 (ou false en cas d'erreur)
 
 // On met à jour tous les éléments de notre table student
 $sql = 'UPDATE student SET date = NOW()';
+// Si une erreur s'est produite, exec() renvoie false
 $count = $connection->exec($sql); // $count contient également 3 (on modifie toutes les lignes)
 ```
 
@@ -118,11 +143,11 @@ $result = $connection->exec($sql);
 
 // Si $result contient false, on a eu une erreur et on l'affiche
 if (!$result) {
-    var_dump($connection->errorInfo());
+    throw new Exception('Erreur lors de la requête : '.$connection->errorInfo()[2]);
 }
 ```
 
-### Les requêtes préparées
+## Les requêtes préparées
 
 Les principaux intérêts d'une requête préparée sont si on veut exécuter une requête avec des nombreux éléments, plusieurs fois ou si on souhaite passer des paramètres sans risquer des erreurs d'écriture (les concaténations de chaines peuvent être dangereuses et pénibles à debugger). Une requête préparée sera exécutée plus vite, si elle est appelée plusieurs fois. Personnellement, je préfère préparer toutes mes requêtes, pour des simplicités d'écriture.
 
@@ -210,7 +235,7 @@ foreach ($contacts as $contact) {
     $count = $pdoStatement->execute();
 
     if ($count === false) {
-        exit(var_dump($connection->errorInfo()));
+        throw new Exception('Erreur lors de la requête : '.$connection->errorInfo()[2]);
     }
 }
 ```
@@ -235,33 +260,14 @@ Un exemple avec utilisation de `fetch()` :
 ```php
 $sql = "SELECT * FROM contact";
 $pdoStatement = $connection->prepare($sql);
-$success = $pdoStatement->execute();
+$isDone = $pdoStatement->execute();
 
-if (!$success) {
-    exit(var_dump($connection->errorInfo()));
+if (!$isDone) {
+    throw new Exception('Erreur lors de la requête : '.$connection->errorInfo()[2]);
 }
 
 while($result = $pdoStatement->fetch(PDO::FETCH_ASSOC)) {
     var_dump($result);
-}
-```
-
-## Les exceptions
-
-- La [documentation officielle sur la classe PDOException](https://www.php.net/manual/fr/class.pdoexception.php)
-- Le [chapitre de la documentation sur les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
-
-```php
-$dsn = 'mysql:dbname=cours;host=127.0.0.1';
-$user = 'root'; // Utilisateur par défaut
-$password = ''; // Par défaut, pas de mot de passe sur Wamp
-
-try {
-    $connection = new PDO($dsn, $user, $password);
-} catch (PDOException $e) {
-    echo 'Connexion échouée : ' . $e->getMessage();
-} catch (Exception $e) {
-    echo 'Connexion échouée : ' . $e->getMessage();
 }
 ```
 
