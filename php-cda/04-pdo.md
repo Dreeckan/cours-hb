@@ -278,4 +278,6 @@ while($result = $pdoStatement->fetch(PDO::FETCH_ASSOC)) {
 
 ## Exercices
 
-Pour vous entrainer à manipuler PDO, utiliser le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/#8-base-de-donn%C3%A9es). Les exercices à partir du numéro 8 sont dédiés à cela.
+Pour vous entrainer à manipuler PDO, utiliser
+- les [exercices sur notre site de bonnets](02-exercices.md) (à partir de l'exercice 34)
+- le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/#8-base-de-donn%C3%A9es). Les exercices à partir du numéro 8 sont dédiés à cela.
