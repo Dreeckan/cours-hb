@@ -23,6 +23,7 @@ Vous pouvez alors ouvrir ce nouveau dossier avec votre IDE favori. Les deux sous
 Pour installer un plugin dans PHPStorm, aller dans les options, partie `plugins` (`File` > `Settings` > `Plugins`) et chercher dans la partie `Marketplace`
 
 - Symfony Support
+- OpenAPI (Swagger) Editor
 
 Voir également la [vidéo dédiée à la configuration de PHPStorm](https://www.loom.com/share/8660523dee7141a18461dec7a65e3850)
 
