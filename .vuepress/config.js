@@ -53,6 +53,7 @@ module.exports = {
                 sidebarDepth: 2,
                 children: ciFiles
             },
+            '/deploy/',
         ]
     },
     plugins: [
