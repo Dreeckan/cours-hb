@@ -24,6 +24,10 @@
 
 > Javascript, des bases du langage à la programmation orientée objet. 
 
+- [Déploiement](deploy/)
+
+> Des exercices de déploiement de projets PHP et autres 
+
 - [Intégration continue](ci/)
 
 > Les grands principes et la mise en place de l'intégration continue, à l'aide de Gitlab. 
