@@ -37,6 +37,7 @@ help:
 
 deploy: ## Déploie sur le serveur de prod
 	ansible-playbook -i ansible/prod ansible/deploy/deploy.yml
+.PHONY: deploy
 
 ansible.install:
 	ansible-galaxy install ansistrano.deploy ansistrano.rollback -p ansible/roles
