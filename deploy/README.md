@@ -10,6 +10,7 @@ Etapes :
 - L'ajouter au serveur avec la commande `ssh-copy-id debian@51.178.42.85` (entrer le mot de passe au dessus quand demandé, vous n'aurez alors plus besoin de l'entrer)
 - Télécharger le fichier deployer.phar dans un projet Symfony ([https://deployer.org/deployer.phar](https://deployer.org/deployer.phar))
 - Créer un fichier de configuration `deploy.php` dans ce projet
+    - Pour le paramètre `repository`, récupérer le lien de clone de votre repository sur Github / Gitlab / Bitbucket (`git@nomDuServeur:votreRepository`) 
     - Créer un host(), avec le stage `prod` et en nom de dossier pour le déploiement `/var/www/votreNom/`
 - Tester que la connexion fonctionne avec `php deployer.phar ssh prod` (si vous avez créé un `stage` portant le nom `prod`)
 - Une fois votre script en place, tester le déploiement
