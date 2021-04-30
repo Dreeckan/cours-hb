@@ -6,7 +6,7 @@ Le serveur sur lequel nous allons déployer :
 
 Etapes : 
 - Avoir une clé SSH (si besoin, utiliser la commande `ssh-keygen` pour en créer une)
-- Utiliser cette clé ssh `ssh-add` (si vous utilisez un chemin particulier, différent de `/c/Users/remij/.ssh/id_rsa` (git bash) ou `C:\Users\remij/.ssh/id_rsa` (Powershell), ajoutez ce chemin `ssh-add /c/Users/remij/.ssh/id_rsa`). On utilise la clé privée ici :wink: (celle sans extension)
+- Utiliser cette clé ssh `ssh-add` (si vous utilisez un chemin particulier, différent de `/c/Users/remij/.ssh/id_rsa` (git bash) ou `C:\Users\remij/.ssh/id_rsa` (Powershell), ajoutez ce chemin `ssh-add /c/Users/remij/.ssh/id_rsa`). On utilise la clé privée ici (celle sans extension)
 - L'ajouter au serveur avec la commande `ssh-copy-id debian@51.178.42.85` (entrer le mot de passe au dessus quand demandé, vous n'aurez alors plus besoin de l'entrer)
 - Télécharger le fichier deployer.phar dans un projet Symfony ([https://deployer.org/deployer.phar](https://deployer.org/deployer.phar))
 - Créer un fichier de configuration `deploy.php` dans ce projet
