@@ -26,6 +26,9 @@ require 'recipe/symfony4.php';
 // Project name
 set('application', 'name');
 
+// Pour Windows
+set('ssh_multiplexing', false);
+
 // Project repository (use ssh version, starting with git@)
 set('repository', 'urlVersVotreRepo');
 
