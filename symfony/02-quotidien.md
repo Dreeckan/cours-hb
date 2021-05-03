@@ -38,3 +38,16 @@ Pour utiliser un nom de domaine, ajouter dans le fichier `/etc/hosts` (Linux et 
 127.0.0.1       www.test.test
 ```
 et votre site sera accessible sur `www.test.test:8000`
+
+### En cas de soucis 
+
+Si votre site local n'est pas accessible (ni sur [http://127.0.0.1:8000](http://127.0.0.1:8000) ou [https://127.0.0.1:8000](https://127.0.0.1:8000)), vérifiez :
+
+- que vous avez lancé votre serveur dans le bon dossier (la racine de votre projet Symfony)
+- qu'il n'y a pas (trop) d'erreurs lors du lancement de la commande `symfony serve`
+- l'url sur laquelle le serveur doit répondre (ce serveur permet également d'avoir plusieurs serveurs en parallèle, chacun aura son propre port)
+
+Si vous avez vérifié tout ça, essayer de redémarrer le serveur : 
+
+- `symfony server:stop` pour l'arrêter
+- `symfony serve` pour le relancer
