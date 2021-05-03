@@ -1,5 +1,7 @@
 # Exercices
 
+Une [autre série d'exercices est disponible sur Gitlab](https://gitlab.com/drakona-formation/exercices-symfony-cda17) (annonces d'adoption de chiens)
+
 La correction de ces exercices est disponible sur un [repository Github dédié](https://github.com/Dreeckan/test-symfony)
 
 ## 1. Créer une première page avec Symfony (exercice guidé)
