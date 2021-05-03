@@ -3,8 +3,8 @@
 Avant de pouvoir travailler concrètement sur Symfony, il faut mettre en place notre environnement de travail.
 
 Pour cela, nous allons installer : 
-- [Composer, gestionnaire de paquet pour PHP](https://getcomposer.org/doc/00-intro.md)
-- [l'outil en ligne de commande de Symfony](https://symfony.com/download)
+- [Composer, gestionnaire de paquet pour PHP](https://getcomposer.org/doc/00-intro.md) (ou [lien direct vers l'installeur](https://getcomposer.org/Composer-Setup.exe))
+- [l'outil en ligne de commande de Symfony](https://symfony.com/download) (ou [lien direct vers l'installeur](https://get.symfony.com/cli/setup.exe))
   
 Si vous utilisez Windows, je vous conseille d'utiliser Powershell pour éviter des erreurs de rendu.
 
@@ -23,6 +23,7 @@ Vous pouvez alors ouvrir ce nouveau dossier avec votre IDE favori. Les deux sous
 Pour installer un plugin dans PHPStorm, aller dans les options, partie `plugins` (`File` > `Settings` > `Plugins`) et chercher dans la partie `Marketplace`
 
 - Symfony Support
+- .env files support
 - OpenAPI (Swagger) Editor
 
 Voir également la [vidéo dédiée à la configuration de PHPStorm](https://www.loom.com/share/8660523dee7141a18461dec7a65e3850)
