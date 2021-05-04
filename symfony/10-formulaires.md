@@ -182,7 +182,9 @@ Pour créer un formulaire à partir de notre `TagType` (qui est un plan de fabri
             $em->persist($tag);
             $em->flush();
 
-            // Une fois que le formulaire est validé, on redirige pour éviter que l'utilisateur 
+            // Une fois que le formulaire est validé,
+            // on redirige pour éviter que l'utilisateur ne recharge la page
+            // et soumette la même information une seconde fois
             return $this->redirectToRoute('tag_index');
         }
 
