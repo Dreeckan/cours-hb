@@ -64,6 +64,19 @@ Un second fichier `templates/blog/layout.html.twig` :
 {% endblock body %}
 ```
 
+Si, pour une raison ou une autre, vous voulez conserver le contenu du bloc parent, vous pouvez appeler la fonction `parent()`.
+
+```twig
+{# On étend base.html.twig, on en récupère donc tout le contenu, mais nous ne pouvons plus écrire des choses en dehors de blocks #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  {{ parent() }}
+  
+  Je rajoute du contenu après le contenu de mon parent
+{% endblock body %}
+```
+
 ## Spécifiques à Symfony
 
 Il y a quelques filtres et fonctions utiles à connaître pour travailler avec Twig dans Symfony : 
