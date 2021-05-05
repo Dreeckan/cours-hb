@@ -49,6 +49,11 @@ La ligne qui nous intéresse est celle-ci :
 DATABASE_URL="mysql://root:pass@127.0.0.1:3306/test-symfony?serverVersion=5.7"
 ```
 
+Si vous utilisez MariaDB, il est plus probable qu'une variante comme celle-ci vous convienne mieux : 
+```dotenv
+DATABASE_URL="mysql://root:pass@127.0.0.1:3307/test-symfony?serverVersion=mariadb-10.4.13"
+```
+
 Décomposons-la pour comprendre ce qu'elle fait et comment :
 
 - `mysql://` est le protocole à utiliser (le type de BdD qu'on utilise, si vous préférez). Ici, mysql
@@ -352,10 +357,12 @@ Elle contient 2 méthodes :
 Pour générer une migration, il faut utiliser la commande (j'ajoute l'option `-n` pour éviter que la ligne de commande demande une confirmation) :
 
 ```shell
-php bin/console doctrine:migrations:diff -n
+php bin/console make:migration
 ```
 
-La commande `php bin/console make:migration` fait exactement la même chose.
+La commande `php bin/console doctrine:migrations:diff -n` fait exactement la même chose.
+
+**/!\ Conseil** : il peut être utile d'exécuter les migrations *avant* d'en générer une nouvelle en exécutant `php bin/console doctrine:migrations:migrate -n` avant la commande `make:migration` / `doctrine:migrations:diff` 
 
 Dans notre exemple, notre migration ressemblera à ceci :
 
@@ -404,6 +411,12 @@ php bin/console doctrine:migrations:migrate -n
 ```
 
 Cette commande exécutera toutes les migrations qui n'ont pas déjà été lancées (la liste des migrations déjà exécutées se trouve dans la table `doctrine_migration_versions` de votre BdD).
+
+**/!\ Conseil :** Il est important que votre base puisse être construite de 0 avec les migrations (et éventuellement des fixtures). Vous pouvez tester
+
+### Annuler une migration
+
+Si une migration s'est mal passée (une erreur s'est produite pendant la migration ou crée un bug, par exemple), vous pouvez l'annuler avec la commande `php bin/console doctrine:migrations:execute --down DoctrineMigrations\VersionXXX` où `XXX` est le numéro de version (dans les faits, on passe le FQCN de la migration à la commande).
 
 ## L'EntityManager pour sauvegarder
 
@@ -674,6 +687,10 @@ class BlogController extends AbstractController
     // ...
 }
 ```
+
+## Créer de fausses données 
+
+Pour tester notre application (surtout pour le développement), nous pouvons insérer des données de bases (souvent fausses). Pour cela, je vous conseille d'utiliser le [DoctrineFixturesBundle](https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html). 
 
 ## Exercices liés
 
