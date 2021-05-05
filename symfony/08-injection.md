@@ -116,15 +116,24 @@ class MailGenerator
 }
 ```
 
-Pour déclarer manuellement notre service, tout en profitant (quand même) de l'autowiring, il suffit d'ajouter à la fin de `config/services.yaml`, dans la partie `services` :
+Pour déclarer manuellement notre service, tout en profitant (quand même) de l'autowiring, il suffit d'ajouter un paramètre pour tous nos services, ou de surcharger la déclaration de notre service. Les deux possibilités sont présentées ci-dessous, il suffit d'en choisir une.
 
 ```yaml
 services:
+    _defaults:
+        autowire: true 
+        autoconfigure: true 
+        public: false  
+        bind: # Ici, nous pouvons directement associer TOUS les paramètres $fromEmail qui sont à injecter dans des services
+            # Dès qu'une variable $fromEmail est déclarée dans le constructeur d'un service (ou une action de contrôleur)
+            # on lui donnera une valeur
+            $fromEmail: 'admin@example.com'
     
     # ...
     # Tout ce qui était avant est inchangé
     # ...
     
+    # Ou nous pouvons surcharger la définition de notre service, pour modifier ses paramètres
     App\Service\MailGenerator: # L'identifiant de notre service est son FQCN (nom complet de la classe)
         arguments: # On modifie le comportement de l'injection en lui disant de modifier les arguments (du constructeur) du service
             $fromEmail: 'admin@example.com' # on fait alors correspondre notre paramètre $fromEmail à une valeur
