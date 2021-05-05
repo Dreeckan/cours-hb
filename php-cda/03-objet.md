@@ -12,7 +12,7 @@ En PHP, une classe se nomme en PascalCase, est l'unique contenu d'un fichier (pa
 - des méthodes
 - des appels de traits
 
-/!\ Ne pas confondre classe et objet. Une classe est un plan de fabrication, l'objet est une instance (une version concrète) de cette classe.
+:warning: Ne pas confondre classe et objet. Une classe est un plan de fabrication, l'objet est une instance (une version concrète) de cette classe.
 
 ```php
 // classes/Beanie.php

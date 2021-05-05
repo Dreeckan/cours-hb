@@ -366,7 +366,7 @@ php bin/console make:migration
 
 La commande `php bin/console doctrine:migrations:diff -n` fait exactement la même chose.
 
-**/!\ Conseil** : il peut être utile d'exécuter les migrations *avant* d'en générer une nouvelle en exécutant `php bin/console doctrine:migrations:migrate -n` avant la commande `make:migration` / `doctrine:migrations:diff`
+**:warning: Conseil** : il peut être utile d'exécuter les migrations *avant* d'en générer une nouvelle en exécutant `php bin/console doctrine:migrations:migrate -n` avant la commande `make:migration` / `doctrine:migrations:diff`
 
 Dans notre exemple, notre migration ressemblera à ceci :
 
@@ -416,7 +416,7 @@ php bin/console doctrine:migrations:migrate -n
 
 Cette commande exécutera toutes les migrations qui n'ont pas déjà été lancées (la liste des migrations déjà exécutées se trouve dans la table `doctrine_migration_versions` de votre BdD).
 
-**/!\ Conseil :** Il est important que votre base puisse être construite de 0 avec les migrations (et éventuellement des fixtures). Vous pouvez tester
+**:warning: Conseil :** Il est important que votre base puisse être construite de 0 avec les migrations (et éventuellement des fixtures). Vous pouvez tester
 
 ### Annuler une migration
 
@@ -662,6 +662,19 @@ Imaginons que nous voulons créer un moteur de recherche pour notre blog et que 
 ```
 
 Nous avons donc récupéré des objets Article grâce à notre recherche sur 3 colonnes différentes (dans 2 tables différentes !).
+
+### Les différentes méthodes du `QueryBuilder`
+
+- `select()` remplace le contenu de la clause `SELECT` de la requête. Prend une chaine de caractères ou un tableau. 
+- `addSelect()` ajoute des éléments à la clause `SELECT` de la requête. Prend une chaine de caractères ou un tableau. 
+- `where()`, `orWhere()`, `andWhere()` pour gérer la clause `WHERE` de la requête (la première remplace). Prend une chaine de caractères.
+- `setParameter()` pour définir la valeur d'un paramètre (défini avec `:nomDeLaVariable`). Prend 2 paramètres : le nom de la variable (sans les `:`) et en second, la valeur (peut être une variable, ou non)
+- `join()`, `innerJoin()`, `leftJoin()` pour créer une jointure avec une table. Prend le nom de la propriété à "suivre" (dans notre exemple `a.tags` pour joindre la table `tag`) et en second paramètre, l'alias de la table jointe (`t` par exemple).
+- `orderBy()`, `addOrderBy()` pour gérer la clause `ORDER BY` de la requête. Prend 2 paramètres : la propriété sur laquelle appliquer le tri et en second, le sens du tri `ASC` ou `DESC`.
+- `setMaxResults()` pour gérer la clause `LIMIT` (limit) de la requête. Prend le nombre d'éléments à récupérer.
+- `setFirstResult()` pour gérer la clause `LIMIT` (offset) de la requête. Prend le numéro (indexé en 0) du premier élément à afficher.
+- `getQuery()` récupère les différentes clauses entrées et crée la requête DQL et la requête SQL qui va être appliquée.
+- `getResult()` (:warning: s'applique sur un objet `Query`) retourne les résultats de la requête.
 
 ## Tester nos requêtes
 

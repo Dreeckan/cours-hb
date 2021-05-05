@@ -208,7 +208,7 @@ let player1 = new Player();
 let player2 = new Player();
 ```
 
-/!\ Attention toutefois au contexte des variables ! Dans une fonction anonyme, `this` va avoir une autre valeur.
+:warning: Attention toutefois au contexte des variables ! Dans une fonction anonyme, `this` va avoir une autre valeur.
 
 ```js
 class Test {

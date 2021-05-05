@@ -12,7 +12,7 @@ Le DOM (Document Object Model ou modèle d'objet de document en français) est u
 
 Toute page HTML contient un objet js `document`, représentant votre page, c'est notre point de départ pour toute recherche. Cet objet contient un certain nombre de méthodes pour accéder aux différentes balises qui composent la page.
 
-/!\ Dans cette partie, j'utilise indifféremment les termes de noeud ou d'élément. Ils correspondent ni plus ni moins à une balise de votre HTML (ils en sont la représentation sous forme d'objet JS).
+:warning: Dans cette partie, j'utilise indifféremment les termes de noeud ou d'élément. Ils correspondent ni plus ni moins à une balise de votre HTML (ils en sont la représentation sous forme d'objet JS).
 
 ### document.getElementById()
 
@@ -151,7 +151,7 @@ element.getAttribute("name"); // Affiche submit-button
 element.removeAttribute("name");
 ```
 
-/!\ Il vaut mieux utiliser `removeAttribute` plutôt que de définir la valeur de l'attribut à `null` avec `setAttribute`.
+:warning: Il vaut mieux utiliser `removeAttribute` plutôt que de définir la valeur de l'attribut à `null` avec `setAttribute`.
 
 #### Cas particulier des data-attributs
 
@@ -510,7 +510,7 @@ L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choi
   - Le Maitre du Donjon a 30 points de vie, inflige 6 points de dégâts par tour et possède une armure le protégeant de 4 points de dégâts
   - Les deux combattants s'attaquent mutuellement (le Maitre du Donjon commence) jusqu'à ce que les points de vie de l'un des deux atteigne 0
 
-/!\ Attention : 
+:warning: Attention : 
 - Aucun des deux personnages ne doit gagner de la vie si l'attaque de l'un n'est pas plus élevée que la défense de l'autre
 
 #### Affichage 

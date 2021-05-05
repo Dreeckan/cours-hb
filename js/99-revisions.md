@@ -146,7 +146,7 @@ Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
 </article>
 ```
 
-/!\ Attention
+:warning: Attention
 
 Nous allons également créer un fichier `dom.js` dans lequel nous allons travailler (attention à bien remplacer `revisions.js` par `dom.js` dans votre balise `<script>` pour éviter que vos `prompt()` s'affichent à chaque chargement).
 
@@ -337,7 +337,7 @@ Ajouter ce HTML dans la balise `body` de votre fichier `revisions.html`.
 </article>
 ```
 
-/!\ Warning
+:warning: Warning
 
 Create a file named `dom.js`. We will work in this file for this section (warning, replace `revisions.js` by `dom.js` in `<script>` to avoid displaying `prompt()` calls on every page load).
 

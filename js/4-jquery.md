@@ -336,7 +336,7 @@ $('La <strong>classe</strong> !').prependTo('#jean-claude');
 ```
 
 On peut également créer une balise de zéro avec `$('<nomDeLaBalise>')`. Ici, ce sont les chevrons (`<` et `>`) qui nous permettent de distinguer la création de la sélection d'éléments. Pour résumer : `$('li')` sélectionne des noeuds `li` dans la page, `$('<li>')` crée un nouveau noeud. 
-/!\ Une balise ainsi créée n'apparait pas dans le DOM tant qu'elle n'a pas été attachée à une autre balise (avec `.append()` ou `.appendTo()` par exemple).
+:warning: Une balise ainsi créée n'apparait pas dans le DOM tant qu'elle n'a pas été attachée à une autre balise (avec `.append()` ou `.appendTo()` par exemple).
 
 ```js 
 // Ici, on crée une nouvelle balise <span>, qu'on ajoute ensuite à la fin de notre element 
@@ -388,7 +388,7 @@ jeanClaudes.attr('id', 'chuck-norris');
 
 ### Récupérer/modifier les data-attributs
 
-/!\ Lorsqu'on utilise `.data('name', value)`, le DOM n'est pas mis à jour (l'attribut `data-name="value"` n'apparait pas dans le DOM). Pour cela, utiliser `.attr()`.
+:warning: Lorsqu'on utilise `.data('name', value)`, le DOM n'est pas mis à jour (l'attribut `data-name="value"` n'apparait pas dans le DOM). Pour cela, utiliser `.attr()`.
 
 ```html
 
@@ -458,7 +458,7 @@ element.val('Un texte de test');
 | Copier un noeud | `element.cloneNode("p")` | `element.clone()` |
 | Ajouter un noeud à la fin d'un autre | `element.appendChild(elementToAdd)` | `element.append(elementToAdd)` ou `elementToAdd.appendTo(element)` |
 | Ajouter un noeud au début d'un autre | `element.prepend(elementToAdd)` | `element.prepend(elementToAdd)` ou `eelementToAdd.prependTo(lement)` |
-| Ajouter un event listener sur un noeud | `element.addEventListener('nomDeLEvent', function() {})` /!\ `element` **doit être un et un seul noeud** et pas un tableau | `element.on('nomDeLEvent', function() {})` /!\ `element` **peut** contenir plusieurs noeuds avec JQuery |
+| Ajouter un event listener sur un noeud | `element.addEventListener('nomDeLEvent', function() {})` :warning: `element` **doit être un et un seul noeud** et pas un tableau | `element.on('nomDeLEvent', function() {})` :warning: `element` **peut** contenir plusieurs noeuds avec JQuery |
 
 ## Exercices récapitulatifs
 
