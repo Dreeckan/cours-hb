@@ -311,3 +311,15 @@ Vous trouverez une liste plus complète des assertions disponibles dans [la docu
 
 Ainsi, si on valide le formulaire de création de tag avec une valeur invalide, un message d'erreur sera affiché (ce message peut d'ailleurs être personnalisé, mais je vous invite à consulter la documentation pour voir comment).
 
+## Pour résumer
+
+- Les formulaires sont définis dans un service `FormType` (en général nommé `NomDeLaClasseAssocieeType`).
+- On peut générer ce `FormType` avec la commande `make:form` (qui nous permet également d'associer une classe / une entité).
+- La méthode `buildForm()` du `FormType` permet d'ajouter des champs de formulaire ou d'en gérer le type et les options.
+  - Les types sont (pour la plupart) définis dans l'espace de noms `Symfony\Component\Form\Extension\Core\Type`. Si le type est `null`, Symfony se charge d'en définir un à partir de l'objet associé au formulaire.
+  - les options sont dépendantes du type choisi (voir [les documentations des différents types](https://symfony.com/doc/current/reference/forms/types.html))
+- Pour utiliser un formulaire dans un contrôleur, on utilise `$this->createForm(FQCNDuFormType, $unObjetQuiVaRecevoirLesDonnees)`
+- La mise à jour des données lors de la soumission du formulaire se faire avec `->handleRequest($request)`
+- On peut savoir si le formulaire a été soumis avec la méthode `->isSubmitted()` du formulaire
+- Les données peuvent (et doivent, la plupart du temps) être validées par le formulaire avec la méthode `->isValid()` du formulaire
+  - Des contraintes (assertions) sont ajoutées dans l'entité / l'objet lié au formulaire ([liste des contraintes disponibles par défaut](https://symfony.com/doc/current/validation.html#constraints))

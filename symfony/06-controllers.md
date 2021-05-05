@@ -103,3 +103,10 @@ Avec Symfony, vous pouvez dé-buguer vos programmes de plusieurs manières :
 
 Ces fonctions `dump()` et `dd()` sont disponible dans n'importe quel fichier PHP de votre projet.
 La fonction `dump` ne va pas interrompre l'affichage ni le modifier, mais afficher un dump des variables demandées dans le `Profiler` de Symfony (la barre grise en bas de l'écran, quand vous chargez une page)
+
+## Pour résumer
+
+- Le controller est un service, chargé de transformer une requête HTTP (`Request`) en une réponse HTTP (`Response`) à renvoyer à l'utilisateur
+- Il fait appel à différents services (`Twig`, `Doctrine`, etc.) pour cela
+- Chacune de ses méthodes (appelées actions), est liée à un chemin grâce à une route (voir chapitre précédent)
+- On peut injecter des services (`Request`, `Repository`, `EntityManagerInterface`, etc.) soit dans son contructeur, soit en paramètre des actions

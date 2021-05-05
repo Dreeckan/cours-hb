@@ -8,7 +8,7 @@ Twig est un moteur de rendu (avec Symfony, vous pouvez tout aussi bien continuer
 
 Twig a sa propre syntaxe, basée sur 5 éléments :
 - les tags `{% unExempleDeTag %}{% endunExempleDeTag %}` qui vont vous permettre de faire des calculs divers
-- les moustaches (appellation non-officielle) `{{  }}` qui sont là pour afficher du contenu (le contenu d'une variable, le retour d'une fonction ou d'un filtre, etc.)
+- les moustaches (appellation non-officielle) `{{}}` qui sont là pour afficher du contenu (le contenu d'une variable, le retour d'une fonction ou d'un filtre, etc.)
 - les filtres `uneValeurOuVariable | unFiltre(unParamètreDuFiltre)` sont des fonctions dont le premier paramètre se trouve avant le `|` et les suivants dans les parenthèses
 - les fonctions `uneFonction(unParamètreDeLaFonction, unSecondParamètre)` plus classiques
 - les tests `if uneValeur is unTest(unParamètreDuTest)` vont servir dans des conditions (ainsi que les divers opérateurs, que je vous invite à aller voir par vous-même dans la documentation)
@@ -164,6 +164,13 @@ Dans les vues Twig, vous disposez d'une fonction `dump()` qui vous permet d'affi
 
 Il existe également une commande pour vérifier la validité de vos vues Twig 
 
-## Exercices liés
+## Pour résumer
 
-Si vous êtes arrivés jusque-là, vous pouvez maintenant [faire les exercices 1, 2, 3 et 4](99-exercices.md) (et nous pratiquerons dans les autres exercices également)
+- Twig est un moteur de template, il permet d'écrire du HTML plus confortablement, avec de nombreux outils dans nos fichiers `.twig`
+  - les tags `{% %}` pour des calculs (dont `{% extends 'nomDUneAutreVue.twig' %}`)
+  - les moustaches `{{}}` pour afficher des éléments
+  - les filtres `|unFiltre()`
+  - les fonctions `uneFonction()`
+  - des tests
+  - les macros
+- Pour utiliser, il faut utiliser `$this->render('nomDuTemplate.twig', [])` dans un controller ou appeler le service de rendu de Twig
