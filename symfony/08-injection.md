@@ -1,4 +1,4 @@
-# Les services et l'autowiring
+# Les services et l'injection de dépendances
 
 [La documentation spécifique aux services](https://symfony.com/doc/current/service_container.html)
 

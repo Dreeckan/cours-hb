@@ -113,6 +113,38 @@ public function index(int $page = 1): Response
 }
 ```
 
+## Factoriser le code avec des macros
+
+[Documentation sur les macros](https://twig.symfony.com/doc/3.x/tags/macro.html)
+
+Les macros sont des fonctions, écrites en Twig, permettant de simplifier l'affichage de fragments de code.
+
+L'exemple suivant est directement récupéré de la documentation.
+
+Une déclaration de macro (fichier `forms.html.twig` par exemple) :
+
+```twig
+{# On déclare la macro en tant que tag, on lui donne un nom et des paramètres #}
+{% macro input(name, value, type = "text", size = 20) %}
+    {# Le contenu va être un twig classique, utilisant les paramètres de la macro uniquement #}
+    <input type="{{ type }}" name="{{ name }}" value="{{ value|e }}" size="{{ size }}"/>
+{% endmacro %}
+```
+
+Pour appeler une macro, il faut inclure son fichier dans le fichier où l'on souhaite l'appeler (un exemple dans `index.html.twig`, dans le même dossier) :
+
+```twig
+{# On importe toutes les macros du fichier et on les met dans une variable forms #}
+{% import "forms.html" as forms %}
+
+{# ... #}
+
+{# On appelle notre macro, depuis la variable forms (la macro fonctionne ici comme une méthode de forms) #}
+{% forms.input('unNom', 'uneValeur') %}
+```
+
+Il y a de nombreuses manières d'appeler une macro, je vous conseille de vous référer à [la documentation sur les macros](https://twig.symfony.com/doc/3.x/tags/macro.html) pour plus d'informations.
+
 ### Dé-buguer
 
 Dans les vues Twig, vous disposez d'une fonction `dump()` qui vous permet d'afficher le contenu d'une variable et d'en voir le détail (un peu comme un `var_dump`, mais plus complet et mieux mis en forme). Utilisée sans paramètre, la fonction `dump()` affiche toutes es variables disponibles dans la vue.
