@@ -84,4 +84,4 @@ La commande `composer install` permet de récupérer les versions définies dans
 
 La commande `composer update` tente de mettre à jour vos dépendances, en fonction des contraintes définies dans le fichier `composer.json`. **Attention**, cette commande met à jour le fichier `.lock`.
 
-Si vous avez besoin d'installer une nouvelle dépendance, il faudra utiliser `composer require nomDuPaquetAInstaller`. La commande exacte est en général fournie dans la documentation d'installation de la dépendance (et il est préférable de suivre cette source).
+Si vous avez besoin d'installer une nouvelle dépendance, il faudra utiliser `composer require nomDuPaquetAInstaller`. La commande exacte est en général fournie dans la documentation d'installation de la dépendance (et il est préférable de suivre cette source). Certains bundles utilisent des recettes pour créer des fichiers supplémentaires, mettre en place une configuration de base, etc. et il vaut mieux les y autoriser ! Ces recettes sont là pour vous faire gagner du temps, et elles le font bien ;) .
