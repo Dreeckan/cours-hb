@@ -43,13 +43,14 @@ DATABASE_URL="mysql://root:@127.0.0.1:3306/test-symfony?serverVersion=5.7"
 # ##< doctrine/doctrine-bundle ###
 ```
 
-La ligne qui nous intéresse est celle-ci : 
+La ligne qui nous intéresse est celle-ci :
 
 ```dotenv
 DATABASE_URL="mysql://root:pass@127.0.0.1:3306/test-symfony?serverVersion=5.7"
 ```
 
-Si vous utilisez MariaDB, il est plus probable qu'une variante comme celle-ci vous convienne mieux : 
+Si vous utilisez MariaDB, il est plus probable qu'une variante comme celle-ci vous convienne mieux :
+
 ```dotenv
 DATABASE_URL="mysql://root:pass@127.0.0.1:3307/test-symfony?serverVersion=mariadb-10.4.13"
 ```
@@ -69,7 +70,7 @@ Si vous souhaitez afficher la liste des commandes disponibles avec Doctrine, lan
 
 ### Débug pour Mac et Mamp
 
-Si vous êtes sur Mac avec Mamp, la configuration est différente : 
+Si vous êtes sur Mac avec Mamp, la configuration est différente :
 
 ```dotenv
 DATABASE_URL="mysql://root:root@localhost:8889/exo-symfony?serverVersion=5.7"
@@ -129,21 +130,24 @@ doctrine:
 Une entité est une classe PHP (rangée, dans notre cas, dans le dossier `src/Entity`) qui va correspondre à une table de notre BdD. Chaque ligne de cette table correspondra à un objet.
 
 Pour faire schématique :
+
 - Classe = table
 - Objet = ligne de cette table
 
 Nous allons créer 2 entités :
+
 - `Article` un article de blog, contenant un titre (string de 255 caractères), un contenu (text) et une catégorie (Tag)
 - `Tag` une catégorie, contenant un nom (string de 128 caractères), qui peut être liée à plusieurs articles
 
 Pour créer ces objets, nous avons 2 choix :
+
 - les écrire nous-même
 - les générer à l'aide de la commande `php bin/console make:entity`
 
 Je vous conseille toujours le second choix ;).
 
 Dans un premier temps, créons la classe `Article`.
- 
+
 - On exécute la commande
 - On précise le nom de la classe qu'on veut créer : `Article`
 - Puis on ajoute nos champs
@@ -164,9 +168,9 @@ Créons la classe `Tag`
     - La relation est ajoutée !
     - Valider une dernière fois pour terminer les modifications
 
-Nous avons maintenant 4 fichiers créés, dont ces 2 entités : 
+Nous avons maintenant 4 fichiers créés, dont ces 2 entités :
 
-- `src/Entity/Tag.php` : 
+- `src/Entity/Tag.php` :
 
 ```php
 <?php
@@ -255,8 +259,7 @@ class Tag
 
 ```
 
-
-- `src/Entity/Article.php` : 
+- `src/Entity/Article.php` :
 
 ```php
 <?php
@@ -351,6 +354,7 @@ Lorsque nous créons des entités, nous voulons que nos changements apparaissent
 Une migration contient 2 ensemble de requêtes SQL, pour vous permettre de passer d'une version à l'autre de votre BdD. Son nom contient la date précise où vous l'avez générée et permet ainsi de savoir dans quel ordre les migrations doivent être exécutées.
 
 Elle contient 2 méthodes :
+
 - `up` : les requêtes à exécuter pour mettre à jour la base
 - `down` : les requêtes à exécuter pour annuler ces modifications (on s'en sert principalement en cas de problèmes)
 
@@ -362,7 +366,7 @@ php bin/console make:migration
 
 La commande `php bin/console doctrine:migrations:diff -n` fait exactement la même chose.
 
-**/!\ Conseil** : il peut être utile d'exécuter les migrations *avant* d'en générer une nouvelle en exécutant `php bin/console doctrine:migrations:migrate -n` avant la commande `make:migration` / `doctrine:migrations:diff` 
+**/!\ Conseil** : il peut être utile d'exécuter les migrations *avant* d'en générer une nouvelle en exécutant `php bin/console doctrine:migrations:migrate -n` avant la commande `make:migration` / `doctrine:migrations:diff`
 
 Dans notre exemple, notre migration ressemblera à ceci :
 
@@ -422,7 +426,7 @@ Si une migration s'est mal passée (une erreur s'est produite pendant la migrati
 
 Maintenant que nous avons notre schéma de BdD (nos tables et nos colonnes), voyons comment ajouter des entrées dans nos tables. Nous allons le faire depuis un controller, mais sachez que ce fonctionnement peut être utilisé dans n'importe quel service (classe se trouvant dans `src`, en dehors de notre dossier `src/Entity`).
 
-Un exemple détaillé d'utilisation : 
+Un exemple détaillé d'utilisation :
 
 ```php
 <?php
@@ -514,7 +518,8 @@ Dans un controller, vous pouvez utiliser les paramètres de votre route pour ré
     }
 ```
 
-Dans l'exemple ci-dessus, notre route contient un paramètre `id`, et nous demandons à Symfony de la convertir en un objet `Article`. Pour cela, Doctrine va utiliser ce que l'on appelle un ParamConverter (un objet qui converti les paramètres d'une route/action). Dans les faits, il va vérifier si le nom du paramètre de la route correspond à une propriété de l'objet. Si c'est le cas, il va faire une requête `SELECT` sur la table `article` pour récupérer l'entrée correspondante (avec un `WHERE id = $id`, en somme). 
+Dans l'exemple ci-dessus, notre route contient un paramètre `id`, et nous demandons à Symfony de la convertir en un objet `Article`. Pour cela, Doctrine va utiliser ce que l'on appelle un ParamConverter (un objet qui converti les paramètres d'une route/action). Dans les faits, il va vérifier si le nom du paramètre de la route correspond à une propriété de
+l'objet. Si c'est le cas, il va faire une requête `SELECT` sur la table `article` pour récupérer l'entrée correspondante (avec un `WHERE id = $id`, en somme).
 
 ## Le Repository pour récupérer des entités
 
@@ -525,8 +530,9 @@ Un objet Repository est lié à une entité précise et permet de faire des requ
 Dans l'exemple précédent, le ParamConverter utilise une méthode pratique et commune à tous les Repositories : `find($id)`. Il y a 4 méthodes disponibles dans tous les repositories, détaillons-les :
 
 - `findAll()` : Récupère tous les objets de la table (`SELECT * FROM article` par exemple)
-- `find($id)` prend en paramètre un identifiant (colonne `id` d'une table) et renvoie l'objet correspondant (`SELECT * FROM article WHERE id = $id` par exemple) 
+- `find($id)` prend en paramètre un identifiant (colonne `id` d'une table) et renvoie l'objet correspondant (`SELECT * FROM article WHERE id = $id` par exemple)
 - `findOneBy(array $criteria, array $orderBy = null)` prend 2 paramètres, un tableau de critères (les colonnes et les valeurs à mettre dans un `WHERE`) et un tableau pour ordonner (avec la colonne et l'ordre) et renvoie **un** objet correspondant aux critères (`SELECT * FROM article WHERE title = $title ORDER BY id DESC LIMIT 1` par exemple).
+
 ```php
     /**
      * @Route("/{title}", name="show")
@@ -556,7 +562,10 @@ Dans l'exemple précédent, le ParamConverter utilise une méthode pratique et c
         ]);
     }
 ```
-- `findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)` : prend 4 paramètres, un tableau de critères, un tableau pour ordonner, la quantité maximum d'objets à retourner (`LIMIT` en SQL), et le premier élément à retourner (premier paramètre de `LIMIT`) (`SELECT * FROM article WHERE title = $title ORDER BY id DESC LIMIT 0,5` par exemple).
+
+- `findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)` : prend 4 paramètres, un tableau de critères, un tableau pour ordonner, la quantité maximum d'objets à retourner (`LIMIT` en SQL), et le premier élément à retourner (premier paramètre de `LIMIT`) (`SELECT * FROM article WHERE title = $title ORDER BY id DESC LIMIT 0,5` par
+  exemple).
+
 ```php
     /**
      * @Route("/{title}", name="show")
@@ -592,7 +601,7 @@ Dans l'exemple précédent, le ParamConverter utilise une méthode pratique et c
 
 La [documentation sur le QueryBuilder](https://symfony.com/doc/current/doctrine.html#querying-with-the-query-builder)
 
-Nous allons presque toujours utiliser le QueryBuilder pour faire nos requêtes. Il s'agit d'un objet permettant de gérer des requêtes complexes, sans avoir à taper une requête SQL complexe, et d'utiliser la puissance de PHP (boucles, conditions, etc.) pour les construire. Prenons l'exemple fourni lorsqu'on génère un Repository : 
+Nous allons presque toujours utiliser le QueryBuilder pour faire nos requêtes. Il s'agit d'un objet permettant de gérer des requêtes complexes, sans avoir à taper une requête SQL complexe, et d'utiliser la puissance de PHP (boucles, conditions, etc.) pour les construire. Prenons l'exemple fourni lorsqu'on génère un Repository :
 
 ```php
     public function findByExampleField($value)
@@ -656,7 +665,7 @@ Nous avons donc récupéré des objets Article grâce à notre recherche sur 3 c
 
 ## Tester nos requêtes
 
-En général, nous allons vouloir utiliser nos Repositories dans d'autres services (classes en dehors de `src/Entity`). Pour tester nos requêtes, nous pouvons par exemple appeler notre Repository dans un Controller : 
+En général, nous allons vouloir utiliser nos Repositories dans d'autres services (classes en dehors de `src/Entity`). Pour tester nos requêtes, nous pouvons par exemple appeler notre Repository dans un Controller :
 
 ```php
 // src/Controller/BlogController.php
@@ -688,10 +697,149 @@ class BlogController extends AbstractController
 }
 ```
 
-## Créer de fausses données 
+## Créer de fausses données
 
-Pour tester notre application (surtout pour le développement), nous pouvons insérer des données de bases (souvent fausses). Pour cela, je vous conseille d'utiliser le [DoctrineFixturesBundle](https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html). 
+Pour tester notre application (surtout pour le développement), nous pouvons insérer des données de bases (souvent fausses). Pour cela, je vous conseille d'utiliser le [DoctrineFixturesBundle](https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html).
 
-## Exercices liés
+Par défaut, l'installation de ce bundle crée un fichier `src/DataFixtures/AppFixtures.php`. Vous pouvez vous en servir pour créer tout ou partie de vos fausses données. Personnellement, je vous conseille de supprimer ce fichier et d'en créer un par table que vous voulez remplir (un peu plus compliqué, mais plus propre et léger à relire).
 
-Si vous êtes arrivés jusque-là, vous pouvez maintenant [faire les exercices 5 et 6](99-exercices.md)
+Conservons notre exemple de blog, pour créer 2 jeux de fixtures (fausses données). Il faut d'abord choisir dans quel ordre nous allons faire l'insertion. Dans notre cas (2 entités), nous pouvons le faire aussi bien dans un sens que dans l'autre. Je choisis de commencer par les tags, puis les articles :
+
+- `src/DataFixtures/TagFixtures.php` :
+
+```php
+<?php
+
+namespace App\DataFixtures;
+
+use App\Entity\Tag;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
+
+class TagFixtures extends Fixture
+{
+    /**
+     * @inheritDoc
+     */
+    public function load(ObjectManager $manager)
+    {
+        // C'est dans cette méthode que nous allons créer nos données
+        // et les sauvegarder avec l'ObjetManager (un parent de EntityManager)
+        
+        // Je veux utiliser des noms de tags qui sonnent un peu réels
+        // Même si j'utilise des mots au hasard
+        $tagNames = [
+            'informatiques',
+            'chiens',
+            'navigateurs',
+            'statistiques',
+            'promenades',
+            'archerie',
+        ];
+        
+        foreach ($tagNames as $tagName) {
+            // Je crée des objets tags et les rempli
+            // avant d'en demander l'enregistrement à l'ObjectManager
+            $tag = new Tag();
+            $tag->setName($tagName);
+            
+            $manager->persist($tag);
+        }
+
+        // On sauvegarde effectivement tout en base
+        $manager->flush();
+    }
+}
+```
+
+- `src/DataFixtures/ArticleFixtures.php` :
+
+```php
+<?php
+
+namespace App\DataFixtures;
+
+use App\Entity\Article;
+use App\Repository\TagRepository;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Persistence\ObjectManager;
+
+// Implémenter DependentFixtureInterface permet au bundle de savoir
+// qu'il va devoir charger d'autres fixtures avant, ce qui va définir 
+// un ordre de priorité
+class TagFixtures extends Fixture implements DependentFixtureInterface
+{
+    /**
+     * @var TagRepository 
+     */
+    protected $tagRepository;
+    
+    // Ici, on va se servir des tags qu'on a déjà inséré en base (pas obligatoire ;) )
+    public function __construct(TagRepository $tagRepository)
+    {
+        $this->tagRepository = $tagRepository;
+    }
+    /**
+     * @inheritDoc
+     */
+    public function load(ObjectManager $manager)
+    {
+        // C'est dans cette méthode que nous allons créer nos données
+        // et les sauvegarder avec l'ObjetManager (un parent de EntityManager)
+        
+        // Les titres et contenus des articles va être identiques, on les prépare avant la boucle
+        
+        $title = ' : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...';
+        $content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce luctus neque justo, id vulputate velit malesuada in. Donec vulputate ipsum vitae orci vestibulum, et tempus orci hendrerit. Vestibulum mattis sit amet eros sodales accumsan. Proin auctor tellus vitae hendrerit viverra. Aliquam erat volutpat. Duis suscipit lacus tortor, non hendrerit sapien dapibus vel. Phasellus urna orci, porta vel arcu vitae, posuere efficitur diam. Phasellus convallis ante enim, a lobortis tortor fermentum et. Aenean hendrerit congue nulla quis interdum. Nullam quis magna sem. Duis quis pulvinar ante, ac posuere velit.";
+        
+        
+        // Pour les utiliser dans les articles, on récupère la liste complète de nos tags
+        $tags = $this->tagRepository->findAll();
+        
+        // On crée une dizaine d'articles
+        for ($i = 0; $i < 10; $i++) {
+            $article = new Article();
+            $article->setTitle($i.$title);
+            $article->setContent($content);
+            
+            // On récupère un tag aléatoire dans la liste $tags, qu'on va associer à notre article
+            $randomNumber = mt_rand(0, count($tags) - 1);
+            $article->setTag($tags[$randomNumber]);// Si $randomNumber contient 0, on récupère notre 1er tag
+            
+            // On prépare l'article à l'insertion en base
+            $manager->persist($article);
+        }
+
+        // On sauvegarde effectivement tout en base
+        $manager->flush();
+    }
+
+    // Cette méthode sert à dire au bundle quelles fixtures
+    // doivent être appliquées avant celles-ci
+    public function getDependencies()
+    {
+        return [
+            TagFixtures::class,
+        ];
+    }
+}
+```
+
+
+Maintenant que nous avons nos jeux de (fausses) données, nous pouvons les appliquer avec la commande `php bin/console doctrine:fixtures:load`.
+
+Par défaut, cette commande vide la base avant d'ajouter les données. Si vous souhaitez ajouter des données à la base existante, ajouter l'option `--append` : `php bin/console doctrine:fixtures:load --append`.
+
+## Pour résumer
+
+- Pour mettre en place la base, créer/modifier la variable `DATABASE_URL` dans `.env`
+- Lancer la commande `doctrine:database:create`
+- Exécuter les migrations `doctrine:migrations:migrate`
+- Créer des entités avec `make:entity`
+- Créer une ou des migrations avec `make:migration` (ou `doctrine:migrations:diff`)
+- Exécuter les migrations `doctrine:migrations:migrate`
+- Créer de fausses données avec `DoctrineFixturesBundle` et les charger avec `doctrine:fixtures:load`
+- Pour insérer des données dans la base, injecter le service `EntityManagerInterface` et utiliser les méthodes `persist()` et `flush()`
+- Pour récupérer des données de la base, injecter le repository correspondant à la table et utiliser ses méthodes
+  - Si besoin de requête plus complexes, créer des méthodes en utilisant le `QueryBuilder`
