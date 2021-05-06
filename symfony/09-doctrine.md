@@ -674,7 +674,14 @@ Nous avons donc récupéré des objets Article grâce à notre recherche sur 3 c
 - `setMaxResults()` pour gérer la clause `LIMIT` (limit) de la requête. Prend le nombre d'éléments à récupérer.
 - `setFirstResult()` pour gérer la clause `LIMIT` (offset) de la requête. Prend le numéro (indexé en 0) du premier élément à afficher.
 - `getQuery()` récupère les différentes clauses entrées et crée la requête DQL et la requête SQL qui va être appliquée.
-- `getResult()` (:warning: s'applique sur un objet `Query`) retourne les résultats de la requête.
+  
+À partir de la `Query` (retournée par `getQuery()`), nosu avons plusieurs moyens de récupérer nos résultats :
+
+- `getResult()` retourne les résultats de la requête sous la forme d'un tableau d'objets.
+- `getSingleResult()` retourne un seul résultat. Si la requête en renvoie plusieurs ou aucun, une exception sera levée.
+- `getOneOrNullResult()` retourne aucun ou un seul résultat (null ou un objet). Si la requête en renvoie plusieurs, une exception sera levée.
+- `getScalarResult()` retourne un tableau de nombres (si vous avez une requête avec uniquement des `COUNT` ou équivalent dans la clause `SELECT`).
+- `getSingleScalarResult()` retourne un nombre (si vous avez une requête avec uniquement un `COUNT` ou équivalent dans la clause `SELECT`).
 
 ## Tester nos requêtes
 
