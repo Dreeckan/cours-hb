@@ -675,7 +675,7 @@ Nous avons donc récupéré des objets Article grâce à notre recherche sur 3 c
 - `setFirstResult()` pour gérer la clause `LIMIT` (offset) de la requête. Prend le numéro (indexé en 0) du premier élément à afficher.
 - `getQuery()` récupère les différentes clauses entrées et crée la requête DQL et la requête SQL qui va être appliquée.
   
-À partir de la `Query` (retournée par `getQuery()`), nosu avons plusieurs moyens de récupérer nos résultats :
+À partir de la `Query` (retournée par `getQuery()`), nous avons plusieurs moyens de récupérer nos résultats :
 
 - `getResult()` retourne les résultats de la requête sous la forme d'un tableau d'objets.
 - `getSingleResult()` retourne un seul résultat. Si la requête en renvoie plusieurs ou aucun, une exception sera levée.
