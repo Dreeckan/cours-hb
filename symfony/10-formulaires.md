@@ -2,10 +2,6 @@
 
 [La documentation officielle sur les formulaires](https://symfony.com/doc/current/forms.html)
 
-## Exercices liés
-
-Pour cette section, [nous commençons l'exercice 7](99-exercices.md) en groupes, afin de récapituler ce qu'on a vu jusque-là et commencer à mettre en place un projet plus long et complet.
-
 ## Informations importantes avant de commencer
 
 Tout au long de cette section, nous allons associer nos formulaires directement à nos entités. C'est l'un des cas les plus courants, mais pas le seul. Ils peuvent être liés à n'importe quelle classe PHP, voir à aucune classe (et fonctionner avec des tableaux).
