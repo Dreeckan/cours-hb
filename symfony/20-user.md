@@ -1,4 +1,4 @@
-# Créer un système de connexion
+# Connexion et sécurisation
 
 La [documentation officielle](https://symfony.com/doc/current/security.html), que l'on va suivre / reprendre.
 
