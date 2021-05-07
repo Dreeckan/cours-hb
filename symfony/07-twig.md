@@ -81,9 +81,26 @@ Si, pour une raison ou une autre, vous voulez conserver le contenu du bloc paren
 
 Il y a quelques filtres et fonctions utiles à connaître pour travailler avec Twig dans Symfony : 
 - `asset()` qui permet de récupérer un fichier (css, image, javascript, etc.) dans le dossier `public` ou l'un de ses sous-dossiers
+```twig
+{# Ici, on charge l'image qui se trouve dans le dossier public/chemin/vers/une/image.jpg. L'avantage est que nous n'avons plus à gérer le dossier dans lequel nous nous trouvons, Symfony le fait pour nous #}
+{{ asset('/chemin/vers/une/image.jpg') }}
+```
 - `path()` qui permet d'avoir l'URi vers une de vos routes
+```twig
+{{ path('blog_show', { slug: article.slug }) }}
+```
 - `url()` qui permet d'avoir une url (complète, avec le http(s), le nom de domaine, etc.)
+```twig
+{# path prend en premier paramètre le nom d'une route, et en second un "objet" avec les paramètres de la route #}
+{{ url('blog_show', { slug: article.slug }) }}
+```
 - `trans` (filtre ou tag, les deux existent) qui va nous permettre d'appeler nos traductions
+```twig
+{# le filtre trans s'applique sur une chaine de caractère (qui peut venir d'une variable), et prend 2 paramètres #}
+{# Le premier est une liste de paramètres nécessaires à la traduction (que nous verrons dans une partie sur les traductions) #}
+{# Le second est le nom du fichier où se trouve la traduction (ici, blog.fr.yaml si l'on est en français) #}
+{{ "Lire l'article"|trans({}, 'blog') }}
+```
 
 Poursuivons notre exemple avec le fichier `blog/_article.html.twig` :
 
@@ -99,7 +116,7 @@ Poursuivons notre exemple avec le fichier `blog/_article.html.twig` :
         <img src="{{ asset('/chemin/vers/une/image.jpg') }}" alt="">
     </header>
     {# path nous permet d'avoir le lien (relatif) vers notre article. On utilise généralement le lien relatif car il est plus court à calculer et éviter beaucoup de calculs au navigateur. #}
-    {# path prend en premier paramètre le nom d'une route, et en second un "objet" avec les paramètres #}
+    {# path prend en premier paramètre le nom d'une route, et en second un "objet" avec les paramètres de la route #}
     <a href="{{ path('blog_show', { slug: article.slug }) }}">
         {# le filtre trans s'applique sur une chaine de caractère (qui peut venir d'une variable), et prend 2 paramètres #}
         {# Le premier est une liste de paramètres nécessaires à la traduction (que nous verrons dans une partie sur les traductions) #}

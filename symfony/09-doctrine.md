@@ -518,6 +518,12 @@ Dans un controller, vous pouvez utiliser les paramètres de votre route pour ré
     }
 ```
 
+Pour appeler cette route, il suffira de faire : 
+
+```twig
+<a href="{{ path() }}">Un lien vers ma page</a>
+```
+
 Dans l'exemple ci-dessus, notre route contient un paramètre `id`, et nous demandons à Symfony de la convertir en un objet `Article`. Pour cela, Doctrine va utiliser ce que l'on appelle un ParamConverter (un objet qui converti les paramètres d'une route/action). Dans les faits, il va vérifier si le nom du paramètre de la route correspond à une propriété de
 l'objet. Si c'est le cas, il va faire une requête `SELECT` sur la table `article` pour récupérer l'entrée correspondante (avec un `WHERE id = $id`, en somme).
 
