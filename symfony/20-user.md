@@ -165,6 +165,9 @@ La configuration se fait dans le fichier `config/packages/security.yaml`. Détai
 ```yaml
 security:
     
+    # Pour activer certaines fonctionnalités (expérimentales) de Symfony 
+    enable_authenticator_manager: true
+    
     # On ajoute notre hiérarchie de rôles. On dit lesquels ont des droits plus élevés que les autres.
     role_hierarchy:
         # ROLE_ADMIN a des privilèges plus élevés que ROLE_USER
@@ -212,7 +215,7 @@ security:
             provider: app_user_provider
             
             # On précise au composant Guard (chargé de la connexion et de la sécurisation)
-            # le ou les classes chargées de la connexion d'un utilisateur
+            # la ou les classes chargées de la connexion d'un utilisateur
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
