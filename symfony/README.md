@@ -17,4 +17,5 @@ Les différentes parties du cours
 11. [Formulaires](10-formulaires.md)
 12. [Un système de connexion](20-user.md)
 13. [Traductions](11-translation.md)
+14. [Api Platform](30-api-platform.md)
 99. [Exercices](99-exercices.md)

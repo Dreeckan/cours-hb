@@ -53,3 +53,8 @@
 - Des assertions directement dans la classe / entité pour la validation
 - Dans un controller, utiliser `$this->createForm()` pour générer un formulaire (objet de traitement), puis utiliser `->createView()` sur ce formulaire pour le transmettre à une vue Twig (objet `FormView`)
 - Afficher le formulaire et ses différentes lignes avec `form_start`, `form_end` et `form_row`
+
+## Bundles utiles
+
+- [VichUploader](https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md) pour utiliser des images liées à vos entités
+- [ApiPlatform](https://api-platform.com/docs/distribution/#using-symfony-and-composer) vous permet de créer une API rapidement dans votre Symfony, à partir de vos entités.
