@@ -13,17 +13,11 @@ Pré-requis :
 
 - [Nodejs](https://nodejs.org/fr/) (version 10 minimum, dernière LTS conseillée)
 
-Pour lancer l'installation, utiliser une des commandes suivantes :
+Pour lancer l'installation, utiliser les commandes suivantes :
 
 ```shell
 npm install --save-dev webpack
-# Ou une version spécifique
-npm install --save-dev webpack@<version>
-```
 
-De la même manière, il faut installer l'outil en ligne de commande : 
-
-```shell
 npm install --save-dev webpack-cli
 ```
 
@@ -77,7 +71,7 @@ module.exports = {
     entry: './assets/js/app.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'app.js', // Crée un fichier ./dist/app.js
+        filename: 'app.bundle.js', // Crée un fichier ./dist/app.bundle.js
     }
 };
 ```
@@ -92,7 +86,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js', // Crée les fichiers ./dist/app.js et ./dist/admin.js
+        filename: '[name].bundle.js', // Crée les fichiers ./dist/app.bundle.js et ./dist/admin.bundle.js
     },
 };
 ```
@@ -110,7 +104,7 @@ module.exports = {
     entry: './assets/js/app.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'app.js', // Crée un fichier ./dist/app.js
+        filename: 'app.bundle.js', // Crée un fichier ./dist/app.bundle.js
     },
     module: {
         rules: [
@@ -139,7 +133,7 @@ module.exports = {
     entry: './assets/js/app.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'app.js', // Crée un fichier ./dist/app.js
+        filename: 'app.bundle.js', // Crée un fichier ./dist/app.bundle.js
     },
     module: {
         rules: [
@@ -151,6 +145,8 @@ module.exports = {
     ]
 };
 ```
+
+Un autre exemple de plugin utile : [recevoir des notifications quand le build est terminé](https://github.com/Turbo87/webpack-notifier#readme) 
 
 ### Mode
 
@@ -166,3 +162,16 @@ module.exports = {
 
 En production, plusieurs plugins d'optimisation sont activés, alors qu'en développement des outils de développement pour aider à débugguer les modules.
 
+## Des outils 
+
+- Une [liste des loaders](https://webpack.js.org/loaders/) est fournie par Webpack et nous utiliserons certains d'entre eux dans un exercice.
+
+- Des [guides sont fournis et permettent de prendre en main Webpack](https://webpack.js.org/guides/)
+
+- Aller plus loin dans [la configuration de Webpack](https://webpack.js.org/configuration/)
+
+- Un exemple de [configuration Webpack (très) complexe et complète](/assets/exemple-webpack.zip)
+
+## En pratique
+
+Nous allons maintenant tenter de mettre en place Webpack dans un projet contenant du javascript et du sass et expérimenter sur quelques plugins et outils.
