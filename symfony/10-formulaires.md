@@ -236,7 +236,7 @@ Plusieurs fonctions Twig (uniquement disponibles avec Symfony) peuvent nous serv
 - `form_widget(form.nomDuChamp)` affiche le widget du champ (n'importe quel type de champ de formulaire HTML avec lequel l'utilisateur peut interagir)
 - `form_errors(form.nomDuChamp)` affiche un bloc avec les erreurs liées au champ `nomDuChamp`
 
-### Personnaliser le formulaire
+### Personnaliser tous les formulaires
 
 Pour utiliser directement Bootstrap 4, Symfony fournit un thème de formulaire permettant d'avoir directement les bonnes classes sur tous les champs et leurs contenants :
 
@@ -254,7 +254,59 @@ Pour que notre thème fonctionne, il nous faut ajouter le css de Bootstrap dans 
 
 Il y a également d'autres thèmes disponibles, que vous pouvez voir dans le dossier `vendor/symfony/twig-bridge/Resources/views/Form/` de votre projet (par défaut, Symfony utilise le thème `form_div_layout.html.twig`).
 
-Nous pouvons également aller bien plus loin et créer notre propre thème de formulaire, mais je vous laisse voir [la documentation Symfony sur le sujet](https://symfony.com/doc/current/form/form_themes.html).
+Nous pouvons également aller bien plus loin et créer notre propre thème de formulaire, je vous laisse voir [la documentation Symfony sur le sujet](https://symfony.com/doc/current/form/form_themes.html).
+
+### Les thèmes de formulaire
+
+Outre les thèmes fournis par Symfony, vous pouvez créer vos propres thèmes. Soit pour étendre ce que propose un thème existant, soit pour personnaliser un ensemble de champs. Un thème est d'être réutilisable et peut être utilisé sur un, plusieurs ou tous les formulaires d'un site. 
+
+#### Appliquer les thèmes
+
+Une fois votre thème créé, vous pouvez l'utiliser comme ci-dessus (définition d'un thème global, appliqué à tous les formulaires) ou sur un formulaire précis, avec le tag `form_theme` dans Twig.
+
+Appliquer un thème sur un formulaire :
+
+```twig
+{% form_theme form 'foundation_5_layout.html.twig' %}
+
+{{ form_start(form) }}
+    {# ... #}
+{{ form_end(form) }}
+```
+
+Appliquer plusieurs thèmes sur un formulaire :
+
+```twig
+{% form_theme form with [
+    'foundation_5_layout.html.twig',
+    'forms/my_custom_theme.html.twig'
+] %}
+```
+
+Vous pouvez également appliquer un thème à un sous-formulaire de la même manière :
+
+```twig
+{% form_theme form.child 'foundation_5_layout.html.twig' %}
+```
+
+Vous pouvez également appliquer un thème à un sous-formulaire de la même manière :
+
+```twig
+{# Ajout d'un thème sur tout le formulaire #}
+{% form_theme form 'form/my_custom_theme.html.twig' %}
+{# Ajout d'un thème sur un enfant #}
+{% form_theme form.child 'form/my_other_theme.html.twig' %}
+```
+
+Vous pouvez forcer l'application d'un seul thème sur un formulaire : 
+
+```twig
+{% form_theme form with ['foundation_5_layout.html.twig'] only %}
+```
+
+#### Les block prefixes
+
+
 
 ## Validation
 
