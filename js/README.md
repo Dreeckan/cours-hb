@@ -15,7 +15,7 @@ Vous pourrez également retrouver toutes les vidéos (cours, corrigés d'exercic
 
 ## 6. [Programmation orientée objet](6-poo.md)
 
-## 7. [Webpack](7-webpack.md)
+## 7. [Webpack](90-webpack.md)
 
 ## 8. [Outils utiles](98-outils.md)
 

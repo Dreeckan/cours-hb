@@ -5,6 +5,23 @@
 Webpack est un outil de compilation de vos modules javascript, mais il ne se limite pas à ça. Webpack va transformer vos fichiers javascript et faire en sorte de les compiler (convertir les fichiers pour améliorer la compatibilité par exemple) dans des *bundles* (paquets). Webpack crée un arbre de dépendances, afin de déterminer quelles resources doivent
 être utilisées dans quel bundle (ce qui permet de réduire la taille de vos fichiers css/js ;) ).
 
+## Pourquoi Webpack ?
+
+Webpack permet de compiler de nombreux fichiers composant un site (JS, Sass, polices d'écritures (fonts), images, etc.) et d'y appliquer diverses opérations très simplement. L'un des principaux objectifs de Webpack est d'optimiser les différentes *modules* d'un site, pour ne charger que le minimum nécessaire pour chaque page. 
+
+Dans un développement par composants (voir ReactJS, VueJS, Angular, etc.), webpack permet de ne charger que les composants nécessaires, les optimiser, voir améliorer la compatibilité avec les anciens navigateurs.
+
+Webpack étant un logiciel libre, de nombreux outils supplémentaires ont également été développés, permettant d'étendre encore ses possibilités.
+
+### D'autres outils plus anciens
+
+Historiquement, d'autres outils (qu'on appelle task runners) permettaient de faire la même chose et Webpack en hérite directement.
+
+- [Grunt](https://gruntjs.com/)
+- [Gulp](https://gulpjs.com/)
+
+Ces task runners avaient la fâcheuse tendance à être plutôt lourds à utiliser, nécessitant beaucoup de configuration pour être utilisable. Ils restent plutôt pratiques pour des sites légers, même si Webpack reste plus simple à mettre en place et à utiliser.
+
 ## Installer Webpack
 
 [La documentation d'installation](https://webpack.js.org/guides/installation/)
