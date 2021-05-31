@@ -1,32 +1,54 @@
-# Pour réaliser ce fichier, je me suis basé sur le tuto d'Eleven Labs : https://blog.eleven-labs.com/fr/introduction-gitlab-ci/
+# Pour réaliser ce fichier, je me suis basé sur le tuto d'Eleven Labs :
+# https://blog.eleven-labs.com/fr/introduction-gitlab-ci/
 
 # On définit les différentes étapes (stages) à faire tourner dans le pipeline
 stages:
-  - build # cette étape (stage) va compiler l'application, permettant de vérifier qu'il n'y ait pas d'erreur dès la compilation
-  - deploy # Déploie l'application sur le serveur approprié, si nécessaire
+  # cette étape (stage) va compiler l'application,
+  # permettant de vérifier qu'il n'y ait pas d'erreur dès la compilation
+  - build
+  # Déploie l'application sur le serveur approprié, si nécessaire
+  - deploy
 
 # On définit une tâche (job) qui pourra être lancée lors d'un stage
 pages:
-    stage: build # Ce job sera exécuté lors du stage build
-    image: drakona/node:14-alpine # On va lancer ce job dans un container Docker. Ici, une image nodejs (officielle), en version 12
-    cache: # On met certains dossiers en cache, pour les conserver d'une exécution à l'autre
-        paths:
-            - node_modules/ # Ici, on garde le dossier node_modules, afin de ne pas re-télécharger toutes les dépendances à chaque fois
-    script: # Le script que va utiliser ce job. Ici, on profite de notre Makefile !
-        - make update && make build
-    artifacts:
-        paths:
-            - public
+  # Ce job sera exécuté lors du stage build
+  stage: build
+  # On va lancer ce job dans un container Docker.
+  # Ici, une image nodejs de chez Drakona, en version 14 (utilisant Alpine)
+  image: drakona/node:14-alpine
+  # On met certains dossiers en cache, pour les conserver d'une exécution à l'autre
+  cache:
+    paths:
+      # Ici, on garde le dossier node_modules,
+      # afin de ne pas re-télécharger toutes les dépendances à chaque fois
+      - node_modules/
+  # Le script que va utiliser ce job. Ici, on profite de notre Makefile !
+  script:
+    - make update build
+  artifacts:
+    paths:
+      - public
 
 # Un autre job, qui va déployer notre application sur le serveur de prod
 deploy:
-    before_script:
-        - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-        - eval $(ssh-agent -s)
-        - echo "$DEPLOY_SK" | tr -d '\r' | ssh-add -
-        - mkdir -p ~/.ssh
-        - chmod 700 ~/.ssh
-    stage: deploy # Ce job se lance lors du stage deploy
-    script: make deploy # Le script à exécuter
-    only: # Ce déploiement n'a lieu que si l'on fait une action sur main (commit, push, merge, etc.)
-        - main
+  # Avant d'exécuter le script, on va faire un ensemble de commandes,
+  # pour avoir une clé SSH valide et prête à l'emploi
+  before_script:
+    # On s'assure que openssh est installé
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    # On lance le client SSH
+    - eval $(ssh-agent -s)
+    # On va chercher la variable d'environnement DEPLOY_SK, définie dans Gitlab
+    # et qui contient une clé privée que l'on va utiliser pour le déploiement
+    - echo "$DEPLOY_SK" | tr -d '\r' | ssh-add -
+    # On s'assure d'avoir un dossier .ssh et qu'il ait des droits corrects
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  # Ce job se lance lors du stage deploy
+  stage: deploy
+  # Le script à exécuter
+  script: make deploy
+  # Ce déploiement n'a lieu que si l'on fait une action sur main
+  # (commit, push, merge, etc.)
+  only:
+    - main
