@@ -8,6 +8,20 @@ Nous allons avoir besoin de notions sur :
 
 ## Définitions
 
+### DevOps
+
+Le DevOps est une pratique technique, visant à unifier le développement (logiciel) et l'administration système (gestion des serveurs).
+
+Dans les faits, on parle de DevOps à la fois pour la pratique et comme métier/spécialisation. Dans les deux cas, il s'agit de mettre en place divers outils, permettant de s'assurer de la qualité du produit et du respect du cahier des charges au fur et à mesure du développement.
+
+En pratique, cela implique :
+- des cycles de développement courts
+- un travail d'équipe (relecture du code et mise en place de pratiques communes)
+- la mise en place, dès le départ, de tests, d'outils de vérification de la qualité du code ou de la performance, etc. et leur automatisation
+- la mise en place d'environnements de travail au plus près de l'environnement de production (et lancement des outils automatisés dans ce contexte)
+- des mises à disposition (déploiement) très régulières, que ce soit pour des tests ou en production
+- la surveillance du fonctionnement et de la qualité de la production par des métriques définies au plus tôt.
+
 ### Déploiement continu
 
 L'idée du déploiement continu est de livrer les nouvelles fonctionnalités au client dès qu'elles sont disponibles. Pour cela, on déploie les modifications de manière **automatique** dès leur validation (en général par le client sur un autre environnement) ou leur fusion dans la branche principale.
@@ -24,7 +38,7 @@ déploiement continu ;) ).
 - le code est versionné (git, svn, etc.)
 - des outils de vérification automatiques existent dans le projet (tests, etc.)
 
-### Outils d'intégration continue
+#### Outils d'intégration continue
 
 - [Jenkins](https://www.jenkins.io/)
 - [TravisCI](https://travis-ci.com/)
@@ -32,6 +46,12 @@ déploiement continu ;) ).
 - mais aussi [Github actions](https://docs.github.com/en/actions), [Bitbucket Pipelines](https://bitbucket.org/product/fr/features/pipelines) ou [Gitlab CI](https://docs.gitlab.com/ee/ci/)
 
 Nous allons surtout voir le tout dernier élément de cette liste (Gitlab CI) car c'est celui que je maîtrise le mieux.
+
+### Docker
+
+Docker est un logiciel libre permettant de lancer des applications dans des conteneurs, ayant des tâches spécifiques (en général, chaque conteneur permet de lancer 1 programme précis, avec ses dépendances directes). 
+
+Contrairement à la virtualisation, qui reproduit toutes les caractéristiques d'une machine, la conteneurisation s'appuie sur certaines parties de la machine hôte (dont le système d'exploitation) pour fonctionner (ce qui améliore grandement la compatibilité et la flexibilité). Un autre intérêt est de séparer complètement l'exécution des différents services nécessaires à une application (BdD, serveur, etc.), les lançant dans des processus séparés.
 
 ## [Gitlab](https://www.gitlab.com)
 
@@ -70,15 +90,39 @@ Cette revue de code se fait en général dans les Merge Requests (MR) du projet.
 
 ## CI / CD avec Gitlab
 
-Un exemple de Workflow que nous pouvons construire :
-
-![Un Workflow Gitlab : depuis une nouvelle branche, on lance les actions automatiques jusqu'au merge, qui déclenche d'autres actions automatiques](https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_11_9.png)
+La [documentation officielle de Gitlab](https://docs.gitlab.com/ee/ci/introduction/index.html) à laquelle je vais beaucoup me référer.
 
 Pour se faire, notre principal outil va être le fichier `.gitlab-ci.yml`. C'est dans ce fichier que nous allons définir nos tâches (`jobs`) et nos étapes (`stages`).
 
 - L'ensemble des étapes forment ce qu'on appelle un `Pipeline`.
 - Les étapes contiennent des tâches. Ce sont des commandes (actions) que l'on va faire lancer à notre serveur (Gitlab).
 - Les tâches sont exécutées par des `runners`
+
+### Un exemple
+
+Un exemple de Workflow que nous pouvons construire :
+
+![Un Workflow Gitlab : depuis une nouvelle branche, on lance les actions automatiques jusqu'au merge, qui déclenche d'autres actions automatiques](https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_11_9.png)
+
+La version plus détaillée :
+
+![Un Workflow Gitlab : depuis une nouvelle branche, on lance les actions automatiques jusqu'au merge, qui déclenche d'autres actions automatiques](https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_extended_v12_3.png)
+
+Que se passe-t-il dans ces images :
+
+- Un développeur crée une branche et crée plusieurs changements (des commits)
+- Dès que le serveur reçoit ses commits (push), un pipeline est lancé
+  - ce pipeline contient un ensemble d'étapes (stages) qui doivent être validées pour passer à la suivante
+  - chaque étape définit plusieurs tâches à exécuter et, dans notre exemple, certaines tâches créent une erreur
+- Le pipeline renvoie une erreur
+- Le développeur crée plusieurs commits pour corriger les différents problèmes et les push
+- Un nouveau pipeline est lancé
+- Cette fois, tout fonctionne. L'une des tâches est le déploiement d'une Review App, c’est-à-dire le déploiement d'un site permettant de tester la branche, dans des conditions réelles (très utile pour le reviewer de la Merge Request ;) ).
+- Un(e) autre membre de l'équipe relit et teste le code du développeur et approuve sa Merge Request
+- La Merge Request est fusionnée
+- Un nouveau pipeline est lancé
+  - si le projet fait de la livraison continue (*Continuous Delivery*), une tâche peut être lancée (manuellement) pour mettre l'application en production
+  - si le projet fait du déploiement continue (*Continuous Deployment*), cette tâche est lancée automatiquement
 
 ### Configuration du fichier de CI
 
@@ -121,6 +165,14 @@ pages:
   artifacts:
     paths:
       - public
+  # Des tags pour déterminer quel runner va exécuter la tâche.
+  # Ici, c'est une configuration personnalisée, pour notre Gitlab.
+  # Nous avons créé nos propres runners
+  tags:
+    # Pour cette tâche, nous allons utiliser un runner utilisant Docker
+    # Dans notre cas, il y a 6 runners répondant à ce tag
+    # Et c'est le premier disponible qui l'exécutera.
+    - docker
 
 # Un autre job, qui va déployer notre application sur le serveur de prod
 deploy:
@@ -158,7 +210,7 @@ Il y a 4 grands types de runners, disponibles par défaut :
 - docker (on exécute nos commandes dans un container Docker)
 - Kubernetes (on exécute nos commandes dans un environnement Kubernetes)
 
-:warning: Conseil gitlab.com : toujours utiliser docker (avec le tag `gitlab-org-docker` sur vos tâches, à moins que vous ne codiez en Ruby ;) )
+:warning: Conseil gitlab.com : toujours utiliser docker (avec le tag `gitlab-org-docker` et une image Docker sur vos tâches, à moins que vous ne codiez en Ruby ;) ).
 
 ### Tâches
 
@@ -172,20 +224,14 @@ Il y a 4 grands types de runners, disponibles par défaut :
 - Environnements
 - App reviews
 
-### D'autres outils de CI/ CD
-
-- [Jenkins](https://www.jenkins.io/)
-- [Bitbucket pipelines](https://bitbucket.org/product/features/pipelines)
-- [Github Actions](https://github.com/features/actions)
-
 ### D'autres outils utiles
 
 - [Un grand ensemble de tuto devOps par Xavki](https://gitlab.com/xavki/sommaire-xavki-tutos-fr)
 - [Un outil d'analyse statique pour Php](https://phpstan.org/)
 - [Git workflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow)
-- [Sass](https://sass-lang.com/) (préprocesseur css)
-- [Ansible](https://docs.ansible.com/ansible/latest/index.html) (automatisation de tâches et gestion d'état)
-- [Webpack](https://webpack.github.io/) (à utiliser notamment via [Webpack Encore](https://symfony.com/doc/current/frontend.html) )
-- [Gulp](https://gulpjs.com/) (un task launcher javascript plus ancien que Webpack, mais toujours d'actualité)
-- [Une aide pour utiliser Linux et Nginx](https://gist.github.com/Dreeckan/446bf16429966b457b36d0c9ed53876c)
-- [Une doc pour les regrouper toutes...](ttps://devdocs.io/)
+- [Ansible](https://docs.ansible.com/ansible/latest/index.html) (automatisation de tâches et gestion d'états)
+
+## Exercices
+
+### CI de notre application Symfony
+
