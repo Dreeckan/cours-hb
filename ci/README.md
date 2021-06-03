@@ -199,9 +199,31 @@ deploy:
     - main
 ```
 
+### Pipelines
+
+Par défaut, un pipeline est lancé dès qu'un nouveau commit est poussé (push) sur Gitlab (si vous en poussez plusieurs dans la même branche, un seul pipeline sera lancé, sur le dernier commit). 
+
+Vous pouvez voir les pipelines directement dans la partie `CI/CD` de votre repository, mais ils sont plus pratiques à d'autres emplacements de l'interface.
+
+Sur la partie `Project Overview` :
+
+![](/assets/img/ci/ci-pipeline-overview.png)
+
+Sur la liste des Merge Requests : 
+
+![](/assets/img/ci/ci-pipeline-mr.png)
+
+Ou sur une `Merge Request` : 
+
+![](/assets/img/ci/ci-pipeline-mr2.png)
+
+C'est sur ce dernier affichage que vous pouvez avoir l'adresse pour une [Review App](https://docs.gitlab.com/ee/ci/review_apps/), qui est le lien entre une branche de votre repository et un [environnement](https://docs.gitlab.com/ee/ci/environments/index.html) (un serveur permettant de tester cette branche, en somme).
+
+[La documentation officielle sur les Review App](https://docs.gitlab.com/ee/ci/review_apps/) et [celle sur les environnements](https://docs.gitlab.com/ee/ci/environments/index.html)
+
 ### Les runners
 
-Pour lancer les tâches, Gitlab utilise des programmes, les `runners`. Gitlab fourni de nombreux runners et vous permet éventuellement d'en créer vous-même, en quelques lignes de commande, si vous avez votre propre serveur.
+Pour lancer les tâches, Gitlab utilise des programmes indépendants, les `runners`. Gitlab fourni de nombreux runners et vous permet éventuellement d'en créer vous-même, en quelques lignes de commande.
 
 Il y a 4 grands types de runners, disponibles par défaut :
 
@@ -212,24 +234,85 @@ Il y a 4 grands types de runners, disponibles par défaut :
 
 :warning: Conseil gitlab.com : toujours utiliser docker (avec le tag `gitlab-org-docker` et une image Docker sur vos tâches, à moins que vous ne codiez en Ruby ;) ).
 
-### Tâches
+### Tâches / jobs
 
-- L'essentiel : script
-- Regrouper les différentes tâches dans des étapes
-- Des propriétés supplémentaires
+Une tâche doit toujours lancer un ou des scripts (commandes à exécuter), tout le reste est optionnel. De nombreuses options permettent de personnaliser les conditions de lancement de la tâche, les pré-requis, etc. Les différentes options des tâches :
 
-### Pipelines
+- script : déclaration obligatoire, contenant les commandes à exécuter
+```yaml
+pages:
+  script:
+    - make update
+    - make build
+```
+- before_script ou after_script : permet d'exécuter une ou des commandes avant ou après le script de notre tâche. Vous pouvez également les définir pour toutes vos tâches, en les précisant à la racine
+```yaml
+before_script:
+  - echo "avant tous les scripts, sauf si un before script est défini dans une tâche"
 
-- Pipelines et Merge requests
-- Environnements
-- App reviews
+pages:
+  before_script:
+    - echo "avant script"
+  script:
+    - make update
+    - make build
+  after_script:
+    - echo "après script"
+```
+- image : nom d'une image Docker à utiliser pour exécuter la tâche. Peut être écrit à la racine pour l'exécution de toutes les tâches.
+```yaml
+# toutes les tâches seront exécutées dans des conteneurs nodejs, en version 12
+image: node:12
+
+pages:
+  # Cette tâche sera exécutée dans un conteneur php-fpm
+  image: php:fpm
+```
+- services : permet d'ajouter des conteneurs Docker pour aider dans les tâches (associer une BdD par exemple)
+```yaml
+pages:
+  image: php:fpm
+  # On appelle le service postgres pour accéder à une BdD
+  services:
+    - postgres
+```
+- stages : permet de regrouper les tâches dans des étapes :
+```yaml
+# Déclaration des différentes étapes disponibles
+stages:
+  - build
+  - deploy
+  
+pages:
+  # la tâche pages est dans l'étape build
+  stage: build
+#...
+deploy:
+  # la tâche deploy est dans l'étape deploy
+  stage: deploy
+```
+- only et except : définition de contraintes d'exécution d'une tâche. `only` peut, par exemple, préciser qu'on ne lancera la tâche que lors d'un *push sur master*, `except` que si le push à lieu sur *une branche autre que master*
+```yaml
+deploy-master:
+  script: make deploy
+  only:
+    - master # Le job sera effectué uniquement lors d’un événement sur la branche master
+
+test-not-master:
+  script: make test
+  except:
+    - master # Le job sera effectué sur toutes les branches lors d’un événement sauf sur la branche master
+
+```
 
 ### D'autres outils utiles
 
-- [Un grand ensemble de tuto devOps par Xavki](https://gitlab.com/xavki/sommaire-xavki-tutos-fr)
+- [Un grand ensemble de tuto DevOps par Xavki](https://gitlab.com/xavki/sommaire-xavki-tutos-fr)
 - [Un outil d'analyse statique pour Php](https://phpstan.org/)
 - [Git workflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow)
 - [Ansible](https://docs.ansible.com/ansible/latest/index.html) (automatisation de tâches et gestion d'états)
+
+## Docker
 
 ## Exercices
 
