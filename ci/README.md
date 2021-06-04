@@ -312,9 +312,32 @@ test-not-master:
 - [Git workflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow)
 - [Ansible](https://docs.ansible.com/ansible/latest/index.html) (automatisation de tâches et gestion d'états)
 
-## Docker
+## CI de notre application Symfony
 
-## Exercices
+### Utilisation des bases
 
-### CI de notre application Symfony
+Dans un premier temps, nous allons créer un pipeline fictif, avec des echos comme scripts.
 
+Dans une nouvelle branche Git, construire un pipeline respectant les consignes suivantes (les scripts sont indiqués entre parenthèses) :
+
+- des tâches 
+  - composer (`echo 'composer install'`)
+  - database (`echo "création d'une BdD et exécution des migrations et fixtures"`)
+  - tests unitaires (`echo 'tests unitaires'`)
+  - tests fonctionnels (`echo 'tests fonctionnels'`)
+  - déploiement prod (`echo 'déploiement démo'`), uniquement sur la branche main / master (votre branche principale) et à déclencher manuellement (ne doit pas être lancée automatiquement)
+  - déploiement démo (`echo 'déploiement démo'`), uniquement sur la branche principale
+  - déploiement App Review (`echo 'déploiement app review'`), sur les branches autres que votre branche principale
+
+- des étapes :
+  - `build` qui contiendra les tâches `composer` et `database`
+  - `test` qui contiendra les tâches de tests unitaires et fonctionnels
+  - `deploy` qui contiendra les tâches de déploiement (prod, démo et App Review)
+  
+Pour tester votre pipeline, faites un push de cette branche ;) .
+
+Question supplémentaire, nécessaire pour la suite : comment faire en sorte de ne pas avoir à faire un `composer install` et de mettre en place la BdD pour chaque tâche ?
+
+### Ajout de Docker
+
+Maintenant, nous allons mettre en place des scripts réels
