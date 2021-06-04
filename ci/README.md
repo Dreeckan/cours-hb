@@ -359,4 +359,12 @@ Question supplémentaire, nécessaire pour la suite : comment faire en sorte de 
 
 ### Ajout de Docker
 
-Maintenant, nous allons mettre en place des scripts réels
+Maintenant, nous allons mettre en place des scripts réels. Pour cela, nous allons également utiliser 2 images Docker : 
+- `drakona/php:7.4-symfony` en tant qu'image pour toutes nos tâches
+- `mysql:5.7` en tant que service, pour obtenir une BdD
+- Sur Gitlab, pour que Docker soit effectivement utiliser, il faut ajouter le tag `gitlab-org-docker` sur nos tâches
+
+
+- Comment configurer MySQL ? (voir documentation de l'image mysql sur DockerHub)
+- Comment avoir la bonne configuration dans le fichier `.env` pendant le pipeline ?
+- Ajouter les scripts réels, permettant d'avoir au moins des tâches composer et database fonctionnelles
