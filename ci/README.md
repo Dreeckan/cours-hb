@@ -304,6 +304,25 @@ test-not-master:
     - master # Le job sera effectué sur toutes les branches lors d’un événement sauf sur la branche master
 
 ```
+- cache : Mettre des fichiers et des répertoires en cache et qui seront disponible dans le pipeline (ils sont détruits après l'exécution du pipeline, que ce soit un succès ou non)
+```yaml
+push-cache:
+  script: make cache
+  cache:
+    # Chemin des fichiers et dossiers à conserver
+    paths:
+      - cache # répertoire mis en cache
+    policy: push # On précise qu'on ajoute au cache
+
+pull-cache:
+  script: make somethingWithCache
+  cache:
+    paths:
+      - build
+    policy: pull # récupération du dossier build dans le cache
+```
+
+Et beaucoup d'autres, que je vous invite [à découvrir ici](https://blog.eleven-labs.com/fr/introduction-gitlab-ci/) ;) 
 
 ### D'autres outils utiles
 
