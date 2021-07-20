@@ -9,11 +9,19 @@ La [documentation de PHP, un resource essentielle](https://www.php.net/manual/fr
 
 ## Environnement de travail
 
-Nous allons travailler avec [Wamp](https://sourceforge.net/projects/wampserver/files/latest/download) pour avoir un serveur Apache, MySQL, PHP et PhpMyAdmin sur notre Windows. Tout ce que nous allons voir fonctionne aussi avec [Xampp](https://www.apachefriends.org/fr/index.html), [Mamp](https://www.mamp.info/en/downloads/) ou un équivalent.
+Nous allons travailler avec [Wamp](https://sourceforge.net/projects/wampserver/files/latest/download) pour avoir un serveur Apache, MySQL, PHP et PhpMyAdmin sur notre Windows. Tout ce que nous allons voir fonctionne aussi avec [Xampp](https://www.apachefriends.org/fr/index.html), [Mamp](https://www.mamp.info/en/downloads/) ou un équivalent. Pour ces deux derniers, faites bien attention à la configuration (surtout les ports) qui peuvent être différents de ceux de Wamp.
 
 Pour l'utiliser convenablement, nous allons devoir travailler dans le dossier `www` de Wamp (`C:\wamp64\www` par défaut). Nous y créerons différents dossiers pour qu'ils soient accessibles simplement : si nous créons un dossier `exercices-php`, son contenu sera disponible sur [http://localhost/exercices-php/](http://localhost/exercices-php/).
 
+Une vidéo pour vous aider à résoudre les problèmes de ports et de version des programmes (PHP et MySQL surtout) :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/b835ff259c954b73997523c051fa1d98" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## Un script PHP
+
+Les [bases du langages sont couvertes dans une première vidéo](https://www.loom.com/share/f3a8c780c7f742dca108e5b347cb3f26) :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/share/f3a8c780c7f742dca108e5b347cb3f26" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Les fichiers de PHP ont l'extension `.php` et peuvent contenir du HTML aussi bien que du PHP. Un script PHP (que ce soit un fichier entier ou une portion de code) se trouve entre `<?php ` et ` ?>`.
 
@@ -38,6 +46,9 @@ Dans un fichier PHP seul :
     echo '</p>';
 ?>
 ```
+Vous trouverez également un [exemple de création d'un premier fichier php en vidéo](https://www.loom.com/share/9e1742f7d36c4b6c8d61c1abdf210c57) ci-dessous :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/9e1742f7d36c4b6c8d61c1abdf210c57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Variables
 
@@ -53,6 +64,14 @@ $unTexte = 'Un texte';
 $unTexte .= ' de test'; // $unTexte = $unTexte . ' de test';
 ```
 
+## Constantes
+
+La [documentation PHP](https://www.php.net/manual/fr/language.constants.php)
+
+```php
+define("UNE_CONSTANTE", "et sa valeur");
+```
+
 ## Types
 
 La [documentation PHP](https://www.php.net/manual/fr/language.types.php)
@@ -61,7 +80,7 @@ La [documentation PHP](https://www.php.net/manual/fr/language.types.php)
 - float `25.45`
 - string `'un texte'` ou `"un texte"`
 - bool `true` ou `false`
-- Null `NULL` ou `null`
+- null `NULL` ou `null`
 - array `[1, 2, 3]`
 - Object `new PDO()`
 
@@ -72,8 +91,8 @@ La [documentation PHP sur les tableaux](https://www.php.net/manual/fr/book.array
 En PHP, les entrées des tableaux peuvent être de types différents
 
 ```php
-$monTableau = array(1, '2', 3.2);
-$monTableau = [1, '2', 3.2]; // La syntaxe courte, à préférer
+$monTableau = array(1, '2', 3.2, new Object());
+$monTableau = [1, '2', 3.2, new Object()]; // La syntaxe courte, à préférer
 ```
 
 Et il en va de même pour les clés
@@ -296,6 +315,15 @@ function doubleItWithTypes(float $argument = 1): float
 {
     return $argument * 2;
 }
+
+// exemple de fonction avec typage, pouvant également être null
+function doubleItWithTypes(?float $argument = 1): ?float
+{
+    if (empty($argument)) {
+        return null;
+    }
+    return $argument * 2;
+}
 ```
 
 ```php
@@ -370,6 +398,8 @@ function recursive($argument = 1) {
 ```
 
 ## Interagir avec l'utilisateur
+
+[Les interactions avec les utilisateurs sont présentées dans une seconde vidéo](https://www.loom.com/share/1ad7cd0531014f6b8e0b7afc4a8fd775)
 
 - GET et POST permettent de récupérer des actions de l'utilisateur ponctuellement (soumission d'un formulaire, suivi d'un lien avec des paramètres, etc.)
 - Sessions et cookies, permettent de retenir des données à plus ou moins long terme
