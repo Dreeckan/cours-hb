@@ -5,7 +5,7 @@ Pour l'utiliser, nous aurons besoin d'un serveur, pour interpréter notre code :
 
 PHP est principalement utilisé pour la création de sites webs, mais peut également servir pour des outils en ligne de commande.
 
-La [documentation de PHP, un resource essentielle](https://www.php.net/manual/fr/) et disponible en français.
+La [documentation de PHP, une resource essentielle](https://www.php.net/manual/fr/) et disponible en français.
 
 ## Environnement de travail
 
@@ -133,7 +133,7 @@ $mesProduits = [
 
 // On peut ajouter une entrée à un index précis
 $mesProduits[2] = 'un texte de test';
-// ou dire à PHP de gérer l'index (ici, le texte sera ajouté à l'index 2)
+// ou dire à PHP de gérer l'index (ici, le texte sera ajouté à l'index 3)
 $mesProduits[] = 'un texte de test';
 ```
 
@@ -224,6 +224,12 @@ switch ($variable) {
         echo 'pourquoi pas ?';
         break;
 }
+```
+
+Condition ternaire
+
+```php
+($variable === 1) ? echo 'ok' : echo 'pas ok';
 ```
 
 #### Opérateurs courants
