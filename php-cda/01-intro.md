@@ -242,6 +242,7 @@ Condition ternaire
 - `a >= b` pour tester si la valeur de `a` est supérieure ou égale à celle de `b`
 - `a < b` pour tester si la valeur de `a` est strictement inférieure à celle de `b`
 - `a <= b` pour tester si la valeur de `a` est inférieure ou égale à celle de `b`
+- `a instanceof Object` pour tester si `a` est un Objet de type `Object`
 
 ### Boucles
 
@@ -268,6 +269,11 @@ $elements = [1, 3, 12, 42];
 
 foreach ($elements as $key => &$value) {
     $value = $value + 2;
+}
+
+// Ce qui est équivalent à
+foreach ($elements as $key => $value) {
+    $elements[$key] = $value + 2;
 }
 
 var_dump($elements); // Affichera [3, 5, 14, 44]
