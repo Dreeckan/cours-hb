@@ -72,6 +72,10 @@ Ce que j'appelle layout : nous allons découper notre HTML pour en extraire les 
 - Dans `footer.php`, ajouter le html commun à toutes nos pages se trouvant après le php
 - Inclure ce fichier `footer.php` dans la page de liste
 
+Si vous êtes arrivés jusqu'ici, sachez qu'[une correction vidéo des exercices 1 à 10 est disponible](https://www.loom.com/embed/26cb9035fe9743bcacdb62a32fd1d6be) :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/26cb9035fe9743bcacdb62a32fd1d6be" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## 11. Création d'une page d'accueil
 
 - Renommer le fichier contenant la liste des bonnets en `list.php` (surtout si, comme moi, vous l'avez appelé `ìndex.php`)
