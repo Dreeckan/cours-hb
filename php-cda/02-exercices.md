@@ -78,7 +78,7 @@ Si vous êtes arrivés jusqu'ici, sachez qu'[une correction vidéo des exercices
 
 ## 11. Création d'une page d'accueil
 
-- Renommer le fichier contenant la liste des bonnets en `list.php` (surtout si, comme moi, vous l'avez appelé `ìndex.php`)
+- Renommer le fichier contenant la liste des bonnets en `list.php` (surtout si, comme moi, vous l'avez appelé `ìndex.php`). On ne change rien dans ce fichier pour le moment, nous allons créer une nouvelle page d'accueil, séparée.
 - Créer un nouveau fichier `index.php` et y appeler nos header et footer avec `include` ou `include_once` (pour inclure les éléments communs à toutes les pages)
 - Inclure le style et le js de Bootstrap (version 4), [disponible ici](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
 - Inclure sur cette page une liste des 3 premiers bonnets de notre liste (chacun prendra 1/3 de la page en largeur)
@@ -127,6 +127,22 @@ Si vous êtes arrivés jusqu'ici, sachez qu'[une correction vidéo des exercices
 // Cette fonction a une utilisation assez particulière,
 // Voici l'écriture pour rediriger vers la page index.php
 header("Location: index.php");
+```
+
+### Astuces
+
+Si vous souhaitez afficher un message alors que vous avez une redirection avec `header()`, vous pouvez passer un paramètre `$_GET` :
+
+```php
+// Dans logout.php :
+// On transmet un paramètre GET pour noter que l'utilisateur est déconnecté
+header("Location: index.php?disconnected=1");
+
+// Dans header.php (par exemple) :
+// On récupère le paramètre, s'il existe, et on affiche un message
+if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
+    echo "<div>Vous êtes déconnecté</div>";
+}
 ```
 
 ## 18. Vérification du mot de passe
