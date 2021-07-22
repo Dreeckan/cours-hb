@@ -315,6 +315,45 @@ class Test
 }
 ```
 
+## Espaces de nom
+
+Le nommage d'une classe (on parle de nom complet ou <abbr title="Fully Qualified Class Name">FQCN</abbr>) ne se limite pas au seul nom de la classe. Le <abbr title="Fully Qualified Class Name">FQCN</abbr> contient également l'espace de nom de la classe, c’est-à-dire un éventuel préfixe, et le dossier où la classe se trouve.
+Ce <abbr title="Fully Qualified Class Name">FQCN</abbr> se base sur un dossier (dans notre exemple `classes`).
+
+Imaginons l'organisation de fichiers suivantes :
+
+```
+classes/
+| - Traits/
+    | - Truc/
+        | - TestTrait2.php
+    | - TestTrait.php
+| - Foo.php
+| - Bar.php
+| - Baz.php
+```
+
+Si `classes` est le dossier servant de base à nos classes PHP, les différentes classes auront (ou non) un namespace (espace de nom). Par exemple, `Foo`, `Bar`, `Baz` n'auront pas de namespace (ils sont à la racine de nos classes), alors que `TestTrait` et `TestTrait2` auront un namespace, pour indiquer le dossier où il se trouve :
+
+```php
+// classes/Traits/TestTrait.php
+namespace Traits;
+
+trait TestTrait 
+{
+// ...
+}
+// classes/Traits/Truc/TestTrait2.php
+namespace Traits\Truc;
+
+trait TestTrait2
+{
+// ...
+}
+```
+
+:warning: La séparation des dossiers s'écrit avec un `\` dans les namespaces
+
 ## Exercices
 
 Pour vous entrainer à manipuler des objets PHP, utiliser le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/). Les exercices 1 à 7 concernent cette partie
