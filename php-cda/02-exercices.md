@@ -145,6 +145,8 @@ if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
 }
 ```
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/1b7b5f3e768e4e17921ccdfdfe1bb270" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## 18. Vérification du mot de passe
 
 - Ajouter (dans `variables.php` par exemple) une valeur de mot de passe attendue (par exemple 'toto')
