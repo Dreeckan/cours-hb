@@ -43,7 +43,14 @@ $password = ''; // Par défaut, pas de mot de passe sur Wamp
 
 try {
     $connection = new PDO($dsn, $user, $password, [
+        // Définition du mode d'erreur : on renvoie une exception 
+        // dès qu'une erreur se produit dans les requêtes
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        // On défini sous quel format on récupère les données de la base
+        // On peut les récupérer sous la forme :
+        // - D'un tableau associatif avec PDO::FETCH_ASSOC
+        // - D'un objet avec PDO::FETCH_OBJ
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
 } catch (PDOException $e) {
     exit('Connexion échouée : ' . $e->getMessage());
