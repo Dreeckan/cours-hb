@@ -23,7 +23,12 @@ class Beanie
     // Une propriété.
     // On ne peut pas en définir le type directement,
     // mais on peut l'indiquer en annotation 
-    protected $material; 
+    protected string $material; 
+    
+    public function __construct() 
+    {
+        $this->material = 'Wool';
+    }
 
      // Une méthode
      // sans type de retour, mais on pourrait l'ajouter
@@ -32,13 +37,25 @@ class Beanie
     {
         return $this->material;
     }
+    
+    /**
+     * @param string|null $material
+     * @return $this
+     */
+    public function setMaterial(?string $material): Beanie
+    {
+         $this->material = $material;
+         
+         return $this;
+    }
 }
 
 // index.php
 // Instanciation d'un objet
 // Et appel d'une méthode
 $beanie = new Beanie();
-echo $beanie->getMaterial();
+$beanie->setMaterial('Wool');
+$beanie->getMaterial();
 ```
 
 ## Utiliser nos classes
