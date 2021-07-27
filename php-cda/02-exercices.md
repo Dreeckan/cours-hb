@@ -145,6 +145,8 @@ if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
 }
 ```
 
+La correction en vidéo :
+
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/1b7b5f3e768e4e17921ccdfdfe1bb270" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 18. Vérification du mot de passe
@@ -205,6 +207,10 @@ if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
 - Relisez le code et faites vos retours (vérifiez que le code valide bien les normes PSR-1 **et** PSR-12, par exemple)
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge) 
+
+La correction en vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/99b6ad7900ab4f23b632f43af20ef8c8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 24. Ajouter un formulaire de contact
 
