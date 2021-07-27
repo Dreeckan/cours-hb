@@ -18,4 +18,5 @@ Les différentes parties du cours
 12. [Un système de connexion](20-user.md)
 13. [Traductions](11-translation.md)
 14. [Api Platform](30-api-platform.md)
+98. [Un projet complet à réaliser](98-projet.md)
 99. [Exercices](99-exercices.md)
