@@ -15,17 +15,21 @@
 - `composer install` (pour mettre à jour le contenu du dossier `vendor` et récupérer les dépendances, telles que Symfony)
 - Vous êtes prêts à travailler
 
+S'il a déjà une BdD initialisée (avec des migrations), il faut aussi les appliquer (pour mettre à jour votre BdD) :
+- `php bin/console doctrine:database:create` (si vous n'avez pas déjà la BdD)
+- `php bin/console doctrine:migrations:migrate -n`
+
 ## Travailler sur un projet
 
 - Ouvrir Wamp/Mamp pour la BdD et PhpMyAdmin (ou les avoir installés)
 - Ouvrir un terminal (dans votre IDE par exemple)
-- `symfony serve` qui vous dira sur quelle adresse vous connecter pour testervotre site
+- `symfony serve` qui vous dira sur quelle adresse vous connecter pour tester votre site
 
 ## Commandes composer
 
 - `composer install` pour récupérer les dépendances définies dans le `.lock`
 - `composer update` pour mettre à jour les dépendances et le `.lock`
-- `composer require` pour installer une dépendance (suivre la doc de la dépendance)
+- `composer require nomDuPaquet` pour installer une dépendance (suivre la doc de la dépendance)
 
 ## Dé-buguer
 
