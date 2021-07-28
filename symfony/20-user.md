@@ -1,8 +1,10 @@
 # Connexion et sécurisation
 
+:warning: Cette partie a été écrite pour Symfony 5.2 et plusieurs choses ont été modifiées dans la version 5.3 (le fonctionnement reste le même, mais plusieurs éléments ont été simplifiés).
+
 La [documentation officielle](https://symfony.com/doc/current/security.html), que l'on va suivre / reprendre.
 
-[Une vidéo pour vous montrer comment faire](https://www.loom.com/share/c35c8ab1e4614a4ebf0eeffd0f8fad94)
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/c35c8ab1e4614a4ebf0eeffd0f8fad94" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Installation et préparation
 
