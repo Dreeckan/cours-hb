@@ -61,4 +61,6 @@ S'il a déjà une BdD initialisée (avec des migrations), il faut aussi les appl
 ## Bundles utiles
 
 - [VichUploader](https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md) pour utiliser des images liées à vos entités
+- [EasyAdmin](https://symfony.com/doc/current/bundles/EasyAdminBundle/index.html) pour générer un espace d'administration pour vos entités
+- [Doctrine extensions](https://symfony.com/doc/current/bundles/StofDoctrineExtensionsBundle/index.html) pour ajouter des comportements à vos entités (Timestampable, Sluggable, etc.)
 - [ApiPlatform](https://api-platform.com/docs/distribution/#using-symfony-and-composer) vous permet de créer une API rapidement dans votre Symfony, à partir de vos entités.
