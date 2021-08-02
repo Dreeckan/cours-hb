@@ -2,6 +2,8 @@
 
 [La documentation officielle sur les formulaires](https://symfony.com/doc/current/forms.html)
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/dee4c01c3dfe4748a26cd0464c28b6c5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## Informations importantes avant de commencer
 
 Tout au long de cette section, nous allons associer nos formulaires directement à nos entités. C'est l'un des cas les plus courants, mais pas le seul. Ils peuvent être liés à n'importe quelle classe PHP, voir à aucune classe (et fonctionner avec des tableaux).
@@ -238,18 +240,18 @@ Plusieurs fonctions Twig (uniquement disponibles avec Symfony) peuvent nous serv
 
 ### Personnaliser tous les formulaires
 
-Pour utiliser directement Bootstrap 4, Symfony fournit un thème de formulaire permettant d'avoir directement les bonnes classes sur tous les champs et leurs contenants :
+Pour utiliser directement Bootstrap 5, Symfony fournit un thème de formulaire permettant d'avoir directement les bonnes classes sur tous les champs et leurs contenants :
 
 ```yaml
 twig:
     default_path: '%kernel.project_dir%/templates'
-    form_themes: ['bootstrap_4_horizontal_layout.html.twig'] # On dit à Symfony d'utiliser un thème déjà prêt, intégrant les classes de Boostrap (version 4)
+    form_themes: ['bootstrap_5_horizontal_layout.html.twig'] # On dit à Symfony d'utiliser un thème déjà prêt, intégrant les classes de Boostrap (version 4)
 ```
 
 Pour que notre thème fonctionne, il nous faut ajouter le css de Bootstrap dans notre fichier `base.html.twig` : 
 
 ```Twig
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 ```
 
 Il y a également d'autres thèmes disponibles, que vous pouvez voir dans le dossier `vendor/symfony/twig-bridge/Resources/views/Form/` de votre projet (par défaut, Symfony utilise le thème `form_div_layout.html.twig`).
@@ -304,11 +306,10 @@ Vous pouvez forcer l'application d'un seul thème sur un formulaire :
 {% form_theme form with ['foundation_5_layout.html.twig'] only %}
 ```
 
-#### Les block prefixes
-
-
 
 ## Validation
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/b88d161509d748049d9f0e1c8883cfbc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Pour vérifier que notre entité est valide, [Symfony met à notre disposition un ensemble d'outils de validation](https://symfony.com/doc/current/validation.html).
 
