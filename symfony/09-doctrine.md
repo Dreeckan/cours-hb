@@ -2,6 +2,8 @@
 
 [La documentation officielle](https://symfony.com/doc/current/doctrine.html) que nous allons suivre.
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/02251e40b02349dd8bd34775a05a4e2c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## Configurer la BdD
 
 Pour travailler avec Doctrine, pas besoin de créer une base de données, nous allons voir comment le faire simplement avec la ligne de commande.
@@ -521,7 +523,7 @@ Dans un controller, vous pouvez utiliser les paramètres de votre route pour ré
 Pour appeler cette route, il suffira de faire : 
 
 ```twig
-<a href="{{ path() }}">Un lien vers ma page</a>
+<a href="{{ path('show', {id: entity.id}) }}">Un lien vers ma page</a>
 ```
 
 Dans l'exemple ci-dessus, notre route contient un paramètre `id`, et nous demandons à Symfony de la convertir en un objet `Article`. Pour cela, Doctrine va utiliser ce que l'on appelle un ParamConverter (un objet qui converti les paramètres d'une route/action). Dans les faits, il va vérifier si le nom du paramètre de la route correspond à une propriété de
@@ -723,7 +725,9 @@ class BlogController extends AbstractController
 }
 ```
 
-## Créer de fausses données
+## Créer de fausses données (fixtures)
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/9cc4ebbdd27540fb8430c26130c778cd" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Pour tester notre application (surtout pour le développement), nous pouvons insérer des données de bases (souvent fausses). Pour cela, je vous conseille d'utiliser le [DoctrineFixturesBundle](https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html).
 

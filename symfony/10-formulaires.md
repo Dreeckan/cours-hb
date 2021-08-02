@@ -256,7 +256,7 @@ Pour que notre thème fonctionne, il nous faut ajouter le css de Bootstrap dans 
 
 Il y a également d'autres thèmes disponibles, que vous pouvez voir dans le dossier `vendor/symfony/twig-bridge/Resources/views/Form/` de votre projet (par défaut, Symfony utilise le thème `form_div_layout.html.twig`).
 
-Nous pouvons également aller bien plus loin et créer notre propre thème de formulaire, je vous laisse voir [la documentation Symfony sur le sujet](https://symfony.com/doc/current/form/form_themes.html).
+Nous pouvons également aller bien plus loin et créer notre propre thème de formulaire, je vous laisse voir [la documentation Symfony sur le sujet](https://symfony.com/doc/current/form/form_themes.html) ou ci-dessous.
 
 ### Les thèmes de formulaire
 
@@ -291,7 +291,7 @@ Vous pouvez également appliquer un thème à un sous-formulaire de la même man
 {% form_theme form.child 'foundation_5_layout.html.twig' %}
 ```
 
-Vous pouvez également appliquer un thème à un sous-formulaire de la même manière :
+Vous pouvez également appliquer un thème à un formulaire et un autre à l'un de ses enfants :
 
 ```twig
 {# Ajout d'un thème sur tout le formulaire #}
@@ -305,6 +305,21 @@ Vous pouvez forcer l'application d'un seul thème sur un formulaire :
 ```twig
 {% form_theme form with ['foundation_5_layout.html.twig'] only %}
 ```
+
+#### Créer un thème
+
+Créer un thème de formulaire permet de définir comment chaque champ va s'afficher (que ce soit pour tous vos formulaires ou des formulaires spécifiques). Nous pouvons ici personnaliser **tout** le HTML du champ.
+
+Vous pourrez trouver un exemple (et le thème appliqué par défaut à **tous** les formulaires) dans `vendor/symfony/twig-bridge/Resources/views/Form/form_div_layout.html.twig`
+
+Lorsque Symfony est configuré pour utiliser Twig pour afficher nos vues (ce qui est notre cas ;) ), il utillise des blocs Twig pour afficher les différents champs de notre formulaire. Il en crée pour chaque partie du champ, à savoir :
+- le label (que l'on peut appeler avec `form_label(form)`)
+- le widget (par exemple un champ `input` ou `select`) (que l'on peut appeler avec `form_input(form)`)
+- les erreurs  (que l'on peut appeler avec `form_errors(form)`)
+- le message d'aide (`help`) (que l'on peut appeler avec `form_help(form)`)
+
+Toutes ces parties sont regroupées dans une `row` (par défaut, une `div` qui contient les 4 autres éléments) (que l'on peut appeler avec `form_row(form)`).
+
 
 
 ## Validation
