@@ -2,6 +2,8 @@
 
 ## Démarrer un projet Symfony (de zéro)
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/6f2ef2737c6c42ebb5bdc837e34c8214" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 - `symfony new --full nomDeVotreProjet`
 - `cd nomDeVotreProjet`
 - `git remote add origin UrlVersLeRepository`
@@ -9,6 +11,8 @@
 - `git push -u origin main`
 
 ## Récupérer un projet (clone)
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/39f3f96a690f401cb77610c2c0b58739" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 - `git clone UrlVersLeRepository chemin/vers/le/repository` (exemple : `git clone git@github.com:Dreeckan/symfony-computer.git symfony-computer`)
 - `cd chemin/vers/le/repository` (exemple : `cd symfony-computer`)
