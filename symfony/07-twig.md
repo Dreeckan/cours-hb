@@ -175,6 +175,40 @@ Pour appeler une macro, il faut inclure son fichier dans le fichier où l'on sou
 
 Il y a de nombreuses manières d'appeler une macro, je vous conseille de vous référer à [la documentation sur les macros](https://twig.symfony.com/doc/3.x/tags/macro.html) pour plus d'informations.
 
+### Personnaliser les pages d'erreur
+
+[La documentation officielle sur le sujet](https://symfony.com/doc/current/controller/error_pages.html)
+
+Pendant le développement (mode `dev` de Symfony), les pages d'erreur sont gérées par Symfony et vous affichent les détails de l'erreur. Bien pratique pour le développement, mais loin de la réalité en production.
+
+Vous pouvez tester le mode `prod` en modifiant la variable `APP_ENV` de votre `.env`. Vous verrez ainsi le site comme vous le verriez sur un serveur, y compris les erreurs.
+
+Il est plus simple de le tester en mode `dev` (changer de mode peut être pénible, surtout pour des questions de cache), et Symfony a tout prévu : 
+
+Créez un fichier `config/routes/dev/framework.yaml` avec le contenu suivant :
+
+```yaml
+_errors:
+    resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
+    prefix:   /_error
+```
+
+Pour tester, aller sur `_error/{statusCode}` où `{statusCode}` est le numéro d'erreur de vous voulez tester (404, 500, etc.).
+
+Pour personnaliser les vues, nous pouvons créer des fichiers comme ci-dessous :
+
+```
+templates/
+└─ bundles/
+   └─ TwigBundle/
+      └─ Exception/
+         ├─ error404.html.twig
+         ├─ error403.html.twig
+         └─ error.html.twig      # Toutes les autres erreurs HTML (dont les 500)
+```
+
+Notez que ce rangement nous permet de [surcharger/modifier les templates de n'importe quel bundle](https://symfony.com/doc/current/bundles/override.html#override-templates).
+
 ### Dé-buguer
 
 Dans les vues Twig, vous disposez d'une fonction `dump()` qui vous permet d'afficher le contenu d'une variable et d'en voir le détail (un peu comme un `var_dump`, mais plus complet et mieux mis en forme). Utilisée sans paramètre, la fonction `dump()` affiche toutes es variables disponibles dans la vue.
