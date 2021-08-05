@@ -116,3 +116,11 @@ J'ai accès à plusieurs CRUD :
 - Utilisateurs (je peux créer/modifier les comptes du site)
 - Races de chiens
 - Associations/SPA
+
+---
+
+## Amélioration
+
+Le client aimerait également que l'équipe de développement soit force de proposition pour améliorer le site. 
+
+Pour cela, veuillez remplir le fichier `README.md` et créer une liste des améliorations que vous trouvez.

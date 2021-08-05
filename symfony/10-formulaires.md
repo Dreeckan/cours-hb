@@ -320,6 +320,55 @@ Lorsque Symfony est configuré pour utiliser Twig pour afficher nos vues (ce qui
 
 Toutes ces parties sont regroupées dans une `row` (par défaut, une `div` qui contient les 4 autres éléments) (que l'on peut appeler avec `form_row(form)`).
 
+Pour créer votre propre thème, vous pouvez vous inspirer de `vendor/symfony/twig-bridge/Resources/views/Form/bootstrap_5_layout.html.twig`. nous allons en prendre des exemples, pour décortiquer le fonctionnement du thème.
+
+Déjà, on peut constater que ce thème en étend un autre (c'est le moyen le plus simple, pour styler **tous** les formulaires), qui étend lui-même `form_div_layout.html.twig` :
+
+```twig
+{% use "bootstrap_base_layout.html.twig" %}
+```
+
+Ce qui veut dire que le template va hériter de tous les blocs de ses parents et peut les surcharger. Par exemple, pour modifier l'affichage d'un bouton (de type submit), ce thème nous donne ce code : 
+
+```twig
+{%- block submit_widget -%}
+    {%- set attr = attr|merge({class: (attr.class|default('btn-primary'))|trim}) -%}
+    {{- parent() -}}
+{%- endblock submit_widget %}
+```
+
+Décomposons : 
+
+`{%- block submit_widget -%}` définit le bloc que nous surchargeons/créons. Le nom du bloc contient:
+  - Le nom du champ `submit`
+    - L'élément du formulaire qui est modifié/affiché dans ce bloc : le `widget` 
+Ce bloc est donc appelé quand le formulaire appelle la fonction `form_widget()` d'un champ de type `SubmitType`
+
+Ainsi, si nous avons un formulaire de contact (nommé `contact`), on peut modifier l'affichage d'un champ `email` comme ceci : 
+
+```twig
+{%- block contact_email_widget -%}
+  {# On personnalise l'affichage ici #}
+{%- endblock -%}
+```
+
+Si on veut modifier l'affichage du label, on utilisera `block contact_email_label`, ou `block contact_email_row` pour la ligne, par exemple.
+
+Ce schéma venu de la documentation résume tout cela :
+
+<object data="https://symfony.com/doc/current/_images/form/form-field-parts.svg" type="image/svg+xml"></object>
+
+```twig
+{%- set attr = attr|merge({class: (attr.class|default('btn-primary'))|trim}) -%}
+```
+
+Ici, on fait plusieurs opérations :
+- `attr = ` : On modifie la variable `attr`, 
+- `|merge(...)` : en la fusionnant avec un autre tableau, 
+- `{class: (attr.class|default('btn-primary'))|trim}` : contenant la classe `'btn-primary'` si aucune classe n'est présente dans le tableau `attr` d'origine (et dans sa propriété `class`)
+
+Tout cela nous permet d'afficher les boutons type submit avec la classe `btn-primary` par défaut.
+
 
 
 ## Validation
