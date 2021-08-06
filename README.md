@@ -1,5 +1,9 @@
 # Liste des cours
 
+Ce site a été créé par [Rémi Jarjat](https://www.drakona.fr/cv/CV_Remi-Jarjat.pdf), pour être utilisé dans le cadre de formations avec [Human Booster](https://humanbooster.com/)
+Il a été généré avec [VuePress](https://vuepress.vuejs.org/), générateur de site statique, utilisant [VueJS](https://vuejs.org/).
+
+
 - [Général](general/)
 
 > Des cours généraux autour du métier de développeur.
