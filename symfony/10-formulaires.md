@@ -238,6 +238,10 @@ Plusieurs fonctions Twig (uniquement disponibles avec Symfony) peuvent nous serv
 - `form_widget(form.nomDuChamp)` affiche le widget du champ (n'importe quel type de champ de formulaire HTML avec lequel l'utilisateur peut interagir)
 - `form_errors(form.nomDuChamp)` affiche un bloc avec les erreurs liées au champ `nomDuChamp`
 
+Ce schéma venu de la documentation résume tout cela :
+
+<object data="https://symfony.com/doc/current/_images/form/form-field-parts.svg" type="image/svg+xml"></object>
+
 ### Personnaliser tous les formulaires
 
 Pour utiliser directement Bootstrap 5, Symfony fournit un thème de formulaire permettant d'avoir directement les bonnes classes sur tous les champs et leurs contenants :
@@ -354,12 +358,11 @@ Ainsi, si nous avons un formulaire de contact (nommé `contact`), on peut modifi
 
 Si on veut modifier l'affichage du label, on utilisera `block contact_email_label`, ou `block contact_email_row` pour la ligne, par exemple.
 
-Ce schéma venu de la documentation résume tout cela :
-
-<object data="https://symfony.com/doc/current/_images/form/form-field-parts.svg" type="image/svg+xml"></object>
-
 ```twig
-{%- set attr = attr|merge({class: (attr.class|default('btn-primary'))|trim}) -%}
+{%- block submit_widget -%}
+    {%- set attr = attr|merge({class: (attr.class|default('btn-primary'))|trim}) -%}
+    {{- parent() -}}
+{%- endblock submit_widget %}
 ```
 
 Ici, on fait plusieurs opérations :
@@ -369,7 +372,77 @@ Ici, on fait plusieurs opérations :
 
 Tout cela nous permet d'afficher les boutons type submit avec la classe `btn-primary` par défaut.
 
+On appelle ensuite le block `submit_widget` du parent pour en récupérer tout le fonctionnement (la seule différence est donc la modification de la variable `attr`).
 
+Un autre exemple, pour personnaliser toutes nos `form_row()`, sans faire appel à un block d'un parent :
+
+```twig
+{%- block form_row -%}
+    <div class="form__row">
+        {{- form_label(form) -}}
+        {{- form_errors(form) -}}
+        {{- form_widget(form) -}}
+        {{- form_help(form) -}}
+    </div>
+{%- endblock form_row -%}
+```
+
+Avec ce thème, on ajoute une classe `form__row` à toutes les rows que l'on appelle avec la fonction `form_row()`.
+
+:warning: Faire ceci rend inutilisable l'option `row_attr` que vous pouvez passer à la fonction `form_row()`, il s'agit juste d'un exemple.
+
+##### Personnaliser un formulaire précis
+
+Dans votre thème, vous pourriez vouloir personnaliser un formulaire très précis (par exemple, l'affichage d'une liste de races de chiens dans un formulaire de création d'un chien).
+
+Dans l'affichage de notre formulaire, on peut ajouter un `dump()` pour trouver l'information qui nous intéresse, `block_prefix` :
+
+```twig
+    {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.breeds) }}
+
+        {{ dump(form.breeds) }}
+
+        <button type="submit">Valider</button>
+    {{ form_end(form) }}
+```
+
+Avec ce dump, nous pouvons trouver l'information ici :
+
+![](/assets/img/php/block_prefixes.PNG)
+
+Cette variable `block_prefixes` nous donne la base des différents noms que nous pouvons donner à notre block (dans notre thème de formulaire), du plus générique (`form`) au plus spécifique (`_dog_breeds`). Grâce à cela, nous pouvons déduire les noms possibles pour notre bloc : 
+
+- `form_row` pour personnaliser toutes les `form_row`
+- `choice_row` pour personnaliser la row de tous les formulaires `ChoiceType` (dont hérite `EntityType`)
+- `entity_row` pour personnaliser la row de tous les formulaires `EntityType`
+- `_dog_breeds_row` si on veut personnaliser la row de ce formulaire spécifique
+
+Dans notre exemple, l'idée est de ne personnaliser que **ce** champ précis. Nous allons donc avoir ceci dans notre fichier de thème :
+
+```twig
+{% block _dog_breeds_row %}
+    {{ dump() }}
+{% endblock _dog_breeds_row %}
+```
+
+Le `dump` dans l'exemple ci-dessus permet d'afficher toutes les variables disponibles au moment de l'appel. Vous remarquerez que vous ne manquez pas d'informations à exploiter ;) .
+
+Personnellement, je vais me contenter d'ajouter une classe sur la row et d'appeler l'affichage d'une row classique :
+
+```twig
+{% block _dog_breeds_row %}
+    {% set row_attr = row_attr|merge({
+        'class': (row_attr.class|default('') ~ ' breed__list')|trim,
+    }) %}
+    {{ form_row(form, {
+        row_attr: row_attr,
+    }) }}
+{% endblock _dog_breeds_row %}
+```
+
+On peut, bien sûr, aller beaucoup plus loin avec ces thèmes, mais je vous invite à consulter la [documentation officielle sur les thèmes](https://symfony.com/doc/current/form/form_themes.html#creating-your-own-form-theme) pour plus de détails et d'exemples.
 
 ## Validation
 
