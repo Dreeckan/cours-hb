@@ -1,12 +1,16 @@
 # Intégration continue
 
-Nous allons avoir besoin de notions sur :
+## Pré-requis
 
 - Git
-- Gitlab / Github / Bitbucket / équivalent
-- Docker
+- GitLab / GitHub / Bitbucket / équivalent
+- Yaml ([apprendre le YAML en 5 minutes](https://www.codeproject.com/Articles/1214409/Learn-YAML-in-five-minutes))
 
 ## Définitions
+
+L'introduction en vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/85edd5f003384961baa88d784ef2ca9c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### DevOps
 
@@ -33,19 +37,24 @@ On cherche ainsi à améliorer l'application en continu et créer des cycles cou
 L'intégration continue a pour but de vérifier chaque modification du code source, pour éviter les régressions et autres bugs (autant que possible). Un outil d'intégration continue permet de lancer automatiquement diverses actions de vérification du projet (compilation, linters, test unitaires et fonctionnels, etc.) ou toute autre tâche automatisable (cf
 déploiement continu ;) ).
 
-#### Pré-requis
+Pour utiliser des outils d'intégration continue, il faut que :
 
-- le code est versionné (git, svn, etc.)
-- des outils de vérification automatiques existent dans le projet (tests, etc.)
+- le code soit versionné (git, svn, etc.)
+- des outils de vérification automatiques existent dans le projet (compilation, tests, etc.)
+
+Si on souhaite mettre en place du déploiement continu (avec ou sans intégration continue), il faut que :
+
+- le projet puisse être mis sur un serveur / sa machine de destination
+- des outils de déploiement aient été mis en place
 
 #### Outils d'intégration continue
 
 - [Jenkins](https://www.jenkins.io/)
 - [TravisCI](https://travis-ci.com/)
 - [CruiseControl](http://cruisecontrol.sourceforge.net/)
-- mais aussi [Github actions](https://docs.github.com/en/actions), [Bitbucket Pipelines](https://bitbucket.org/product/fr/features/pipelines) ou [Gitlab CI](https://docs.gitlab.com/ee/ci/)
+- mais aussi [GitHub actions](https://docs.github.com/en/actions), [Bitbucket Pipelines](https://bitbucket.org/product/fr/features/pipelines) ou [GitLab CI](https://docs.gitlab.com/ee/ci/)
 
-Nous allons surtout voir le tout dernier élément de cette liste (Gitlab CI) car c'est celui que je maîtrise le mieux.
+Nous allons nous concentrer sur les [GitHub actions](https://docs.github.com/en/actions) et [GitLab CI](https://docs.gitlab.com/ee/ci/), qui sont plutôt simples à utiliser et plus rapides à mettre en place (en plus d'avoir une logique similaire).
 
 ### Docker
 
@@ -53,22 +62,27 @@ Docker est un logiciel libre permettant de lancer des applications dans des cont
 
 Contrairement à la virtualisation, qui reproduit toutes les caractéristiques d'une machine, la conteneurisation s'appuie sur certaines parties de la machine hôte (dont le système d'exploitation) pour fonctionner (ce qui améliore grandement la compatibilité et la flexibilité). Un autre intérêt est de séparer complètement l'exécution des différents services nécessaires à une application (BdD, serveur, etc.), les lançant dans des processus séparés.
 
-## [Gitlab](https://www.gitlab.com)
 
-Bien que tout ce qui suit s'applique aussi bien à Github ou Bitbucket, la syntaxe et les denominations changent d'un outil à l'autre. Les concepts restent les mêmes et il est plutôt aisé d'adapter ce que vous verrez ici à d'autres outils de CI/CD.
+### D'autres outils utiles
 
-Gitlab est un gestionnaire de repositories git en ligne. Il peut servir entre autre de :
+- [Un grand ensemble de tuto DevOps par Xavki](https://gitlab.com/xavki/sommaire-xavki-tutos-fr)
+- [Un outil d'analyse statique pour Php](https://phpstan.org/)
+- [Git workflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow)
+- [Ansible](https://docs.ansible.com/ansible/latest/index.html) (automatisation de tâches et gestion d'états)
+
+## [GitLab](https://www.gitlab.com) et [GitHub](https://www.github.com)
+
+Une présentation de GitLab et GitHub en vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/294683a858734af694d4b2edcb68d4c5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+Bien que tout ce qui suit s'applique aussi bien à Bitbucket, la syntaxe et les denominations changent d'un outil à l'autre. Les concepts restent les mêmes et il est plutôt aisé d'adapter ce que vous verrez ici à d'autres outils de CI/CD.
+
+GitLab et GitHub sont des gestionnaires de repositories git en ligne. Ils peuvent servir, entre autre, de :
 
 - gestionnaire de tickets
-- d'outil de revue de code
+- d'outils de revue de code
 - plateforme de CI/CD
-- et bien d'autres choses
-
-Il est disponible :
-
-- sur [Gitlab.com](https://www.gitlab.com)
-- en image docker
-- à installer sur un serveur
 
 Nous allons nous baser sur Git et ses mécaniques, voici quelques resources pouvant être utiles pour le maîtriser :
 
@@ -84,29 +98,29 @@ Mais **pourquoi relire le code d'un autre dev ?**
 
 - Vérifier que la demande initiale est respectée
 - Que le code produit répond aux **bonnes pratiques communes**
-- Avoir un second (ou troisième, quatrième, etc.) point de vue sur le travail effectué et trouver d'éventuels bugs
+- Avoir un second (ou troisième, quatrième, etc.) point de vue sur le travail effectué et trouver d'éventuels bugs avant qu'ils ne se dévoilent au client.
 
-Cette revue de code se fait en général dans les Merge Requests (MR) du projet.
+Cette revue de code se fait en général dans les Merge/Pull Requests (MR ou PR) du projet.
 
-## CI / CD avec Gitlab
+## CI / CD avec GitLab
 
-La [documentation officielle de Gitlab](https://docs.gitlab.com/ee/ci/introduction/index.html) à laquelle je vais beaucoup me référer.
+La [documentation officielle de GitLab](https://docs.gitlab.com/ee/ci/introduction/index.html) à laquelle je vais beaucoup me référer.
 
 Pour se faire, notre principal outil va être le fichier `.gitlab-ci.yml`. C'est dans ce fichier que nous allons définir nos tâches (`jobs`) et nos étapes (`stages`).
 
 - L'ensemble des étapes forment ce qu'on appelle un `Pipeline`.
-- Les étapes contiennent des tâches. Ce sont des commandes (actions) que l'on va faire lancer à notre serveur (Gitlab).
+- Les étapes contiennent des tâches. Ce sont des commandes (actions) que l'on va faire lancer à notre serveur (GitLab).
 - Les tâches sont exécutées par des `runners`
 
 ### Un exemple
 
 Un exemple de Workflow que nous pouvons construire :
 
-![Un Workflow Gitlab : depuis une nouvelle branche, on lance les actions automatiques jusqu'au merge, qui déclenche d'autres actions automatiques](https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_11_9.png)
+![Un Workflow GitLab : depuis une nouvelle branche, on lance les actions automatiques jusqu'au merge, qui déclenche d'autres actions automatiques](https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_11_9.png)
 
 La version plus détaillée :
 
-![Un Workflow Gitlab : depuis une nouvelle branche, on lance les actions automatiques jusqu'au merge, qui déclenche d'autres actions automatiques](https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_extended_v12_3.png)
+![Un Workflow GitLab : depuis une nouvelle branche, on lance les actions automatiques jusqu'au merge, qui déclenche d'autres actions automatiques](https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_extended_v12_3.png)
 
 Que se passe-t-il dans ces images :
 
@@ -128,7 +142,7 @@ Que se passe-t-il dans ces images :
 
 [Mon pense-bête favori](https://blog.eleven-labs.com/fr/introduction-gitlab-ci/), par Nicolas Grévin de Eleven Labs
 
-Son nom et son emplacement sont standard : `.gitlab-ci.yml` à la racine du projet Sur Gitlab, vous pouvez modifier cela dans : `Settings (menu de gauche) > CI/CD > General pipelines > Custom CI config path`
+Son nom et son emplacement sont standard : `.gitlab-ci.yml` à la racine du projet Sur GitLab, vous pouvez modifier cela dans : `Settings (menu de gauche) > CI/CD > General pipelines > Custom CI config path`
 
 Toutefois, je vous conseille de garder la configuration de base, c'est ce qui est attendu par beaucoup de développeurs.
 
@@ -166,7 +180,7 @@ pages:
     paths:
       - public
   # Des tags pour déterminer quel runner va exécuter la tâche.
-  # Ici, c'est une configuration personnalisée, pour notre Gitlab.
+  # Ici, c'est une configuration personnalisée, pour notre GitLab.
   # Nous avons créé nos propres runners
   tags:
     # Pour cette tâche, nous allons utiliser un runner utilisant Docker
@@ -183,7 +197,7 @@ deploy:
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
     # On lance le client SSH
     - eval $(ssh-agent -s)
-    # On va chercher la variable d'environnement DEPLOY_SK, définie dans Gitlab
+    # On va chercher la variable d'environnement DEPLOY_SK, définie dans GitLab
     # et qui contient une clé privée que l'on va utiliser pour le déploiement
     - echo "$DEPLOY_SK" | tr -d '\r' | ssh-add -
     # On s'assure d'avoir un dossier .ssh et qu'il ait des droits corrects
@@ -201,7 +215,7 @@ deploy:
 
 ### Pipelines
 
-Par défaut, un pipeline est lancé dès qu'un nouveau commit est poussé (push) sur Gitlab (si vous en poussez plusieurs dans la même branche, un seul pipeline sera lancé, sur le dernier commit). 
+Par défaut, un pipeline est lancé dès qu'un nouveau commit est poussé (push) sur GitLab (si vous en poussez plusieurs dans la même branche, un seul pipeline sera lancé, sur le dernier commit). 
 
 Vous pouvez voir les pipelines directement dans la partie `CI/CD` de votre repository, mais ils sont plus pratiques à d'autres emplacements de l'interface.
 
@@ -223,7 +237,7 @@ C'est sur ce dernier affichage que vous pouvez avoir l'adresse pour une [Review 
 
 ### Les runners
 
-Pour lancer les tâches, Gitlab utilise des programmes indépendants, les `runners`. Gitlab fourni de nombreux runners et vous permet éventuellement d'en créer vous-même, en quelques lignes de commande.
+Pour lancer les tâches, GitLab utilise des programmes indépendants, les `runners`. GitLab fourni de nombreux runners et vous permet éventuellement d'en créer vous-même, en quelques lignes de commande.
 
 Il y a 4 grands types de runners, disponibles par défaut :
 
@@ -324,12 +338,84 @@ pull-cache:
 
 Et beaucoup d'autres, que je vous invite [à découvrir ici](https://blog.eleven-labs.com/fr/introduction-gitlab-ci/) ;) 
 
-### D'autres outils utiles
+## CI / CD avec GitHub
 
-- [Un grand ensemble de tuto DevOps par Xavki](https://gitlab.com/xavki/sommaire-xavki-tutos-fr)
-- [Un outil d'analyse statique pour Php](https://phpstan.org/)
-- [Git workflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow)
-- [Ansible](https://docs.ansible.com/ansible/latest/index.html) (automatisation de tâches et gestion d'états)
+L'[introduction officielle aux GitHub Actions](https://docs.github.com/en/actions/learn-github-actions), et la vidéo qui va avec : 
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/cP0I9w2coGU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+:warning: L'utilisation de GitHub Actions est limitée et dépend de votre abonnement à GitHub (pour les projets professionnels d'envergure, un abonnement peut être nécessaire, mais pas pour les projets personnels, normalement). Voir [la documentation officielle sur les limitations de GitHub Actions selon votre abonnement](https://docs.github.com/en/actions/reference/usage-limits-billing-and-administration#about-billing-for-github-actions).
+
+Avec GitHub, on ne parle plus de Pipelines, mais d'Actions. Tout comme avec GitLab, GitHub Actions permet d'exécuter un ensemble de tâches quand un événement se produit sur le repository (distant). Le lexique est toutefois assez différent et il vaut mieux éviter de mélanger.
+
+- Un **Workflow** est une procédure automatique, décrivant les différents Jobs qui vont être lancés quand un Event se produit,
+- un **Event** (push sur le repository, par exemple) on déclenche un ou plusieurs Jobs,
+- un **Job** contient des Steps,
+- une **Step** contient des actions,
+- une **Action** est un script (une commande) à exécuter.
+
+Les Jobs sont exécutés par des **runners** (et peuvent être différents pour chaque Job). Un **runner** lance les différentes actions sur une machine virtuelle (Ubuntu Linux, Microsoft Windows ou macOS)
+
+![Un résumé des composants des Actions GitHub](https://docs.github.com/assets/images/help/images/overview-actions-design.png)
+
+### Le dossier `.github/`
+
+Pour mettre en place des Workflows, il faut créer un ensemble de fichiers `.yml` dans le dossier `.github/workflows/` du projet (en local, donc ;) ). Ces fichiers peuvent être nommé assez librement, mais leur nom doit être toujours en minuscule, et on remplace les espaces par des tirets `-`.
+
+La documentation propose de créer le fichier `.github/workflows/learn-github-actions.yml`, contenant le code suivant (voir les commentaires pour le détail). Cette commande crée et prépare un environnement nodejs et exécute la commande `bats -v`
+
+```yaml
+# On donne un nom à notre Workflow (optionnel). C'est ce nom qui apparaitra sur GitHub
+name: learn-github-actions
+# On donne une liste d'événements pour le déclencher
+# Ici, dès qu'on push sur le repo distant
+on: [push]
+
+# On liste les Jobs à effectuer
+jobs:
+    # On a un seul job : check-bats-version qui va préparer un projet nodejs 
+    # et exécuter une commande
+    check-bats-version:
+        # Ce job est exécuté dans une machine virtuelle Ubuntu
+        # Dans sa dernière version.
+        # Pour l'exécuter dans une version précise (disons 19.04), il aurait fallu écrire
+        # runs-on: ubuntu-19.04
+        runs-on: ubuntu-latest
+        # On définit les steps (la liste des actions) à exécuter
+        steps:
+            # On appelle une action déjà définie par la communauté (noter le mot-clé uses)
+            # Ici, c'est une action qui va récupérer le code (via git clone, a priori) et nous mettre sur la bonne branche
+            - uses: actions/checkout@v2
+            # Une action pour préparer un environnement nodejs
+            - uses: actions/setup-node@v2
+                # Avec un paramètre spécifique : on veut la version 14 de nodejs
+                with:
+                  node-version: '14'
+            # On lance une commande (run) pour installer la librairie bats
+            - run: npm install -g bats
+            # On lance la commande 
+            - run: bats -v
+```
+
+Il est intéressant de noter, dans l'exemple ce-dessus, l'usage des mots-clés `uses` et `run` :
+- [`uses` va utiliser un autre fichier, définit par la communauté](https://docs.github.com/en/actions/learn-github-actions/finding-and-customizing-actions) (disponible dans les actions de *tous* les projets) ou par vous-mêmes (voir plus bas), pour exécuter une ou plusieurs commandes (avec d'éventuels paramètres)
+- `run` va exécuter une commande directement
+
+#### Utiliser et définir ses propres actions
+
+[La documentation officielle pour la création d'actions](https://docs.github.com/en/actions/creating-actions)
+
+Définir vos propres actions vous permet de regrouper des actions courantes (préparer un environnement de tests pour un projet Symfony, par exemple) dans un fichier à part entière, afin de ne pas alourdir le fichier principal. Par convention, elles sont rangées dans le dossier `.github/actions/` de votre projet.
+
+## Docker
+
+### Définitions et concepts
+
+### Utiliser une ou des images Docker
+
+### Créer une image Docker
 
 ## CI de notre application Symfony
 
