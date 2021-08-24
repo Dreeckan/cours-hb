@@ -46,14 +46,14 @@ module.exports = {
                 sidebarDepth: 3,
                 children: jsFiles
             },
+            '/deploy/',
             {
                 title: 'Intégration continue',
                 path: '/ci/',
                 collapsable: true,
                 sidebarDepth: 3,
                 children: ciFiles
-            },
-            '/deploy/',
+            }
         ]
     },
     plugins: [
