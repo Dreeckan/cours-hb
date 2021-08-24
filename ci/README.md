@@ -347,6 +347,7 @@ L'[introduction officielle aux GitHub Actions](https://docs.github.com/en/action
 
 :warning: L'utilisation de GitHub Actions est limitée et dépend de votre abonnement à GitHub (pour les projets professionnels d'envergure, un abonnement peut être nécessaire, mais pas pour les projets personnels, normalement). Voir [la documentation officielle sur les limitations de GitHub Actions selon votre abonnement](https://docs.github.com/en/actions/reference/usage-limits-billing-and-administration#about-billing-for-github-actions).
 
+### Un Workflow basique
 
 Un premier parcours en vidéo de la doc pour expliquer les différents termes et le fonctionnement global de GitHub Actions :
 
@@ -363,8 +364,6 @@ Avec GitHub, on ne parle plus de Pipelines, mais d'Actions. Tout comme avec GitL
 Les Jobs sont exécutés par des **runners** (et peuvent être différents pour chaque Job). Un **runner** lance les différentes actions sur une machine virtuelle (Ubuntu Linux, Microsoft Windows ou macOS). Il est également possible d'utiliser Docker pour lancer nos actions (et nous n'utiliserons que des images officielles).
 
 ![Un résumé des composants des Actions GitHub](https://docs.github.com/assets/images/help/images/overview-actions-design.png)
-
-### Le dossier `.github/`
 
 Pour mettre en place des Workflows, il faut créer un ensemble de fichiers `.yml` dans le dossier `.github/workflows/` du projet (en local, donc ;) ). Ces fichiers peuvent être nommé assez librement, mais leur nom doit être toujours en minuscule, et on remplace les espaces par des tirets `-`.
 
@@ -407,15 +406,100 @@ Il est intéressant de noter, dans l'exemple ce-dessus, l'usage des mots-clés `
 - [`uses` va utiliser un autre fichier, définit par la communauté](https://docs.github.com/en/actions/learn-github-actions/finding-and-customizing-actions) (disponible dans les actions de *tous* les projets) ou par vous-mêmes (voir plus bas), pour exécuter une ou plusieurs commandes (avec d'éventuels paramètres)
 - `run` va exécuter une commande directement
 
+Sachez qu'il est également possible d'écrire ses propres actions. N'étant pas expert dans leur écriture, je vous renvoie à [la documentation officielle pour la création d'actions](https://docs.github.com/en/actions/creating-actions)
+
 Exemple, en vidéo, de mise en place d'un premier Workflow sur un projet Symfony :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/7f140c95606e44d1b68c35f7aaceddf2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-#### Utiliser et définir ses propres actions
+### Utiliser des conteneurs Docker
 
-[La documentation officielle pour la création d'actions](https://docs.github.com/en/actions/creating-actions)
+Il est possible de définir des conteneurs pour exécuter utiliser des services supplémentaires dans les actions ou directement pour exécuter les actions elles-mêmes. Les images à utiliser et leurs configurations sont définies au niveau du Job.
+Le but est ici d'ajouter un ensemble de programmes supplémentaires, non présent par défaut dans la machine virtuelle Ubuntu, pour exécuter certaines tâches
 
-Définir vos propres actions vous permet de regrouper des actions courantes (préparer un environnement de tests pour un projet Symfony, par exemple) dans un fichier à part entière, afin de ne pas alourdir le fichier principal. Par convention, elles sont rangées dans le dossier `.github/actions/` de votre projet.
+```yaml
+jobs:
+  container-job:
+    # On conserve une machine virtuelle de base
+    runs-on: ubuntu-latest
+    
+    # Optionnel : on utilise un conteneur créé à partir d'une image php officielle, 
+    # en version 7.4.9. 
+    # Les actions du Job vont être exécutées dans ce conteneur
+    container: php:7.4.9
+
+    # On fait appel à un ou des services supplémentaires, 
+    # qui vont être lancés dans des conteneurs
+    services:
+      # On donne un nom à notre service, qu'on utilise dans notre .env 
+      # (c'est l'adresse de la BdD)
+      db:
+        # On va utiliser l'image mysql (image officielle) en version 5.7
+        image: mysql:5.7
+        # On passe des variables d'environnement, pour configurer notre conteneur
+        env:
+          MYSQL_ROOT_PASSWORD: pass
+          MYSQL_DATABASE: test
+
+    steps:
+      # ... On exécute plusieurs étapes nécessaires
+      
+      # On exécute une action pour, par exemple, mettre à jour la BdD
+      # Attention, notre fichier .env doit avec les bonnes valeurs
+      # Utilisateur : root
+      # Mot de passe : pass
+      # Adresse/IP du serveur : db
+      # Nom de la base : test
+      # 
+      # /!\ Mettre à jour ces éléments (dans le CI ou le .env) pour adapter à votre cas !
+      - name: Create DB
+        run: php bin/console doctrine:migrations:migrate -n
+```
+
+:warning: Vous pouvez également [créer vos propres images Docker, mais il faut faire attention à plusieurs points](https://docs.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions) importants !
+
+### Partager des fichiers
+
+Il est possible, au fur et à mesure de l'exécution de votre Workflow, qu'il faille partager des fichiers, soit entre les jobs, soit en tant que résultat (création d'un fichier `.jar` par exemple). Il est alors possible de [créer des **artifacts**](https://docs.github.com/en/actions/guides/storing-workflow-data-as-artifacts) (nom donné aux fichiers créés pendant le Workflow), associés à une exécution de votre Workflow et partagé entre plusieurs jobs (voir plusieurs exécutions de votre Workflow !).
+
+Pour sauvegarder, on utilise `actions/upload-artifact` (dans sa version 2, dans l'exemple ci-dessous), qui permet de stocker un fichier sur GitHub
+
+Pour récupérer cette sauvegarde, on utilise `actions/download-artifact` (dans sa version 2, dans l'exemple ci-dessous), qui permet de récupérer des fichiers stockés sur GitHub
+
+```yaml
+jobs:
+  example-job-with-save:
+    name: Save output
+    steps:
+      # On lance une commande, qui sauvegarde son résultat dans un fichier
+      - shell: bash
+        run: |
+          expr 1 + 1 > output.log
+      # On savegarde ce fichier sur GitHub, en tant qu'artifact
+      - name: Upload output file
+        uses: actions/upload-artifact@v2
+        with:
+          # On donne un nom à notre artifact
+          name: output-log-file
+          # Et un ensemble de fichiers qu'il contient (utiliser Glob ici)
+          path: output.log
+          
+  example-job-with-download:
+    steps:
+      # On va récupérer un artifact, pour peut être s'en servir plus tard
+      - name: Download a single artifact
+        needs: example-job-with-save
+        uses: actions/download-artifact@v2
+        with:
+          # On récupère les fichiers par le nom de l'artifact
+          name: output-log-file
+```
+
+:warning: Noter [l'utilisation du mot-clé `needs`](https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows#creating-dependent-jobs) pour préciser que le deuxième job a *besoin* que le premier ait terminé son travail. Ce mot-clé est très utile, du moment que vous avez plusieurs jobs, surtout s'ils dépendent les uns des autres.
+
+### Aller plus loin
+
+Nous avons ici effleuré la surface de tout ce qu'il est possible de faire avec les GitHub Actions et je vous invite à [consulter la documentation officielle pour vous faire une idée de toutes les possibilités](https://docs.github.com/en/actions) qu'offre cet outil !
 
 ## Exercice - CI de notre projet Symfony
 

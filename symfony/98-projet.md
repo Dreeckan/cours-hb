@@ -119,7 +119,7 @@ J'ai accès à plusieurs CRUD :
 
 ---
 
-## Amélioration
+## Améliorations
 
 Le client aimerait également que l'équipe de développement soit force de proposition pour améliorer le site. 
 

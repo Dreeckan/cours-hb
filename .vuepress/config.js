@@ -13,6 +13,7 @@ module.exports = {
     themeConfig: {
         logo: '/assets/LogoHB.png',
         smoothScroll: true,
+        sidebarDepth: 4,
         sidebar: [
             '/',
             '/general/',
@@ -22,28 +23,24 @@ module.exports = {
                 title: 'PHP',
                 path: '/php/',
                 collapsable: true,
-                sidebarDepth: 3,
                 children: phpFiles
             },
             {
                 title: 'PHP pour les CDA',
                 path: '/php-cda/',
                 collapsable: true,
-                sidebarDepth: 3,
                 children: phpCdaFiles
             },
             {
                 title: 'Symfony',
                 path: '/symfony/',
                 collapsable: true,
-                sidebarDepth: 3,
                 children: symfonyFiles
             },
             {
                 title: 'Javascript',
                 path: '/js/',
                 collapsable: true,
-                sidebarDepth: 3,
                 children: jsFiles
             },
             '/docker/',
@@ -52,7 +49,6 @@ module.exports = {
                 title: 'Intégration continue',
                 path: '/ci/',
                 collapsable: true,
-                sidebarDepth: 3,
                 children: ciFiles
             }
         ]
