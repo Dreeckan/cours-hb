@@ -62,6 +62,7 @@ Docker est un logiciel libre permettant de lancer des applications dans des cont
 
 Contrairement à la virtualisation, qui reproduit toutes les caractéristiques d'une machine, la conteneurisation s'appuie sur certaines parties de la machine hôte (dont le système d'exploitation) pour fonctionner (ce qui améliore grandement la compatibilité et la flexibilité). Un autre intérêt est de séparer complètement l'exécution des différents services nécessaires à une application (BdD, serveur, etc.), les lançant dans des processus séparés.
 
+Pour plus d'informations sur le sujet, vous pouvez consulter [le cours sur Docker, sur ce site](../docker/).
 
 ### D'autres outils utiles
 
@@ -416,19 +417,48 @@ Exemple, en vidéo, de mise en place d'un premier Workflow sur un projet Symfony
 
 Définir vos propres actions vous permet de regrouper des actions courantes (préparer un environnement de tests pour un projet Symfony, par exemple) dans un fichier à part entière, afin de ne pas alourdir le fichier principal. Par convention, elles sont rangées dans le dossier `.github/actions/` de votre projet.
 
-## Docker
+## Exercice - CI de notre projet Symfony
 
-### Définitions et concepts
+Pour notre application Symfony, nous allons créer un Workflow / pipeline pour installer et tester le projet. Nous ajouterons ensuite des outils supplémentaires, que nous ajouterons à notre intégration continue.
 
-### Utiliser une ou des images Docker
+### Les éléments nécessaires à notre CI
 
-### Créer une image Docker
+- Récupérer le code (automatique avec GitLab, requiert une Action avec GitHub)
+- Installer les dépendances du projet
+- Créer et initialiser la BdD (migrations + fixtures)
 
-## CI de notre application Symfony
+Si vous utilisez **GitLab** :
+- Définissez les différentes étapes/stages et les fichiers qu'elles doivent partager
+- définissez et implémentez les tâches/jobs demandées
+
+Si vous utiliser **GitHub** :
+- Définissez les différents jobs
+- Définissez les étapes et les actions à effectuer 
+- Appelez les actions pré-définies ou créez-en si nécessaire
+
+### Des outils à intégrer
+
+Une fois que vous disposez d'une intégration continue qui fonctionne, vous êtes prêts à rendre votre code plus beau et d'ajouter des outils de vérification supplémentaire.
+
+Je vous invite à jeter un oeil à [cet article regroupant quelques astuces pouvant être utiles avec Symfony](https://dev.to/duboiss/symfony-ce-que-j-aurai-aime-savoir-plus-tot-eke)
+
+- [Php CS Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) : outil de vérification de la **forme** du code (attention, on utilise les options `--dry-run --diff` pour seulement vérifier le code, pas le mettre à jour)
+- Les linters de Symfony, pour vérifier nos fichiers de configuration et nos vues (mais aussi [nos fichiers de traduction](https://symfony.com/doc/current/translation/lint.html))
+- [PhpStan](https://github.com/phpstan/phpstan) et en particulier [PhpStan Symfony](https://github.com/phpstan/phpstan-symfony) : outil d'analyse statique, pour détecter les incohérences du code et trouver des problèmes avant qu'ils ne se produisent. Un conseil : pour corriger les erreurs, commencer au niveau 1 et augmenter petit à petit, jusqu'au niveau 5. Au dela du niveau 5, les erreurs sont bien plus complexes et pénibles à corriger, et vont bien plus loin de ce que vous avez vu de PHP ici.
+
+Quelques autres outils, pour les courageux ;) :
+
+- [Makefile](https://grafikart.fr/tutoriels/makefile-953)
+- [PhpUnit](https://symfony.com/doc/current/testing.html) ou Selenium pour des tests unitaires et/ou fonctionnels (si vous en avez, sinon c'est l'occasion de tester ;) )
+- Si votre projet utilise npm :
+  - lancer l'installation des paquets
+  - utiliser les commandes nécessaires au fonctionnement du projet (compilation des fichiers Sass, appel à Webpack, etc.)
+
+## Exercice - CI avec GitLab
 
 ### Utilisation des bases
 
-Dans un premier temps, nous allons créer un pipeline fictif, avec des echos comme scripts.
+Dans un premier temps, nous allons créer une intégration continue fictive, avec des echos comme scripts.
 
 Dans une nouvelle branche Git, construire un pipeline respectant les consignes suivantes (les scripts sont indiqués entre parenthèses) :
 

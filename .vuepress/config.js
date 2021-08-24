@@ -46,6 +46,7 @@ module.exports = {
                 sidebarDepth: 3,
                 children: jsFiles
             },
+            '/docker/',
             '/deploy/',
             {
                 title: 'Intégration continue',
