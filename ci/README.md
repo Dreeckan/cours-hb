@@ -344,9 +344,12 @@ L'[introduction officielle aux GitHub Actions](https://docs.github.com/en/action
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/cP0I9w2coGU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
-
 :warning: L'utilisation de GitHub Actions est limitée et dépend de votre abonnement à GitHub (pour les projets professionnels d'envergure, un abonnement peut être nécessaire, mais pas pour les projets personnels, normalement). Voir [la documentation officielle sur les limitations de GitHub Actions selon votre abonnement](https://docs.github.com/en/actions/reference/usage-limits-billing-and-administration#about-billing-for-github-actions).
+
+
+Un premier parcours en vidéo de la doc pour expliquer les différents termes et le fonctionnement global de GitHub Actions :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/ef665b2420ad4446bb0955772748497a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Avec GitHub, on ne parle plus de Pipelines, mais d'Actions. Tout comme avec GitLab, GitHub Actions permet d'exécuter un ensemble de tâches quand un événement se produit sur le repository (distant). Le lexique est toutefois assez différent et il vaut mieux éviter de mélanger.
 
@@ -356,7 +359,7 @@ Avec GitHub, on ne parle plus de Pipelines, mais d'Actions. Tout comme avec GitL
 - une **Step** contient des actions,
 - une **Action** est un script (une commande) à exécuter.
 
-Les Jobs sont exécutés par des **runners** (et peuvent être différents pour chaque Job). Un **runner** lance les différentes actions sur une machine virtuelle (Ubuntu Linux, Microsoft Windows ou macOS)
+Les Jobs sont exécutés par des **runners** (et peuvent être différents pour chaque Job). Un **runner** lance les différentes actions sur une machine virtuelle (Ubuntu Linux, Microsoft Windows ou macOS). Il est également possible d'utiliser Docker pour lancer nos actions (et nous n'utiliserons que des images officielles).
 
 ![Un résumé des composants des Actions GitHub](https://docs.github.com/assets/images/help/images/overview-actions-design.png)
 
@@ -402,6 +405,10 @@ jobs:
 Il est intéressant de noter, dans l'exemple ce-dessus, l'usage des mots-clés `uses` et `run` :
 - [`uses` va utiliser un autre fichier, définit par la communauté](https://docs.github.com/en/actions/learn-github-actions/finding-and-customizing-actions) (disponible dans les actions de *tous* les projets) ou par vous-mêmes (voir plus bas), pour exécuter une ou plusieurs commandes (avec d'éventuels paramètres)
 - `run` va exécuter une commande directement
+
+Exemple, en vidéo, de mise en place d'un premier Workflow sur un projet Symfony :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/7f140c95606e44d1b68c35f7aaceddf2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 #### Utiliser et définir ses propres actions
 
