@@ -9,8 +9,8 @@ let jsFiles = glob.sync('js/**/!(README).md');
 module.exports = {
     description: 'Les formations de Rémi Jarjat pour Human Booster',
     searchPlaceholder: 'Chercher...',
-    lastUpdated: 'Dernière mise à jour ',
     themeConfig: {
+        lastUpdated: 'Dernière mise à jour ',
         logo: '/assets/LogoHB.png',
         smoothScroll: true,
         sidebarDepth: 4,
@@ -74,6 +74,8 @@ module.exports = {
                 allowAll: false
             }
         ],
-        ['vuepress-plugin-export']
+        ['@vuepress/nprogress'],
+        ['@vuepress/back-to-top'],
+        ['@vuepress/last-updated']
     ]
 }

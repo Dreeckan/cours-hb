@@ -1,5 +1,7 @@
 {
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.8.2",
+    "@vuepress/plugin-nprogress": "^1.8.2",
     "glob": "latest",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
@@ -10,5 +12,6 @@
     "dev": "npx vuepress dev .",
     "watch": "npx vuepress dev .",
     "build": "npx vuepress build ."
-  }
+  },
+  "dependencies": {}
 }
