@@ -1,6 +1,14 @@
 # Linux
 
+Introduction en vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/bb776948b1314c13bebf150861b199ab" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## Principes fondateurs
+
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/1a1a3e5da81e43a69bbb37a205efa23d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 - Liberté d'exécution
 - Liberté de lecture du code
@@ -16,10 +24,6 @@ Par exemple, [Symfony est distribué sous licence MIT](https://symfony.com/doc/c
 
 ## Historique
 
-L'histoire et les fichiers en vidéo : 
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/6031db3786044980bee80b063f64648c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
 - Noyau développé en 1991 par Linus Torvalds
 - Nombreuses distributions basées dessus
     - Debian (maintenue depuis 1993 et que nous allons voir)
@@ -27,11 +31,6 @@ L'histoire et les fichiers en vidéo :
     - Arch Linux
     - Et bien d'autres...
 - 85% des smartphones et tablettes tactiles et de nombreux serveurs (LAMP)
-
-
-Une présentation des principes de différentes distributions et démonstration rapide de KUbuntu (distribution que j'utilise) en vidéo :
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/e9d2fe175a134fb49fcb21df5c163da5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Rangement des fichiers
 
@@ -387,6 +386,7 @@ Dans Git Bash :
 - Développée dans les années 70-80
 - Popularisée dans les années 90 (émulateurs de vieilles machines)
 - Véritable boom ensuite dans les environnements de travail
+- Très utilisée de nos jours dans les grands parcs informatiques (y compris hébergeurs)
 
 ## Intérêts
 
@@ -446,12 +446,12 @@ Dans Git Bash :
 
 ![](/assets/img/linux/hyperviseur-types.jpg) 
 
-### Hyperviseur de type 1 (bare metal)
+#### Hyperviseur de type 1 (bare metal)
 
 - Directement sur la machine (hardware) et les OS s'exécutent par-dessus
 - Principalement pour virtualiser des parcs de machines (serveurs, réseau d'entreprise)
 
-### Hyperviseur de type 2 (host metal)
+#### Hyperviseur de type 2 (host metal)
 
 - Fonctionne à l'intérieur d'un système d'exploitation
 - Oracle VM VirtualBox, VMWare, KVM, etc.
