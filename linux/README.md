@@ -1,10 +1,25 @@
 # Linux
 
+## Principes fondateurs
+
+- Liberté d'exécution
+- Liberté de lecture du code
+- Liberté de redistribution
+- Liberté de modification
+
+En opposition au logiciel propriétaire, dont le fonctionnement est opaque et géré de manière privée (seul un petit groupe peut en connaitre le fonctionnement et le modifier), le logiciel libre est gratuit à exécuter, le code est visible de tous (nécessite quelques compétences pour le lire ;) ), peut être modifié par tous et redistribué à tous. Ces logiciels doivent également avoir un périmètre fonctionnel simple, adapté au besoin, ne doivent pas dépendre d'un `vendor` (logiciel ou librairie sous licence non libre) et utilisable par le plus grand nombre (ce dernier point est éternellement sujet de débats).
+
+En général, les logiciels libres utilisent des outils de gestion de version (comme [Git](https://git-scm.com/)), pour permettre ce travail collaboratif (*via* les Pull Requests, sur Github, par exemple).
+
+Pour assurer la pérennité de ces projets, des licences ont été mises en place, comme les licences GPL, BSD, MIT, Apache, etc. Toutes garantissent la propriété et les valeurs fondamentales de ces logiciels.
+Par exemple, [Symfony est distribué sous licence MIT](https://symfony.com/doc/current/contributing/code/license.html).
+
 ## Historique
 
 L'histoire et les fichiers en vidéo : 
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/6031db3786044980bee80b063f64648c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 - Noyau développé en 1991 par Linus Torvalds
 - Nombreuses distributions basées dessus
     - Debian (maintenue depuis 1993 et que nous allons voir)
@@ -17,7 +32,6 @@ L'histoire et les fichiers en vidéo :
 Une présentation des principes de différentes distributions et démonstration rapide de KUbuntu (distribution que j'utilise) en vidéo :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/e9d2fe175a134fb49fcb21df5c163da5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
 
 ## Rangement des fichiers
 
@@ -261,7 +275,44 @@ X peut être (entre 64 possibilités) :
 - `SIGTERM` (15) lui demande gentiment de se fermer (signal par défaut)
 - `SIGKILL` (9) tue le programme, littéralement
 
-Exemples : `kill -SIGKILL 2412`, `pkill -15 top`, `killall -9 chrome`
+Exemples : 
+- `kill -SIGKILL 2412`
+- `pkill -15 top`
+- `killall -9 chrome`
+
+### Les utilisateurs
+
+Il y a 2 types d'utilisateurs :
+- les utilisateurs système ne sont pas réels et sont dédiés à *une* tâche du système (pour certains services (ftp, serveur web, etc.) ou certaines tâches (backups, etc.)). Ils ne peuvent pas se connecter.
+- les utilisateurs réels peuvent se connecter, ont un nom d'utilisateur unique et, entre autre un UID (identifiant unique, attribué par le système).
+
+Chaque utilisateur appartient (toujours) a un groupe à son propre nom. Il peut en avoir d'autres.
+
+Chaque processus et chaque fichier appartient **toujours** à un utilisateur **et** un groupe.
+
+Voir le fichier `/etc/passwd` pour la liste des utilisateurs et `/etc/shadow` pour les mots de passe (chiffrés).
+
+#### Root
+
+Sur tous les systèmes UNIX, il existe un utilisateur `root` (dont le UID est 0), ayant tous les pouvoirs (lui seul peut modifier les fichiers systèmes). Il est très fortement déconseillé de s'en servir comme un utilisateur normal.
+Toutefois, sur les distributions basées sur Debian (et sûrement d'autres ;) ), il existe une commande `sudo` (Super User DO) permettant d'exécuter une commande avec les droits `root`.
+
+#### Commandes de gestion des utilisateurs
+
+À exécuter en tant que super-utilisateur (avec `sudo` ou en se connectant en tant que `root` avec `su`) :
+
+- `useradd identifiantDeVotreUtilisateur` pour créer un utilisateur (voir le manuel pour plus d'options, notamment `-d /chemin/vers/le/homme/du/user`, `-m`, ou `-G`)
+- `usermod identifiantDeVotreUtilisateur` s'utilise avec les mêmes options pour modifier un utilisateur existant
+- `userdel identifiantDeVotreUtilisateur` pour supprimer un utilisateur
+- `passwd` pour modifier le mot de passe d'un utilisateur (par défaut, un utilisateur ne peut modifier que le sien, `root` peut modifier ceux de tous les utilisateurs)
+- `su identifiantDeVotreUtilisateur` permet de changer d'utilisateur (recharge complètement l'environnement du terminal)
+- `su identifiantDeVotreUtilisateur -c uneCommandeAExecuter` permet lancer une seule commande en tant que `identifiantDeVotreUtilisateur`
+
+### Les groupes
+
+Voir le fichier `/etc/group` pour la liste des groupes.
+
+Ils ont tous un nom unique, un GID unique, des membres (utilisateurs), etc.
 
 ### Gestion des permissions
 
@@ -311,7 +362,7 @@ Exemples :
 - `ssh-keygen` pour générer une clé privée et une clé publique
 - `ssh-add chemin/vers/la/cle/privee` pour retenir cette clé
 - `ssh-copy-id user@un-serveur` pour l'ajouter à votre utilisateur sur un serveur distant
-- `ssh-agent -s` pour démarrer le service SSH si besoin
+- `ssh-agent -s` pour démarrer le service SSH si besoin (`eval $(ssh-agent -s)` si l'agent refuse *vraiment* de coopérer)
 
 ### OpenSSH sous Windows
 
