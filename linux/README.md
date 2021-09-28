@@ -34,6 +34,10 @@ Par exemple, [Symfony est distribué sous licence MIT](https://symfony.com/doc/c
 
 ## Rangement des fichiers
 
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/f9d9d06790484fa6884f04298cb6310a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ![Le système de fichiers de Linux](/assets/img/linux/linux-filesystem.png)
 
 ### Les dossiers essentiels
@@ -73,6 +77,8 @@ Le cours en vidéo :
 - Peuvent être contrôlés par l'utilisateur (arrêt, démarrage, re-démarrage)
 
 Exemples : Apache, Nginx, cron, Docker
+
+---
 
 # Passer à la pratique
 
@@ -258,6 +264,10 @@ La version en vidéo :
 
 ### Lancer des commandes en arrière-plan
 
+Gestion des commandes en arrière-plan et meurtres de processus en une vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/bddf49e85f394643b51332a67c17a171" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 - Ajoutez une esperluette (`&`) à la fin de la commande pour la lancer en arrière-plan
 - `jobs` affiche les processus en arrière-plan
 - `fg %X` où X est le numéro du processus le bascule au premier plan
@@ -280,6 +290,10 @@ Exemples :
 - `killall -9 chrome`
 
 ### Les utilisateurs
+
+Utilisateurs et gestions des droits en vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/9a863404793a4dc594102ff60cf304af" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Il y a 2 types d'utilisateurs :
 - les utilisateurs système ne sont pas réels et sont dédiés à *une* tâche du système (pour certains services (ftp, serveur web, etc.) ou certaines tâches (backups, etc.)). Ils ne peuvent pas se connecter.
@@ -334,6 +348,10 @@ Exemples :
 
 ## Connaître l'espace disponible
 
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/45718e74719748569c1ec18e05be992b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 `df -h` affiche l'espace disponible et l'espace utilisé pour chaque partition du système 
 
 ## Connaître le poids de certains dossiers ou sous-dossiers
@@ -375,6 +393,8 @@ Dans Git Bash :
 
 - Ouvrir Powershell **en tant qu'administrateur** 
 - Lancer cette commande : `Set-Service ssh-agent -StartupType Automatic`
+
+---
 
 # Virtualisation
 
@@ -456,6 +476,8 @@ Dans Git Bash :
 - Fonctionne à l'intérieur d'un système d'exploitation
 - Oracle VM VirtualBox, VMWare, KVM, etc.
 
+---
+
 # Conteneurisation
 
 La conteneurisation permet de packager tous les services, scripts, API, librairies dont une application a besoin. L’objectif : en permettre l’exécution sur n’importe quel noyau compatible.
@@ -477,6 +499,8 @@ Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 
 - Docker : logiciel de conteneurisation
 - Kubernetes : orchestrateur de conteneurs (fourni des outils de déploiement, de gestion de montée en charge sur des clusters de serveurs)
+
+---
 
 # Quel environnement choisir ?
 
