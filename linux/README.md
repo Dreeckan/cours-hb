@@ -1,5 +1,11 @@
 # Linux
 
+Présentation de ce cours en vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/8c30e64e7b9b4494b591e73e592c8c2d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+Dans ce cours Linux, nous allons discuter du fonctionnement général d'une distribution Linux/Unix, mais aussi de virtualisation (avec Virtualbox) et de conteneurisation (avec Docker). 
+
 ## Principes fondateurs
 
 En vidéo :
@@ -351,6 +357,10 @@ En vidéo :
 
 ### Connaître le poids de certains dossiers ou sous-dossiers
 
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/43e9cc1345d14e02906958be5b52c7c7" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 `du` affiche récursivement (va également parcourir tous les sous-dossiers et leurs sous-dossiers) la taille de chaque fichier contenu dans le dossier en cours.
 
 #### Astuces 
@@ -360,6 +370,10 @@ En vidéo :
 - `du -sh *` affiche le poids de chaque élément contenu dans le dossier courant (le poids des dossiers est ainsi résumé et seul le poids total est indiqué)
 
 ### Installer des programmes
+
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/e920d79b4bf14c418b0e7c6a1f5a2477" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 `apt` est un programme qui offre un ensemble de commandes vous permettant de gérer les programmes installés sur votre machine. Il faut avoir les droits de super-utilisateur pour s'en servir (en général, il faut utiliser la commande `sudo` avant votre programme).
 
@@ -371,9 +385,16 @@ En vidéo :
 
 ### OpenSSH
 
+En vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/aca9ffb176784f229ea365e185986ef4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+OpenSSH est normalement installé par défaut sur toutes les distributions Linux et fourni un ensemble de commandes pour gérer les clés et les connexions SSH :
+
 - `ssh-keygen` pour générer une clé privée et une clé publique
-- `ssh-add chemin/vers/la/cle/privee` pour retenir cette clé
-- `ssh-copy-id user@un-serveur` pour l'ajouter à votre utilisateur sur un serveur distant
+- `ssh-add chemin/vers/la/cle/privee` pour retenir cette clé (on dit qu'on l'ajoute au trousseau de l'utilisteur)
+- `ssh user@un-serveur` pour se connecter en SSH (connexion sécurisée) à un serveur et y ouvrir un terminal. Cette connexion utilise les clés du trousseau pour essayer de vous identifier. Si aucune de vos clés n'est enregistrée, il se peut qu'un mot de passe vous soit demandé
+- `ssh-copy-id user@un-serveur` pour ajouter les clés enregistrées à l'utilisateur sur un serveur distant
 - `ssh-agent -s` pour démarrer le service SSH si besoin (`eval $(ssh-agent -s)` si l'agent refuse *vraiment* de coopérer)
 
 #### OpenSSH sous Windows
@@ -384,7 +405,7 @@ Dans Git Bash :
 - Ajouter la clé à votre trousseau : `ssh-add /chemin/vers/votre/cle`
 - Ajouter votre clé à Github : `cat /chemin/vers/votre/cle.pub`, et [l'ajouter sur Github](https://github.com/settings/ssh/new)
 
-### SSH dès le démarrage de Windows
+#### SSH dès le démarrage de Windows
 
 - Ouvrir Powershell **en tant qu'administrateur** 
 - Lancer cette commande : `Set-Service ssh-agent -StartupType Automatic`
