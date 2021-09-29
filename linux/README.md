@@ -1,9 +1,5 @@
 # Linux
 
-Introduction en vidéo :
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/bb776948b1314c13bebf150861b199ab" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
 ## Principes fondateurs
 
 En vidéo :
@@ -78,24 +74,22 @@ Le cours en vidéo :
 
 Exemples : Apache, Nginx, cron, Docker
 
----
-
-# Passer à la pratique
+## Passer à la pratique
 
 - [Activer la virtualisation dans le Bios](https://www.tech2tech.fr/comment-activer-la-technologie-de-virtualisation-sur-mon-pc/)
 - Installer Virtualbox ([pour Windows](https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-Win.exe) ou [pour Mac](https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-OSX.dmg))
 - Télécharger une VM : [Ubuntu 20.04](https://sourceforge.net/projects/linuxvmimages/files/VirtualBox/U/Ubuntu_20.10_VB.zip/download)
 
-## Accéder au terminal
+### Accéder au terminal
 
 - Lancer un émulateur de terminal (application `Terminal`/`Konsole`/...)
 - Passer sur les interfaces de ligne du commande du système (`ctrl+alt+F2 à 6`, `ctrl+alt+F1` pour revenir au bureau)
 
-### Sous Windows
+#### Sous Windows
 
 - Lancer Powershell ou Git Bash
 
-## L'interface
+### L'interface
 
 - Une interface minimale
 
@@ -106,19 +100,19 @@ Exemples : Apache, Nginx, cron, Docker
 ![Un exemple de terminal amélioré (zsh + oh my zsh)](/assets/img/linux/terminal_mine.png)
 Dans cet exemple, j'ai installé, zsh, [oh my zsh](https://ohmyz.sh/) et le [thème Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
-## Une commande
+## Commandes de base
+
+Comprendre les commandes :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/15722dba071a4323be5ac835ab24eb32" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+### Une commande
 
 - Un programme (exemple : `ls`)
 - éventuellement des paramètres (exemple `ls /`)
 - éventuellement des options (`ls -al /` = `ls -a -l /` = `ls --all -l /`), qui peuvent être en 1 ou plusieurs lettres (la casse est importante)
 - éventuellement des paramètres à ces options
 - un manuel pour tout vous expliquer (`ls --help` = `man ls`)
-
-## Commandes de base
-
-Comprendre les commandes :
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/15722dba071a4323be5ac835ab24eb32" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### Où suis-je ?
 
@@ -146,7 +140,7 @@ La version en vidéo (avec explication des chemins relatifs et absolus) :
 
 La version en vidéo :
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/ce4dc7d873134cc3b5aa7fa4497463f0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/27ffe8b758f84ada816b3600819cdddc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 `ls` liste les fichiers et dossiers dans le dossier en cours
 `ls chemin/du/dossier` liste les fichiers dans le dossier `chemin/du/dossier`
@@ -155,6 +149,7 @@ La version en vidéo :
 
 - Voir les fichiers et dossiers cachés : `ls -a`
 - Avoir un listing contenant plus de détails (droits sur les dossiers, etc) : `ls -l`
+- Avoir un listing de différents fichiers et dossiers : `ls -l unFichier unAutreFichier unDossier` (vous affichera des informations sur les fichiers/dossiers demandés)
 
 ### Créer un dossier
 
@@ -346,7 +341,7 @@ Exemples :
     + 2 pour l'écriture 
     + 4 pour la lecture
 
-## Connaître l'espace disponible
+### Connaître l'espace disponible
 
 En vidéo :
 
@@ -354,17 +349,17 @@ En vidéo :
 
 `df -h` affiche l'espace disponible et l'espace utilisé pour chaque partition du système 
 
-## Connaître le poids de certains dossiers ou sous-dossiers
+### Connaître le poids de certains dossiers ou sous-dossiers
 
 `du` affiche récursivement (va également parcourir tous les sous-dossiers et leurs sous-dossiers) la taille de chaque fichier contenu dans le dossier en cours.
 
-### Astuces 
+#### Astuces 
 
 - `du -s` affiche un résumé de la commande `du` et n'affiche que le poids (en octet) du dossier courant (ex : 179643924)
 - `du -h` affiche le poids de chaque fichier sous forme "humainement lisible" (en Mo, Go, Ko selon la taille du fichier)
 - `du -sh *` affiche le poids de chaque élément contenu dans le dossier courant (le poids des dossiers est ainsi résumé et seul le poids total est indiqué)
 
-## Installer des programmes
+### Installer des programmes
 
 `apt` est un programme qui offre un ensemble de commandes vous permettant de gérer les programmes installés sur votre machine. Il faut avoir les droits de super-utilisateur pour s'en servir (en général, il faut utiliser la commande `sudo` avant votre programme).
 
@@ -374,14 +369,14 @@ En vidéo :
 - `sudo apt remove nomDuProgrammeADesinstaller` pour supprimer `nomDuProgrammeADesinstaller` de la machine (conserve la configuration)
 - `sudo apt purge nomDuProgrammeADesinstaller` pour supprimer **complètement** `nomDuProgrammeADesinstaller` de la machine, avec sa configuration (et tous ces fichiers)
 
-## OpenSSH
+### OpenSSH
 
 - `ssh-keygen` pour générer une clé privée et une clé publique
 - `ssh-add chemin/vers/la/cle/privee` pour retenir cette clé
 - `ssh-copy-id user@un-serveur` pour l'ajouter à votre utilisateur sur un serveur distant
 - `ssh-agent -s` pour démarrer le service SSH si besoin (`eval $(ssh-agent -s)` si l'agent refuse *vraiment* de coopérer)
 
-### OpenSSH sous Windows
+#### OpenSSH sous Windows
 
 Dans Git Bash :
 - Générer une clé ssh : `ssh-keygen` (et suivre les instructions)
@@ -394,21 +389,19 @@ Dans Git Bash :
 - Ouvrir Powershell **en tant qu'administrateur** 
 - Lancer cette commande : `Set-Service ssh-agent -StartupType Automatic`
 
----
-
-# Virtualisation
+## Virtualisation
 
 - Des machines dans la machine
 - Hyperviseurs
 
-## Historique
+### Historique
 
 - Développée dans les années 70-80
 - Popularisée dans les années 90 (émulateurs de vieilles machines)
 - Véritable boom ensuite dans les environnements de travail
 - Très utilisée de nos jours dans les grands parcs informatiques (y compris hébergeurs)
 
-## Intérêts
+### Intérêts
 
 - Une VM fonctionne de manière identique quel que soit l'hôte (en théorie)
 - allocation de resources dynamiques
@@ -416,69 +409,67 @@ Dans Git Bash :
 - destructible/redimensionnable à l'infini sans casser l'hôte
 - isolation des différents systèmes
 
-## Inconvénients
+### Inconvénients
 
 - Problèmes très variables de performances
 - les systèmes virtualisés sont dépendant de leur hôte
 - coûteux, long et souvent difficile à mettre en place
 
-## Les virtualisations
+### Les virtualisations
 
 [La virtualisation expliquée par Red Hat](https://www.redhat.com/fr/topics/virtualization/what-is-virtualization)
 
-### Virtualisation des données
+#### Virtualisation des données
 
 - Ensemble de données éparpillées regroupées en une source unique
 
 ![height:300px](/assets/img/linux/virtualization-data.png)
 
-### Virtualisation des postes de travail
+#### Virtualisation des postes de travail
 
 - Permet de déployer, administrer et surveiller des postes de travail depuis un seul outil
 
 ![height:300px](/assets/img/linux/virtualization-desktop.png)
 
-### Virtualisation de serveurs
+#### Virtualisation de serveurs
 
 - Une même machine héberge plusieurs serveurs et répartie les resources
 
 ![height:300px](/assets/img/linux/virtualization-server.png)
 
-### Virtualisation des systèmes d'exploitation
+#### Virtualisation des systèmes d'exploitation
 
 - Avoir accès à d'autres OS dans une même machine
 
 ![height:300px](/assets/img/linux/virtualization-os.png)
 
-### Virtualisation de réseau
+#### Virtualisation de réseau
 
 - Séparation des fonctions clés d'un réseau en différents environnements et regroupement des machines physiques
 
 ![height:300px](/assets/img/linux/virtualization-network.png)
 
-## Hyperviseurs
+### Hyperviseurs
 
 - Logiciel chargé de répartir les resources
 
 [![](/assets/img/linux/hyperviseur.png)](https://openclassrooms.com/fr/courses/2035806-virtualisez-votre-architecture-et-vos-environnements-de-travail/6313926-decouvrez-la-virtualisation-une-reponse-a-des-problemes-de-terrain)
 
-### Deux types principaux d'hyperviseurs
+#### Deux types principaux d'hyperviseurs
 
 ![](/assets/img/linux/hyperviseur-types.jpg) 
 
-#### Hyperviseur de type 1 (bare metal)
+##### Hyperviseur de type 1 (bare metal)
 
 - Directement sur la machine (hardware) et les OS s'exécutent par-dessus
 - Principalement pour virtualiser des parcs de machines (serveurs, réseau d'entreprise)
 
-#### Hyperviseur de type 2 (host metal)
+##### Hyperviseur de type 2 (host metal)
 
 - Fonctionne à l'intérieur d'un système d'exploitation
 - Oracle VM VirtualBox, VMWare, KVM, etc.
 
----
-
-# Conteneurisation
+## Conteneurisation
 
 La conteneurisation permet de packager tous les services, scripts, API, librairies dont une application a besoin. L’objectif : en permettre l’exécution sur n’importe quel noyau compatible.
 
@@ -487,7 +478,7 @@ Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 - Un [tutoriel sur Docker](https://www.youtube.com/watch?v=XgKOC6X8W28) par [Grafikart](https://www.grafikart.fr/) ([très bonne chaine](https://www.youtube.com/channel/UCj_iGliGCkLcHSZ8eqVNPDQ) que je vous recommande)
 - Un [autre tutoriel Docker](https://www.youtube.com/watch?v=fdlZqRZXWOc&list=PLn6POgpklwWq0iz59-px2z-qjDdZKEvWd) par [Xavki](https://www.youtube.com/channel/UCs_AZuYXi6NA9tkdbhjItHQ) (encore une très bonne chaine)
 
-## Différences avec la virtualisation
+### Différences avec la virtualisation
 
 - Légèreté : peu d'espace occupé
 - élasticité : pas d'allocation de resource d'avance
@@ -495,27 +486,25 @@ Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 
 ![](/assets/img/linux/container-vs-vm.png)
 
-## Docker et Kubernetes
+### Docker et Kubernetes
 
 - Docker : logiciel de conteneurisation
 - Kubernetes : orchestrateur de conteneurs (fourni des outils de déploiement, de gestion de montée en charge sur des clusters de serveurs)
 
----
-
-# Quel environnement choisir ?
+## Quel environnement choisir ?
 
 - Local (Wamp)
 - virtualisation (Virtualbox / Vagrant) 
 - conteneurisation (Docker)
 
-## Local (Wamp)
+### Local (Wamp)
 
 - Très performant (directement sur votre machine, sans intermédiaire)
 - Relativement simple d'utilisation
 - Compliqué à configurer (surtout pour plusieurs applications) et maintenir
 - Relativement simple à faire évoluer (nécessite de connaître le fonctionnement de php, apache et mysql dans certains cas)
 
-## Virtualisation (Virtualbox / Vagrant)
+### Virtualisation (Virtualbox / Vagrant)
 
 - Permet d'avoir un environnement de travail proche du serveur
 - Pas de configuration à faire, tout est prêt
@@ -524,7 +513,7 @@ Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 - Moins performant que du local (partage des fichiers et des resources avec l'hôte)
 - Peut être difficile à faire évoluer (mais pas toujours)
 
-## Conteneurisation (Docker)
+### Conteneurisation (Docker)
 
 - Permet d'avoir un environnement de travail proche du serveur
 - Peut être géré depuis quelques fichiers de configuration (relativement simples)
@@ -532,7 +521,7 @@ Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 - Un peu moins performant que du local (partage des fichiers)
 - Peut être modifié facilement
 
-## Installer des environnements
+### Installer des environnements
 
 - [Visual Code](https://www.microsoft.com/en-us/download/details.aspx?id=30679) et [Télécharger Wamp](https://www.wampserver.com/)
 - [Télécharger Virtualbox](https://www.virtualbox.org/wiki/Downloads) et [Vagrant](https://www.vagrantup.com/downloads)
