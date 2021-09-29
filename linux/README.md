@@ -371,10 +371,6 @@ En vidéo :
 
 ### Installer des programmes
 
-En vidéo :
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/e920d79b4bf14c418b0e7c6a1f5a2477" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
 `apt` est un programme qui offre un ensemble de commandes vous permettant de gérer les programmes installés sur votre machine. Il faut avoir les droits de super-utilisateur pour s'en servir (en général, il faut utiliser la commande `sudo` avant votre programme).
 
 - `sudo apt update` pour mettre à jour la liste des programmes (et leur version) utilisables
@@ -385,19 +381,19 @@ En vidéo :
 
 ### OpenSSH
 
-En vidéo : 
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/aca9ffb176784f229ea365e185986ef4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
-OpenSSH est normalement installé par défaut sur toutes les distributions Linux et fourni un ensemble de commandes pour gérer les clés et les connexions SSH :
+OpenSSH est *normalement* installé par défaut sur toutes les distributions Linux et fourni un ensemble de commandes pour gérer les clés et les connexions SSH :
 
 - `ssh-keygen` pour générer une clé privée et une clé publique
-- `ssh-add chemin/vers/la/cle/privee` pour retenir cette clé (on dit qu'on l'ajoute au trousseau de l'utilisteur)
+- `ssh-add chemin/vers/la/cle/privee` pour retenir cette clé (on dit qu'on l'ajoute au trousseau de l'utilisateur)
 - `ssh user@un-serveur` pour se connecter en SSH (connexion sécurisée) à un serveur et y ouvrir un terminal. Cette connexion utilise les clés du trousseau pour essayer de vous identifier. Si aucune de vos clés n'est enregistrée, il se peut qu'un mot de passe vous soit demandé
 - `ssh-copy-id user@un-serveur` pour ajouter les clés enregistrées à l'utilisateur sur un serveur distant
 - `ssh-agent -s` pour démarrer le service SSH si besoin (`eval $(ssh-agent -s)` si l'agent refuse *vraiment* de coopérer)
 
 #### OpenSSH sous Windows
+
+:warning: OpenSSH n'est pas installé par défaut sur Windows, veuillez suivre les instructions de la vidéo pour l'installer.
+
+Pour générer et utiliser votre clé publique, les mêmes commandes (à la différence du lancement de l'agent ssh) sont les mêmes !
 
 Dans Git Bash :
 - Générer une clé ssh : `ssh-keygen` (et suivre les instructions)
