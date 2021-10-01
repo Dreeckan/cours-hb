@@ -210,7 +210,7 @@ La version en vidéo :
 - `tail -f chemin/vers/le/fichier` affiche les 10 dernières lignes et les données ajoutées au fur et à mesure que le fichier grandit (et bloque la ligne de commande)
 - `tail chemin/vers/un/fichier chemin/vers/un/autre/fichier` affiche les 10 dernières lignes des deux fichiers dans la sortie standard
 
-### Modifier/modifier des fichiers
+### Créer/modifier des fichiers
 
 La version en vidéo :
 
@@ -549,3 +549,8 @@ Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 - [Télécharger Virtualbox](https://www.virtualbox.org/wiki/Downloads) et [Vagrant](https://www.vagrantup.com/downloads)
 - [Télécharger Docker](https://docs.docker.com/docker-for-windows/install/)
 
+
+
+
+
+72c1e8f685312b7de90dd012c87207441df5b3da
