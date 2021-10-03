@@ -50,3 +50,64 @@ Pour supprimer la liaison avec un repository distant (`origin` un alias du serve
 
 Récupère un projet distant (présent sur Github, Bitbucket ou Gitlab) et crée un dossier `nomDuDossierDeDestination`. Si ce `nomDuDossierDeDestination` n'est pas défini, un dossier portant le nom du projet sera créé (Pour un projet comme `https://github.com/Dreeckan/exercices-php/`, le dossier sera `exercices-php`).
 
+
+
+## Terminologie
+
+## Créer un dépôt (local)
+
+### config
+
+### alias
+
+### init
+
+### clone
+
+## Enregistrer des changements
+
+### status
+
+### diff
+
+### add
+
+### .gitignore
+
+### commit
+
+### stash
+
+## Des branches
+
+### Créer
+
+### changer de branche
+
+## Mise en commun du travail
+
+### push
+
+### pull
+
+### PR
+
+### Merge, rebase, conflits
+
+## Annuler des changements
+
+### checkout
+
+### clean
+
+### revert
+
+### reset
+
+### rm
+
+## Réécrire l'historique
+
+### commit --amend
+
+### rebase
