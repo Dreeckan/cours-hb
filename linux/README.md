@@ -108,8 +108,14 @@ Exemples : Apache, Nginx, cron, Docker
 
 - Ou un peu moins
 
+### Personnaliser sont terminal
+
 ![Un exemple de terminal amélioré (zsh + oh my zsh)](/assets/img/linux/terminal_mine.png)
 Dans cet exemple, j'ai installé, zsh, [oh my zsh](https://ohmyz.sh/) et le [thème Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+
+#### Sous Mac
+
+Plusieurs articles expliquent comment [personnaliser le terminal](https://dev.to/equiman/iterm2--oh-my-zsh--powerlevel9k-best-terminal-combination-for-geeks-58l5) pour utiliser les mêmes éléments que sous Linux. (Un [autre exemple d'article](https://www.tronyxworld.be/2020/zsh_omz_p10k/))
 
 ## Commandes de base
 
@@ -210,7 +216,7 @@ La version en vidéo :
 - `tail -f chemin/vers/le/fichier` affiche les 10 dernières lignes et les données ajoutées au fur et à mesure que le fichier grandit (et bloque la ligne de commande)
 - `tail chemin/vers/un/fichier chemin/vers/un/autre/fichier` affiche les 10 dernières lignes des deux fichiers dans la sortie standard
 
-### Modifier/modifier des fichiers
+### Créer/modifier des fichiers
 
 La version en vidéo :
 
@@ -548,4 +554,3 @@ Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 - [Visual Code](https://www.microsoft.com/en-us/download/details.aspx?id=30679) et [Télécharger Wamp](https://www.wampserver.com/)
 - [Télécharger Virtualbox](https://www.virtualbox.org/wiki/Downloads) et [Vagrant](https://www.vagrantup.com/downloads)
 - [Télécharger Docker](https://docs.docker.com/docker-for-windows/install/)
-
