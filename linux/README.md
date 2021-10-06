@@ -392,6 +392,10 @@ En vidéo :
 
 ### OpenSSH
 
+Installation et configuration sur Windows, en vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/988ded8daf40416fa5ae9278580f9624" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 OpenSSH est *normalement* installé par défaut sur toutes les distributions Linux et fourni un ensemble de commandes pour gérer les clés et les connexions SSH :
 
 - `ssh-keygen` pour générer une clé privée et une clé publique
