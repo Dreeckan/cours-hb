@@ -341,6 +341,8 @@ Dans un projet à plusieurs, personne ne doit modifier directement la branche pr
 
 ### checkout
 
+`git checkout`
+
 ### clean
 
 ### revert
