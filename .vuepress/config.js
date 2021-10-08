@@ -4,6 +4,7 @@ let phpFiles = glob.sync('php/!(README).md');
 let phpCdaFiles = glob.sync('php-cda/!(README).md');
 let symfonyFiles = glob.sync('symfony/!(README).md');
 let ciFiles = glob.sync('ci/**/!(README).md');
+let gitFiles = glob.sync('git/**/!(README).md');
 let jsFiles = glob.sync('js/**/!(README).md');
 
 module.exports = {
@@ -17,7 +18,12 @@ module.exports = {
         sidebar: [
             '/',
             '/general/',
-            '/git/',
+            {
+                title: 'Git',
+                path: '/git/',
+                collapsable: true,
+                children: gitFiles
+            },
             '/linux/',
             {
                 title: 'PHP',
