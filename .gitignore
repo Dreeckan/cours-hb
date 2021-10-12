@@ -2,4 +2,5 @@
 .vuepress/dist/
 /ansible/roles
 *.sublime-*
-.idea/*
+.idea/
+.vscode/
