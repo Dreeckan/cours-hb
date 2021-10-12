@@ -71,7 +71,7 @@ Une fois la <abbr title="Pull Request">PR</abbr> faite, relue et qu'il faut la f
 
 En vidéo :
 
-
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/5b54c6a7fdf840c8bf6cac233af4f0b6" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 La première étape est de retourner sur votre machine, afin de régler les conflits. Pour cela, de nombreuses méthodes existent, mais la plus pratique (dans le cadre d'un fonctionnement avec Github) reste d'utiliser la commande `git rebase`. 
 
