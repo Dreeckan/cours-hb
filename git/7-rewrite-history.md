@@ -25,7 +25,7 @@ En vidéo :
 
 L'utilisation la plus complète est `git rebase -i main` (remplacer `main` par une autre branche si besoin), qui vous ouvre un éditeur pour définir ce que vous souhaitez faire pour chaque commit présent entre la tête de lecture et le dernier commit de la branche `main`. 
 
-Vous pouvez, entre autre :
+Vous pouvez, **entre autre** :
 
 - utiliser le commit en utilisant `p` ou `pick` sur la ligne de votre commit (il sera utilisé sans modification)
 - supprimer le commit en utilisant `d` ou `drop` sur la ligne de votre commit (il sera supprimé, ainsi que les modifications qu'il contient). Notez que c'est équivalent à supprimer la ligne du commit
