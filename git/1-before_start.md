@@ -1,5 +1,8 @@
 # Avant de commencer
 
+Tous les éléments présentés dans cette partie sont à faire une seule fois par machine ou système d'exploitation. Ce sont donc des opérations assez rares et très peu souvent utiles, mais bonnes à savoir retrouver.
+
+
 ## Modifier la configuration de Git
 
 En vidéo : 

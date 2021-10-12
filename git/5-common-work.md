@@ -57,7 +57,7 @@ Des commandes courantes :
 - `git push origin nomDeLaBranche` est à exécuter en étant sur la branche `nomDeLaBranche` sur votre dépôt local et permet de mettre à jour la branche distante avec les commits locaux
 - `git push -u origin nomDeLaBranche` est à exécuter en étant sur la branche `nomDeLaBranche` sur votre dépôt local et permet de mettre à jour le distant **et** de demander à Git de retenir le lien entre la branche locale et la branche distante. Avec ce lien, vous pourrez vous contenter de lancer `git push` ou `git pull` sans plus d'arguments (ce qui simplifie la vie ;) ).
 
-## PR
+## Pull Request (PR)
 
 En vidéo :
 
@@ -66,3 +66,28 @@ En vidéo :
 Dans un projet à plusieurs, personne ne doit modifier directement la branche principale (`main` ou `master` la plupart du temps), mais on travaille dans des branches séparées et, lorsqu'elles sont terminées, on crée une Pull Request sur le dépôt distant (GitHub pour nous), que l'on fait relire (vérifier) par un collègue jusqu'à validation. La branche peut alors être fusionnée dans la branche principale (ou une autre branche de destination, ça arrive aussi). Je vous invite à plutôt regarder la vidéo, pour des exemples concrets.
 
 ## Merge, rebase, conflits
+
+Une fois la <abbr title="Pull Request">PR</abbr> faite, relue et qu'il faut la fusionner dans la branche principale, il ne reste plus qu'à appuyer sur le bouton `Merge Pull Request` sur la page GitHub. Malheureusement, si vous êtes plusieurs à avoir travaillé sur les mêmes fichiers, vous rencontrerez des conflits (Git ne sait pas quelles modifications il doit conserver ou comment les fusionner). Nous allons voir comment les régler, pour permettre la fusion.
+
+En vidéo :
+
+
+
+La première étape est de retourner sur votre machine, afin de régler les conflits. Pour cela, de nombreuses méthodes existent, mais la plus pratique (dans le cadre d'un fonctionnement avec Github) reste d'utiliser la commande `git rebase`. 
+
+Le rebase consiste à changer le point de départ de votre branche (qui avait pour point de départ un commit, généralement de la branche principale) vers un autre commit, plus à jour. Pour avoir un moyen plus visuel de comprendre ce changement, je vous invite à regarder la vidéo ci-dessus ou de tester sur un [outil de visualisation de Git](http://git-school.github.io/visualizing-git/#rewritten-history), très pratique pour apprendre (sur l'exemple donné, il faut juste lancer la commande `git rebase master` pour voir un rebase en action).
+
+Dans la plupart des cas, nous allons faire comme suit (je pars du principe que vous êtes sur la branche à rebase) :
+
+- `git checkout main` pour aller sur la branche principale
+- `git pull origin main` (ou juste `git pull`) pour la mettre à jour (et s'assurer d'avoir **tous** les derniers changements)
+- `git checkout -` pour retourner sur la branche de travail
+- `git rebase main` pour lancer le rebase
+- Il faut maintenant gérer les éventuels conflits. Git rebase appliquant vos commits un par un, il est possible que vous ayez des conflits pour un ou plusieurs commits, et il faudra répéter les opérations suivantes :
+  - ouvrir les fichiers concernés dans votre <abbr title="Integrated Development Environment">IDE</abbr> et les corriger pour garder la ou les modifications que vous souhaitez conserver
+  - une fois tous les conflits gérés, utiliser la commande `git add` (`git add .` ou `git add nomDuFichier`) pour les ajouter à l'index, afin de préciser à la commande `rebase` que les conflits ont été corrigés
+  - `git rebase --continue` pour passer au commit suivant
+- Une fois tous les commits appliqués, votre branche locale est à jour
+- `git push --force origin nom-de-votre-branche` pour mettre à jour **de force** l'historique de votre branche sur GitHub (ne faites **jamais** cette opération sur la branche principale)
+- Faites re-faire une relecture rapide de votre <abbr title="Pull Request">PR</abbr>, pour vous assurer que tout est toujours bon
+- Vous pouvez fusionner ou faire fusionner votre <abbr title="Pull Request">PR</abbr>
