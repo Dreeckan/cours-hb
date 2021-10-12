@@ -1,11 +1,9 @@
 # Annuler des changements
 
-## checkout
+## Checkout - Annuler des modifications
 
-## clean
+## Revert - Annuler un commit
 
-## revert
+## Reset - Sortir de l'index
 
-## reset
-
-## rm
+## Rm - Sortir des fichiers de l'historique

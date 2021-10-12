@@ -1,5 +1,5 @@
 # Réécrire l'historique
 
-## commit --amend
+## Commit --amend - Modifier le dernier commit
 
-## rebase
+## Rebase - Modifier tout l'historique
