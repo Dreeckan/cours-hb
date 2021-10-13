@@ -426,6 +426,10 @@ Dans Git Bash :
 - Des machines dans la machine
 - Hyperviseurs
 
+En vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/bd25adc5530647f1a57a3cd0f50db521" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ### Historique
 
 - Développée dans les années 70-80
@@ -510,6 +514,10 @@ Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 - Un [tutoriel sur Docker](https://www.youtube.com/watch?v=XgKOC6X8W28) par [Grafikart](https://www.grafikart.fr/) ([très bonne chaine](https://www.youtube.com/channel/UCj_iGliGCkLcHSZ8eqVNPDQ) que je vous recommande)
 - Un [autre tutoriel Docker](https://www.youtube.com/watch?v=fdlZqRZXWOc&list=PLn6POgpklwWq0iz59-px2z-qjDdZKEvWd) par [Xavki](https://www.youtube.com/channel/UCs_AZuYXi6NA9tkdbhjItHQ) (encore une très bonne chaine)
 
+En vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/82f67695be5a4126897120f1e57208db" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ### Différences avec la virtualisation
 
 - Légèreté : peu d'espace occupé
@@ -525,9 +533,9 @@ Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 
 ## Quel environnement choisir ?
 
-- Local (Wamp)
-- virtualisation (Virtualbox / Vagrant) 
-- conteneurisation (Docker)
+En vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/484a302746aa48c085afb6a867837fcf" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### Local (Wamp)
 
@@ -549,12 +557,13 @@ Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 
 - Permet d'avoir un environnement de travail proche du serveur
 - Peut être géré depuis quelques fichiers de configuration (relativement simples)
-- Permet de gérer plusieurs applications en parallèle, voir à les faire communiquer
+- Permet de gérer plusieurs applications en parallèle, voir à les faire communiquer *simplement*
 - Un peu moins performant que du local (partage des fichiers)
 - Peut être modifié facilement
 
 ### Installer des environnements
 
-- [Visual Code](https://www.microsoft.com/en-us/download/details.aspx?id=30679) et [Télécharger Wamp](https://www.wampserver.com/)
-- [Télécharger Virtualbox](https://www.virtualbox.org/wiki/Downloads) et [Vagrant](https://www.vagrantup.com/downloads)
+- [Visual Code](https://www.microsoft.com/en-us/download/details.aspx?id=30679) 
+- [Télécharger Wamp](https://www.wampserver.com/)
+- [Télécharger Virtualbox](https://www.virtualbox.org/wiki/Downloads) et (optionnel) [Vagrant](https://www.vagrantup.com/downloads)
 - [Télécharger Docker](https://docs.docker.com/docker-for-windows/install/)
