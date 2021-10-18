@@ -50,6 +50,17 @@ Vous trouverez également un [exemple de création d'un premier fichier php en v
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/9e1742f7d36c4b6c8d61c1abdf210c57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+## Commentaires
+
+```php 
+// Une ligne de texte commenté, vous pouvez mettre n'importe quoi
+
+/*
+ * Un commentaire multiligne 
+ * (il DOIT commencé par /* et terminer par */)
+ */
+```
+
 ## Variables
 
 La [documentation PHP](https://www.php.net/manual/fr/language.variables.php)
@@ -133,7 +144,7 @@ $mesProduits = [
 
 // On peut ajouter une entrée à un index précis
 $mesProduits[2] = 'un texte de test';
-// ou dire à PHP de gérer l'index (ici, le texte sera ajouté à l'index 3)
+// ou dire à PHP de gérer l'index (ici, le texte sera ajouté à l'index 2)
 $mesProduits[] = 'un texte de test';
 ```
 
@@ -169,15 +180,19 @@ unset($mesProduits[0]);
 ```php
 $mesProduits = [
     0           => 'foo',
+    'vide'      => false,
     1           => 'bar',
     'uneEntrée' => 2,
 ];
 
 // renvoie true si l'entrée existe
-$test = isset($mesProduits[0]);
+$test = isset($mesProduits[0]);// true
+$test = isset($mesProduits[666]); // false
  
-// renvoie true si l'entrée n'est pas définie ou est une valeur vide (0, '', null, [], etc.)
-$test = empty($mesProduits[0]); 
+// renvoie true si l'entrée n'est pas définie ou est une valeur vide (0, '', null, [], false, etc.)
+$test = empty($mesProduits[0]); // false
+$test = empty($mesProduits['vide']); // true
+
 
 // supprimer une entrée
 unset($mesProduits[0]);
@@ -337,6 +352,33 @@ function doubleItWithTypes(?float $argument = 1): ?float
     return $argument * 2;
 }
 ```
+
+Idéalement, il est utile d'ajouter des commentaires (annotations) pour préciser des éléments supplémentaires (types des paramètres et des retours, etc.). En php, on ne peut pas (encore) donner plusieurs types à un paramètre ou un retour et on ne peut que le faire avec une annotation.
+
+```php
+/**
+ * @param $argument int|float On précise ici que $argument peut être un entier ou un flottant
+ * @return int|float On précise que la fonction retourne un entier ou un flottant
+ */
+function doubleIt($argument = 1)
+{
+    return $argument * 2;
+}
+
+/**
+ * @param int|null $argument
+ * @return int
+ */
+function doubleItInt(?int $argument = 1): int
+{
+    if (empty($argument)) {
+        return 0;
+    }
+    return $argument * 2;
+}
+```
+
+Appeler des fonctions :
 
 ```php
 function doubleIt($argument = 1)
