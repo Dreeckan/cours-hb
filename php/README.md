@@ -1,21 +1,25 @@
 # PHP
 
-## 1. [PHP procédural](1-bases.md)
+## 1. [Introduction](00-intro.md)
 
-Les bases du langage PHP et son utilisation en mode procédural
+Les bases de PHP et les éléments spécifiques au langage
 
-## 2. [Documentation PHP](2-doc.md)
+## 2. [PHP et sa documentation](01-doc.md)
 
-Apprendre à utiliser la documentation, mais pas que !
+Apprendre à lire la documentation de PHP et les différentes normes du langage
 
-## 3. [PHP Objet](3-objet.md)
+## 3. [PHP Objet](02-objet.md)
 
 Apprendre la Programmation Orientée Objet (POO) en PHP
 
-## 4. [PDO](4-pdo.md)
+## 4. [PDO](03-pdo.md)
 
 Utiliser une base de données MySQL grâce à l'objet PDO de PHP
 
-## 5. [Webservices REST](5-rest.md)
+## 5. [REST](04-rest.md)
 
-Les webservices REST (API), des programmes pour fournir des données à d'autres programmes
+Les grands principes des API REST (voir Symfony pour la mise en place rapide d'une API REST avec Api Platform)
+
+## [Exercices](99-exercices.md)
+
+Des exercices à pratiquer tout au long de ce cours

@@ -169,11 +169,7 @@ $foo->bar(
     $longerArgument,
     $muchLongerArgument
 );
-```
 
-### Format des appels (suite)
-
-```php
 somefunction($foo, $bar, [
   // ...
 ], $baz);
@@ -275,10 +271,10 @@ Le *FQCN* (Fully Qualified Class Name) est composé de :
 - [Hook de pré-commit](https://git-scm.com/book/fr/v2/Personnalisation-de-Git-Crochets-Git)
 - Tout en même temps
 
-## Installer PHP-cs-fixer sur VS Code
+Installation dans CS Code :
 
-- Installer le plugin mentionné dans la slide précédente
-- [Télécharger PHP CS Fixer](https://cs.symfony.com/download/php-cs-fixer-v2.phar) (je le télécharge dans le dossier `www` de mon wamp)
+- Installer le plugin mentionné dans la liste ci-dessus
+- [Télécharger PHP CS Fixer](https://cs.symfony.com/download/php-cs-fixer-v3.phar) (je le télécharge dans le dossier `www` de mon wamp)
 - Configurer l'extension avec le chemin de php et celui de php-cs-fixer
 
 ![Installer PHP CS Fixer](/assets/img/php/phpcsfixer-install-1.png)
@@ -307,8 +303,6 @@ Le *FQCN* (Fully Qualified Class Name) est composé de :
   - Exemples : Concrètement, comment s'en servir ?
   - Notes : les subtilités
   - Voir aussi : les fonctions liées (similaires, opposées ou dans le même fonctionnement)
-  
----
 
 ### Aller plus loin avec la doc
 

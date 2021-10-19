@@ -1,7 +1,5 @@
 # Webservices REST
 
-Rémi Jarjat / Développeur multi-rôles chez [Drakona](https://www.drakona.fr)
-
 - Une architecture / socle commun
 - Un client
 - Un webservice REST
@@ -23,8 +21,6 @@ Rémi Jarjat / Développeur multi-rôles chez [Drakona](https://www.drakona.fr)
   - Utilisation du cache
   - Interface uniforme
   - Code à la demande (optionnel)
-  
----
 
 ### Client-serveur
 
