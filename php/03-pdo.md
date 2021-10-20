@@ -10,7 +10,7 @@ Il offre différentes fonctionnalités, dont :
 - des requêtes préparées, pour améliorer la sécurité et les performances
 - des transactions, pour exécuter un ensemble de requête, uniquement si **toutes** fonctionnent (sinon aucune donnée n'est ajoutée/modifiée)
 
-PDO sert de base à de nombreux <abbr title="Object-Relational Mapping">ORM<abbr>, tels que Doctrine, que vous verrez dans [la partie consacrée à Symfony](../symfony/). 
+PDO sert de base à de nombreux <abbr title="Object-Relational Mapping">ORM</abbr>, tels que Doctrine, que vous verrez dans [la partie consacrée à Symfony](../symfony/). 
 
 ### Quels <abbr title="Système de Gestion de Base de Données">SGBD</abbr> utiliser avec PDO ?
   
