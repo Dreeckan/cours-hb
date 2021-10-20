@@ -259,7 +259,7 @@ La correction en vidéo :
 ## 29. Liste et filtres
 
 - Créer une nouvelle branche git `ajout-filtres`
-- Sur la liste des produits `list.php`, ajouter des filtres (formulaire, avec la `method` à `GET`) :
+- Sur la liste des produits `list.php`, ajouter des filtres (formulaire, avec la `method` à `POST`) :
   - Par taille (S, M, L, XL)
   - Par matière (laine, soie, coton, cachemire, etc.)
   - Par prix (avec un minimum et un maximum)
@@ -313,7 +313,7 @@ La correction en vidéo :
   - `Beanie` (nommer la table `beanie`)
 - Créer un fichier de connexion à la BdD `includes/config.inc.php` et faire en sorte d'avoir une connexion fonctionnelle dans toutes vos pages.
 - Insérer des données dans la table `beanie` à l'aide de l'une des deux méthodes suivantes :
-  - dans PhpMyAdmin, ajouter des données dans la table `beanie` (avec les valeurs de votre fichiers `variables.php` par exemple)
+  - dans PhpMyAdmin, ajouter des données dans la table `beanie` (avec les valeurs de votre fichier `variables.php` par exemple)
   - écrire un script PHP `includes/fixtures.php` insérant les données
   
 ## 35. Formulaire de contact, en BdD

@@ -4,38 +4,37 @@
 
 [La documentation sur PDO](https://www.php.net/manual/fr/book.pdo.php)
 
-- Pourquoi ?
-  - la plupart des SGBD gérés (et donc facilite le changement)
-  - Requêtes préparées (sécurité et performance)
-  - Transactions (ne pas casser les bases)
-  - Facilité d'utilisation
-  - Base pour tous les ORMs
+PDO est une extension de PHP, permettant la gestion de la <abbr title="Base de Données">BdD</abbr> (connexion et utilisation de requêtes SQL pour créer/modifier les données).
 
-### Quels SGBD utiliser avec PDO ?
+Il offre différentes fonctionnalités, dont :
+- des requêtes préparées, pour améliorer la sécurité et les performances
+- des transactions, pour exécuter un ensemble de requête, uniquement si **toutes** fonctionnent (sinon aucune donnée n'est ajoutée/modifiée)
+
+PDO sert de base à de nombreux <abbr title="Object-Relational Mapping">ORM<abbr>, tels que Doctrine, que vous verrez dans [la partie consacrée à Symfony](../symfony/). 
+
+### Quels <abbr title="Système de Gestion de Base de Données">SGBD</abbr> utiliser avec PDO ?
   
-SGBD : Système de Gestion de Base de Données
-
-- Mysql
-- Oracle
+- Mysql (l'un des plus courants)
+- Oracle 
 - PostgreSQL
 - et bien d'autres
 
 ### Principes
 
-- Un objet pour gérer votre BdD
-- Les requêtes passent par cet objet
-- Prévu pour vous envoyer des erreurs "claires et gérables" (attention, ironie)
-- Les transactions (faire plusieurs requête et les annuler facilement en cas de souci dans l'une d'entre elles)
-- Un paquet d'outils pour faciliter les requêtes
+PDO offre des classes pour gérer :
+- la connexion à la BdD
+- la préparation et l'envoi de requêtes SQL
+- la gestion des transactions
+
 
 ## Se connecter à la base
 
-- Créer une instance de PDO à utiliser dans le reste du site
-- Utiliser nos identifiants une seule fois
-- Savoir tout de suite en cas de soucis de connexion
+PDO fournit un objet (`PDO`) de connexion à la BdD, que l'on va utiliser pour faire ensuite nos requêtes. On en crée en général une instance, que l'on inclue dans nos autres scripts, pour faire des requêtes. Cet objet peut renvoyer une exception, pour vous permettre de détecter les problèmes de connexion dès que possible.
 
 Pour se connecter, on crée (en général), un fichier spécifique, qu'on appelle sur nos pages (par exemple `includes/config.inc.php`)
+
 ```php
+<?php
 // Ici, adapter les valeurs de dbname et port à votre configuration
 $dsn = 'mysql:dbname=cours;port=3306;host=127.0.0.1';
 $user = 'root'; // Utilisateur par défaut
@@ -62,7 +61,7 @@ try {
 - La [documentation officielle sur la classe PDOException](https://www.php.net/manual/fr/class.pdoexception.php)
 - Le [chapitre de la documentation sur les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
 
-Les méthodes qui exécutent peuvent renvoyer `false` si la requête SQL s'est mal passée. Pour récupérer le détail de l'erreur, vous pouvez utilise la méthode `errorInfo()` de PDO :
+Avec l'initialisation de la connexion ci-dessus, les requêtes renvoient une exception en cas de soucis. Si vous changez le paramètre `PDO::ATTR_ERRMODE`, les méthodes exécutant des requêtes peuvent renvoyer `false` si la requête SQL s'est mal passée. Pour récupérer le détail de l'erreur, vous pouvez utilise la méthode `errorInfo()` de PDO :
 
 ```php
 if (!$isDone) {
@@ -90,14 +89,14 @@ try {
 
 ## Requêtes directes
 
-- Avec `PDO::query()` pour les `SELECT`
-- Avec `PDO::exec()` pour celles qui ne renvoient pas de résultats
-
 ### PDO::query()
 
+Utilisée pour les requêtes `SELECT` :
 - Prend en paramètre une requête (dans une variable `$sql` dans la suite)
 - S'appelle sur notre connexion : `$connection->query($sql)`
-- Renvoie un objet `PDOStatement` (contenant une méthode `fetchAll()`, renvoyant un tableau **associatif** avec les différentes lignes) ou `false` en cas d'erreur
+- Renvoie un objet `PDOStatement` (contenant une méthode `fetchAll()`, renvoyant un tableau **associatif** avec les différentes lignes)
+
+Un exemple complet :
 
 ```php
 // On crée notre requête, en prenant soin qu'elle soit valide (tester dans PhpMyAdmin, par exemple)
@@ -126,6 +125,7 @@ foreach  ($results as $result) {
 
 ### PDO::exec()
 
+Utilisée pour les requêtes autres que `SELECT` :
 - Prend en paramètre une requête (dans une variable `$sql` dans la suite)
 - S'appelle sur notre connexion : `$connection->exec($sql)`
 - Renvoie le **nombre** de lignes affectées
@@ -138,11 +138,11 @@ $count = $connection->exec($sql); // $count contient 3 (ou false en cas d'erreur
 
 // On met à jour tous les éléments de notre table student
 $sql = 'UPDATE student SET date = NOW()';
-// Si une erreur s'est produite, exec() renvoie false
+// Si une erreur s'est produite, exec() renvoie une exception
 $count = $connection->exec($sql); // $count contient également 3 (on modifie toutes les lignes)
 ```
 
-Un second exemple, où on attrape les erreurs :
+Un second exemple, où on attrape les erreurs si elles ne créent pas une exception :
 
 ```php
 $sql = "INSERT INTO contact (subject, message, email) VALUES ('Test', 'Un message de test super long !', 'test@test.com')";
@@ -166,13 +166,13 @@ En passant des paramètres, nous allons également pouvoir en vérifier le type,
 
 [La documentation officielle](https://www.php.net/manual/fr/class.pdostatement.php)
 
-- Un objet pour gérer les requêtes préparées
-- Permet de les exécuter, leur passer des paramètres et diverses opérations
+Cet objet intermédiaire va nous permettre de préparer les requêtes, afin de les optimiser et de réduire certaines répétitions de code.
 
 Un squelette minimal :
 
 ```php
 // On prépare une requête, que l'on va exécuter plus tard
+/** @var PDOStatement $statement */
 $statement = $connection->prepare($sql);
 
 // On peut lui passer des paramètres directement au moment de l'exécution,
@@ -180,6 +180,7 @@ $statement = $connection->prepare($sql);
 $statement->execute($parameters);
 
 // Si la requête a réussi, on peut récupérer les résultats
+/** @var array $results */
 $results = $statement->fetchAll();
 ```
 
@@ -198,23 +199,41 @@ $statement->bindParam(1, $param, PDO::PARAM_STR);
 $statement->execute();
 ```
 
+L'un des grands avantages des requêtes préparées est l'utilisation dans des boucles :
+
+```php
+$param = "Test";
+$statement = $connection->prepare('INSERT INTO student (fullname) VALUES (?)');
+$statement->bindParam(1, $param, PDO::PARAM_STR);
+// À chaque exécution de la boucle, le contenu de $param va être changé
+// et on insère la donnée modifiée au fur et à mesure
+// (le contenu de $param est lu à chaque itération, grâce à bindParam)
+for ($i = 0; $i < 10; $i++) {
+    $param += $i;
+    $statement->execute();
+}
+```
+
 ### Les paramètres nommés
 
 - Pour lier des paramètres (variables PHP) à une requête
 - Les paramètres sont nommés, permettant de les repérer plus facilement
-- Un paramètre commence toujours pas `:` suivi d'un nom
+- Un paramètre commence toujours par `:` suivi d'un nom
 
 ```php
 // la méthode bindParam() attend une variable en second paramètre (passage par référence).
 // Lui donner une valeur directement provoque une erreur.
 $param = "Test";
-$statement = $connection->prepare('SELECT fullname FROM student WHERE fullname LIKE :name');
+$statement = $connection->prepare('INSERT INTO student (fullname) VALUES (:name)');
 // Notre paramètre :name sera remplacé par la valeur de $param, à l'exécution de la requête
 $statement->bindParam(':name', $param, PDO::PARAM_STR);
-$statement->execute();
+for ($i = 0; $i < 10; $i++) {
+    $param += $i;
+    $statement->execute();
+}
 ```
 
-#### Exemples concrets, avec les erreurs
+#### Exemples concrets
 
 Un exemple d'une requête préparée, insérant un tableau de données dans une table `contact`
 
@@ -236,16 +255,20 @@ $contacts = [
     ]
 ];
 
+$subject = '';
+$message = '';
+$email = '';
+$pdoStatement->bindParam(':subject', $subject);
+$pdoStatement->bindParam(':message', $message);
+$pdoStatement->bindParam(':email', $email);
+
 foreach ($contacts as $contact) {
-    $pdoStatement->bindParam(':subject', $contact['subject']);
-    $pdoStatement->bindParam(':message', $contact['message']);
-    $pdoStatement->bindParam(':email', $contact['email']);
+    $subject = $contact['subject'];
+    $message = $contact['message'];
+    $email = $contact['email'];
 
     $count = $pdoStatement->execute();
-
-    if ($count === false) {
-        throw new Exception('Erreur lors de la requête : '.$connection->errorInfo()[2]);
-    }
+    var_dump($count);
 }
 ```
 
@@ -255,10 +278,6 @@ Un exemple de récupération de données :
 $sql = "SELECT * FROM contact";
 $pdoStatement = $connection->prepare($sql);
 $success = $pdoStatement->execute();
-
-if (!$success) {
-    exit(var_dump($connection->errorInfo()));
-}
 
 $results = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 exit(var_dump($results));
@@ -271,10 +290,6 @@ $sql = "SELECT * FROM contact";
 $pdoStatement = $connection->prepare($sql);
 $isDone = $pdoStatement->execute();
 
-if (!$isDone) {
-    throw new Exception('Erreur lors de la requête : '.$connection->errorInfo()[2]);
-}
-
 while($result = $pdoStatement->fetch(PDO::FETCH_ASSOC)) {
     var_dump($result);
 }
@@ -285,9 +300,6 @@ while($result = $pdoStatement->fetch(PDO::FETCH_ASSOC)) {
 ```php
 $stmt = $connection->prepare("INSERT INTO truc (bidule, machin) VALUES(:bidule, :machin)");
 $isDone = $stmt->execute();
-if (!$isDone) {
-  throw new Exception('Erreur lors de la requête : '.$statement->errorInfo()[2]);
-}
 
 // Ici, on récupère l'id du dernier élément inséré dans truc 
 $id = $connection->lastInsertId();

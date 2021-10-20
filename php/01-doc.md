@@ -1,13 +1,13 @@
 # PSR et PHP Doc
 
-- PSR 
+- PSR
 - Application pratique
 - PHP Doc
 - Trouver dans la doc... Et ailleurs
 
 ## PSR 1, 2/12 et 4
 
-Des **normes** d'écriture et de rangement de notre code  
+Des **normes** d'écriture et de rangement de notre code
 
 - [PSR-1](https://www.php-fig.org/psr/psr-1/) donne des normes d'écriture de base
 - [PSR-2](https://www.php-fig.org/psr/psr-2/) est une extension de PSR-1 (Dans les faits, il faut suivre [PSR-12, plutôt que PSR-2](https://www.php-fig.org/psr/psr-12/))
@@ -22,15 +22,15 @@ Sources : [PHP-fig](https://www.php-fig.org/), [nouvelle-techno.fr](https://nouv
 - Les fichiers doivent soit déclarer des symboles, soit créer des effets de bord, mais pas les deux
 - Espaces de nom et classes doivent suivre une norme PSR d'auto-chargement
 - Les noms de classe doivent être au format `PascalCase`
-- Les méthodes et fonctions au format `camelCase` 
+- Les méthodes et fonctions au format `camelCase`
 
 ### Balises php
 
 - Nous n'utilisons que les balises `<?php` et `?>` pour entourer notre code PHP, restons là-dessus ;)
-- D'autres existent : 
-    - `<?` fonctionne dans certains (vieux) projets et sont déconseillées
-    - `<?=` "balises echo courtes" fonctionnent toujours et permettent de faire un `echo` du code qu'elles contiennent
-- La norme PSR-1 recommande `<?php` et `<?=` uniquement 
+- D'autres existent :
+  - `<?` fonctionne dans certains (vieux) projets et sont déconseillées
+  - `<?=` "balises echo courtes" fonctionnent toujours et permettent de faire un `echo` du code qu'elles contiennent
+- La norme PSR-1 recommande `<?php` et `<?=` uniquement
 
 ### Code en UTF-8
 
@@ -86,8 +86,6 @@ Pour les distinguer des classes et les rapprocher des variables, on utilise le `
 - Il ne doit pas y avoir de limite (dure) de nombre de caractères pour une ligne
 - Idéalement, une ligne ne doit pas dépasser les 120 caractères
 - Encore mieux : 80 caractères
-
-### PSR-12 (suite)
 
 - Aucun espace à la fin des lignes
 - Des sauts de ligne sont autorisés pour faciliter la lisibilité du code sauf cas interdits
@@ -253,7 +251,7 @@ $closureWithArgsVarsAndReturn = function ($arg1, $arg2) use ($var1, $var2): bool
 ## PSR-4
 
 S'applique aux classes, interfaces, traits et structures similaires et défini à la fois comment les nommer **et** les ranger
-  
+
 Le *FQCN* (Fully Qualified Class Name) est composé de :
 
 - Un espace de nom principal (premier élément, aussi appelé prefix)
@@ -318,7 +316,8 @@ Installation dans CS Code :
 ### Exemples
 
 - Je cherche une fonction liée aux tableaux, je vais regarder la [page de la documentation sur les tableaux](https://www.php.net/manual/fr/ref.array.php)
-- Je cherche une fonction pour afficher la date du jour, [je fouille dans la doc liée aux fonctions de dates et heures](https://www.php.net/manual/fr/ref.datetime.php) ou je vais [demander à mon moteur de recherche](https://www.google.com/search?q=php+afficher+date+du+jour) qui me permettra de [tomber sur la doc que je cherchais](https://www.php.net/manual/fr/function.date.php) (je peux aussi chercher au hasard dans le moteur de recherche de la documentation)
+- Je cherche une fonction pour afficher la date du jour, [je fouille dans la doc liée aux fonctions de dates et heures](https://www.php.net/manual/fr/ref.datetime.php) ou je vais [demander à mon moteur de recherche](https://www.google.com/search?q=php+afficher+date+du+jour) qui me permettra
+  de [tomber sur la doc que je cherchais](https://www.php.net/manual/fr/function.date.php) (je peux aussi chercher au hasard dans le moteur de recherche de la documentation)
 - Je cherche comment remplacer du texte dans un tableau. Le plus simple (à moins de connaître la fonction) est [mon moteur de recherche](https://www.google.com/search?q=php+remplacer+du+texte+dans+un+tableau)
 
 ## À quels sites puis-je faire confiance ?
