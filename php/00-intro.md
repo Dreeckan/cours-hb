@@ -533,7 +533,7 @@ header('Location: une-autre-page.php');
 echo ob_end_flush();
 ```
 
-Sans temporisation de sortie :
+Sans temporisation de sortie, on aurait une erreur :
 
 ```php
 <p>Du HTML</p>

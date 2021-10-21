@@ -6,15 +6,19 @@ Pré-requis :
 
 ## 1. Utilisation des tableaux
 
-- Créer une page html (balise `html`, `body`) dans un fichier PHP (`index.php` par exemple)
+Posons des données de base et un premier HTML :
+
+- Créer une page html (balise `<html>`, `<body>`) dans un fichier PHP (`index.php` par exemple)
 - y créer un tableau PHP contenant ces produits :
     - Bonnet en laine
     - Bonnet en laine bio
     - Bonnet en laine et cachemire
     - Bonnet arc-en-ciel
-- afficher ces produits dans le html en utilisant une boucle (foreach conseillé), dans une `table`
+- afficher ces produits dans le html en utilisant une boucle (foreach conseillé), dans une balise HTML `<table>`
 
 ## 2. Tableaux imbriqués
+
+Nous voulons maintenant un peu plus d'informations sur nos produits. Commençons par un prix et une description.
 
 - Complexifions les données et transformons nos données en tableaux :
     - Bonnet en laine : 10€
@@ -26,9 +30,13 @@ Pré-requis :
 
 ## 3. Conditions
 
+On va faire ressortir visuellement les prix de nos produits, et encore plus ceux qui ne sont pas cher !
+
 - Si un prix est inférieur ou égal à 12€, afficher le prix en vert, sinon l'afficher en bleu.
 
 ## 4. Fonctions
+
+Une pensée pour les professionnels qui ont besoin de se couvrir ! Pour eux, il faudrait afficher les prix sans TVA.
 
 - Nos prix étaient ici TTC (incluaient la TVA), nous allons faire une fonction calculant le montant hors taxes d'un produit.
 - Afficher les prix HT dans la colonne avant celle des prix TTC
@@ -40,16 +48,19 @@ Pré-requis :
 
 ## 6. Séparation des fichiers
 
-- Séparer le code en plusieurs fichiers 
-    - Un fichier pour les variables
+Nous allons maintenant séparer notre code en plusieurs éléments, à thème. L'idée est ici d'avoir des fichiers plus spécialisés et rapides à retrouver.
+
+- Séparer le code en plusieurs fichiers php :
+    - Un pour les variables
     - Un autre pour les fonctions
     - Un pour le HTML
 - Appeler ces fichiers dans le HTML ([utiliser `include` pour appeler les différents fichiers](https://www.php.net/manual/fr/function.include.php) où vous le souhaitez)
 
 ## 7. Utiliser git
 
-- Créer un projet sur Github ou Gitlab (si vous souhaitez le mettre en privé, invitez `Dreeckan` ou `remi@drakona.fr` sur le projet)
+- Créer un projet sur Github ou Gitlab (invitez-moi sur le projet, mon pseudo est `Dreeckan`)
 - Créer votre fichier `.gitignore` et y ajouter 2 lignes : `.idea` et `.vscode`
+- Créer un premier commit, si ça n'est pas déjà fait
 - Pusher votre code sur Github ou Gitlab
 - Partager le lien (en privé sur Discord ou en m'invitant sur le projet)
 - Créer une branche `ajout-layout` pour l'exercice suivant
@@ -62,6 +73,8 @@ Ce que j'appelle layout : nous allons découper notre HTML pour en extraire les 
 - Dans ce dossier, y ajouter un fichier `header.php` et un fichier `footer.php`
 
 ## 9. Header
+
+L'idée est ici de regrouper la plus grande partie du code commun, pour l'inclure dans toutes nos pages (et donc, réduire le nombre de fois où on a besoin de l'écrire).
 
 - Dans `header.php`, déplacer les includes des fichiers de variables et de fonctions (remplacer les includes par des `require_once` et rechercher ce que fait cette fonction)
 - Ajouter le html qui va être commun à toutes nos pages (balises `<html>`, `<head>`, `<body>`, etc.)
@@ -78,16 +91,20 @@ Si vous êtes arrivés jusqu'ici, sachez qu'[une correction vidéo des exercices
 
 ## 11. Création d'une page d'accueil
 
+L'idée est ici de créer une seconde page `list.php` qui va contenir notre tableau précédent, et 
+
 - Renommer le fichier contenant la liste des bonnets en `list.php` (surtout si, comme moi, vous l'avez appelé `ìndex.php`). On ne change rien dans ce fichier pour le moment, nous allons créer une nouvelle page d'accueil, séparée.
 - Créer un nouveau fichier `index.php` et y appeler nos header et footer avec `include` ou `include_once` (pour inclure les éléments communs à toutes les pages)
-- Inclure le style et le js de Bootstrap (version 4), [disponible ici](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
-- Inclure sur cette page une liste des 3 premiers bonnets de notre liste (chacun prendra 1/3 de la page en largeur)
+- Inclure le style et le js de Bootstrap, [disponible ici](https://getbootstrap.com/docs/5.1/getting-started/download/#cdn-via-jsdelivr/)
+- Inclure sur cette page une liste des 3 premiers bonnets de notre liste
 - Leur trouver une image pour les rendre plus jolis (je laisse ça à votre jugement ;)) et ajouter le lien de cette image dans les données
-- Utiliser [les cards de Bootstrap](https://getbootstrap.com/docs/4.5/components/card/) pour les mettre en forme
+- Utiliser [les cards de Bootstrap](https://getbootstrap.com/docs/5.1/components/card/) pour les mettre en forme
 
 ## 12. Lier nos pages
 
-- Dans la page d'accueil, sous les 3 produits, ajouter un lien vers list.php (`Voir tous les produits`)
+Maintenant que nous avons deux pages, nous voulons naviguer de l'une à l'autre.
+
+- Dans la page d'accueil, sous les 3 produits, ajouter un lien vers `list.php` (`Voir tous les produits`)
 - Le mettre en forme avec Bootstrap (en lui appliquant la classe des boutons par exemple)
 
 ## 13. Faire relire votre code
@@ -98,12 +115,16 @@ Si vous êtes arrivés jusqu'ici, sachez qu'[une correction vidéo des exercices
 
 ## 14. Mettre en place un menu
 
+A partir de cet exercice, nous allons commencer à manipuler les [variables superglobales](00-intro.md#interagir-avec-l-utilisateur). Dans un premier temps, facilitons la navigation de l'utilisateur.
+
 - Créer une nouvelle branche (git) (nommée par exemple `ajout-session`) et y travailler
 - Ajouter un menu en haut de toutes les pages
 - Mettre un lien vers la page `index.php` et un autre vers `list.php`
-- Le mettre en forme avec Bootstrap (composant [navbar](https://getbootstrap.com/docs/4.5/components/navbar/) par exemple) 
+- Le mettre en forme avec Bootstrap (composant [navbar](https://getbootstrap.com/docs/5.1/components/navbar/) par exemple) 
 
 ## 15. Créer une page de connexion
+
+Créons une nouvelle page de connexion, avec un formulaire. Il s'agit maintenant de gérer le formulaire, en récupérant les données `$_POST` lors de sa soumission, et nous les retiendront en session plus tard.
 
 - Créer une page `login.php` (à la racine du projet, avec les autres pages)
 - Y ajouter un formulaire de connexion (un champ login, un champ password et un bouton de validation)
@@ -113,11 +134,15 @@ Si vous êtes arrivés jusqu'ici, sachez qu'[une correction vidéo des exercices
 
 ## 16. Mise en place de la session
 
+Mettons en route la session et ajoutons-y le login de l'utilisateu lors de sa connexion.
+
 - Ajouter le `session_start()` à l'endroit adéquat
 - Lors de la connexion de l'utilisateur, mettre son login en session
 - Afficher ce login depuis la session, s'il est disponible
 
 ## 17. Créer une page de déconnexion
+
+Maintenant que l'on sait créer la session, voyons comment la détruire.
 
 - Créer une page `logout.php`
 - Cette page ne va contenir que quelques lignes
@@ -151,12 +176,14 @@ La correction en vidéo :
 
 ## 18. Vérification du mot de passe
 
+Validons maintenant les données entrées dans le formulaire, pour être dans des conditions plus proches de la réalité.
+
 - Ajouter (dans `variables.php` par exemple) une valeur de mot de passe attendue (par exemple 'toto')
 - Dans le formulaire de connexion, vérifier que le mot de passe est correct
   - Si ça n'est pas le cas, afficher un message d'erreur
   - Si c'est le cas, afficher un message de réussite et ajouter le login dans la session
-- Vérifier également que le login n'est pas vide (et afficher un message d'erreur)
-- Mettre en forme les messages avec Bootstrap (composant [alerts](https://getbootstrap.com/docs/4.5/components/alerts/) par exemple)
+- Vérifier également que le login n'est pas vide (et afficher un message d'erreur si c'est le cas)
+- Mettre en forme les messages avec Bootstrap (composant [alerts](https://getbootstrap.com/docs/5.1/components/alerts/) par exemple)
 
 ## 19. Créer une PR (Pull Request)
 
@@ -169,8 +196,10 @@ La correction en vidéo :
 
 ## 20. Créer un front controller
 
-- Nous allons maintenant utiliser notre fichier `index.php` en tant qu'unique script PHP appelé. C'est-à-dire que nous n'appellerons plus `list.php` (et les autres pages) directement, mais en passant par elle. (en appelant `index.php?page=list`)
-- Créer un script `home.php` qui va contenir notre page d'accueil (renommer le fichier `index.php` en `home.php`)
+Le but du front controller est de réduire (encore) les répétitions de code, en gérant **tous** les éléments constants (inclusions, démarrage de session, etc.).
+
+- Nous allons maintenant utiliser notre fichier `index.php` en tant qu'unique script PHP appelé. C'est-à-dire que nous n'appellerons plus `list.php` (et les autres pages) directement, mais en passant par elle. (en appelant `index.php?page=list` ou `?page=list`)
+- Renommer le fichier `index.php` en `home.php` et créer un nouveau fichier `index.php`
 - Ranger les fichiers de pages qu'on a jusqu'à présent (list, login, home, etc.) dans un dossier `pages`
 - Dans `index.php`, nous allons récupérer un paramètre `GET`, nommé `page`, qui contiendra la page à charger (page d'accueil, liste des produits, panier, etc.)
 - Mettre à jour les autres pages en conséquence pour réduire autant que possible le code des pages
@@ -186,6 +215,8 @@ echo ob_end_flush();
 ```
 
 ## 21. Ajouter des éléments au panier
+
+Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire semblant de les acheter, plutôt)
 
 - Sur la page de liste (`list.php`), ajouter un bouton "Ajouter au panier" (on ajoute un seul élément à la fois dans le panier)
 - Gérer l'ajout au panier d'un élément (passer un identifiant (à ajouter dans la liste des produits) qui sera récupéré avec `$_GET`)
