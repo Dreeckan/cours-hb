@@ -290,7 +290,7 @@ $sql = "SELECT * FROM contact";
 $pdoStatement = $connection->prepare($sql);
 $isDone = $pdoStatement->execute();
 
-while($result = $pdoStatement->fetch(PDO::FETCH_ASSOC)) {
+while($result = $pdoStatement->fetch()) {
     var_dump($result);
 }
 ```

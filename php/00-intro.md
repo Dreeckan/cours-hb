@@ -513,3 +513,22 @@ echo $_SESSION['login'];
 - Peuvent être un problème de sécurité selon les informations stockées. En effet, s'ils contiennent des données sensibles, celles-ci sont stockées (par défaut) dans un fichier texte dans l'ordinateur de l'utilisateur.
 - On peut créer un cookie avec la fonction `setCookie()` ([documentation](https://www.php.net/manual/fr/function.setcookie.php))
 - Récupérer le ou les cookies dans la variable superglobale `$_COOKIE`
+
+## La temporisation de sortie
+
+Dans certains cas (la plupart, en fait), on veut éviter que l'affichage se fasse au fur et à mesure que le HTML est calculé. 
+
+Ceci permet, par exemple, de rediriger l'utilisateur avec `header()`, alors que du HTML a déjà été rendu !
+
+- `ob_start()` sert à démarrer la temporisation de sortie
+- `ob_end_flush()` retourne le contenu rendu jusque-là (il est nécessaire de l'afficher avec un `echo` ou autre fonction d'affichage)
+
+```php
+ob_start();
+?>
+<p>Du HTML</p>
+<?php
+// On est redirigé vers la page, malgré le HTML au-dessus.
+header('Location: une-autre-page.php');
+echo ob_end_flush();
+```
