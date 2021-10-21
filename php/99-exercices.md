@@ -174,6 +174,16 @@ La correction en vidéo :
 - Ranger les fichiers de pages qu'on a jusqu'à présent (list, login, home, etc.) dans un dossier `pages`
 - Dans `index.php`, nous allons récupérer un paramètre `GET`, nommé `page`, qui contiendra la page à charger (page d'accueil, liste des produits, panier, etc.)
 - Mettre à jour les autres pages en conséquence pour réduire autant que possible le code des pages
+- Ajouter la temporisation de sortie pour permettre les éventuelles redirections
+
+```php
+<?php
+ob_start();
+//
+// ... contenu du script ...
+//
+echo ob_end_flush();
+```
 
 ## 21. Ajouter des éléments au panier
 

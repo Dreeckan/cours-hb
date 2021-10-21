@@ -532,3 +532,12 @@ ob_start();
 header('Location: une-autre-page.php');
 echo ob_end_flush();
 ```
+
+Sans temporisation de sortie :
+
+```php
+<p>Du HTML</p>
+<?php
+// On a une erreur, on ne peut pas faire une redirection après avoir affiché du HTML
+header('Location: une-autre-page.php');
+```
