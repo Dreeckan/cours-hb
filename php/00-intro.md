@@ -391,6 +391,40 @@ echo doubleIt(); // Renvoie 2
 echo doubleIt(8); // Renvoie 16
 ```
 
+### Fonctions anonymes
+
+Dans certains cas, vous aurez besoin des fonctions anonymes : des fonctions que vous déclarez pour l'utiliser directement.
+
+```php
+<?php
+$tab = [1, 2, 3, 5, 6, 89, 8, 357, 68, 5, 3];
+
+// ATTENTION, on passe $element par référence,
+// c'est à dire qu'on va le modifier pendant le parcours
+array_walk($tab, function (&$element) {
+    // $element contient l'élément du tableau actuellement traité
+    // On le modifie (ce qui n'aurait pas été possible sans le passage par référence)
+    $element *= 2;
+});
+```
+
+Comme toute fonction PHP, aucune valeur extérieure ne peut être appelée, mais on peut contourner ce souci grâce au mot-clé `use` !
+
+```php
+<?php
+$tab = [1, 2, 3, 5, 6, 89, 8, 357, 68, 5, 3];
+
+// Cette fois, on va multiplier chaque élément du tableau
+// par un nombre $nb défini en dehors de la fonction
+$nb = 3;
+
+// On peut injecter la variable $nb dans la fonction anonyme
+// avec le mot-clé use
+array_walk($tab, function (&$element) use ($nb) {
+    $element *= $nb;
+});
+```
+
 ## Portée des variables
 
 ```php

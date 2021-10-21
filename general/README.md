@@ -82,3 +82,27 @@
 - Initiative et esprit de conseil
 - Veille technologique
 - Et bien d'autres
+
+# Des resources utiles 
+
+Je vous mets quelques liens d'outils ou de sources de veille que j'utilise : 
+- [https://afup.org/home](https://afup.org/home) (événements autour de PHP, pour faire du réseau)
+- [https://caniuse.com/](https://caniuse.com/) (est-ce que je peux utiliser cette fonctionnalité de js, html ou css sur d'anciens navigateurs ?)
+- [https://css-tricks.com/](https://caniuse.com/) (de l'actu, des tutos et des conseils autour du css)
+- [https://www.smashingmagazine.com/](https://caniuse.com/) (toute l'actu du dev front)
+- [https://symfony.com/blog/](https://caniuse.com/) (l'actualité autour de Symfony)
+- [https://www.vagrantup.com/](https://caniuse.com/) (un outil de virtualisation permettant d'utiliser Virtualbox)
+- [https://grafikart.fr](https://caniuse.com/) (des tutos, des cours, plein de choses autour du web)
+- [https://regex101.com/](https://caniuse.com/) (un outil de test de vos expressions régulières)
+- [https://www.youtube.com/c/xavki-linux/featured](https://caniuse.com/) (une chaine Youtube sur le devops et l'administration système)
+- [https://stephaniewalter.design/blog/](https://caniuse.com/) (LA source d'informations sur l'UX design)
+- [https://color.review/](https://caniuse.com/) (outil de test d'accessibilité de contraste des couleurs)
+- [https://www.accessguide.io/](https://caniuse.com/) pour apprendre et comprendre l'accessibilité d'un site web
+- [https://vuepress.vuejs.org](https://caniuse.com/) (l'outil que j'utilise pour créer mon site du cours. Utilise VueJS, mais pas besoin de code)
+- [https://www.notion.so](https://caniuse.com/) (super outil de note, style Wiki, mais plus complet)
+- [https://www.loom.com](https://caniuse.com/) (enregistrer son écran et streamer)
+- [https://lesjoiesducode.fr/](https://caniuse.com/) (pour se détendre ;) )
+- [https://dribbble.com/](https://caniuse.com/) pour voir les tendances de design
+- Des outils de gestion de tickets : [https://trello.com](https://caniuse.com/), [https://github.com/new/project](https://caniuse.com/), [https://www.atlassian.com/fr/software/jira](https://caniuse.com/), [https://glpi-project.org/fr/](https://caniuse.com/)
+- Pour les amateurs de la méthode pomodoro (travail de 25 minutes, 5 minutes de pause, et on recommence) : [https://pomodoro-tracker.com/](https://caniuse.com/)
+- et bien sûr [https://formation-hb.drakolab.fr](https://caniuse.com/) ;)
