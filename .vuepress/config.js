@@ -43,6 +43,7 @@ module.exports = {
                 children: jsFiles
             },
             '/docker/',
+            '/lamp/',
             '/deploy/',
             {
                 title: 'Intégration continue',
