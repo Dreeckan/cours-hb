@@ -18,7 +18,7 @@ La [documentation officielle](https://symfony.com/doc/current/security.html), qu
 - On peut récupérer l'utilisateur connecté avec :
   - `$this->getUser()` dans un controller étendant `AbstractController`
   - `$this->security->getUser()` dans un service où le service `Security` a été injecté
-  - ```{{ app.user }}``` dans une vue Twig
+  - `app.user` dans une vue Twig
 
 ## Installation et préparation
 
@@ -576,10 +576,7 @@ class ExampleService
 
 ### Dans un template 
 
-```twig
-  {# Retourne le User (ou null si pas connecté) #}
-  {{ app.user }}
- ```
+`app.user` Retourne le User (ou null si pas connecté)
 
 ## Gérer les droits avec les Voters
 
