@@ -18,7 +18,7 @@ La [documentation officielle](https://symfony.com/doc/current/security.html), qu
 - On peut récupérer l'utilisateur connecté avec :
   - `$this->getUser()` dans un controller étendant `AbstractController`
   - `$this->security->getUser()` dans un service où le service `Security` a été injecté
-  - `{{ app.user }}` dans une vue Twig
+  - ```{{ app.user }}``` dans une vue Twig
 
 ## Installation et préparation
 
@@ -47,7 +47,7 @@ La commande va nous ajouter / modifier plusieurs fichiers :
 
 Si besoin d'ajouter plus de champs, on peut utiliser la commande `make:entity`. Il s'agit ensuite de créer une migration, de la vérifier et de la lancer.
 
-On obtient alors une entité `User` comme celle-ci (je n'ai pas ajouté de propriétés, et ma propriété identifiant est `email`) :
+On obtient alors une entité `User` comme celle-ci (je n'ai pas ajouté de propriétés et ma propriété identifiant est `email`) :
 
 ```php
 <?php
