@@ -83,3 +83,4 @@ Une fois le rebase fait, je push le nouvel historique `git push --force`
 
 J'attends que mes collègues aient relu et validé ma <abbr title="Pull Request">PR</abbr>. C'est en général le moment pour moi de relire les <abbr title="Pull Request">PR</abbr> de mes collègues ou commencer un nouveau ticket.
 
+:warning: Quand vous souhaitez fusionner des branches, n'hésitez pas à le faire en groupe, pour gérer les conflits ensemble.
