@@ -51,3 +51,35 @@ Si vous avez vérifié tout ça, essayer de redémarrer le serveur :
 
 - `symfony server:stop` pour l'arrêter
 - `symfony serve` pour le relancer
+
+### Processus de travail en groupe
+
+Au quotidien, je travaille sur des tickets, afin de savoir les tâches à effectuer.
+
+Quand je commence à travailler sur un nouveau ticket,
+- Je marque le ticket comme "en cours"
+- Je crée une branche contenant le numéro et le but du ticket (ex : `42-connexion-utilisateur`)
+
+Lorsque je crée des commits, j'inclus le numéro de ticket dans le message de commit (ex : `42 - Création de l'entité User`)
+
+Je push quand je le souhaite, la fonctionnalité terminée ou non.
+
+Une fois la fonctionnalité terminée, je crée une <abbr title="Pull Request">PR</abbr>, que je m'assigne, et je demande à mes collègues de la relire (je peux les ajouter en tant que reviewers).
+
+Si la branche principale a été modifiée entre temps ou si des conflits sont indiqués par GitHub, je mets à jour ma branche :
+- Je mets à jour la branche principale `git checkout main` et `git pull`
+- Je retourne sur ma branche `git checkout -`
+- Je rebase ma branche sur la branche principale `git rebase main`
+
+Si des conflits apparaissent pendant le rebase :
+- Je les vois avec `git status`, ce sont les fichiers en rouge `modifié des deux côtés`/`both modified`
+- Je les corrige dans mon <abbr title="Integrated Development Environment">IDE</abbr>
+- Je signale à git que les conflits sont corrigés `git add nomDuFichier`
+- Je continue le rebase (je passe au commit suivant) `git rebase --continue`
+
+Une fois le rebase fait, je push le nouvel historique `git push --force`
+
+:warning: Vérifiez bien que vous n'avez rien cassé **avant** de push en force.
+
+J'attends que mes collègues aient relu et validé ma <abbr title="Pull Request">PR</abbr>. C'est en général le moment pour moi de relire les <abbr title="Pull Request">PR</abbr> de mes collègues ou commencer un nouveau ticket.
+
