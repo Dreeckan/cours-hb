@@ -28,13 +28,13 @@ Tout d'abord, installer le bundle nécessaire (il est inclus par défaut, sur le
 composer require symfony/security-bundle
 ```
 
-Il faut alors créer une entité pour gérer nos utilisateurs (la plupart du temps, on l'appelle User, mais vous pouvez adapter le nom à votre besoin). On utilise la commande `make:user` pour générer cette entité particulière.
+Il faut alors créer une entité pour gérer nos utilisateurs (la plupart du temps, on l'appelle `User`, mais vous pouvez adapter le nom à votre besoin). On utilise la commande `make:user` pour générer cette entité particulière.
 
 ```bash
 php bin/console make:user
 ```
 
-Dans la plupart des cas, nous voulez stocker notre entité User en base (c'est pour cela que je parle d'entité ;) ), mais sachez que ça n'est pas obligatoire. 
+Dans la plupart des cas, nous voulez stocker notre entité `User` en base (c'est pour cela que je parle d'entité ;) ), mais sachez que ça n'est pas obligatoire. 
 
 Il faut alors déterminer une propriété qui nous servira d'identifiant (une propriété dont la valeur sera unique et que nous afficherons à nos utilisateurs). En général, on crée une propriété `username` ou `email` pour cela.
 
@@ -47,7 +47,7 @@ La commande va nous ajouter / modifier plusieurs fichiers :
 
 Si besoin d'ajouter plus de champs, on peut utiliser la commande `make:entity`. Il s'agit ensuite de créer une migration, de la vérifier et de la lancer.
 
-On obtient alors une entité User comme celle-ci (je n'ai pas ajouté de propriétés et ma propriété identifiant est `email`) :
+On obtient alors une entité `User` comme celle-ci (je n'ai pas ajouté de propriétés et ma propriété identifiant est `email`) :
 
 ```php
 <?php
@@ -179,9 +179,9 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 ```
 
-Je vous conseille ensuite des créer des fixtures (fausses données) pour entrer un ou plusieurs User dans votre base (utiliser la commande `make:fixtures` de [DoctrineFixturesBundle](https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html)). Pour que les mots de passe soient encodés dans vos Fixtures, il faut bien penser à :
+Je vous conseille ensuite des créer des fixtures (fausses données) pour entrer un ou plusieurs `User` dans votre base (utiliser la commande `make:fixtures` de [DoctrineFixturesBundle](https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html)). Pour que les mots de passe soient encodés dans vos Fixtures, il faut bien penser à :
 - injecter le service `UserPasswordHasherInterface` et l'utiliser pour encoder le mot de passe.
-- ou encoder vos mots de passe avec la commande `security:encode-password` de Symfony avant de les mettre dans vos User
+- ou encoder vos mots de passe avec la commande `security:encode-password` de Symfony avant de les mettre dans vos `User`
 
 ## Configuration
 
@@ -441,7 +441,7 @@ class Authenticator extends AbstractLoginFormAuthenticator
 
 ## Utiliser les droits
 
-Nos User ont toujours au moins le `ROLE_USER` (voir leur méthode `getRoles()`), donc un utilisateur connecté a au moins ce rôle. Voir également la section `role_hierarchy`dans le `security.yaml` de ce chapitre.
+Nos `User` ont toujours au moins le `ROLE_USER` (voir leur méthode `getRoles()`), donc un utilisateur connecté a au moins ce rôle. Voir également la section `role_hierarchy`dans le `security.yaml` de ce chapitre.
 
 ### Security.yaml 
 
@@ -528,7 +528,7 @@ class SalesReportManager
 }
 ```
 
-## Récupérer le User connecté
+## Récupérer le `User` connecté
 
 ### Dans un contrôleur
 
