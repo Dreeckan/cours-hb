@@ -16,7 +16,7 @@ Les différentes parties du cours
 9. [Services et injection de dépendances](23-injection.md)
 10. [Doctrine et la BdD](24-doctrine.md)
 11. [Formulaires](25-formulaires.md)
-12. [Un système de connexion](30-security.md)
+12. [Un système de connexion](30-user.md)
 13. [Traductions](26-translation.md)
 14. [Api Platform](40-api-platform.md)
 98. [Un projet complet à réaliser](98-projet.md)
