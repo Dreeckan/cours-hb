@@ -179,6 +179,11 @@ Pour créer un formulaire à partir de notre `TagType` (qui est un plan de fabri
             // On enregistre
             $em->persist($tag);
             $em->flush();
+            
+            // On peut également afficher un message à l'utilisateur
+            // Les flashs sont affichés une fois, au chargement de la page suivante
+            // Et permettent donc d'afficher un message, malgré une redirection
+            $this->addFlash('success', 'Donnée insérée');
 
             // Une fois que le formulaire est validé,
             // on redirige pour éviter que l'utilisateur ne recharge la page

@@ -5,7 +5,7 @@ Dans les dernières versions de Symfony, la création d'un projet s'accompagne d
 ## Pré-requis
 
 - [Docker](https://docs.docker.com/install/) doit être installé
-- Avoir un projet Symfony prêt à lancé
+- Avoir un projet Symfony prêt à être lancé
 
 ## Utilisation
 
@@ -43,6 +43,6 @@ Avec cette configuration, vérifiez bien que votre fichier `.env` (ou `.env.loca
 DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 ```
 
-Pour commencer à travailler, lancer la commande `docker compose up -d` dans votre terminal, puis `symfony serve`, et tout est prêt !
+Pour commencer à travailler, lancer la commande `docker compose up -d` dans votre terminal, puis `symfony serve`, et (théoriquement) tout est prêt !
 
 :warning: Il n'y a pas d'équivalent à PhpMyAdmin fourni ! Pour voir le contenu de votre <abbr title="Base de Données">BdD</abbr>, il faut utiliser les outils intégrés de l'<abbr title="Integrated Development Environment">IDE</abbr> (onglet Database de PhpStorm ou son équivalent dans VsCode)

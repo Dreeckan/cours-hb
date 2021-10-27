@@ -1,14 +1,24 @@
 # Connexion et sécurisation
 
-
 La [documentation officielle](https://symfony.com/doc/current/security.html), que l'on va suivre / reprendre.
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/c35c8ab1e4614a4ebf0eeffd0f8fad94" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
-
-:warning: Cette partie a été écrite pour Symfony 5.2 et plusieurs choses ont été modifiées dans la version 5.3 (le fonctionnement reste le même, mais plusieurs éléments ont été simplifiés). Vous trouverez une version actualisée dans la vidéo ci-dessous :
+:warning: Cette partie a été écrite pour Symfony 5.3 et plusieurs choses ont été modifiées depuis la version 5.2 (le fonctionnement reste le même, mais plusieurs éléments étaient plus complexes). Vous trouverez une [version de présentation de la version 5.2 de Symfony dans cette vidéo](https://www.loom.com/embed/c35c8ab1e4614a4ebf0eeffd0f8fad94).
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/c7351975038f4bbf86d3eed13356b7c1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+## Pour résumer
+
+- `php bin/console make:user` pour créer une classe servant à la connexion
+- `php bin/console make:auth` pour créer le système de connexion et mettre en place la sécurisation de base
+- Mettre à jour l'Authenticator créé, ainsi que la page de connexion
+- Pour s'assurer des droits d'un utilisateur, on peut utiliser :
+  - L'annotation `@IsGranted()` (Controllers) 
+  - La fonction `is_granted()` (Twig)
+  - La méthode `isGranted()` du service `Symfony\Component\Security\Core\Security` (services)
+- On peut récupérer l'utilisateur connecté avec :
+  - `$this->getUser()` dans un controller étendant `AbstractController`
+  - `$this->security->getUser()` dans un service où le service `Security` a été injecté
+  - `{{ app.user }}` dans une vue Twig
 
 ## Installation et préparation
 
@@ -46,12 +56,13 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User implements UserInterface
+abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * @ORM\Id
@@ -98,6 +109,14 @@ class User implements UserInterface
      *
      * @see UserInterface
      */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     */
     public function getUsername(): string
     {
         return (string) $this->email;
@@ -123,11 +142,11 @@ class User implements UserInterface
     }
 
     /**
-     * @see UserInterface
+     * @see PasswordAuthenticatedUserInterface
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
     public function setPassword(string $password): self
@@ -161,7 +180,7 @@ class User implements UserInterface
 ```
 
 Je vous conseille ensuite des créer des fixtures (fausses données) pour entrer un ou plusieurs `User` dans votre base (utiliser la commande `make:fixtures` de [DoctrineFixturesBundle](https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html)). Pour que les mots de passe soient encodés dans vos Fixtures, il faut bien penser à :
-- injecter le service `UserPasswordEncoderInterface` et l'utiliser pour encoder le mot de passe.
+- injecter le service `UserPasswordHasherInterface` et l'utiliser pour encoder le mot de passe.
 - ou encoder vos mots de passe avec la commande `security:encode-password` de Symfony avant de les mettre dans vos `User`
 
 ## Configuration
@@ -170,25 +189,15 @@ La configuration se fait dans le fichier `config/packages/security.yaml`. Détai
 
 ```yaml
 security:
-    
     # Pour activer certaines fonctionnalités (expérimentales) de Symfony 
     enable_authenticator_manager: true
-    
-    # On ajoute notre hiérarchie de rôles. On dit lesquels ont des droits plus élevés que les autres.
-    role_hierarchy:
-        # ROLE_ADMIN a des privilèges plus élevés que ROLE_USER
-        ROLE_ADMIN:       ROLE_USER
-        # Et ROLE_SUPER_ADMIN a des privilèges plus élevés que ROLE_ADMIN et ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-    # On sait maintenant que si une fonctionnalité est disponible pour le ROLE_ADMIN (au minimum), 
-    # alors seuls les utilisateurs avec le ROLE_SUPER_ADMIN ou le ROLE_ADMIN peuvent y accéder.
-    # Ceux ayant le ROLE_USER ou aucun rôle recevront une erreur (accès non autorisé)
-        
-        
-    # On définit ici les différents moyens de coder nos mots de passe, 
-    # en fonction des entités
-    encoders:
-        # On dit au composant de Symfony de choisir l'algorithme (le plus efficace)
+    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    # On définit ici les différents moyens de hasher 
+    # nos mots de passe, en fonction des entités
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+        # On dit au composant de Symfony de choisir 
+        # l'algorithme (le plus efficace)
         # pour encoder les mots de passe de l'entité User.
         # On pourrait avoir plusieurs entités, avec des encodeurs différents
         App\Entity\User:
@@ -220,11 +229,9 @@ security:
             lazy: true
             provider: app_user_provider
             
-            # On précise au composant Guard (chargé de la connexion et de la sécurisation)
-            # la ou les classes chargées de la connexion d'un utilisateur
-            guard:
-                authenticators:
-                    - App\Security\LoginFormAuthenticator
+            # On précise, au composant de sécurité, l'authenticator 
+            # à utiliser pour gérer notre connexion
+            custom_authenticator: App\Security\Authenticator
             # Plus de détails sur la fonctionnalité "se souvenir de moi" ici : 
             # https://symfony.com/doc/current/security/remember_me.html
             remember_me:
@@ -240,13 +247,9 @@ security:
             # Symfony se charge de déterminer s'il s'agit du nom d'une route ou d'un chemin
             # (j'aurais pu mettre /deconnexion, par exemple)
             logout:
-                path: security_logout
+                path: app_logout
                 # Vous pouvez également choisir une route où envoyer votre utilisateur après déconnexion
                 # target: app_any_route
-                
-            # configure le nombre maximum de tentatives de connexion par minute
-            login_throttling:
-                max_attempts: 5
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -269,7 +272,7 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
 ```
 
-Ce fichier est le coeur de la sécurisation de votre site, mais beaucoup d'autres éléments peuvent venir le compléter et le raffiner.
+Ce fichier est le cœur de la sécurisation de votre site, mais beaucoup d'autres éléments peuvent venir le compléter et le raffiner.
 
 ## Connecter un utilisateur 
 
@@ -354,133 +357,80 @@ Il nous reste maintenant à décortiquer / expliquer le `LoginFormAuthenticator`
 
 ```php
 // src/Security/LoginFormAuthenticator.php
+
+<?php
+
 namespace App\Security;
 
-use App\Entity\User;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
-use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Csrf\CsrfToken;
-use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
-use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
-use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
+use Symfony\Component\Security\Http\Authenticator\AbstractLoginFormAuthenticator;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
+use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
+use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
+class Authenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
-    // La route de login par défaut. A adapter à vos besoins (ici, je remplace par security_login, personnellement)
+    // La route de login par défaut. À adapter à vos besoins (ici, je remplace par security_login, personnellement)
     public const LOGIN_ROUTE = 'app_login';
 
-    // Le manager est nécessaire pour récupérer notre utilisateur. On peut le remplacer par le UserRepository
-    private $entityManager;
-    
     // Service de génération d'URL / de chemins
-    private $urlGenerator;
-    
-    // Service de génération de jeton CSRF, pour sécuriser les formulaires
-    private $csrfTokenManager;
-    
-    // Service d'encodage des mots de passe
-    private $passwordEncoder;
+    private UrlGeneratorInterface $urlGenerator;
 
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    // On pourrait injecter ici d'autres services qui nous seraient utiles lors de la connexion (un service qui vérifierait si nous nous connectons depuis une nouvelle IP, par exemple)
+    public function __construct(UrlGeneratorInterface $urlGenerator)
     {
-        $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
-        $this->csrfTokenManager = $csrfTokenManager;
-        $this->passwordEncoder = $passwordEncoder;
     }
 
-    // Cette méthode vérifie si notre authenticator est bien celui qui doit être appelé quand on appelle une route
-    public function supports(Request $request): bool
+    public function authenticate(Request $request): PassportInterface
     {
-        // Il regarde si la route appelée est bien celle de connexion et est bien appelée au format POST
-        // (soumission du formulaire)
-        return self::LOGIN_ROUTE === $request->attributes->get('_route')
-            && $request->isMethod('POST');
-    }
+        // On récupère les données envoyées via POST
+        // Si vous modifiez les noms des champs de votre formulaire,
+        // c'est dans cette méthode qu'il faudra faire les modifications nécessaires
+        $email = $request->request->get('email', '');
 
-    // Récupère les informations du formulaire de connexion et les retourne
-    public function getCredentials(Request $request)
-    {
-        $credentials = [
-            // On récupère les données envoyées via POST
-            // Si vous modifiez les noms des champs de votre formulaire,
-            // c'est ici qu'il faudra faire les modifications nécessaires
-            'email' => $request->request->get('email'),
-            'password' => $request->request->get('password'),
-            'csrf_token' => $request->request->get('_csrf_token'),
-        ];
-        // On stocke en session le dernier identifiant utilisé
-        $request->getSession()->set(
-            Security::LAST_USERNAME,
-            $credentials['email']
+        $request->getSession()->set(Security::LAST_USERNAME, $email);
+
+        return new Passport(
+            new UserBadge($email),
+            new PasswordCredentials($request->request->get('password', '')),
+            [
+                new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
+            ]
         );
-
-        return $credentials;
     }
 
-    // On va essayer de récupérer l'utilisateur qu'on essaie de connecter
-    public function getUser($credentials, UserProviderInterface $userProvider): ?User
+
+    // Cette méthode permet de définir le comportement
+    // après une connexion réussie.
+    // Par défaut, on redirige l'utilisateur vers la page demandée au départ
+    // ou une page définie par défaut (souvent, la page d'accueil
+    // ou du compte)
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        // On vérifie si le jeton CSRF est bien le bon
-        $token = new CsrfToken('authenticate', $credentials['csrf_token']);
-        if (!$this->csrfTokenManager->isTokenValid($token)) {
-            throw new InvalidCsrfTokenException();
-        }
-
-        // On récupère l'utilisateur dont l'utilisateur a entré l'identifiant et le mot de passe
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
-
-        // Si on ne le trouve pas, on renvoie une exception
-        // qui sera attrapée et convertie en un message d'erreur
-        if (!$user) {
-            // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Email could not be found.');
-        }
-
-        return $user;
-    }
-
-    // Vérifie si le mot de passe entré est le bon
-    public function checkCredentials($credentials, UserInterface $user): bool
-    {
-        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
-    }
-
-    /**
-     * Used to upgrade (rehash) the user's password automatically over time.
-     */
-    public function getPassword($credentials): ?string
-    {
-        return $credentials['password'];
-    }
-
-    // Ici, on ajoute un chemin vers lequel envoyer l'utilisateur après connexion
-    // Il faut bien penser à l'ajouter
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): ?Response
-    {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+        // Par défaut, un utilisateur est renvoyé vers la page où il souhaitait aller.
+        // Par exemple, s'il avait demandé la page /admin, sans être connecté, la page de connexion apparait. Une fois ses identifiants entrés et vérifiés, il sera renvoyé vers cette page /admin, automatiquement
+        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
 
-        // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
+        // For example:
+        //return new RedirectResponse($this->urlGenerator->generate('some_route'));
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
-    // On récupère l'url (le chemin) de la route de login
-    protected function getLoginUrl(): string
+    // Pour récupérer l'url (le chemin) de la route de login
+    protected function getLoginUrl(Request $request): string
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
@@ -524,13 +474,13 @@ Dans un contrôleur :
     class AdminController extends AbstractController
     {
        /**
-        * Il faut avoir le rôle ROLE_SUPER_ADMIN pour cette méthode seulement
+        * Il faut avoir le rôle ROLE_ADMIN pour cette méthode seulement
         *
         * @IsGranted("ROLE_ADMIN")
         */
         public function adminDashboard(): Response
         {
-            // Fait exactement la même chose que l'annotation au dessus.
+            // Fait exactement la même chose que l'annotation au-dessus.
             $this->denyAccessUnlessGranted('ROLE_ADMIN');
             // ...
         }
