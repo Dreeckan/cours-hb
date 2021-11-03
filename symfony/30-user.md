@@ -4,7 +4,7 @@ La [documentation officielle](https://symfony.com/doc/current/security.html), qu
 
 :warning: Cette partie a été écrite pour Symfony 5.3 et plusieurs choses ont été modifiées depuis la version 5.2 (le fonctionnement reste le même, mais plusieurs éléments étaient plus complexes). Vous trouverez une [version de présentation de la version 5.2 de Symfony dans cette vidéo](https://www.loom.com/embed/c35c8ab1e4614a4ebf0eeffd0f8fad94).
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/c7351975038f4bbf86d3eed13356b7c1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/2539a55e6a2e4d1a9e829b195268377c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Pour résumer
 
