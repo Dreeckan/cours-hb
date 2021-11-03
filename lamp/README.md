@@ -18,11 +18,15 @@ Nous allons surtout voir 2 types de serveurs : les serveurs web et de <abbr titl
 
 ### Apache
 
-Apache est un serveur web, dont le travail est d'attendre les requêtes (HTTP) des utilisateurs
+Apache est un serveur web, dont le travail est d'attendre les requêtes (HTTP) des utilisateurs pour renvoyer une réponse HTTP (en général, une page HTML). 
+
+C'est ce serveur qui va faire le lien entre l'url demandée et les fichiers (scripts) à exécuter.
+
+![](http://www-igm.univ-mlv.fr/~dr/XPOSE2003/tomcat/images/serveurappli.jpg)
 
 #### Alternatives
 
-- Nginx
+- Nginx (:music: ma préférence à moi :music:)
 - Tomcat
 
 ### MySQL

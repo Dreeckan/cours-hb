@@ -2,6 +2,17 @@
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/12a92f13e0354bfcbfc291f50222ca51" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+## Pour résumer
+
+- Le controller est un service, chargé de transformer une requête HTTP (`Request`) en une réponse HTTP (`Response`) à renvoyer à l'utilisateur
+- Il fait appel à différents services (`Twig`, `Doctrine`, etc.) pour cela
+- Chacune de ses méthodes (appelées actions), est liée à un chemin grâce à une route (voir chapitre précédent)
+- On peut injecter des services (`Request`, `Repository`, `EntityManagerInterface`, etc.) soit dans son contructeur, soit en paramètre des actions
+- `php bin/console make:controller` permet de générer un controller, avec une action et une vue associée (rendue avec Twig)
+- Utiliser `dump()` et `dd()` (dump and die) pour afficher les informations sur vos variables
+
+## Définition et premier exemple
+
 On appelle Controller (ou contrôleur en français) une fonction traitant les données de la requête HTTP et renvoyant une réponse au navigateur (la plupart du temps, une page web). Contrairement à cette définition (globale à PHP et d'autres langages), avec Symfony, on parle de controller pour désigner la classe contenant des actions (au sens strict, ce sont ces actions que l'on devrait appeler controllers).
 
 Dans la pratique, une classe Controller va contenir plusieurs méthodes (actions), qui vont correspondre à des routes (urls, comme nous l'avons vu plus haut). Ces actions vont recevoir toutes les informations de la requête (objet `Request` de Symfony) et envoyer une réponse (objet `Response` de Symfony, ou l'un de ses enfants).
@@ -95,7 +106,7 @@ La classe `AbstractController` fournit une méthode `render()` qui nous permet d
 return $this->render('blog/index.html.twig', ['page' => 3]);
 ```
 
-Pour plus d'informations sur le fonctionnement de Twig, voir la partie dédiée.
+Pour [plus d'informations sur le fonctionnement de Twig, voir la partie dédiée]().
 
 ## Dé-buguer
 
@@ -103,12 +114,5 @@ Avec Symfony, vous pouvez dé-buguer vos programmes de plusieurs manières :
 - Utiliser `exit`/`die` et `var_dump` comme nous l'avons fait jusqu'à présent (déconseillé si xDebug n'est pas installé et utilisable par la ligne de commande Symfony)
 - Utiliser `dump()` et `dd()` (dump and die) pour afficher les informations sur vos variables
 
-Ces fonctions `dump()` et `dd()` sont disponible dans n'importe quel fichier PHP de votre projet.
+Ces fonctions `dump()` et `dd()` sont disponibles dans n'importe quel fichier PHP de votre projet.
 La fonction `dump` ne va pas interrompre l'affichage ni le modifier, mais afficher un dump des variables demandées dans le `Profiler` de Symfony (la barre grise en bas de l'écran, quand vous chargez une page)
-
-## Pour résumer
-
-- Le controller est un service, chargé de transformer une requête HTTP (`Request`) en une réponse HTTP (`Response`) à renvoyer à l'utilisateur
-- Il fait appel à différents services (`Twig`, `Doctrine`, etc.) pour cela
-- Chacune de ses méthodes (appelées actions), est liée à un chemin grâce à une route (voir chapitre précédent)
-- On peut injecter des services (`Request`, `Repository`, `EntityManagerInterface`, etc.) soit dans son contructeur, soit en paramètre des actions

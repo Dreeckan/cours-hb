@@ -4,6 +4,15 @@
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/58f0891c518540cfbb7966680bd79a1a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+
+## Pour résumer
+
+- Un service est une classe, dont une instance est créé par Symfony au chargement (on ne fait jamais nous-même un `new` sur un service)
+- Toutes les classes dans le dossier `src`, à part les entités (et quelques autres éléments) sont des services
+- Un service est une fonctionnalité, qui peut être **injectée** dans le constructeur de **n'importe quel autre service** ou dans des actions de controller.
+
+## Comprendre l'injection de dépendances
+
 Avec Symfony, tout est service. Un service est une fonctionnalité (peut être seulement une classe), comme l'affichage d'un template, l'envoie des emails, etc. Il en existe déjà de nombreux dans Symfony, déjà fournis (comme Twig, plusieurs éléments de Doctrine ou un Mailer).
 
 Dans les faits, l'exemple suivant `return $this->render('blog/index.html.twig', ['page' => 3]);` fait appel, en interne, au service Twig pour construire le HTML et le met dans un objet `Response`. 
@@ -174,9 +183,3 @@ Pour résumer, dans les paramètres de notre action, nous pouvons récupérer :
 - des services que nous injectons pour les utiliser dans l'action.
 
 L'un des principaux objectifs de ce découpage en services est de réduire le controller à son minimum et ce pourquoi il est fait : être un chef d'orchestre entre la requête et le rendu final.
-
-## Pour résumer
-
-- Un service est une classe, dont une instance est créé par Symfony au chargement (on ne fait jamais nous-même un `new` sur un service)
-- Toutes les classes dans le dossier `src`, à part les entités (et quelques autres éléments) sont des services
-- Un service est une fonctionnalité, qui peut être **injectée** dans le constructeur de **n'importe quel autre service** ou dans des actions de controller.

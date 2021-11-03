@@ -4,6 +4,19 @@
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/02251e40b02349dd8bd34775a05a4e2c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+## Pour résumer
+
+- Pour mettre en place la base, créer/modifier la variable `DATABASE_URL` dans `.env`
+- Lancer la commande `doctrine:database:create`
+- Exécuter les migrations `doctrine:migrations:migrate`
+- Créer des entités avec `make:entity`
+- Créer une ou des migrations avec `make:migration` (ou `doctrine:migrations:diff`)
+- Exécuter les migrations `doctrine:migrations:migrate`
+- Créer de fausses données avec `DoctrineFixturesBundle` et les charger avec `doctrine:fixtures:load`
+- Pour insérer des données dans la base, injecter le service `EntityManagerInterface` et utiliser les méthodes `persist()` et `flush()`
+- Pour récupérer des données de la base, injecter le repository correspondant à la table et utiliser ses méthodes
+  - Si besoin de requête plus complexes, créer des méthodes en utilisant le `QueryBuilder`
+
 ## Configurer la BdD
 
 Pour travailler avec Doctrine, pas besoin de créer une base de données, nous allons voir comment le faire simplement avec la ligne de commande.
@@ -860,16 +873,3 @@ class TagFixtures extends Fixture implements DependentFixtureInterface
 Maintenant que nous avons nos jeux de (fausses) données, nous pouvons les appliquer avec la commande `php bin/console doctrine:fixtures:load`.
 
 Par défaut, cette commande vide la base avant d'ajouter les données. Si vous souhaitez ajouter des données à la base existante, ajouter l'option `--append` : `php bin/console doctrine:fixtures:load --append`.
-
-## Pour résumer
-
-- Pour mettre en place la base, créer/modifier la variable `DATABASE_URL` dans `.env`
-- Lancer la commande `doctrine:database:create`
-- Exécuter les migrations `doctrine:migrations:migrate`
-- Créer des entités avec `make:entity`
-- Créer une ou des migrations avec `make:migration` (ou `doctrine:migrations:diff`)
-- Exécuter les migrations `doctrine:migrations:migrate`
-- Créer de fausses données avec `DoctrineFixturesBundle` et les charger avec `doctrine:fixtures:load`
-- Pour insérer des données dans la base, injecter le service `EntityManagerInterface` et utiliser les méthodes `persist()` et `flush()`
-- Pour récupérer des données de la base, injecter le repository correspondant à la table et utiliser ses méthodes
-  - Si besoin de requête plus complexes, créer des méthodes en utilisant le `QueryBuilder`

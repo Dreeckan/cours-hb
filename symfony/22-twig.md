@@ -1,5 +1,18 @@
 # Twig
 
+## Pour résumer
+
+- Twig est un moteur de template, il permet d'écrire du HTML plus confortablement, avec de nombreux outils dans nos fichiers `.twig`
+  - les tags `{% %}` pour des calculs (dont `{% extends 'nomDUneAutreVue.twig' %}`)
+  - les moustaches `{{}}` pour afficher des éléments
+  - les filtres `|unFiltre()`
+  - les fonctions `uneFonction()`
+  - des tests
+  - les macros
+- Pour utiliser, il faut utiliser `$this->render('nomDuTemplate.twig', [])` dans un controller ou appeler le service de rendu de Twig
+
+## Définition
+
 [La documentation officielle de Twig](https://twig.symfony.com/doc/) (qui présente également séparément ce qui vient de Twig ou qui est présent uniquement pour Symfony)
 
 Twig est un moteur de rendu (avec Symfony, vous pouvez tout aussi bien continuer à utiliser PHP, comme nous l'avons vu jusqu'à maintenant) dont le but est de vous simplifier la vie dans la gestion de votre HTML.
@@ -213,15 +226,4 @@ Notez que ce rangement nous permet de [surcharger/modifier les templates de n'im
 
 Dans les vues Twig, vous disposez d'une fonction `dump()` qui vous permet d'afficher le contenu d'une variable et d'en voir le détail (un peu comme un `var_dump`, mais plus complet et mieux mis en forme). Utilisée sans paramètre, la fonction `dump()` affiche toutes es variables disponibles dans la vue.
 
-Il existe également une commande pour vérifier la validité de vos vues Twig 
-
-## Pour résumer
-
-- Twig est un moteur de template, il permet d'écrire du HTML plus confortablement, avec de nombreux outils dans nos fichiers `.twig`
-  - les tags `{% %}` pour des calculs (dont `{% extends 'nomDUneAutreVue.twig' %}`)
-  - les moustaches `{{}}` pour afficher des éléments
-  - les filtres `|unFiltre()`
-  - les fonctions `uneFonction()`
-  - des tests
-  - les macros
-- Pour utiliser, il faut utiliser `$this->render('nomDuTemplate.twig', [])` dans un controller ou appeler le service de rendu de Twig
+Il existe également une commande pour vérifier la validité de vos vues Twig

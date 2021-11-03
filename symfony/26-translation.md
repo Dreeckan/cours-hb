@@ -7,6 +7,14 @@ Nous allons directement utiliser [le format ICU pour gérer les paramètres et l
 
 Pour utiliser un site en plusieurs langues, il va falloir gérer les traductions de notre site. Même si notre site n'a qu'une seule langue, il est fortement conseillé de toujours utiliser des fichiers de traduction pour gérer les textes, afin d'en permettre l'évolution bien plus facilement.
 
+## En résumé
+
+- Les traductions se trouvent dans le dossier `translations` du projet
+- Les fichiers `Yaml` portent des noms comme `front.fr.yaml` où `front` est appelé un domaine et où `fr` peut être remplacé par une autre langue
+- On peut traduire une chaine de caractères de différentes façons :
+  - en appelant la méthode `trans('unTexteOuUneChaine', [], 'unDomaine')` du service `Symfony\Contracts\Translation\TranslatorInterface`
+  - en appelant le filtre `'unTexteOuUneChaine'|trans({}, 'unDomaine')` dans une vue Twig
+
 ## Configuration
 
 La configuration de base (dans `config/packages/translation.yaml`)
@@ -30,7 +38,7 @@ public function index(TranslatorInterface $translator)
 {
     // On lui demande de récupérer la traduction du texte text.test.
     // Par défaut, il va la chercher dans le fichier messages.fr.yaml.
-    // Noter le nom étrange, et revenons-y dans un instant
+    // Noter le nom étrange et revenons-y dans un instant
     $translated = $translator->trans('text.test');
 
     // ...
