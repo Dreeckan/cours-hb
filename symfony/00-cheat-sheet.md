@@ -70,4 +70,6 @@ Si le projet a des Fixtures, les appliquer avec :
 - [VichUploader](https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md) pour utiliser des images liées à vos entités
 - [EasyAdmin](https://symfony.com/doc/current/bundles/EasyAdminBundle/index.html) pour générer un espace d'administration pour vos entités
 - [Doctrine extensions](https://symfony.com/doc/current/bundles/StofDoctrineExtensionsBundle/index.html) pour ajouter des comportements à vos entités (Timestampable, Sluggable, etc.)
+- [Knp Paginator](https://github.com/KnpLabs/KnpPaginatorBundle) pour gérer la pagination de vos listes
+- [Knp Menu](https://github.com/KnpLabs/KnpMenuBundle/) pour gérer vos menus sous forme d'objets **propres**
 - [ApiPlatform](https://api-platform.com/docs/distribution/#using-symfony-and-composer) vous permet de créer une API rapidement dans votre Symfony, à partir de vos entités.
