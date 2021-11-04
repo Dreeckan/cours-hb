@@ -23,6 +23,9 @@ S'il a déjà une BdD initialisée (avec des migrations), il faut aussi les appl
 - `php bin/console doctrine:database:create` (si vous n'avez pas déjà la BdD)
 - `php bin/console doctrine:migrations:migrate -n`
 
+Si le projet a des Fixtures, les appliquer avec :
+- `php bin/console doctrine:fixtures:load -n`
+
 ## Travailler sur un projet
 
 - Ouvrir Wamp/Mamp pour la BdD et PhpMyAdmin (ou les avoir installés)
@@ -39,7 +42,7 @@ S'il a déjà une BdD initialisée (avec des migrations), il faut aussi les appl
 
 - `dump` ou `dd` dans un fichier PHP
 - `dump` dans un Twig
-- `php bin/console` montre l'intégralité des commandes dont dispose Symfony (dont plusieurs commence par `debug:` ou `lint:`)
+- `php bin/console` montre l'intégralité des commandes dont dispose Symfony (dont plusieurs commencent par `debug:` ou `lint:`)
 
 ## Générer des entités et des migrations
 
