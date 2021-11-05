@@ -48,11 +48,14 @@ Sa conception le rend également très aisément configurable, permettant de s'a
 
 ### MySQL
 
+MySQL est un serveur de <abbr title="Base de Données">BdD</abbr>, permettant de stocker et récupérer des données de manière structurée, à l'aide de requêtes <abbr title="Structured Query Language">SQL</abbr>.
 
 #### Alternatives
 
-- MariaDB
-- PostgreSQL
+- MariaDB (version libre et améliorée de MySQL)
+- PostgreSQL (libre et très (très) puissant)
+- Oracle (trop puissant et non libre)
+- De nombreux autres <abbr title="Systèmes de Gestion de Base de Données">SGBD</abbr>
 
 ### PHP
 
