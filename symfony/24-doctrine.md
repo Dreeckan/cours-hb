@@ -6,16 +6,16 @@
 
 ## Pour résumer
 
-- Pour mettre en place la base, créer/modifier la variable `DATABASE_URL` dans `.env`
-- Lancer la commande `doctrine:database:create`
-- Exécuter les migrations `doctrine:migrations:migrate`
+- Pour mettre en place la base, 
+  - créer/modifier la variable `DATABASE_URL` dans `.env`
+  - Lancer la commande `doctrine:database:create`
+- Exécuter les migrations `doctrine:migrations:migrate` pour mettre à jour la <abbr title="Base de Données">BdD</abbr>
 - Créer des entités avec `make:entity`
-- Créer une ou des migrations avec `make:migration` (ou `doctrine:migrations:diff`)
-- Exécuter les migrations `doctrine:migrations:migrate`
+- Créer une ou des migrations avec `make:migration` (ou `doctrine:migrations:diff`) (:warning: pensez à les exécuter avec `doctrine:migrations:migrate`)
 - Créer de fausses données avec `DoctrineFixturesBundle` et les charger avec `doctrine:fixtures:load`
 - Pour insérer des données dans la base, injecter le service `EntityManagerInterface` et utiliser les méthodes `persist()` et `flush()`
 - Pour récupérer des données de la base, injecter le repository correspondant à la table et utiliser ses méthodes
-  - Si besoin de requête plus complexes, créer des méthodes en utilisant le `QueryBuilder`
+  - Si besoin de requêtes plus complexes, créer des méthodes en utilisant le `QueryBuilder`
 
 ## Configurer la BdD
 
