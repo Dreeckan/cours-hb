@@ -26,6 +26,10 @@ On note ici qu'il faut bien distinguer :
 
 ## Définitions
 
+Les définitions en vidéo : 
+
+<div style="position: relative; padding-bottom: 50.46874999999999%; height: 0;"><iframe src="https://www.loom.com/embed/0210a182d2884ab1b0ba999eb6126316" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ### Serveur
 
 Le terme serveur désigne le rôle joué par un appareil matériel destiné à offrir des services à des clients en réseau Internet. ([source](https://www.journaldunet.fr/web-tech/dictionnaire-du-webmastering/1203337-serveur-informatique-definition-traduction/)).
@@ -59,15 +63,147 @@ MySQL est un serveur de <abbr title="Base de Données">BdD</abbr>, permettant de
 
 ### PHP
 
+Php est plusieurs choses : 
+- un programme permettant d'interpréter du Php (lorsqu'on appelle une commande comme `php bin/console`)
+- un serveur d'application (lorsqu'il est appelé par un serveur web comme Apache ou Nginx)
+
+En général, Php se comporte comme un simple interpréteur et est utilisé comme tel par Apache. Lors de l'appel d'une URL, Apache fait le lien avec le fichier `.php` à exécuter et lance la commande pour l'interpréter. 
+Il existe toutefois des variantes (comme PHP-fpm) permettant d'utiliser PHP en tant que serveur d'application à part entière. Php-fpm est alors appelé sur un port précis (ou une socket) et attend qu'on lui envoie des informations (requêtes) pour les traiter lui-même. Cette dernière méthode est en général plus rapide et plus efficace.
+
+Comme nous l'avons vu avec l'exécutable Symfony, les dernières version de Php fournissent également un serveur web, qui se comporte en fait comme un serveur web **et** un serveur d'application. Je vous invite à lire [la documentation sur le serveur web interne de Php](https://www.php.net/manual/fr/features.commandline.webserver.php), en vous rappelant que ça n'est pas viable pour un environnement de production ;) .
+
+#### Les extensions Php
+
+Certaines fonctionnalités nécessitent d'ajouter ce que l'on appelle des extensions : des librairies liées à Php, non inclues par défaut dans PHP. Pour les installer, cela dépend de votre système :
+- Sur Debian, vous pouvez les installer avec `apt` ou `pecl`
+- Sur Windows, vous pouvez les installer en téléchargeant les fichiers `.dll` ou avec `pecl`
 
 ## Installation et configuration
 
+[La documentation d'installation d'un serveur Debian chez Drakona](https://e-vinrude.drakolab.fr/cookbooks/debianServerInstall.html)
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/a3bd18f2737b4c98b9fd93b72d055c42" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+Tout ce qui suit concerne l'installation d'un serveur LAMP sur une machine Linux (Debian ou basée sur Debian). Pour l'installation sur une machine Windows, voir [l'installation de Wamp dans le cours sur PHP](../php/00-intro.html#environnement-de-travail).
+
 ### Apache
+
+La première chose à faire est d'installer Apache. Sur un serveur Debian, on va utiliser la commande :
+
+```bash
+sudo apt install apache2 apache2-utils
+```
+
+Pour le configurer, on va créer la configuration d'un site dans le dossier `/etc/apache2/sites-available/`. Le dossier `/etc` étant en dehors de notre dossier personnel, nous n'avons pas les droits par défaut, et il nous faut utiliser les droits de super utilisateur. Créons par exemple un fichier de configuration pour un site `www.example.test` :
+
+```bash
+sudo nano /etc/apache2/sites-available/example.test.conf
+```
+
+Personnellement, je nomme mes configurations en fonction du nom de domaine du site. Il n'y a aucune obligation et le nommage est plutôt libre (le `.conf` n'est pas vraiment optionnel, par contre ;) ).
+
+À l'intérieur, j'y indique le nom du site et un ou des alias, et le chemin vers mes fichiers :
+
+```apacheconf
+<VirtualHost *:80>
+    # On indique l'admin à contacter en cas de soucis (optionnel)
+    ServerAdmin contact@example.test
+    # Le chemin où se trouvent les fichiers visibles du site
+    DocumentRoot /var/www/test/public
+    # Le nom de domaine attendu par défaut
+    ServerName www.example.test
+    # Un second nom de domaine (ou plus) pouvant donner sur ce site (optionnel)
+    ServerAlias example.test
+
+    # On définit des options et des droits sur le dossier du site
+    <Directory /var/www/test/public/>
+        # -Indexes : on n'affiche pas le contenu du dossier si aucun fichier d'index n'est trouvé
+        # +FollowSymLinks : Si un fichier ou un dossier est un lien symbolique, on le suit
+        Options -Indexes +FollowSymLinks
+        # On permet à un fichier .htaccess de surcharger la configuration
+        Allowoverride ALL
+        
+        # Les deux balises suivantes définissent des droits sur le dossier
+        # selon si le module mod_authz_core.c existe ou non sur ce système
+        # Dans les deux cas, on accorde toujours le droit de lecture sur les fichiers
+        <IfModule mod_authz_core.c>
+            # Apache 2.4
+            Require all granted
+        </IfModule>
+        <IfModule !mod_authz_core.c>
+            # Apache 2.2
+            Order deny,allow
+            Allow from all
+        </IfModule>
+    </Directory>
+
+    # On récupère les logs d'accès dans le premier fichier
+    CustomLog /var/log/apache2/example.test.log vhost_combined
+    # Et les logs d'erreur dans le second
+    ErrorLog /var/log/apache2/example.test.errors.log
+</VirtualHost>
+```
+
+Une fois votre fichier de configuration prêt, vous pouvez l'activer **et rendre le site disponible** avec la commande :
+
+```bash
+sudo ad2ensite example.test.conf
+sudo service apache2 restart
+```
+
+Votre fichier de configuration est alors lié dans le dossier `/etc/apache2/sites-enabled/` et devient donc disponible dès le redémarrage d'apache.
 
 ### MySQL
 
+Pour installer MySQL, on va installer le serveur et le client :
+
+```bash
+sudo apt install mysql-client mysql-server
+```
+
+Une fois le serveur installé, vous allez devoir le configurer ! Normalement, vous aurez quelques éléments d'installation proposés (version de MySQL principalement). Je vous laisse juge des versions dont vous avez besoin.
+
+Une fois MySQL installé, on peut définir un mot de passe d'administrateur (root) avec la commande :
+
+```bash
+sudo mysql_secure_installation
+```
+
+Une série de questions va alors vous être posées et il peut être utile de dire oui à la plupart (je vous invite à regarder la vidéo d'installation pour plus de détails). 
+
+En général, il vaut mieux [créer un utilisateur et lui donner des droits](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql) pour mettre à jour une BdD précise, sans avoir accès aux autres. Ainsi, si le mot de passe d'une de vos bases est compromis, les autres restent isolées. Dans un premier temps, se connecter à la console MySQL :
+
+```bash
+sudo mysql -uroot -p
+```
+
+Puis entrer les commandes suivantes (à adapter selon vos éléments à vous) :
+
+```mysql
+CREATE USER 'votreUtilisateur'@'localhost' IDENTIFIED BY 'motDePasse';
+GRANT ALL PRIVILEGES ON uneBdD . * TO 'votreUtilisateur'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+Pour plus de détails, je vous conseille la lecture de [cet article détaillant la création d'un utilisateur et la gestion des droits](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql).
+
+Votre serveur MySQL devrait être prêt à l'utilisation ;) .
+
 ### PHP
 
+Installer Php implique d'installer php et les extensions dont vous avez besoin (ce qui n'est pas toujours simple à déterminer). La commande d'installation suivante installe Php 7.4 et les extensions nécessaires à Symfony (plus quelques optionnelles) :
+
+```bash
+sudo apt update && sudo apt install php-pear php7.4 php7.4-{cli,common,curl,dev,fpm,gd,intl,json,mbstring,mysql,readline,xml,zip}
+```
+
+`php7.4-{cli,common}` est équivalent à `php7.4-cli php7.4-common`
+
+Installer Composer : 
+
+```bash
+curl -sS https://getcomposer.org/installer -o composer-setup.php && sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer && rm -rf composer-setup.php
+```
 
 ## Mise en ligne d'un projet
 
