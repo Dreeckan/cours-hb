@@ -179,7 +179,7 @@ sudo mysql -uroot -p
 
 Puis entrer les commandes suivantes (à adapter selon vos éléments à vous) :
 
-```mysql
+```sql
 CREATE USER 'votreUtilisateur'@'localhost' IDENTIFIED BY 'motDePasse';
 GRANT ALL PRIVILEGES ON uneBdD . * TO 'votreUtilisateur'@'localhost';
 FLUSH PRIVILEGES;
