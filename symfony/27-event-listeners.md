@@ -2,6 +2,7 @@
 
 En vidéo :
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/01b83b1084b8486590cc03c05deb8392" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Les event listeners (ou écouteurs d'événement) et les event subscribers (souscripteurs d'événement) sont des services qui vont être appelés lorsqu'un ou des événements précis sont déclenchés. Ils viennent compléter un fonctionnement existant.
 
