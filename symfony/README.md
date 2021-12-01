@@ -13,6 +13,7 @@ Les différentes parties du cours
 1. [Doctrine et la BdD](24-doctrine.md)
 1. [Formulaires](25-formulaires.md)
 1. [Traductions](26-translation.md)
+1. [Event Listeners/Subscribers](27-event-listeners.md)
 1. [Un système de connexion](30-user.md)
 1. [Les bundles](40-bundles.md)
 1. [Le bundle EasyAdmin](41-easy-admin.md)
