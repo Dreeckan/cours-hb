@@ -42,9 +42,9 @@ module.exports = {
                 collapsable: true,
                 children: jsFiles
             },
-            '/docker/',
             '/lamp/',
             '/deploy/',
+            '/docker/',
             {
                 title: 'Intégration continue',
                 path: '/ci/',
