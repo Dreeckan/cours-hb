@@ -219,6 +219,10 @@ class AdminUserUpdateSubscriber implements EventSubscriberInterface
 
 La [documentation du composant EventDispatcher](https://symfony.com/doc/current/components/event_dispatcher.html)
 
+Exemple de création d'événements personnalisés, en vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/71b2c1735f80442d95f0c16cdb12dad3" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 Les événements sont représentés par un nom **unique** et sont lié à un objet d'événement, qui sera transmis aux listeners, afin de fournir des informations supplémentaires.
 
 Le nom de l'événement doit suivre les conventions suivantes :
