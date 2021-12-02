@@ -189,6 +189,7 @@ class AdminUserUpdateSubscriber implements EventSubscriberInterface
     {
         // Notez qu'aucune priorité n'est définie (c'est le cas le plus courant, pour moi).
         // Ceci est équivalent à une priorité de 0
+        // Notez également que l'on utilise le FQCN des événement, et non une constante. Les deux fonctionnent ;)
         return [
             BeforeEntityPersistedEvent::class => ['updateUserPassword'],
             BeforeEntityUpdatedEvent::class   => ['updateUserPassword'],
@@ -211,5 +212,114 @@ class AdminUserUpdateSubscriber implements EventSubscriberInterface
             $this->hasher->hashPassword($entity, $entity->getPlainPassword())
         );
     }
+}
+```
+
+## Créer nos propres événements
+
+La [documentation du composant EventDispatcher](https://symfony.com/doc/current/components/event_dispatcher.html)
+
+Les événements sont représentés par un nom **unique** et sont lié à un objet d'événement, qui sera transmis aux listeners, afin de fournir des informations supplémentaires.
+
+Le nom de l'événement doit suivre les conventions suivantes :
+
+- il est en minuscule, ne peut contenir que des nombres, des points (`.`) ou des underscores (`_`)
+- il est toujours composé d'au moins 2 mots, dont le premier représente un espace de nom et se sépare du mot suivant pas un point `.` (exemple `order.`)
+- le nom final est un verbe, indiquant l'action qui a été produite (exemple `order.placed`)
+
+Pour des questions de rangement et de clarté, je vous recommande de définir ce nom dans une constante de classe, rangée dans un dossier `Event`. Un exemple pour un site de vente, pourrait être un fichier `src/Event/OrderEvents.php` (noter le pluriel) :
+
+```php
+namespace App\Event;
+
+use App\Event\OrderStartedEvent;
+use App\Event\OrderPlacedEvent;
+
+final class OrderEvents
+{
+    /**
+     * Pour simplifier la completion par les IDE 
+     * et se rappeler plus aisément l'événement associé, 
+     * on ajoute une annotation pour l'indiquer
+     * 
+     * @Event("App\Event\OrderStartedEvent")
+     */
+    public const STARTED = 'order.started';
+    
+    /**
+     * @Event("App\Event\OrderPlacedEvent")
+     */
+    public const PLACED = 'order.placed';
+
+    // On ajoute des aliases, qui peuvent être utilisés 
+    // dans certains cas précis, pour lier events et noms
+    // (si vos events font partie d'un bundle, par exemple)
+    public const ALIASES = [
+        OrderStartedEvent::class => self::STARTED,
+        OrderPlacedEvent::class  => self::PLACED,
+    ];
+}
+
+```
+
+Le fichier `src/Event/OrderPlacedEvent.php` (noter le singulier) ressemblerait à ceci :
+
+```php
+namespace Symfony\Component\HttpKernel\Event;
+
+use App\Entity\Order;
+use Symfony\Contracts\EventDispatcher\Event;
+
+class OrderPlacedEvent extends Event
+{
+    private Order $order;
+
+    public function __construct(Order $order)
+    {
+        $this->order = $order;
+    }
+    
+    public function getOrder(): Order
+    {
+        return $this->order;
+    }
+}
+```
+
+Un Event Listener ou un Event Subscriber pourrait alors s'enregistrer pour l'un des événements présents dans `OrderEvents` et utiliser l'objet `Order` contenu dans l'événement pour ajouter un traitement (génération d'un numéro de facture, envoi d'un fichier `pdf`, etc.).
+
+## Déclencher un événement manuellement
+
+Dans notre exemple précédent, nous avons créé un événement, mais n'avions pas de moyen de le déclencher. Pour cela, nous allons utiliser le service `EventDispatcher` de Symfony pour le faire. 
+
+Depuis un controller, dans une action : 
+
+```php
+// On récupère le service event dispatcher
+$eventDispatcher = $this->get('event_dispatcher');
+
+// On crée un event, contenant les informations qui seront utiles au listener
+$event = new OrderPlacedEvent($order);
+
+// On envoi l'événement, qui sera rattrapé par des listeners
+$eventDispatcher->dispatch($event, OrderEvents::STARTED);
+```
+
+Dans un service : 
+
+```php
+// On injecte l'event dispatcher dans notre service
+public function __construct(EventDispatcherInterface $dispatcher)
+{
+    $this->dispatcher = $dispatcher;
+}
+
+public function doSomethingWithAnOrder(Order $order)
+{
+    // On crée un event, contenant les informations qui seront utiles au listener
+    $event = new OrderPlacedEvent($order);
+    
+    // On envoi l'événement, qui sera rattrapé par des listeners
+    $eventDispatcher->dispatch($event, OrderEvents::STARTED);
 }
 ```
