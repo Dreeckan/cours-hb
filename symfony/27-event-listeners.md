@@ -227,7 +227,8 @@ Le nom de l'événement doit suivre les conventions suivantes :
 - il est toujours composé d'au moins 2 mots, dont le premier représente un espace de nom et se sépare du mot suivant pas un point `.` (exemple `order.`)
 - le nom final est un verbe, indiquant l'action qui a été produite (exemple `order.placed`)
 
-Pour des questions de rangement et de clarté, je vous recommande de définir ce nom dans une constante de classe, rangée dans un dossier `Event`. Un exemple pour un site de vente, pourrait être un fichier `src/Event/OrderEvents.php` (noter le pluriel) :
+Pour des questions de rangement et de clarté, je vous recommande de définir ce nom dans une constante de classe, rangée dans un dossier `Event`. 
+Un exemple pour un site de vente, pourrait être un fichier `src/Event/OrderEvents.php` (noter le pluriel) (:warning: ce fichier n'est pas obligatoire, vous pouvez également indiquer le nom de votre event directement dans l'objet Event) :
 
 ```php
 namespace App\Event;
@@ -272,6 +273,10 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class OrderPlacedEvent extends Event
 {
+    // On peut également indiquer le nom de l'événement directement dans celui-ci
+    // Pour éviter de créer 2 classes
+    // public const NAME = 'order.placed';
+
     private Order $order;
 
     public function __construct(Order $order)
