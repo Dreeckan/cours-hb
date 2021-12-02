@@ -6,10 +6,33 @@ En vidéo :
 
 Les event listeners (ou écouteurs d'événement) et les event subscribers (souscripteurs d'événement) sont des services qui vont être appelés lorsqu'un ou des événements précis sont déclenchés. Ils viennent compléter un fonctionnement existant.
 
+## Pour résumer 
+
+- Les Event Listeners et Event Subscribers sont des services (classes Php) et ont un comportement très similaire.
+- Les Event Listeners :
+  - permettent d'écouter un événement (Event), défini par son nom (unique)
+  - ont une méthode par Event écouté, de la forme `on` + nom de l'Event en CamelCase (`onKernelException` pour un événement `kernel.exception`)
+  - cette méthode prend en paramètre un objet Event, lié à l'événement écouté
+  - doit être déclaré avec un tag par event dans le fichier `config/services.yaml`.
+```yaml
+services:
+    App\EventListener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+```
+- Les Event Subscribers
+  - implémentent l'interface `Symfony\Component\EventDispatcher\EventSubscriberInterface`
+  - permettent d'écouter un ou plusieurs événements (Event)
+  - la méthode `getSubscribedEvents()` permet de faire le lien entre les événements écoutés (on peut écrire le FQCN de l'événement ou le nom de l'événement) et les méthodes à appeler pour chacun (avec d'éventuelles priorités)
+  - les méthodes ont des noms libres, mais les paramètres sont définis par l'événement.
+- Il est possible de créer nos propres événements en étendant `Symfony\Contracts\EventDispatcher\Event`.
+- Ces événements doivent toujours avoir un nom **unique**.
+- On peut émettre un événement grâce au service `event_dispatcher` (depuis un controller) ou depuis le service `Symfony\Contracts\EventDispatcher\EventDispatcherInterface`.
+
 ## Listener ou subscriber ?
 
-Un listener est une classe liée à **un** événement, mais qui n'a pas conscience de l'événement écouté.
-Un subscriber est une classe liée à un ou **plusieurs** événements et il est toujours aisé de savoir quel événement est appelé.
+Un listener est une classe liée à un ou plusieurs événements, mais qui n'a pas conscience des événements écoutés (ils ne sont pas indiqués dans la classe).
+Un subscriber est une classe liée à un ou plusieurs événements et il est toujours aisé de savoir quel événement est appelé (ils sont indiqués dans la classe).
 
 Une autre différence majeure est la mise en place : le listener oblige à créer une entrée dans `config/services.yaml`, alors que le subscriber n'en a pas besoin.
 

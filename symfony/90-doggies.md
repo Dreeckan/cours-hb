@@ -1,4 +1,4 @@
-# Mise en place d'un projet Symfony
+# Projet : annonces de SPA / éleveurs
 
 Nous allons mettre en place un projet Symfony, rendu sur Github/Gitlab, en utilisant des tickets (outil à définir). Le processus de travail doit être comme suit : 
 - utiliser Git pour enregistrer les modifications de chaque développeur
@@ -11,16 +11,16 @@ Nous allons mettre en place un projet Symfony, rendu sur Github/Gitlab, en utili
 
 ## La demande client
 
-Nous avons reçu la demande d'un client, et notre équipe commerciale a décidé d'accepter le projet. Il convient maintenant de répartir le travail au sein de votre équipe et de le réaliser. Il doit être mis en place avec le framework Symfony et le design est à votre convenance mais doit rester au plus simple.
+Nous avons reçu la demande d'un client et notre équipe commerciale a décidé d'accepter le projet. Il convient maintenant de répartir le travail au sein de votre équipe et de le réaliser. Il doit être mis en place avec le framework Symfony et le design est à votre convenance, mais doit rester au plus simple.
 
 Le client est une association d'éleveurs, qui travaillent également avec les SPA de la région. Ils souhaitent un site commun pour présenter les chiens et chiots à l'adoption. 
 
 Le site sera partagé en plusieurs espaces :
-- Une partie "adoptant", pour permettre de consulter et de répondre à une annonce
-- Une partie "mon compte annonceur" qui permettra aux éleveurs et aux SPA de poster et gérer leurs annonces
-- Une partie administration, utilisable uniquement par des administrateurs (une ou deux personnes)
+- "Adoptant", pour permettre de consulter et de répondre à une annonce
+- "Mon compte annonceur" qui permettra aux éleveurs et aux SPA de poster et gérer leurs annonces, de modifier leurs informations, etc.
+- "Mon compte adoptant" qui permettra aux adoptants de gérer leurs demandes et leurs informations
+- Administration, utilisable uniquement par des administrateurs (une ou deux personnes)
 
----
 
 ## Partie "adoptant"
 
@@ -42,7 +42,7 @@ Ces éléments seront répartis en 2 blocs :
   - le nombre de chiens concernés
   - les races des chiens concernés
   - la date de mise à jour de l'annonce
-- Une liste exhaustive des éleveurs et des SPA présentes sur le site. Elles devront être présentés en fonction des dernières annonces mises à jour (plus l'association/SPA a mis à jour une annonce récemment, plus elle apparait en tête). Chaque élémént doit présenter :
+- Une liste exhaustive des éleveurs et des SPA présentes sur le site. Elles devront être présentées en fonction des dernières annonces mises à jour (plus l'association/SPA a mis à jour une annonce récemment, plus elle apparait en tête). Chaque élément doit présenter :
   - Le nom de l'association/SPA
   - Le nombre d'annonces actuellement à pourvoir de cette association/SPA
   - Le nombre d'annonces pourvues de cette association/SPA
@@ -82,12 +82,11 @@ Le formulaire d'inscription demande uniquement un email et un mot de passe. Dès
 
 ### Mon compte
 
-En tant qu'adoptant (ayant un compte et étant connecté), il dispose d'une section où il peut suivre les demande d'adoption déposées. Pour chacune d'entre elles, il doit pouvoir :
+En tant qu'adoptant (ayant un compte et étant connecté), il dispose d'une section où il peut suivre les demandes d'adoption déposées. Pour chacune d'entre elles, il doit pouvoir :
 - avoir une fiche récapitulative du ou des chiens concernés
 - accéder à un fil de discussion, contenant son message et les éventuelles réponses de l'association/SPA (:warning: un adoptant ne peut plus envoyer de message après son premier contact, tant que l'association/SPA ne lui a pas répondu au moins une fois)
 - modifier ses informations personnelles (qui permettront de remplir plus rapidement le formulaire d'adoption)
 
----
 
 ## Partie "annonceur"
 
@@ -106,7 +105,6 @@ Je dispose d'une interface pour :
 
 Ce formulaire permet de modifier **toutes** les informations d'une annonce (à l'exception du fil de discussion).
 
----
 
 ## Partie "administrateur"
 
@@ -117,10 +115,9 @@ J'ai accès à plusieurs CRUD :
 - Races de chiens
 - Associations/SPA
 
----
 
 ## Améliorations
 
 Le client aimerait également que l'équipe de développement soit force de proposition pour améliorer le site. 
 
-Pour cela, veuillez remplir le fichier `README.md` et créer une liste des améliorations que vous trouvez.
+Pour cela, veuillez remplir le fichier `README.md` et créer une liste des améliorations que vous imaginez.

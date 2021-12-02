@@ -21,5 +21,6 @@ Les différentes parties du cours
 1. [Des pense-bêtes](80-cheat-sheet.md)
 1. [Symfony au quotidien](81-quotidien.md)
 1. [Utiliser Docker pour travailler](82-docker.md)
-1. [Un projet complet à réaliser](98-projets.md)
+1. [Un projet complet à réaliser](90-doggies.md) (annonces de chiens à adopter)
+1. [Un projet alternatif](91-vote.md) (système de votes et de participation citoyenne)
 1. [Exercices](99-exercices.md)
