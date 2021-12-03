@@ -45,9 +45,10 @@ Dans cette section, je n'ai littéralement rien à dire, puisque tout dépend du
 
 - [ApiPlatform](https://api-platform.com/docs/distribution/#using-symfony-and-composer) vous permet de créer une API rapidement dans votre Symfony, à partir de vos entités.
 - [EasyAdmin](https://symfony.com/doc/current/bundles/EasyAdminBundle/index.html) pour générer un espace d'administration pour vos entités
-- [Doctrine extensions](https://symfony.com/doc/current/bundles/StofDoctrineExtensionsBundle/index.html) pour ajouter des comportements à vos entités (Timestampable, Sluggable, etc.)
+- [Doctrine extensions](https://symfony.com/doc/current/bundles/StofDoctrineExtensionsBundle/index.html) pour ajouter des comportements à vos entités (Timestampable, Sluggable, Translatable, etc.)
 - [VichUploader](https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md) pour mettre en ligne et gérer des images liées à vos entités
 - [Knp Paginator](https://github.com/KnpLabs/KnpPaginatorBundle) pour gérer la pagination de vos listes
 - [Knp Menu](https://github.com/KnpLabs/KnpMenuBundle/) pour gérer vos menus sous forme d'objets **propres**
+- [A2lixTranslationFormBundle](https://github.com/a2lix/TranslationFormBundle) pour ajouter des champs de gestion de traduction
 
 Pour un exemple d'installation et d'utilisation d'un bundle, je vous recommande [la section suivante, traitant de EasyAdminBundle](41-easy-admin.md).

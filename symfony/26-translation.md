@@ -1,6 +1,6 @@
 # Les traductions
 
-La [documentation officielle sur les traductions](https://symfony.com/doc/current/translation.html)
+La [documentation officielle sur les traductions](https://symfony.com/doc/current/translation.html) et [la Fast-Track de Symfony](https://symfony.com/doc/current/the-fast-track/en/28-intl.html)
 Nous allons directement utiliser [le format ICU pour gérer les paramètres et les pluriels](https://symfony.com/doc/current/translation/message_format.html), dans nos traductions
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/9c40d518fead4ceab470b37c718f80f7" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
@@ -196,6 +196,58 @@ text:
 - `yes` : si `like` vaut `yes`, alors on affiche notre amour pour un style musical (passé en paramètre)
 - `no` : si `like` vaut `no`, alors on affiche notre désamour pour un style musical (passé en paramètre)
 - `other` : si `like` vaut `no`, alors on affiche notre manque d'avis pour un style musical (passé en paramètre)
+
+## Dans les formulaires
+
+Dans la configuration des formulaires, les labels sont directement traduits et vous pouvez configurer quelques éléments supplémentaires :
+
+```php
+class TestType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('test', TextType::class, [
+                // On peut donner une clé de traduction pour le label
+                'label' => 'user.form.password', 
+            ])
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            // on définit le fichier de traduction à utiliser
+            'translation_domain' => 'front', 
+        ]);
+    }
+}
+```
+
+
+## Traduire les textes en BdD
+
+Pour simplifier le travail de traduction des données en <abbr title="Base de Données">BdD</abbr>, plusieurs bundles sont disponibles :
+- [StofDoctrineExtensionsBundle](https://symfony.com/bundles/StofDoctrineExtensionsBundle/current/index.html) permet d'[ajouter un comportement `Translatable`](https://github.com/doctrine-extensions/DoctrineExtensions/blob/main/doc/translatable.md#setup-and-autoloading) pour ajouter les champs à traduire dans vos entités
+- [A2lixTranslationFormBundle](https://github.com/a2lix/TranslationFormBundle) pour gérer vos traductions dans les formulaires de modifications de vos entités
+
+
+## Des urls et des langues
+
+Vous pouvez également gérer [les traductions de vos routes](https://symfony.com/doc/current/routing.html#localized-routes-i18n), directement dans l'annotation de route, pour définir l'url dans les différentes langues.
+
+Il est également possible (et bien utile) de définir des préfixes en fonction des langues, pour **toutes** vos routes d'un coup. 
+
+Dans `config/routes/annotations.yaml`, vous pouvez écrire : 
+```yaml
+controllers:
+    resource: ../../src/Controller/
+    type: annotation
+    prefix:
+        fr: '' # Les routes sans un préfixe de langue seront en français
+        en: '/en' # les routes avec /en au début seront en anglais
+```
+
 
 ## Récupérer les textes sans traductions
 
