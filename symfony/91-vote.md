@@ -22,6 +22,7 @@ Le site sera partagé en plusieurs espaces, reliés par le menu général et une
 - "Espace personnel", pour gérer mes informations, retrouver facilement mes participations (votes, propositions, etc.)
 - "Administration", pour ajouter des données de base, inscrire/promouvoir des responsables, vérifier/modérer les données, etc.
 
+
 ## Définitions
 
 ### Proposition
