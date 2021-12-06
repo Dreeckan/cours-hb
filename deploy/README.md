@@ -148,6 +148,7 @@ L'idée est alors de s'assurer d'avoir la dernière version de nos fichiers (ain
 
 ## Resources utiles
 
+- Le [cours sur LAMP (Apache + MySQL + Php)](../lamp)
 - [Installer un serveur Debian](https://e-vinrude.drakolab.fr/cookbooks/debianServerInstall.html)
 - [Configurer un serveur Nginx](https://e-vinrude.drakolab.fr/snippets/adminSys/nginx.html)
 - La [documentation de Symfony sur la configuration Nginx](https://symfony.com/doc/current/setup/web_server_configuration.html#nginx)
