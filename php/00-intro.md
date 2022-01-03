@@ -7,6 +7,7 @@ PHP est principalement utilisé pour la création de sites webs, mais peut égal
 
 La [documentation de PHP, une resource essentielle](https://www.php.net/manual/fr/) et disponible en français.
 
+
 ## Environnement de travail
 
 Nous allons travailler avec [Wamp](https://sourceforge.net/projects/wampserver/files/latest/download) pour avoir un serveur Apache, MySQL, PHP et PhpMyAdmin sur notre Windows. Tout ce que nous allons voir fonctionne aussi avec [Xampp](https://www.apachefriends.org/fr/index.html), [Mamp](https://www.mamp.info/en/downloads/) ou un équivalent. Pour ces deux derniers, faites bien attention à la configuration (surtout les ports) qui peuvent être différents de ceux de Wamp.
@@ -17,15 +18,16 @@ Une vidéo pour vous aider à résoudre les problèmes de ports et de version de
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/b835ff259c954b73997523c051fa1d98" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+
 ## Un script PHP
 
-Les [bases du langages sont couvertes dans une première vidéo](https://www.loom.com/share/f3a8c780c7f742dca108e5b347cb3f26) :
+En vidéo : 
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/share/f3a8c780c7f742dca108e5b347cb3f26" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/2b0103e886da43269245ba58934e0065" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-Les fichiers de PHP ont l'extension `.php` et peuvent contenir du HTML aussi bien que du PHP. Un script PHP (que ce soit un fichier entier ou une portion de code) se trouve entre `<?php ` et ` ?>`.
+Les fichiers de PHP ont l'extension `.php` et peuvent contenir du HTML aussi bien que du PHP. Un script PHP (que ce soit un fichier entier ou une portion de code) se trouve entre `<?php` et `?>`.
 
-Un exemple dans un fichier HTML : 
+Un exemple de Php dans un fichier HTML : 
 
 ```html
 <html lang="fr">
@@ -44,13 +46,17 @@ Dans un fichier PHP seul :
     echo '<p>';
     echo date('d/m/Y H:i:s');
     echo '</p>';
-?>
 ```
-Vous trouverez également un [exemple de création d'un premier fichier php en vidéo](https://www.loom.com/share/9e1742f7d36c4b6c8d61c1abdf210c57) ci-dessous :
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/9e1742f7d36c4b6c8d61c1abdf210c57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Commentaires
+
+En vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/3250bf737da7426194f22493a53f32b4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+Vous pouvez ajouter des éléments en commentaire : visible uniquement dans le code source, et non dans le rendu final. 
+L'intérêt est de donner des informations supplémentaires aux autres développeurs (ou au "vous" du futur) sur ce que fait le code, prévenir de certains problèmes, etc.
 
 ```php 
 // Une ligne de texte commenté, vous pouvez mettre n'importe quoi
@@ -61,39 +67,73 @@ Vous trouverez également un [exemple de création d'un premier fichier php en v
  */
 ```
 
+
 ## Variables
 
 La [documentation PHP](https://www.php.net/manual/fr/language.variables.php)
 
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/49e12ca2e66c4ac8b79f705921d35e28" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+Une variable sert à contenir une valeur. Le but de la variable est de nous permettre de manipuler cette valeur (opérations mathématiques, la transmettre plus loin dans le code, etc.)
+
 ```php
+// Ici on parle de déclaration (on définit le nom de la variable)
+// et d'initialisation (on lui donne une valeur de départ)
 $unNombre = 0;
+
+// On peut modifier la valeur contenue dans notre variable de différentes manières,
+// comme des opérations mathématiques, dont voici quelques raccourcis
 $unNombre++; // $unNombre = $unNombre + 1;
 $unNombre += 2; // $unNombre = $unNombre + 2;
 $unNombre *= 3; // $unNombre = $unNombre * 3;
 
 $unTexte = 'Un texte';
+
+// L'opérateur . permet de concaténer 2 chaînes de caractères
 $unTexte .= ' de test'; // $unTexte = $unTexte . ' de test';
 ```
+
 
 ## Constantes
 
 La [documentation PHP](https://www.php.net/manual/fr/language.constants.php)
 
+En vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/07b90132b4a14729b9a98c31d0d76828" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+Nous n'allons pratiquement pas nous servir de ces constantes dans ce cours, mais il est utile de savoir comment les utiliser (pour un site Wordpress, par exemple).
+
+Une constante est toujours écrite en screaming snake case (tout en majuscule, les mots séparés par des `_`). Comme une variable, une constante contient une valeur, mais qui **ne peut pas être modifiée**. 
+
+L'intérêt est de conserver en mémoire une valeur qui peut être utilisée à plusieurs endroits dans le code (nom d'éléments par page dans des listes, un texte répété à travers le site, etc.) et que l'on veut éviter de répéter.
+
 ```php
+// Déclaration et initialisation d'une constante
 define("UNE_CONSTANTE", "et sa valeur");
+
+// Utilisation de la valeur de la constante
+echo UNE_CONSTANTE;
 ```
+
 
 ## Types
 
 La [documentation PHP](https://www.php.net/manual/fr/language.types.php)
 
-- integer `12`
-- float `25.45`
-- string `'un texte'` ou `"un texte"`
-- bool `true` ou `false`
-- null `NULL` ou `null`
-- array `[1, 2, 3]`
-- Object `new PDO()`
+En vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/f9aa8834e50f41e1af97a3ab7443dffe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+- integer `12` pour représenter les nombres (entiers)
+- float `25.45` pour représenter les nombres à virgule
+- string `'un texte'` ou `"un texte"` pour représenter les textes
+- bool `true` ou `false` pour représenter les valeurs logiques (booléennes)
+- null `NULL` ou `null` pour représenter une valeur vide
+- array `[1, 2, 3]` pour représenter des ensembles de données (en Php, les données sont quelconques, elles n'ont pas besoin d'être du même type)
+- Object `new PDO()` pour représenter des données plus complexes
 
 ### Tableaux
 
@@ -201,12 +241,14 @@ unset($mesProduits[0]);
 $compte = count($mesProduits); 
 ```
 
+
 ## Tests et boucles
 
 La [documentation PHP](https://www.php.net/manual/fr/language.control-structures.php)
 
-- conditions (`if`, `else`, `elseif`, `switch`)
-- boucles (`for`, `foreach`, `while`)
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/e378ba3c78a145f9b75d814f71eb02af" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 
 ### Conditions
@@ -232,7 +274,7 @@ switch ($variable) {
     case 0:
         echo 'ok';
         break;
-    case 1:
+    case -1:
         echo 'ok aussi';
         break;
     default:
@@ -316,7 +358,12 @@ while ($j < count($elements)) {
 var_dump($elements); // Affichera [5, 7, 16, 46]
 ```
 
+
 ## Procédures et fonctions
+
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/238d4e8be4d741a08b5fa2fa5fdd2e70" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 - Fonction : fonction avec des arguments (ou non) retournant un résultat avec l'opérateur `return`
 - Procédure : fonction ne retournant aucun résultat
@@ -331,7 +378,7 @@ function foo()
 }
 
 // exemple de fonction
-// Noter que $arguement a une valeur par défaut à 1
+// Noter que $argument a une valeur par défaut à 1
 function doubleIt($argument = 1)
 {
     return $argument * 2;
@@ -400,7 +447,7 @@ Dans certains cas, vous aurez besoin des fonctions anonymes : des fonctions que 
 $tab = [1, 2, 3, 5, 6, 89, 8, 357, 68, 5, 3];
 
 // ATTENTION, on passe $element par référence,
-// c'est à dire qu'on va le modifier pendant le parcours
+// c'est-à-dire qu'on va le modifier pendant le parcours
 array_walk($tab, function (&$element) {
     // $element contient l'élément du tableau actuellement traité
     // On le modifie (ce qui n'aurait pas été possible sans le passage par référence)
@@ -425,7 +472,12 @@ array_walk($tab, function (&$element) use ($nb) {
 });
 ```
 
+
 ## Portée des variables
+
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/ddcfe05047c144ea8226f79568384aba" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ```php
 $a = 1; // Disponible dans l'espace de nom par défaut, disponible partout, hors fonctions
@@ -456,7 +508,7 @@ echo $c; // affichera 43, $c est explicitement déclarée comme globale
 
 ### Variables $GLOBALS
 
-Il est possible, dans une fonction, d'accéder aux variables définies globalement :
+Il est possible, dans une fonction, d'accéder aux variables définies globalement, mais c'est fortement déconseillé :
 
 ```php
 $a = 1;
@@ -469,7 +521,12 @@ function somme() {
 echo somme(); // affichera 3
 ```
 
+
 ## Récursivité
+
+En vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/59999a8438d04c9f909a3b2d3919eba4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Une fonction qui s'appelle elle-même :
 
@@ -484,6 +541,7 @@ function recursive($argument = 1) {
     // sauf si l'argument contient un nombre plus grand
 }
 ```
+
 
 ## Interagir avec l'utilisateur
 
@@ -547,6 +605,7 @@ echo $_SESSION['login'];
 - Peuvent être un problème de sécurité selon les informations stockées. En effet, s'ils contiennent des données sensibles, celles-ci sont stockées (par défaut) dans un fichier texte dans l'ordinateur de l'utilisateur.
 - On peut créer un cookie avec la fonction `setCookie()` ([documentation](https://www.php.net/manual/fr/function.setcookie.php))
 - Récupérer le ou les cookies dans la variable superglobale `$_COOKIE`
+
 
 ## La temporisation de sortie
 
