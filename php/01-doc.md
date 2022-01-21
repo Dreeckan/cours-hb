@@ -269,7 +269,7 @@ Le *FQCN* (Fully Qualified Class Name) est composé de :
 - [Hook de pré-commit](https://git-scm.com/book/fr/v2/Personnalisation-de-Git-Crochets-Git)
 - Tout en même temps
 
-Installation dans CS Code :
+Installation dans VS Code :
 
 - Installer le plugin mentionné dans la liste ci-dessus
 - [Télécharger PHP CS Fixer](https://cs.symfony.com/download/php-cs-fixer-v3.phar) (je le télécharge dans le dossier `www` de mon wamp)

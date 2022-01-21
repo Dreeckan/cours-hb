@@ -18,6 +18,22 @@ Une vidéo pour vous aider à résoudre les problèmes de ports et de version de
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/b835ff259c954b73997523c051fa1d98" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+### Alternative - Laragon
+
+Si vous avez déjà installé [Laragon](https://laragon.org) sur votre machine, nous pouvons également nous en servir.
+
+Si vous ne l'avez pas installé, voici [le lien de téléchargement](https://laragon.org/download/) et une vidéo de l'installation : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/d19ac2557626460e802530ba57575fcd" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+Une vidéo de prise en main, où je découvre un peu Laragon, sa configuration et une utilisation de base : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/aae42d13cca4482f8b6a7bf02a293683" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+Je ne peux que vous recommander la vidéo de [Grafikart](https://grafikart.fr/) sur le sujet :
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sHHl5kihXD4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Un script PHP
 
