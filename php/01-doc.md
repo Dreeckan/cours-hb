@@ -1,13 +1,54 @@
-# PSR et PHP Doc
+# PHP Doc et PSR
 
-- PSR
-- Application pratique
-- PHP Doc
-- Trouver dans la doc... Et ailleurs
+Cette partie du cours parle de documentation et de normes... Mais aussi de normes de documentation ;) . 
 
-## PSR 1, 2/12 et 4
+## En résumé
 
-Des **normes** d'écriture et de rangement de notre code
+- <abbr title="Php Standard Recommendation">PSR</abbr> est un ensemble de normes de formattage (manière d'écrire) du code. 
+- [La documentation PHP en Français](https://www.php.net/manual/fr/) peut répondre à vos questions sur tous les éléments du langage (y compris les fonctions de base et les extensions PHP)
+- Savoir trouver des sources fiables et adaptées en dehors de la doc est également important (questions **récentes** sur StackOverflow, articles de blog **récents**)
+
+## PHP Doc
+
+- [La documentation PHP en Français](https://www.php.net/manual/fr/) pour **tout** savoir sur le langage, de sa syntaxe jusqu'aux extensions disponibles
+- La [référence des fonctions](https://www.php.net/manual/fr/funcref.php) pour trouver toute la documentation sur les fonctions utiles de PHP
+
+### Lire la documentation
+
+Prenons [un exemple de fonction PHP : strtolower()](https://www.php.net/manual/fr/function.strtolower.php)
+  - Description : que fait-elle ?
+  - La signature de la fonction : quels types de paramètres attend-elle et quel est son type de retour ?
+  - Liste de paramètres et valeur de retour : plus d'explications sur les paramètres et le retour
+  - Exemples : Concrètement, comment s'en servir ?
+  - Notes : les subtilités
+  - Voir aussi : les fonctions liées (similaires, opposées ou dans le même fonctionnement)
+
+On peut également aller un peu plus loin et découvrir d'autres fonctions de la même section (même module ou même extension) en regardant la colonne de droite. Les noms des fonctions sont censés être suffisamment explicites pour permettre d'en comprendre le but (personnellement, c'est rarement le cas). C'est, à mon sens, l'un des principaux moyens de découverte de nouvelles fonctions PHP (hors StackOverflow)
+
+### Fouiller dans la documentation
+
+- Si vous savez le nom de la fonction que vous cherchez, le moteur de recherche est la solution
+- Sinon, il faut soit connaître la doc comme votre poche / avoir une idée de la section dont vous avez besoin, soit chercher sur un autre moteur de recherche
+
+#### Exemples
+
+- Je cherche une fonction liée aux tableaux, je vais regarder la [page de la documentation sur les tableaux](https://www.php.net/manual/fr/ref.array.php)
+- Je cherche une fonction pour afficher la date du jour, [je fouille dans la doc liée aux fonctions de dates et heures](https://www.php.net/manual/fr/ref.datetime.php) ou je vais [demander à mon moteur de recherche](https://www.google.com/search?q=php+afficher+date+du+jour) qui me permettra
+  de [tomber sur la doc que je cherchais](https://www.php.net/manual/fr/function.date.php) (je peux aussi chercher au hasard dans le moteur de recherche de la documentation)
+- Je cherche comment remplacer du texte dans un tableau. Le plus simple (à moins de connaître la fonction) est [mon moteur de recherche](https://www.google.com/search?q=php+remplacer+du+texte+dans+un+tableau)
+
+### À quels sites puis-je faire confiance ?
+
+- La [doc officielle de php](https://www.php.net/manual/fr/)
+- La documentation de vos outils (la [doc de Bootstrap](https://getbootstrap.com/docs/5.1/getting-started/introduction/) ou de [Symfony](https://symfony.com/doc/current/index.html) par exemple)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/php)
+- Des outils de centralisation de documentations, comme [devdocs.io](https://devdocs.io/)
+- Certains articles de blogs ou posts de forum _**récents**_
+
+
+## PSR 1, 2 et 4
+
+Des **normes** d'écriture et de rangement de notre code : 
 
 - [PSR-1](https://www.php-fig.org/psr/psr-1/) donne des normes d'écriture de base
 - [PSR-2](https://www.php-fig.org/psr/psr-2/) est une extension de PSR-1 (Dans les faits, il faut suivre [PSR-12, plutôt que PSR-2](https://www.php-fig.org/psr/psr-12/))
@@ -15,7 +56,7 @@ Des **normes** d'écriture et de rangement de notre code
 
 Sources : [PHP-fig](https://www.php-fig.org/), [nouvelle-techno.fr](https://nouvelle-techno.fr/actualites/bonnes-pratiques-php-psr-1-et-psr-4)
 
-## PSR-1
+### PSR-1
 
 - Les fichiers ne doivent utiliser que `<?php` ou `<?=` pour déclarer du code php
 - Le code doit être encodé en UTF-8
@@ -24,25 +65,26 @@ Sources : [PHP-fig](https://www.php-fig.org/), [nouvelle-techno.fr](https://nouv
 - Les noms de classe doivent être au format `PascalCase`
 - Les méthodes et fonctions au format `camelCase`
 
-### Balises php
+#### Balises php
 
-- Nous n'utilisons que les balises `<?php` et `?>` pour entourer notre code PHP, restons là-dessus ;)
-- D'autres existent :
+Nous n'utilisons que les balises `<?php` et `?>` pour entourer notre code PHP, restons là-dessus ;)
+
+D'autres existent :
   - `<?` fonctionne dans certains (vieux) projets et sont déconseillées
   - `<?=` "balises echo courtes" fonctionnent toujours et permettent de faire un `echo` du code qu'elles contiennent
-- La norme PSR-1 recommande `<?php` et `<?=` uniquement
+La norme PSR-1 recommande `<?php` et `<?=` uniquement.
 
-### Code en UTF-8
+#### Code en UTF-8
 
 L'encodage des fichiers en UTF-8 permet d'éviter des problèmes de compatibilité entre les différents OS, navigateurs et serveurs. Une valeur à vérifier dans votre éditeur de code.
 
-### Effets des fichiers
+#### Effets des fichiers
 
 Les fichiers php doivent soit déclarer des symboles (classes, fonctions, constantes, etc.), soit avoir un effet de bord (afficher du html, modifier la configuration de php, etc.), mais ne doivent pas faire les deux.
 
 Il s'agit en fait de compartimenter ce qui tient de la déclaration et ce que modifie l'affichage / le serveur. En somme, séparer les resources et le concret.
 
-#### Un exemple à éviter
+##### Un exemple à éviter
 
 ```php
 <?php
@@ -63,21 +105,21 @@ function foo()
  
 ```
 
-### Normes d'autoloading
+#### Normes d'autoloading
 
 Nous verrons la norme PSR-4 par la suite, mais elle doit être utilisée pour tous les projets utilisant des objets PHP.
 
-### Nommage des classes
+#### Nommage des classes
 
 Le format `PascalCase` veut dire que tous les mots composant le nom de la classe doivent commencer par une majuscule et qu'il ne doit pas y avoir d'espace entre les mots.
 
 Exemple : `PictureInformations` pour une classe de stockage des informations d'une image
 
-### Nommage des fonctions
+#### Nommage des fonctions
 
 Pour les distinguer des classes et les rapprocher des variables, on utilise le `camelCase` (premier mot en minuscule, les suivants commençant par une majuscule) pour nommer fonctions, procédures et méthodes.
 
-## PSR-12
+### PSR-12
 
 - Le code doit respecter PSR-1
 - Tous les fichiers doivent utiliser le format Unix pour les fins de ligne (LF)
@@ -86,11 +128,10 @@ Pour les distinguer des classes et les rapprocher des variables, on utilise le `
 - Il ne doit pas y avoir de limite (dure) de nombre de caractères pour une ligne
 - Idéalement, une ligne ne doit pas dépasser les 120 caractères
 - Encore mieux : 80 caractères
-
 - Aucun espace à la fin des lignes
 - Des sauts de ligne sont autorisés pour faciliter la lisibilité du code sauf cas interdits
 - Une seule instruction par ligne maximum
-- L'indentation doit être composée de 4 espaces et non des tabulations
+- L'indentation doit être composée de 4 espaces et non de tabulations
 - Les mots réservés de PHP et les types doivent être en minuscule
 - Les versions courtes de ces mots doivent être utilisés (`bool` au lieu de `boolean` par exemple)
 
@@ -124,7 +165,7 @@ class FooBar
 }
 ```
 
-### PSR-12 (suite suite)
+Un fichier contenant des fonctions :
 
 ```php
 <?php
@@ -135,7 +176,7 @@ function fooBarBaz($arg1, &$arg2, $arg3 = []): ?string
 
 ```
 
-### PSR-12 (suite suite suite)
+Un autre fichier de classe :
 
 ```php
 <?php
@@ -155,7 +196,7 @@ class ClassName
 
 ```
 
-### Format des appels
+Format des appels :
 
 ```php
 bar();
@@ -177,7 +218,7 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 });
 ```
 
-### Structures de contrôle (if, for, while, etc.)
+#### Structures de contrôle (if, for, while, etc.)
 
 ```php
 <?php
@@ -194,7 +235,7 @@ if (
 }
 ```
 
-### Switch
+#### Switch
 
 ```php
 switch ($expr) {
@@ -215,7 +256,7 @@ switch ($expr) {
 }
 ```
 
-### Opérateurs
+#### Opérateurs
 
 ```php
 $i++;
@@ -232,7 +273,7 @@ $variable = $foo ? $foo : 'bar'; // $variable = $foo ?: 'bar';
 
 ```
 
-### Fonctions anonymes
+#### Fonctions anonymes
 
 ```php
 $closureWithArgs = function ($arg1, $arg2) {
@@ -248,21 +289,21 @@ $closureWithArgsVarsAndReturn = function ($arg1, $arg2) use ($var1, $var2): bool
 };
 ```
 
-## PSR-4
+### PSR-4
 
 S'applique aux classes, interfaces, traits et structures similaires et défini à la fois comment les nommer **et** les ranger
 
 Le *FQCN* (Fully Qualified Class Name) est composé de :
 
-- Un espace de nom principal (premier élément, aussi appelé prefix)
+- Un espace de nom principal (premier élément, aussi appelé *prefix*)
 - Peut avoir un ou des sous-espaces de nom
 - Un nom de classe (dernier élément)
 
-### Correspondances entre namespace et fichier
+#### Correspondances entre namespace et fichier
 
 ![Des exemples de nommages, avec les dossiers correspondants](/assets/img/php/psr4-example.png)
 
-## Appliquer toutes ces normes
+### Appliquer toutes ces normes
 
 - [PHP CS Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) est un outil très répandu et peut être intégré dans la plupart des IDE (voir [le plugin pour VS Code](https://github.com/junstyle/vscode-php-cs-fixer))
 - Les règles de formatage de votre éditeur de code (exemple sur PHPStorm)
@@ -278,52 +319,3 @@ Installation dans VS Code :
 ![Installer PHP CS Fixer](/assets/img/php/phpcsfixer-install-1.png)
 
 ![Installer PHP CS Fixer](/assets/img/php/phpcsfixer-install-2.png)
-
-# PHP Doc
-
-- Lire la documentation
-  - Le langage
-  - Les fonctions
-- Chercher dans php.net
-- Que faire si je ne comprends pas la doc ou ses exemples ?
-
-## La documentation
-
-- [La documentation PHP en Français](https://www.php.net/manual/fr/) pour **tout** savoir sur le langage, de sa syntaxe jusqu'aux extensions disponibles
-- La [référence des fonctions](https://www.php.net/manual/fr/funcref.php) pour trouver toute la documentation sur les fonctions utiles de PHP
-
-## Lire la documentation
-
-- Prenons [un exemple de fonction PHP : strtolower()](https://www.php.net/manual/fr/function.strtolower.php)
-  - Description : que fait-elle ?
-  - La signature de la fonction : Quels paramètres et que retourne-t-elle ?
-  - Liste de paramètres et valeur de retour : plus d'explications sur les paramètres et le retour
-  - Exemples : Concrètement, comment s'en servir ?
-  - Notes : les subtilités
-  - Voir aussi : les fonctions liées (similaires, opposées ou dans le même fonctionnement)
-
-### Aller plus loin avec la doc
-
-- La colonne de droite vous donne toutes les fonctions de la même section
-- Leurs noms sont "explicites" et peuvent aider à savoir ce qu'elles font
-- C'est l'un des principaux moyens de découverte de fonctions PHP (hors Stack Overflow)
-
-## Fouiller dans la documentation
-
-- Si vous savez le nom de la fonction que vous cherchez, le moteur de recherche est la solution
-- Sinon, il faut soit connaître la doc comme votre poche / avoir une idée de la section dont vous avez besoin, soit chercher sur un autre moteur de recherche
-
-### Exemples
-
-- Je cherche une fonction liée aux tableaux, je vais regarder la [page de la documentation sur les tableaux](https://www.php.net/manual/fr/ref.array.php)
-- Je cherche une fonction pour afficher la date du jour, [je fouille dans la doc liée aux fonctions de dates et heures](https://www.php.net/manual/fr/ref.datetime.php) ou je vais [demander à mon moteur de recherche](https://www.google.com/search?q=php+afficher+date+du+jour) qui me permettra
-  de [tomber sur la doc que je cherchais](https://www.php.net/manual/fr/function.date.php) (je peux aussi chercher au hasard dans le moteur de recherche de la documentation)
-- Je cherche comment remplacer du texte dans un tableau. Le plus simple (à moins de connaître la fonction) est [mon moteur de recherche](https://www.google.com/search?q=php+remplacer+du+texte+dans+un+tableau)
-
-## À quels sites puis-je faire confiance ?
-
-- La [doc officielle de php](https://www.php.net/manual/fr/)
-- La documentation de vos outils (la [doc de Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/) ou de [Symfony](https://symfony.com/doc/current/index.html) par exemple)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/php)
-- Des outils de centralisation de documentations, comme [devdocs.io](https://devdocs.io/)
-- Certains articles de blogs ou posts de forum _**récents**_
