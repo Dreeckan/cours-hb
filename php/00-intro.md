@@ -561,7 +561,9 @@ function recursive($argument = 1) {
 
 ## Interagir avec l'utilisateur
 
-[Les interactions avec les utilisateurs sont présentées dans une seconde vidéo](https://www.loom.com/share/1ad7cd0531014f6b8e0b7afc4a8fd775)
+En vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/1ad7cd0531014f6b8e0b7afc4a8fd775" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 - GET et POST permettent de récupérer des actions de l'utilisateur ponctuellement (soumission d'un formulaire, suivi d'un lien avec des paramètres, etc.)
 - Sessions et cookies, permettent de retenir des données à plus ou moins long terme
