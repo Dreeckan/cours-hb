@@ -115,7 +115,7 @@ Maintenant que nous avons deux pages, nous voulons naviguer de l'une à l'autre.
 
 ## 14. Mettre en place un menu
 
-A partir de cet exercice, nous allons commencer à manipuler les [variables superglobales](00-intro.md#interagir-avec-l-utilisateur). Dans un premier temps, facilitons la navigation de l'utilisateur.
+À partir de cet exercice, nous allons commencer à manipuler les [variables superglobales](00-intro.md#interagir-avec-l-utilisateur). Dans un premier temps, facilitons la navigation de l'utilisateur.
 
 - Créer une nouvelle branche (git) (nommée par exemple `ajout-session`) et y travailler
 - Ajouter un menu en haut de toutes les pages
