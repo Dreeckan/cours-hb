@@ -6,7 +6,7 @@ Pré-requis :
 
 ## 1. Utilisation des tableaux
 
-Posons des données de base et un premier HTML :
+Commençons par afficher une première page. Pour cela, il nous faut quelques données de base et une structure HTML basique :
 
 - Créer une page html (balise `<html>`, `<body>`) dans un fichier PHP (`index.php` par exemple)
 - y créer un tableau PHP contenant ces produits :
@@ -14,7 +14,7 @@ Posons des données de base et un premier HTML :
     - Bonnet en laine bio
     - Bonnet en laine et cachemire
     - Bonnet arc-en-ciel
-- afficher ces produits dans le html en utilisant une boucle (foreach conseillé), dans une balise HTML `<table>`
+- afficher ces produits dans le html en utilisant une boucle (`foreach` conseillé), dans une balise HTML `<table>`
 
 ## 2. Tableaux imbriqués
 
@@ -44,6 +44,8 @@ Une pensée pour les professionnels qui ont besoin de se couvrir la tête ! Pour
 
 ## 5. Manipulation des chaines de caractère et des variables
 
+Factorisons un peu notre code, en réduisant l'appel d'une ligne du tableau à l'appel d'une fonction.
+
 - Faire une fonction qui affiche un produit (va reprendre l'affichage d'une ligne du tableau)
 - Appeler cette fonction dans la boucle
 
@@ -60,7 +62,7 @@ Nous allons maintenant séparer notre code en plusieurs éléments, à thème. L
 ## 7. Utiliser git
 
 - Créer un projet sur Github ou Gitlab (invitez-moi sur le projet, mon pseudo est `Dreeckan`)
-- Créer votre fichier `.gitignore` et y ajouter 2 lignes : `.idea` et `.vscode`
+- Créer votre fichier `.gitignore` et y ajouter 2 lignes : `.idea` et `.vscode` (ce sont des fichiers liés aux IDE, il vaut mieux les ignorer au plus tôt)
 - Créer un premier commit, si ça n'est pas déjà fait
 - Pusher votre code sur Github ou Gitlab
 - Partager le lien (en privé sur Discord ou en m'invitant sur le projet)
@@ -86,13 +88,15 @@ L'idée est ici de regrouper la plus grande partie du code commun, pour l'inclur
 - Dans `footer.php`, ajouter le html commun à toutes nos pages se trouvant après le php
 - Inclure ce fichier `footer.php` dans la page de liste
 
+## Correction des exercices 1 à 10
+
 Si vous êtes arrivés jusqu'ici, sachez qu'[une correction vidéo des exercices 1 à 10 est disponible](https://www.loom.com/embed/26cb9035fe9743bcacdb62a32fd1d6be) :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/26cb9035fe9743bcacdb62a32fd1d6be" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 11. Création d'une page d'accueil
 
-L'idée est ici de créer une seconde page `list.php` qui va contenir notre tableau précédent, et 
+L'idée est ici de créer une seconde page `list.php` qui va contenir notre tableau précédent, et de transformer `index.php` en une page d'accueil avec une présentation plus accrocheuse.
 
 - Renommer le fichier contenant la liste des bonnets en `list.php` (surtout si, comme moi, vous l'avez appelé `ìndex.php`). On ne change rien dans ce fichier pour le moment, nous allons créer une nouvelle page d'accueil, séparée.
 - Créer un nouveau fichier `index.php` et y appeler nos header et footer avec `include` ou `include_once` (pour inclure les éléments communs à toutes les pages)
@@ -108,13 +112,13 @@ Maintenant que nous avons deux pages, nous voulons naviguer de l'une à l'autre.
 - Dans la page d'accueil, sous les 3 produits, ajouter un lien vers `list.php` (`Voir tous les produits`)
 - Le mettre en forme avec Bootstrap (en lui appliquant la classe des boutons par exemple)
 
-## 13. Faire relire votre code (Pull Request)
+### Faire relire votre code (Pull Request)
 
 - Créer une Pull Request (ou Merge Request si vous êtes sur Gitlab)
 - Mettez-vous en groupe (si ce n'est déjà fait) et invitez-vous sur vos projets respectifs
 - Relisez le code des autres et faites-leur vos retours sur leur code
 
-## 14. Mettre en place un menu
+## 13. Mettre en place un menu
 
 À partir de cet exercice, nous allons commencer à manipuler les [variables superglobales](00-intro.md#interagir-avec-l-utilisateur). Dans un premier temps, facilitons la navigation de l'utilisateur.
 
@@ -123,7 +127,7 @@ Maintenant que nous avons deux pages, nous voulons naviguer de l'une à l'autre.
 - Mettre un lien vers la page `index.php` et un autre vers `list.php`
 - Le mettre en forme avec Bootstrap (composant [navbar](https://getbootstrap.com/docs/5.1/components/navbar/) par exemple) 
 
-## 15. Créer une page de connexion
+## 14. Créer une page de connexion
 
 Créons une nouvelle page de connexion, avec un formulaire. Il s'agit maintenant de gérer le formulaire, en récupérant les données `$_POST` lors de sa soumission, et nous les retiendront en session plus tard.
 
@@ -133,7 +137,7 @@ Créons une nouvelle page de connexion, avec un formulaire. Il s'agit maintenant
 - Afficher le login de l'utilisateur dans le menu à la soumission du formulaire
 - Cette valeur (`$_POST['login']`) pouvant ne pas exister, bien s'assurer de son existence avant affichage
 
-## 16. Mise en place de la session
+## 15. Mise en place de la session
 
 Mettons en route la session et ajoutons-y le login de l'utilisateu lors de sa connexion.
 
@@ -141,7 +145,7 @@ Mettons en route la session et ajoutons-y le login de l'utilisateu lors de sa co
 - Lors de la connexion de l'utilisateur, mettre son login en session
 - Afficher ce login depuis la session, s'il est disponible
 
-## 17. Créer une page de déconnexion
+## 16. Créer une page de déconnexion
 
 Maintenant que l'on sait créer la session, voyons comment la détruire.
 
@@ -171,11 +175,13 @@ if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
 }
 ```
 
+## Correction des exercices 11 à 16
+
 La correction en vidéo :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/1b7b5f3e768e4e17921ccdfdfe1bb270" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-## 18. Vérification du mot de passe
+## 17. Vérification du mot de passe
 
 Validons maintenant les données entrées dans le formulaire, pour être dans des conditions plus proches de la réalité.
 
@@ -195,7 +201,7 @@ Validons maintenant les données entrées dans le formulaire, pour être dans de
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
-## 19. Créer un front controller
+## 18. Créer un front controller
 
 Le but du front controller est de réduire (encore) les répétitions de code, en gérant **tous** les éléments constants (inclusions, démarrage de session, etc.).
 
@@ -215,7 +221,7 @@ ob_start();
 echo ob_end_flush();
 ```
 
-## 20. Ajouter des éléments au panier
+## 19. Ajouter des éléments au panier
 
 Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire semblant de les acheter, plutôt)
 
@@ -232,7 +238,7 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
 ];
 ```
 
-## 21. Afficher les éléments du panier
+## 20. Afficher les éléments du panier
 
 - Créer une page `cart.php` (si ça n'est pas déjà fait) dans laquelle vous allez afficher le panier
 - Ajouter des boutons (liens) pour ajouter ou supprimer des éléments déjà présents
@@ -250,11 +256,13 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge) 
 
+## Correction des exercices 17 à 20
+
 La correction en vidéo :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/99b6ad7900ab4f23b632f43af20ef8c8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-## 22. Ajouter un formulaire de contact
+## 21. Ajouter un formulaire de contact
 
 - Trois champs :
   - Sujet (champ de type text)
@@ -280,7 +288,7 @@ La correction en vidéo :
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
-## 23. Utilisation des objets
+## 22. Utilisation des objets
 
 - Créer une nouvelle branche git `utilisation-objets`
 - Création d'une première classe `Beanie` qui va stocker nos données de bonnets
@@ -298,7 +306,7 @@ La correction en vidéo :
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge) 
 
-## 24. Liste et filtres
+## 23. Liste et filtres
 
 - Créer une nouvelle branche git `ajout-filtres`
 - Sur la liste des produits `list.php`, ajouter des filtres (formulaire, avec la `method` à `POST`) :
@@ -315,7 +323,7 @@ La correction en vidéo :
 - Les tailles et les matières vont être rangées dans des constantes de classe et ce sont ces constantes qu'on va appeler pour afficher le contenu de nos `<select>`, en appelant le tableau `Beanie::AVAILABLE_SIZES` par exemple.
 - Pour filtrer les éléments de notre tableau de données, on va utiliser la fonction `array_filter()` 
 
-## 25. Retenir les valeurs entrées dans notre formulaire
+## 24. Retenir les valeurs entrées dans notre formulaire
 
 - Dans le formulaire de filtre, quand une valeur est définie (par exemple : `$minPrice = 5`), on veut qu'elle apparaisse de nouveau dans le formulaire (par défaut, les valeurs sont remises à zéro). 
 
@@ -328,7 +336,7 @@ La correction en vidéo :
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
-## 26. Continuer la conversion en objets
+## 25. Continuer la conversion en objets
 
 - Créer les classes suivantes et les utiliser dans le code existant (dans tous les cas, je vous laisse libre pour les propriétés et les méthodes) :
   - `Contact` un objet de gestion des messages de contact (lui passer un tableau de paramètres dans le constructeur, pour faire le lien plus rapidement entre le formulaire et l'objet)
@@ -346,7 +354,7 @@ La correction en vidéo :
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
-## 27. Créer une base de données
+## 26. Créer une base de données
 
 - Ouvrir [PhpMyAdmin](http://localhost/phpmyadmin/)
 - Y créer une base de données `exo_beanies`
@@ -358,12 +366,12 @@ La correction en vidéo :
   - dans PhpMyAdmin, ajouter des données dans la table `beanie` (avec les valeurs de votre fichier `variables.php` par exemple)
   - écrire un script PHP `includes/fixtures.php` insérant les données
   
-## 28. Formulaire de contact, en BdD
+## 27. Formulaire de contact, en BdD
 
 - Modifier votre page de contact pour insérer les données du formulaire dans la table `contact`
   - N'insérer les données **que** si aucune erreur n'est remontée
   
-## 29. Utiliser les données de la BdD
+## 28. Utiliser les données de la BdD
 
 - Créer une classe `BeanieFactory` dans `classes/Factory/BeanieFactory.php` qui va avoir une méthode `create()` 
   - ayant pour paramètre un tableau (une ligne récupérée dans la BdD) 
