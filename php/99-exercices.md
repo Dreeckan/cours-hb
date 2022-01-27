@@ -185,7 +185,7 @@ Validons maintenant les données entrées dans le formulaire, pour être dans de
 - Vérifier également que le login n'est pas vide (et afficher un message d'erreur si c'est le cas)
 - Mettre en forme les messages avec Bootstrap (composant [alerts](https://getbootstrap.com/docs/5.1/components/alerts/) par exemple)
 
-## 19. Créer une PR (Pull Request)
+### Créer une PR (Pull Request)
 
 - Créer une Pull Request
 - Invitez quelqu'un.e qui n'est pas votre voisin.e sur votre projet
@@ -194,7 +194,7 @@ Validons maintenant les données entrées dans le formulaire, pour être dans de
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
-## 20. Créer un front controller
+## 19. Créer un front controller
 
 Le but du front controller est de réduire (encore) les répétitions de code, en gérant **tous** les éléments constants (inclusions, démarrage de session, etc.).
 
@@ -214,7 +214,7 @@ ob_start();
 echo ob_end_flush();
 ```
 
-## 21. Ajouter des éléments au panier
+## 20. Ajouter des éléments au panier
 
 Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire semblant de les acheter, plutôt)
 
@@ -231,7 +231,7 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
 ];
 ```
 
-## 22. Afficher les éléments du panier
+## 21. Afficher les éléments du panier
 
 - Créer une page `cart.php` (si ça n'est pas déjà fait) dans laquelle vous allez afficher le panier
 - Ajouter des boutons (liens) pour ajouter ou supprimer des éléments déjà présents
@@ -240,7 +240,7 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
 - Ajouter un bouton pour vider le panier
 - Le panier doit être disponible même si l'utilisateur n'est pas connecté
 
-## 23. Créer une PR (Pull Request)
+### Créer une PR (Pull Request)
 
 - Créez une Pull Request
 - Invitez quelqu'un.e sur votre projet
@@ -253,7 +253,7 @@ La correction en vidéo :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/99b6ad7900ab4f23b632f43af20ef8c8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-## 24. Ajouter un formulaire de contact
+## 22. Ajouter un formulaire de contact
 
 - Trois champs :
   - Sujet (champ de type text)
@@ -270,7 +270,7 @@ La correction en vidéo :
 - Il faut passer les données en POST dans votre formulaire
 - Vous pouvez ajouter une validation au niveau du HTML, mais il faudra quand même faire la validation PHP (il est facile de contourner la validation HTML) 
 
-## 26. Pull Request
+### Pull Request
 
 - Créez une Pull Request
 - Invitez quelqu'un.e sur votre projet
@@ -279,7 +279,7 @@ La correction en vidéo :
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
-## 27. Utilisation des objets
+## 23. Utilisation des objets
 
 - Créer une nouvelle branche git `utilisation-objets`
 - Création d'une première classe `Beanie` qui va stocker nos données de bonnets
@@ -288,7 +288,7 @@ La correction en vidéo :
 - Remplacer les tableaux dans `$mesProduits` par des objets (`$mesProduits` devient alors un tableau contenant des objets `Beanie`)
 - Mettre à jour nos différentes pages en conséquence 
 
-## 28. Pull Request
+### Pull Request
 
 - Créez une Pull Request
 - Invitez quelqu'un.e sur votre projet
@@ -297,7 +297,7 @@ La correction en vidéo :
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge) 
 
-## 29. Liste et filtres
+## 24. Liste et filtres
 
 - Créer une nouvelle branche git `ajout-filtres`
 - Sur la liste des produits `list.php`, ajouter des filtres (formulaire, avec la `method` à `POST`) :
@@ -314,11 +314,11 @@ La correction en vidéo :
 - Les tailles et les matières vont être rangées dans des constantes de classe et ce sont ces constantes qu'on va appeler pour afficher le contenu de nos `<select>`, en appelant le tableau `Beanie::AVAILABLE_SIZES` par exemple.
 - Pour filtrer les éléments de notre tableau de données, on va utiliser la fonction `array_filter()` 
 
-## 30. Retenir les valeurs entrées dans notre formulaire
+## 25. Retenir les valeurs entrées dans notre formulaire
 
 - Dans le formulaire de filtre, quand une valeur est définie (par exemple : `$minPrice = 5`), on veut qu'elle apparaisse de nouveau dans le formulaire (par défaut, les valeurs sont remises à zéro). 
 
-## 31. Pull Request
+### Pull Request
 
 - Créez une Pull Request
 - Invitez quelqu'un.e sur votre projet
@@ -327,7 +327,7 @@ La correction en vidéo :
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
-## 32. Continuer la conversion en objets
+## 26. Continuer la conversion en objets
 
 - Créer les classes suivantes et les utiliser dans le code existant (dans tous les cas, je vous laisse libre pour les propriétés et les méthodes) :
   - `Contact` un objet de gestion des messages de contact (lui passer un tableau de paramètres dans le constructeur, pour faire le lien plus rapidement entre le formulaire et l'objet)
@@ -336,7 +336,7 @@ La correction en vidéo :
   - `Page` un objet pour les informations d'une page
 - Si du code est répété, créer un/des traits pour factoriser (les ranger dans un sous-dossier de `classes`)
 
-## 33. Pull Request
+### Pull Request
 
 - Créez une Pull Request
 - Invitez quelqu'un.e sur votre projet
@@ -345,7 +345,7 @@ La correction en vidéo :
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
-## 34. Créer une base de données
+## 27. Créer une base de données
 
 - Ouvrir [PhpMyAdmin](http://localhost/phpmyadmin/)
 - Y créer une base de données `exo_beanies`
@@ -357,12 +357,12 @@ La correction en vidéo :
   - dans PhpMyAdmin, ajouter des données dans la table `beanie` (avec les valeurs de votre fichier `variables.php` par exemple)
   - écrire un script PHP `includes/fixtures.php` insérant les données
   
-## 35. Formulaire de contact, en BdD
+## 28. Formulaire de contact, en BdD
 
 - Modifier votre page de contact pour insérer les données du formulaire dans la table `contact`
   - N'insérer les données **que** si aucune erreur n'est remontée
   
-## 36. Utiliser les données de la BdD
+## 29. Utiliser les données de la BdD
 
 - Créer une classe `BeanieFactory` dans `classes/Factory/BeanieFactory.php` qui va avoir une méthode `create()` 
   - ayant pour paramètre un tableau (une ligne récupérée dans la BdD) 
@@ -370,7 +370,7 @@ La correction en vidéo :
 - Modifier vos pages pour récupérer les données depuis la table `beanie`, plutôt qu'une variable
   - Adapter le code des différentes pages pour utiliser la BdD plutôt que le tableau (fixe) qu'on utilisait jusqu'à présent
 
-## 37. Pull Request
+### Pull Request
 
 - Créez une Pull Request
 - Invitez quelqu'un.e sur votre projet
