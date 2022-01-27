@@ -313,5 +313,5 @@ $id = $connection->lastInsertId();
 ## Exercices
 
 Pour vous entrainer à manipuler PDO, utiliser
-- les [exercices sur notre site de bonnets](99-exercices.md) (à partir de l'exercice 34)
-- le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/#8-base-de-donn%C3%A9es). Les exercices à partir du numéro 8 sont dédiés à cela.
+- les [exercices sur notre site de bonnets](90-exercices.md) (à partir de l'exercice 34)
+- le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/). Les [exercices à partir du numéro 26](90-exercices.md) sont dédiés à cela.

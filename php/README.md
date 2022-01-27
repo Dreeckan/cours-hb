@@ -20,6 +20,6 @@ Utiliser une base de données MySQL grâce à l'objet PDO de PHP
 
 Les grands principes des API REST (voir Symfony pour la mise en place rapide d'une API REST avec Api Platform)
 
-## [Exercices](99-exercices.md)
+## [Exercices](90-exercices.md)
 
 Des exercices à pratiquer tout au long de ce cours
