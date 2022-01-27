@@ -36,10 +36,10 @@ On va faire ressortir visuellement les prix de nos produits, et encore plus ceux
 
 ## 4. Fonctions
 
-Une pensée pour les professionnels qui ont besoin de se couvrir ! Pour eux, il faudrait afficher les prix sans TVA.
+Une pensée pour les professionnels qui ont besoin de se couvrir la tête ! Pour eux, il faudrait afficher les prix sans TVA.
 
 - Nos prix étaient ici TTC (incluaient la TVA), nous allons faire une fonction calculant le montant hors taxes d'un produit.
-- Afficher les prix HT dans la colonne avant celle des prix TTC
+- Afficher les prix HT dans une nouvelle colonne avant celle des prix TTC
 
 ## 5. Manipulation des chaines de caractère et des variables
 
