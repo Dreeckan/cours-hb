@@ -40,6 +40,7 @@ Une pensée pour les professionnels qui ont besoin de se couvrir la tête ! Pour
 
 - Nos prix étaient ici TTC (incluaient la TVA), nous allons faire une fonction calculant le montant hors taxes d'un produit.
 - Afficher les prix HT dans une nouvelle colonne avant celle des prix TTC
+- La TVA est de 20% sur les bonnets
 
 ## 5. Manipulation des chaines de caractère et des variables
 
