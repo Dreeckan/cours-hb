@@ -107,7 +107,7 @@ Maintenant que nous avons deux pages, nous voulons naviguer de l'une à l'autre.
 - Dans la page d'accueil, sous les 3 produits, ajouter un lien vers `list.php` (`Voir tous les produits`)
 - Le mettre en forme avec Bootstrap (en lui appliquant la classe des boutons par exemple)
 
-## 13. Faire relire votre code
+## 13. Faire relire votre code (Pull Request)
 
 - Créer une Pull Request (ou Merge Request si vous êtes sur Gitlab)
 - Mettez-vous en groupe (si ce n'est déjà fait) et invitez-vous sur vos projets respectifs
@@ -222,7 +222,7 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
 - Gérer l'ajout au panier d'un élément (passer un identifiant (à ajouter dans la liste des produits) qui sera récupéré avec `$_GET`)
 - Les éléments doivent être présents dans la session
 
-**Exemple de format de `$_SESSION['cart']`**
+**Exemple de format (non obligatoire) de `$_SESSION['cart']`**
 
 ```php
 [
