@@ -23,3 +23,7 @@ Les grands principes des API REST (voir Symfony pour la mise en place rapide d'u
 ## [Exercices](90-exercices.md)
 
 Des exercices à pratiquer tout au long de ce cours
+
+## [Projet : montage d'ordinateur](91-projet.md)
+
+Un projet de montage d'ordinateurs pour une entreprise spécialisée
