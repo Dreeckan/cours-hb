@@ -5,6 +5,8 @@
 
 ## Une classe
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/6fca744165694a70bd531306742ad942" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 En PHP, une classe se nomme en PascalCase, est l'unique contenu d'un fichier (par convention, ça n'est pas obligatoire) et peut avoir :
 
 - des constantes
@@ -61,6 +63,10 @@ $beanie->getMaterial();
 
 ## Utiliser nos classes
 
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/0da07d720ac748278bc68214d3c92ebc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 En PHP, par défaut, les classes ne sont pas chargées automatiquement, il faut les charger nous-même (soit avec `require`/`require_once`, soit avec un autoloader qui le fera pour nous).
 
 ```php
@@ -74,12 +80,6 @@ spl_autoload_register(function ($class) {
     require_once "classes/$class.php";
 });
 ```
-
-## Visibilité des propriétés et méthodes
-
-- `public` : la propriété / méthode est utilisable en dehors de l'objet
-- `private` : la propriété / méthode **n'est pas** utilisable en dehors de l'objet
-- `protected` : la propriété / méthode n'est utilisable **que** par les classes enfants (voir section sur l'héritage)
 
 ## Documenter ses classes
 
@@ -107,6 +107,10 @@ class Beanie
 
 ## `$this` : pseudo-variable, vraie utilité
 
+En vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/7f6a2fce59f349e891e4f5f4970f4696" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 `$this` permet d'accéder à l'objet en cours. Toujours utile pour le mettre à jour !
 Il est nécessaire pour assurer l'encapsulation de nos propriétés (on ne les modifie jamais directement, mais toujours *via* des méthodes).
 
@@ -124,6 +128,10 @@ class Beanie
 ```
 
 ## Constructeur
+
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/aaccabba313c4c9d89846e058161249d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 On peut définir des valeurs par défaut (ou d'initialisation) pour les propriétés d'un objet
 
@@ -143,6 +151,10 @@ class Beanie
 
 ## Constantes de classe
 
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/5f6d80ecbe3c443a80164f0852deab58" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 La [documentation sur les constantes](https://www.php.net/manual/fr/language.oop5.constants.php)
 
 ```php
@@ -159,6 +171,10 @@ var_dump(Beanie::AVAILABLE_SIZES);
 ```
 
 ## $this ou self ?
+
+En vidéo : 
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/c8e3bd5d9cae40048161b17e8c1749d6" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 - Les deux s'utilisent dans la classe,
 - `$this` si vous êtes dans le contexte d'un objet instancié ("j'ai des propriétés/méthodes, je vais m'en servir")
@@ -184,6 +200,10 @@ class Beanie
 ```
 
 ## Héritage
+
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/aab9a13a3af34b149c43515814fe8820" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 [Des types de bonnets sous-côtés](https://blog.delusionmfg.com/12-types-of-beanies-you-have-to-check-out)
 
@@ -212,6 +232,14 @@ class EarflapBeanie extends Beanie
 ```
 
 ## Visibilité
+
+En vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/23844c48057e457f88e355fdfe15dd41" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+- `public` : la propriété / méthode est utilisable en dehors de l'objet
+- `private` : la propriété / méthode **n'est pas** utilisable en dehors de l'objet
+- `protected` : la propriété / méthode n'est utilisable **que** par les classes enfants (voir section sur l'héritage)
 
 ```php
 class Beanie 

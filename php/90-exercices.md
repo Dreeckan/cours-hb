@@ -165,6 +165,10 @@ En vidéo :
 - Mettre un lien vers la page `index.php` et un autre vers `list.php`
 - Le mettre en forme avec Bootstrap (composant [navbar](https://getbootstrap.com/docs/5.1/components/navbar/) par exemple) 
 
+Correction vidéo :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/e4796b31a58947d48c6d1ab3e08f4ac7" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## 14. Créer une page de connexion
 
 Créons une nouvelle page de connexion, avec un formulaire. Il s'agit maintenant de gérer le formulaire, en récupérant les données `$_POST` lors de sa soumission, et nous les retiendront en session plus tard.
@@ -174,6 +178,10 @@ Créons une nouvelle page de connexion, avec un formulaire. Il s'agit maintenant
 - Le mettre en forme avec Bootstrap
 - Afficher le login de l'utilisateur dans le menu à la soumission du formulaire
 - Cette valeur (`$_POST['login']`) pouvant ne pas exister, bien s'assurer de son existence avant affichage
+
+Correction des exercices 13 et 14 :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/4d59234c41014fb59cfed2dfef982aba" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 15. Mise en place de la session
 
@@ -213,11 +221,10 @@ if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
 }
 ```
 
-## Correction des exercices 11 à 16
+Correction des exercices 15 et 16 en vidéo :
 
-La correction en vidéo :
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/40eb9f646d0d432facb212ff04491be2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/1b7b5f3e768e4e17921ccdfdfe1bb270" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 17. Vérification du mot de passe
 
