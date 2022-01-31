@@ -274,7 +274,7 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
 - Gérer l'ajout au panier d'un élément (passer un identifiant (à ajouter dans la liste des produits) qui sera récupéré avec `$_GET`)
 - Les éléments doivent être présents dans la session
 
-**Exemple de format (non obligatoire) de `$_SESSION['cart']`**
+### Exemple de format (non obligatoire) de `$_SESSION['cart']`
 
 ```php
 [
