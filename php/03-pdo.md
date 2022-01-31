@@ -12,16 +12,13 @@ Il offre différentes fonctionnalités, dont :
 
 PDO sert de base à de nombreux <abbr title="Object-Relational Mapping">ORM</abbr>, tels que Doctrine, que vous verrez dans [la partie consacrée à Symfony](../symfony/). 
 
-### Quels <abbr title="Système de Gestion de Base de Données">SGBD</abbr> utiliser avec PDO ?
-  
+On peut l'utiliser avec les <abbr title="Système de Gestion de Base de Données">SGBD</abbr> suivants (entre autre) :
 - Mysql (l'un des plus courants)
+- PostgreSQL (une excellente référence)
 - Oracle 
-- PostgreSQL
 - et bien d'autres
 
-### Principes
-
-PDO offre des classes pour gérer :
+Dans les faits, PDO offre des classes pour gérer :
 - la connexion à la BdD
 - la préparation et l'envoi de requêtes SQL
 - la gestion des transactions
@@ -36,11 +33,20 @@ Pour se connecter, on crée (en général), un fichier spécifique, qu'on appell
 ```php
 <?php
 // Ici, adapter les valeurs de dbname et port à votre configuration
+// dbname contient le nom de la BdD à utiliser
+// port est le port à utiliser (3306 par défaut)
+// host est le nom d'hôte de notre serveur de BdD
+// (127.0.0.1 ou localhost, les deux sont équivalents)
 $dsn = 'mysql:dbname=cours;port=3306;host=127.0.0.1';
 $user = 'root'; // Utilisateur par défaut
 $password = ''; // Par défaut, pas de mot de passe sur Wamp
 
+// Try nous permet d'attraper une exception
+// catch (il peut y en avoir plusieurs) d'exécuter d'autres instructions 
+// quand une erreur de type PDOException est levée
 try {
+    // On crée une connexion (objet PDO) à norte BdD,
+    // nous pourrons nous en servir dans la suite du programme
     $connection = new PDO($dsn, $user, $password, [
         // Définition du mode d'erreur : on renvoie une exception 
         // dès qu'une erreur se produit dans les requêtes
@@ -49,6 +55,7 @@ try {
         // On peut les récupérer sous la forme :
         // - D'un tableau associatif avec PDO::FETCH_ASSOC
         // - D'un objet avec PDO::FETCH_OBJ
+        // - D'injections dans un objet avec PDO::FETCH_INTO
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
 } catch (PDOException $e) {
@@ -301,14 +308,48 @@ while($result = $pdoStatement->fetch()) {
 $stmt = $connection->prepare("INSERT INTO truc (bidule, machin) VALUES(:bidule, :machin)");
 $isDone = $stmt->execute();
 
-// Ici, on récupère l'id du dernier élément inséré dans truc 
+// Ici, on récupère l'id du dernier élément inséré dans la table truc 
 $id = $connection->lastInsertId();
 ```
 
-## PHPMyAdmin et la console MySQL de Wamp
+## Remplir des objets avec nos données
 
-- [Un lien pour tester si Wamp est lancé](http://localhost/phpmyadmin/db_structure.php?server=1&db=cours)
-- Pour voir notre base de données et la manipuler
+Avec PDO, vous pouvez remplir directement vos objets avec les constantes `PDO::FETCH_CLASS` ou `PDO::FETCH_INTO`. Dans les deux cas, votre objet PHP sera rempli avec les données récupérées en base !
+Le premier crée une instance de la classe demandée, quoiqu'il arrive. Le second met à jour une instance existante.
+
+```php
+require_once("classes/User.php");
+$sth = $db->prepare("SELECT * FROM user WHERE id = 1");
+
+// On demande à PDO de nous créer un User
+// avec ce qu'il va récupérer en BdD
+$sth->setFetchMode( PDO::FETCH_CLASS, User::class);
+$sth->execute();
+// On a une nouvelle instance de notre classe User
+// avec ses données remplies.
+$user = $sth->fetch();
+
+$user = new User();
+$sth->setFetchMode( PDO::FETCH_INTO, $user);
+$sth->execute();
+// On a rempli les données de notre user
+// à partir des données en base.
+$user = $sth->fetch();
+```
+
+:warning: `PDO::FETCH_CLASS` appelle le constructeur **après** avoir rempli les données de l'objet. 
+
+Pour utiliser les termes de la documentation :
+
+> Lorsque des objets sont récupérés via PDO::FETCH_CLASS, les propriétés de l'objet sont assignées en premier, puis le constructeur de la classe est appelé. Si PDO::FETCH_PROPS_LATE est également donné, cet ordre est inversé, c'est-à-dire d'abord le constructeur est appelé, et ensuite les propriétés sont assignées. 
+
+Si cela pose problème, vous pouvez ajouter un drapeau (flag) supplémentaire :
+
+```php
+// On peut utiliser plusieurs flags pour plus d'options
+$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, User::class);
+$user = $sth->fetch();
+```
 
 ## Exercices
 
