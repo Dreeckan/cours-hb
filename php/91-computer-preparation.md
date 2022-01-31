@@ -27,8 +27,11 @@ On considère qu'un ordinateur qui doit être monté doit avoir les pièces suiv
 - alimentation (1)
 - disque dur / SSD (au moins 1)
 
-C'est un site réservé à ces deux équipes. 
+C'est un site réservé à ces deux équipes et personne ne doit pouvoir accéder à ses pages sans être identifié. 
 Chaque équipe aura un identifiant et un mot de passe différent pour se connecter et utiliser des fonctionnalités différentes.
+
+Pour ce site, il suffira d'intégrer des styles bootstrap, pas besoin d'ajouter des éléments de style supplémentaire. Le but est d'avoir un projet fonctionnel et le client reviendra éventuellement vers nous plus tard, pour améliorer le design du site.
+
 
 
 ## Partie Concepteur
@@ -38,6 +41,7 @@ Les concepteurs auront accès à un ensemble de fonctionnalités :
 - Ajouter les pièces et gérer leur stock
 - Créer ou modifier de nouveaux modèles (ordinateur portable ou tour)
 - Répondre aux commentaires des monteurs
+
 
 ### Statistiques
 
@@ -49,12 +53,14 @@ Il aura également un lien vers les interfaces de gestion des modèles (liste co
 
 Il aura également un lien vers les interfaces de gestion des pièces (liste complète des pièces, avec possibilité de les modifier/archiver et d'en créer de nouvelles) et un lien pour entrer des pièces dans le stock.
 
-### Gestion des stocks de pièces
 
-#### Lister les pièces en stock
+### Gestion des pièces
+
+#### Lister les pièces
 
 Cette interface affiche d'abord un tableau listant toutes les pièces, avec les éléments suivants :
 - nom de la pièce
+- marque
 - quantité en stock
 - prix
 - nombre de modèles créés avec cette pièce
@@ -63,11 +69,14 @@ Cette interface affiche d'abord un tableau listant toutes les pièces, avec les 
 Cette liste peut être triée par :
 - quantité en stock
 - nom
+- marque
 - prix
 - date d'ajout
 - modèles créés avec cette pièce
 
 Cette liste peut être filtrée par :
+- en stock (case à cochée, cochée par défaut. Si cochée n'affiche que les pièces dont le stock n'est pas vide)
+- marque
 - prix (entre un minimum et un maximum)
 - catégorie(s) (processeur, carte graphique, etc.)
 - les types d'ordinateur compatibles (tour ou portable)
@@ -112,23 +121,27 @@ Cette interface affiche d'abord un tableau listant tous les modèles, avec les �
 - nom du modèle
 - nombre d'ordinateurs créés avec ce modèle
 - prix total des pièces du modèle
+- quantité en stock
+- date d'ajout
+- nombre de modèles créés avec cette pièce
+- nombre de commentaires (avec une indication si des commentaires n'ont pas été lus)
 
 Cette liste peut être triée par :
 - quantité en stock
 - nom
 - prix
 - date d'ajout
-- modèles créés avec cette pièce
+- nombre de modèles créés avec cette pièce
 
 Cette liste peut être filtrée par :
 - prix (entre un minimum et un maximum)
 - catégorie(s) (processeur, carte graphique, etc.)
 - commentaires non lus (si cochée, n'affiche que les modèles avec des commentaires non lus par les concepteurs)
 
-Des actions sont possibles sur les pièces, avec certaines restrictions :
+Des actions sont possibles sur les modèles, avec certaines restrictions :
 - Suppression / archivage :
-  - une pièce qui a déjà été utilisée dans un modèle ne peut pas être supprimée
-  - une pièce qui a déjà été utilisée dans un modèle peut être archivée (elle apparait dans l'interface, mais ne peut plus être modifiée et disparait quand son stock atteint 0)
+  - un modèle qui a déjà été monté ne peut être supprimé
+  - un modèle qui a déjà été monté peut être archivée (il apparait dans l'interface, mais ne peut plus être modifié et l'information est clairement indiquée aux monteurs, afin qu'ils n'en montent plus)
 - modifier
 - modifier le stock
 
@@ -159,6 +172,8 @@ Une page de détails sur un modèle doit donner rapidement les informations néc
 Sous ces informations, afficher un formulaire de commentaire et la liste des commentaires précédents (le plus récent en haut), avec la date et le nom d'utilisateur l'ayant créé.
 Ouvrir cette page marque les commentaires comme lus par l'équipe concepteur.
 
+
+
 ## Partie Monteur
 
 Les monteurs auront accès à un ensemble de fonctionnalités :
@@ -182,3 +197,18 @@ Une liste des modèles sous forme de tableau, indiquant sur chaque modèle :
 Une page de détails sur un modèle doit donner rapidement les informations nécessaires au montage (nom et type de la pièce sont les informations importantes).
 Sous ces informations, afficher un formulaire de commentaire et la liste des commentaires précédents (le plus récent en haut), avec la date et le nom d'utilisateur l'ayant créé.
 Ouvrir cette page marque les commentaires comme lus par l'équipe montage.
+
+
+## Critères d'acceptation (notation)
+
+Pour valider le rendu, voici ce qui est attendu par votre chef de projet, pour chacun d'entre vous : 
+
+- Création/manipulation d'au moins une classe/objet
+- Création de requêtes de BdD (au moins une insertion, une mise à jour et une récupération de données)
+- Manipulation d'un formulaire complexe (filtre, création/modification d'un objet, etc.)
+- Respect des normes PSR (1, 12 et 4) pour tout le code
+- Chaque ticket fait l'objet d'une <abbr title="Pull Request">PR</abbr>
+
+Éléments communs à fournir :
+- Un schéma de base de données
+- un dump de la base de données finale
