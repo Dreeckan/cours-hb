@@ -27,3 +27,7 @@ Des exercices à pratiquer tout au long de ce cours
 ## [Projet - montage d'ordinateur](91-computer-preparation.md)
 
 Un projet de montage d'ordinateurs pour une entreprise spécialisée
+
+## [Projet - JdR](92-jdr.md)
+
+Un projet de gestion de fiches de personnage de Jeux de Rôle
