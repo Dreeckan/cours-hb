@@ -51,10 +51,11 @@ try {
         // Définition du mode d'erreur : on renvoie une exception 
         // dès qu'une erreur se produit dans les requêtes
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        // On défini sous quel format on récupère les données de la base
+        // On définit sous quel format on récupère les données de la base
         // On peut les récupérer sous la forme :
         // - D'un tableau associatif avec PDO::FETCH_ASSOC
         // - D'un objet avec PDO::FETCH_OBJ
+        // - D'un objet utilisant une de vos classes avec PDO::FETCH_CLASS
         // - D'injections dans un objet avec PDO::FETCH_INTO
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
@@ -68,7 +69,9 @@ try {
 - La [documentation officielle sur la classe PDOException](https://www.php.net/manual/fr/class.pdoexception.php)
 - Le [chapitre de la documentation sur les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
 
-Avec l'initialisation de la connexion ci-dessus, les requêtes renvoient une exception en cas de soucis. Si vous changez le paramètre `PDO::ATTR_ERRMODE`, les méthodes exécutant des requêtes peuvent renvoyer `false` si la requête SQL s'est mal passée. Pour récupérer le détail de l'erreur, vous pouvez utilise la méthode `errorInfo()` de PDO :
+:warning: Avec l'initialisation de la connexion ci-dessus, les requêtes renvoient une exception en cas de soucis et vous n'aurez pas besoin de ce qui suit. 
+
+Si vous changez le paramètre `PDO::ATTR_ERRMODE`, les méthodes exécutant des requêtes peuvent renvoyer `false` si la requête SQL s'est mal passée. Pour récupérer le détail de l'erreur, vous pouvez utilise la méthode `errorInfo()` de PDO :
 
 ```php
 if (!$isDone) {
@@ -286,7 +289,7 @@ $sql = "SELECT * FROM contact";
 $pdoStatement = $connection->prepare($sql);
 $success = $pdoStatement->execute();
 
-$results = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+$results = $pdoStatement->fetchAll();
 exit(var_dump($results));
 ```
 
@@ -354,5 +357,5 @@ $user = $sth->fetch();
 ## Exercices
 
 Pour vous entrainer à manipuler PDO, utiliser
-- les [exercices sur notre site de bonnets](90-exercices.md) (à partir de l'exercice 34)
+- les [exercices sur notre site de bonnets](90-exercices.md#_26-creer-une-base-de-donnees) (à partir de l'exercice 26)
 - le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/). Les [exercices à partir du numéro 26](90-exercices.md) sont dédiés à cela.
