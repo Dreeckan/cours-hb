@@ -9,6 +9,9 @@ Nous allons mettre en place un projet Symfony, rendu sur Github/Gitlab, en utili
     - vérifier que le code écrit répond à la demande
     - vérifier que le code écrit correspond aux normes de codage défini au sein de l'équipe (et peut permettre de les définir)
 
+Ce projet est prévu pour une équipe de 3 à 4 personnes.
+
+
 ## La demande client
 
 Nous avons reçu la demande d'un client et notre équipe commerciale a décidé d'accepter le projet. Il convient maintenant de répartir le travail au sein de votre équipe et de le réaliser. Il doit être mis en place avec le framework Symfony et le design est à votre convenance, mais doit rester au plus simple.

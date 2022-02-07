@@ -81,6 +81,15 @@ spl_autoload_register(function ($class) {
 });
 ```
 
+Si vous utilisez un Mac, avec Mamp, utilisez plutôt ce code : 
+
+```php
+spl_autoload_register(function ($class) {
+    $class = str_replace('\\', '/', $class);
+    require_once "classes/$class.php";
+});
+```
+
 ## Documenter ses classes
 
 Les annotations et le typage sont très utiles pour définir les types des propriétés, paramètres et valeurs de retour. Hélas, en PHP 7, nous ne pouvons pas toujours typer directement les propriétés. Nous sommes obligés d'utiliser les annotations pour le faire (c'est disponible à partir de PHP 7.4 seulement).
@@ -205,6 +214,10 @@ En vidéo :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/aab9a13a3af34b149c43515814fe8820" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+On parle d'héritage quand une classe hérite d'une autre. C'est à dire qu'elle en récupère l'ensemble des propriétés et méthodes, à conditions qu'elles aient une visibilité `public` ou `protected`.
+
+:warning: En Php, une classe ne peut héritée que d'une classe.
+
 [Des types de bonnets sous-côtés](https://blog.delusionmfg.com/12-types-of-beanies-you-have-to-check-out)
 
 ```php
@@ -291,24 +304,32 @@ $foo = new Foo();
 $bar = new Bar();
 var_dump($foo instanceof Foo); // Bool (true)
 var_dump($foo instanceof Bar); // Bool (true)
+var_dump($foo instanceof Test); // Bool (false)
 ```
 
-## Méthodes abstraites
+## Classes et méthodes abstraites
 
 [La documentation](https://www.php.net/manual/fr/language.oop5.abstract.php)
 
+Une classe abstraite sert à définir un ensemble de propriétés et de méthodes, qui seront utilisables dans les classes filles. Cette classe ne peut être instanciée (on ne peut pas faire un `new`). 
+
+L'intérêt est de regrouper des propriétés et méthodes communes, sans permettre d'instancier la classe. On ne peut par exemple pas faire un `new Animal` dans l'exemple ci-dessous. Il faut instancier les classes filles à la place.
+
+Une méthode abstraite peut être définie dans une classe abstraite. On écrit le mot-clé `abstract` suivi de la signature de la fonction.
+Son but est de forcer l'implémentation de la méthode dans les classes filles (qui devront donner un corps à la méthode).
+
 ```php
-abstract class Test 
+abstract class Animal 
 {
-    abstract public function getTest();
+    abstract public function call(): string;
 }
 
-class Foo extends Test
+class Dog extends Animal
 {
-    // Pour étendre Test, Foo DOIT avoir une méthode getTest() définie
-    public function getTest()
+    // Pour étendre Animal, Dog DOIT avoir une méthode call() définie
+    public function call(): string
     {
-        return 'ok';
+        return 'Waf';
     }
 }
 ```
@@ -316,6 +337,11 @@ class Foo extends Test
 ## Interface
 
 [La documentation](https://www.php.net/manual/fr/language.oop5.interfaces.php)
+
+Une interface permet de forcer l'implémentation de certaines méthodes dans un objet. C'est un contrat, permettant d'assurer que certaines méthodes sont définies et implémentées dans une ou plusieurs classes.
+
+:warning: Une classe peut implémenter plusieurs interfaces.
+:warning: Une interface peut étendre un ou plusieurs interfaces.
 
 ```php
 interface Test
@@ -335,38 +361,35 @@ class Foo implements Test, Test2, Test3
 
 ## Traits
 
-- [La documentation](https://www.php.net/manual/fr/language.oop5.traits.php)
-- Fonctionne comme une classe
-- Regroupe des propriétés et des méthodes
-- S'utilise avec `use` (oui, encore !) pour **inclure** le code du trait dans une classe
+[La documentation](https://www.php.net/manual/fr/language.oop5.traits.php)
+
+Un trait fonctionne comme une classe et permet de regrouper des propriétés et des méthodes qui vont ête utilisées dans d'autres classes. Un trait ne peut pas être instancié. Il s'utilise avec `use` (oui, encore !) pour **inclure** le code du trait dans une classe.
 
 ```php
-// classes/Traits/TestTrait.php
-namespace Traits;
 trait TestTrait 
 {
-    protected $test;
-    protected function getTest()
+    private $test;
+    private function getTest()
     {
         // ...
     }
 }
 
-// classes/Test.php
-use Traits\TestTrait;
 class Test
 {
-    use TestTrait;
+    use TestTrait; 
     use TestTrait2;
+    // Ici, on peut utiliser $this->test et $this->getTest(),
+    // meme s'ils sont privés !  
 }
 ```
 
 ## Espaces de nom
 
-Le nommage d'une classe (on parle de nom complet ou <abbr title="Fully Qualified Class Name">FQCN</abbr>) ne se limite pas au seul nom de la classe. Le <abbr title="Fully Qualified Class Name">FQCN</abbr> contient également l'espace de nom de la classe, c’est-à-dire un éventuel préfixe, et le dossier où la classe se trouve.
+Le nommage d'une classe (on parle de nom complet ou <abbr title="Fully Qualified Class Name">FQCN</abbr>) ne se limite pas au seul nom de la classe. Le <abbr title="Fully Qualified Class Name">FQCN</abbr> contient également l'espace de nom de la classe, c’est-à-dire un éventuel préfixe et le dossier où la classe se trouve.
 Ce <abbr title="Fully Qualified Class Name">FQCN</abbr> se base sur un dossier (dans notre exemple `classes`).
 
-Imaginons l'organisation de fichiers suivantes :
+Imaginons l'organisation suivante :
 
 ```
 classes/
@@ -389,6 +412,7 @@ trait TestTrait
 {
 // ...
 }
+
 // classes/Traits/Truc/TestTrait2.php
 namespace Traits\Truc;
 
