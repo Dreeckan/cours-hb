@@ -92,10 +92,41 @@ Des actions sont possibles sur les pièces, avec certaines restrictions :
 
 Un formulaire permettant de modifier les propriétés de la pièce :
 - son nom
+- sa marque
 - sa description (optionnelle)
 - ses catégories associées
 - son prix d'achat (HT)
 - les types d'ordinateur compatibles (tour ou portable)
+
+Chaque type de pièces a également des caractéristiques spécifiques :
+- Carte mère
+  - Socket / chipset
+  - Format (ATX, micro-ATX, etc.)
+- Processeur
+  - Fréquence CPU (en GHz)
+  - Nombre de cœurs
+  - Chipsets compatibles
+- Mémoire vive
+  - Capacité (en Go)
+  - Nombre de barrettes
+  - Type + Fréquence + norme mémoire (exemple : DDR4 3200 MHz PC4-25600)
+- Carte graphique
+  - Chipset 
+  - Mémoire (en Go)
+- Clavier
+  - Avec ou sans fil
+  - Avec ou sans pavé numérique
+  - Type de touches
+- Souris / pad
+  - Avec ou sans fil
+  - Nombre de touches
+- Écran
+  - Taille de la diagonale
+- Alimentation
+  - Puissance (en W)
+- Disque dur / SSD
+  - Type (SSD ou disque dur)
+  - Capacité (en Go)
 
 :warning: Une pièce n'est plus modifiable si elle est archivée.
 
