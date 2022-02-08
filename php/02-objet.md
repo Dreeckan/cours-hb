@@ -142,18 +142,36 @@ En vidéo :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/aaccabba313c4c9d89846e058161249d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-On peut définir des valeurs par défaut (ou d'initialisation) pour les propriétés d'un objet
+On peut définir des valeurs par défaut (ou d'initialisation) pour les propriétés d'un objet dans le constructeur ou dans les propriétés. Les deux sont équivalents la plupart du temps, mais pas pour des valeurs complexes (par exemple, si vous devez instancier un objet pour l'un des propriétés, il est nécessaire de le faire dans le constructeur).
 
 ```php
 class Beanie 
 {
-    protected $material = 'wool';// On donne une valeur par défaut
+    // On peut donner une valeur par défaut directement sur la propriété
+    protected string $material = 'wool';
     
     public function __construct()
     {
         // La même chose, mais, ici, on peut faire des calculs,
         // appeler des méthodes de l'objet, etc.
         $this->material = 'wool'; 
+    }
+}
+```
+
+Vous pouvez également, si vous le souhaitez, définir des paramètres à votre constructeur (y compris pour définir les propriétés).
+
+
+```php
+class Beanie 
+{
+    protected string $material;
+    
+    // On permet de définir la valeur directement lors du new
+    // et on peut donner une valeur par défaut directement au paramètre
+    public function __construct(string $material = 'wool')
+    {
+        $this->material = $material; 
     }
 }
 ```
