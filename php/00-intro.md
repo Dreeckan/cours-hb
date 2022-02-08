@@ -34,6 +34,26 @@ Je ne peux que vous recommander la vidéo de [Grafikart](https://grafikart.fr/) 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sHHl5kihXD4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+## Alternative pour les Macs - MAMP
+
+Si vous avez un Mac, vous pouvez installer [Mamp](https://www.mamp.info/en/downloads/), un programme "équivalent" à Wamp, mais pour Mac. Il a toutefois quelques soucis (non affichage des erreurs, par défaut) et ous allons l'améliorer un peu !
+
+Je me base sur [cet article de Josh Buchea](https://joshbuchea.com/mac-enable-xdebug-in-mamp/) pour activer XDebug (pour rendre vos `var_dump()` plus pratiques).
+
+Modifiez les fichiers suivants (il faut impérativement modifier les deux) :
+- `/Applications/MAMP/conf/php7.4.21/php.ini`
+- `/Applications/MAMP/bin/php/php7.4.21/conf/php.ini`
+
+Trouvez la ligne `display_errors = Off` et la remplacer par `display_errors = On` pour voir les messages d'erreur.
+
+À la fin du fichier, dé-commentez la ligne pour activer xDebug. Vous devriez avoir quelque chose comme ça dans votre fichier (attention, conservez le vôtre, je n'ai pas testé les valeurs entrées ici) :
+
+```ini
+zend_extension="/Applications/MAMP/bin/php/php7.4.21/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so"
+```
+
+Redémarrez MAMP et vous devriez voir vos erreurs et avoir un affichage des `var_dump()` bien plus lisible !
+
 
 ## Un script PHP
 
