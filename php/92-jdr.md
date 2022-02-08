@@ -136,9 +136,20 @@ La suppression d'une feuille de personnage supprime tous les éléments associé
 
 Un <abbr title="Maître de Jeu">MJ</abbr> est un type d'utilisateur à part entière. Il peut créer / modifier des tables (ses parties), y associer des joueurs et leur assigner des personnages. Il peut également créer / modifier des personnages (y compris les personnages de ses joueurs), des équipements et des compétences.
 
-Cette fonctionnalité désactive la création / modification de personnages côté joueur et seule l'affichage de ses fiches lui est disponible.
+Cette fonctionnalité désactive la création / modification de personnages côté joueur et seul l'affichage de ses fiches lui est disponible.
 
-Le <abbr title="Maître de Jeu">MJ</abbr> peut créer des fiches des personnages, des équipements et des compétences sans les assigner à des joueurs ou des personnages. Equipements et compétences peuvent alors être sélectionnés dans une liste déroulante, lors de la création / modification d'un personnage.
+Le <abbr title="Maître de Jeu">MJ</abbr> peut créer des fiches des personnages, des équipements et des compétences sans les assigner à des joueurs ou des personnages. Équipements et compétences peuvent alors être sélectionnés dans une liste déroulante, lors de la création / modification d'un personnage.
+
+
+## Fonctionnalités de gestion de parties (optionnelles)
+
+:warning: nécessite les fonctionnalités de <abbr title="Maître de Jeu">MJ</abbr>.
+
+### Lancers de dés
+
+Lors d'une partie, les joueurs comme le <abbr title="Maître de Jeu">MJ</abbr> aimeraient avoir une page pour gérer leurs lancers de dés. Ils peuvent sélectionner un nombre de dés (entre 1 et 50) et un type de dé (nombre de faces possibles : 2, 4, 6, 8, 10, 12, 20 ou 100).
+
+Les lancés de dés se font dans le cadre d'une partie et sont liés à un personnage ou un <abbr title="Maître de Jeu">MJ</abbr> et on veut un historique des lancers de chaque joueur et du <abbr title="Maître de Jeu">MJ</abbr>. Chaque joueur ne peut voir que ses lancers, alors que le <abbr title="Maître de Jeu">MJ</abbr> peut voir les lancers de tout le monde et leurs historiques.
 
 
 ## Critères d'acceptation (notation)
