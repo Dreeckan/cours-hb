@@ -13,7 +13,7 @@ Ce projet est prévu pour une équipe de 2 à 3 personnes.
 
 ## La demande client
 
-Nous avons reçu la demande d'un client et notre équipe commerciale a décidé d'accepter le projet. Il convient maintenant de répartir le travail au sein de votre équipe et de le réaliser. Il doit être mis en place avec le framework Symfony et le design est à votre convenance, mais doit rester au plus simple.
+Nous avons reçu la demande d'un client et notre équipe commerciale a décidé d'accepter le projet. Il convient maintenant de répartir le travail au sein de votre équipe et de le réaliser. Il doit être mis en place en Php procédural et Objets et le design est à votre convenance, mais doit rester au plus simple.
 
 Le client, <abbr title="Computer ">CLDL</abbr>, vend des ordinateurs préparés par leurs équipes, à partir de pièces détachées qu'ils achètent en gros. Leurs équipes sont partagées entre les **concepteurs** (qui prévoient l'assemblage des ordinateurs) et les **monteurs** (qui vont récupérer les directives des concepteurs et préparer les machines).
 On considère qu'un ordinateur qui doit être monté doit avoir les pièces suivantes :
