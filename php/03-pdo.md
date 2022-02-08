@@ -69,18 +69,6 @@ try {
 - La [documentation officielle sur la classe PDOException](https://www.php.net/manual/fr/class.pdoexception.php)
 - Le [chapitre de la documentation sur les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
 
-:warning: Avec l'initialisation de la connexion ci-dessus, les requêtes renvoient une exception en cas de soucis et vous n'aurez pas besoin de ce qui suit. 
-
-Si vous changez le paramètre `PDO::ATTR_ERRMODE`, les méthodes exécutant des requêtes peuvent renvoyer `false` si la requête SQL s'est mal passée. Pour récupérer le détail de l'erreur, vous pouvez utilise la méthode `errorInfo()` de PDO :
-
-```php
-if (!$isDone) {
-    var_dump($connection->errorInfo());
-    // Pour afficher seulement le message d'erreur, vous pouvez utiliser directement l'index 2 du tableau.
-    throw new Exception('Erreur lors de la requête : '.$connection->errorInfo()[2]);
-}
-```
-
 Dans la connexion, vous allez principalement avoir un seul type d'exception `PDOException`, mais vous pourriez avoir d'autres types d'exception :
 
 ```php
@@ -96,6 +84,10 @@ try {
     echo 'Connexion échouée : ' . $e->getMessage();
 }
 ```
+
+Lorsque vous exécutez des requêtes avec PDO, des exceptions peuvent être levées. De la même manière que pour la connexion à la <abbr title="Base de Données">BdD</abbr>, vous pouvez utiliser un bloc try-catch pour gérer l'erreur (ou laisser l'erreur se produire et arrêter votre programme, selon les cas).
+
+
 
 ## Requêtes directes
 
@@ -114,14 +106,8 @@ $sql =  'SELECT id, fullname, date FROM student ORDER BY fullname';
 // On appelle notre objet PDO ($connection)
 // et on utilise sa méthode query() pour exécuter notre requête
 // On récupère un objet PDOStatement qui va nous permettre de recevoir nos résultats
-// Si une erreur est survenue, query() renvoie false
+// Si une erreur est survenue (requête invalide), query() lève une exception
 $statement = $connection->query($sql);
-
-// Si $result contient false, on a eu une erreur et on l'affiche
-if (!$statement) {
-    // Vous n'êtes bien sûr pas obligés d'arrêter l'exécution du programme 
-    throw new Exception('Erreur lors de la requête : '.$connection->errorInfo()[2]);
-}
 
 // Si on souhaite récupérer tous nos résultats dans un tableau associatif,
 // on utilise fetchAll() 
@@ -144,26 +130,14 @@ Utilisée pour les requêtes autres que `SELECT` :
 // On écrit une requête, où on insère 3 éléments
 $sql = "INSERT INTO `student`(`fullname`) VALUES ('Rémi Jarjat'), ('Jean-Claude Duss'), ('Marc-André du Gaz de Schiste')";
 // On l'exécute et on récupère le nombre de lignes mises à jour
-$count = $connection->exec($sql); // $count contient 3 (ou false en cas d'erreur)
+$count = $connection->exec($sql); 
+// $count contient 3 (ou une exception est levée en cas d'erreur)
 
 // On met à jour tous les éléments de notre table student
 $sql = 'UPDATE student SET date = NOW()';
 // Si une erreur s'est produite, exec() renvoie une exception
-$count = $connection->exec($sql); // $count contient également 3 (on modifie toutes les lignes)
-```
-
-Un second exemple, où on attrape les erreurs si elles ne créent pas une exception :
-
-```php
-$sql = "INSERT INTO contact (subject, message, email) VALUES ('Test', 'Un message de test super long !', 'test@test.com')";
-
-// Ici $result contient le nombre de lignes modifiées ou false en cas d'erreur
-$result = $connection->exec($sql);
-
-// Si $result contient false, on a eu une erreur et on l'affiche
-if (!$result) {
-    throw new Exception('Erreur lors de la requête : '.$connection->errorInfo()[2]);
-}
+$count = $connection->exec($sql); 
+// $count contient également 3 (on modifie toutes les lignes)
 ```
 
 ## Les requêtes préparées
@@ -262,7 +236,22 @@ $contacts = [
         'subject' => 'Test2',
         'message' => 'Un message de test2 super long !',
         'email'   => 'test2@test.com',
-    ]
+    ],
+    [
+        'subject' => 'Test3',
+        'message' => 'Un message de test3 super long !',
+        'email'   => 'test3@test.com',
+    ],
+    [
+        'subject' => 'Test4',
+        'message' => 'Un message de test4 super long !',
+        'email'   => 'test4@test.com',
+    ],
+    [
+        'subject' => 'Test5',
+        'message' => 'Un message de test5 super long !',
+        'email'   => 'test5@test.com',
+    ],
 ];
 
 $subject = '';
@@ -358,4 +347,4 @@ $user = $sth->fetch();
 
 Pour vous entrainer à manipuler PDO, utiliser
 - les [exercices sur notre site de bonnets](90-exercices.md#_26-creer-une-base-de-donnees) (à partir de l'exercice 26)
-- le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/). Les [exercices à partir du numéro 26](90-exercices.md) sont dédiés à cela.
+- le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/).
