@@ -4,6 +4,8 @@
 
 [La documentation sur PDO](https://www.php.net/manual/fr/book.pdo.php)
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/4408730a90d64b3e90ba7a0a4c8f4042" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 PDO est une extension de PHP, permettant la gestion de la <abbr title="Base de Données">BdD</abbr> (connexion et utilisation de requêtes SQL pour créer/modifier les données).
 
 Il offre différentes fonctionnalités, dont :
@@ -25,6 +27,8 @@ Dans les faits, PDO offre des classes pour gérer :
 
 
 ## Se connecter à la base
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/1006a6f41c8a456cb3d02f4595e7ec2f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 PDO fournit un objet (`PDO`) de connexion à la BdD, que l'on va utiliser pour faire ensuite nos requêtes. On en crée en général une instance, que l'on inclue dans nos autres scripts, pour faire des requêtes. Cet objet peut renvoyer une exception, pour vous permettre de détecter les problèmes de connexion dès que possible.
 
@@ -91,6 +95,8 @@ Lorsque vous exécutez des requêtes avec PDO, des exceptions peuvent être lev�
 
 ## Requêtes directes
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/178954ac7e05426587a5b96882a843ad" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ### PDO::query()
 
 Utilisée pour les requêtes `SELECT` :
@@ -145,6 +151,8 @@ $count = $connection->exec($sql);
 Les principaux intérêts d'une requête préparée sont si on veut exécuter une requête avec des nombreux éléments, plusieurs fois ou si on souhaite passer des paramètres sans risquer des erreurs d'écriture (les concaténations de chaines peuvent être dangereuses et pénibles à debugger). Une requête préparée sera exécutée plus vite, si elle est appelée plusieurs fois. Personnellement, je préfère préparer toutes mes requêtes, pour des simplicités d'écriture.
 
 En passant des paramètres, nous allons également pouvoir en vérifier le type, ce qui évitera pas mal d'erreurs côté SQL.
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/254380e2a5b34e26bbe8e19806dc1814" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### PDOStatement
 
@@ -218,6 +226,8 @@ for ($i = 0; $i < 10; $i++) {
 ```
 
 #### Exemples concrets
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/81e77c3d3570497bb95da67d06c3628f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Un exemple d'une requête préparée, insérant un tableau de données dans une table `contact`
 
@@ -305,6 +315,8 @@ $id = $connection->lastInsertId();
 ```
 
 ## Remplir des objets avec nos données
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/5978bf8f11184b8e8d7b271ab69d5060" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Avec PDO, vous pouvez remplir directement vos objets avec les constantes `PDO::FETCH_CLASS` ou `PDO::FETCH_INTO`. Dans les deux cas, votre objet PHP sera rempli avec les données récupérées en base !
 Le premier crée une instance de la classe demandée, quoiqu'il arrive. Le second met à jour une instance existante.
