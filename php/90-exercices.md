@@ -16,7 +16,7 @@ Commençons par afficher une première page. Pour cela, il nous faut quelques do
     - Bonnet arc-en-ciel
 - afficher ces produits dans le html en utilisant une boucle (`foreach` conseillé), dans une balise HTML `<table>`
 
-Correction en vidéo : 
+### Correction 
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/718d5d6b0813452ebb37b67e43ea5c18" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -32,7 +32,7 @@ Nous voulons maintenant un peu plus d'informations sur nos produits. Commençons
 - Tous les produits vont également avoir la même description : `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida.`
 - Mettre à jour l'affichage en conséquence
 
-Correction en vidéo : 
+### Correction 
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/bb4fc2d4018d4e66983e9340607d2e52" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -42,7 +42,7 @@ On va faire ressortir visuellement les prix de nos produits, et encore plus ceux
 
 - Si un prix est inférieur ou égal à 12€, afficher le prix en vert, sinon l'afficher en bleu.
 
-Correction en vidéo : 
+### Correction 
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/976a00bc95df4564a49c8df2d1d6b411" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -54,7 +54,7 @@ Une pensée pour les professionnels qui ont besoin de se couvrir la tête ! Pour
 - Afficher les prix HT dans une nouvelle colonne avant celle des prix TTC
 - La TVA est de 20% sur les bonnets
 
-Correction en vidéo : 
+### Correction 
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/080ae051442540df857dc21b677e4e04" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -65,7 +65,7 @@ Factorisons un peu notre code, en réduisant l'appel d'une ligne du tableau à l
 - Faire une fonction qui affiche un produit (va reprendre l'affichage d'une ligne du tableau)
 - Appeler cette fonction dans la boucle
 
-Correction en vidéo : 
+### Correction 
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/ed056411f93b411f890b0d603f4131fa" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -79,7 +79,7 @@ Nous allons maintenant séparer notre code en plusieurs éléments, à thème. L
     - Un pour le HTML
 - Appeler ces fichiers dans le HTML ([utiliser `include` pour appeler les différents fichiers](https://www.php.net/manual/fr/function.include.php) où vous le souhaitez)
 
-Correction en vidéo : 
+### Correction  
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/74ac07352bd2423f8a40a5ff41139e85" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -92,7 +92,7 @@ Correction en vidéo :
 - Partager le lien (en privé sur Discord ou en m'invitant sur le projet)
 - Créer une branche `ajout-layout` pour l'exercice suivant
 
-Correction en vidéo : 
+### Correction 
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/08d6137827b64decaca6b9cc6dc5f92e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -116,7 +116,7 @@ L'idée est ici de regrouper la plus grande partie du code commun, pour l'inclur
 - Dans `footer.php`, ajouter le html commun à toutes nos pages se trouvant après le php
 - Inclure ce fichier `footer.php` dans la page de liste
 
-Correction des exercices 8, 9 et 10 en vidéo :
+### Correction des exercices 8, 9 et 10
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/d5f13adba7f349a983518db6eaa43d1b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -131,7 +131,7 @@ L'idée est ici de créer une seconde page `list.php` qui va contenir notre tabl
 - Leur trouver une image pour les rendre plus jolis (je laisse ça à votre jugement ;)) et ajouter le lien de cette image dans les données
 - Utiliser [les cards de Bootstrap](https://getbootstrap.com/docs/5.1/components/card/) pour les mettre en forme
 
-Correction en vidéo :
+### Correction
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/53f34956b14c48c48cb0dcd7e5de0e40" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -152,7 +152,7 @@ Correction en vidéo :
 - Mettez-vous en groupe (si ce n'est déjà fait) et invitez-vous sur vos projets respectifs
 - Relisez le code des autres et faites-leur vos retours sur leur code
 
-En vidéo :
+### Correction
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/3d1a8241587b4259bd1fd9ed8c8936a6" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -179,7 +179,7 @@ Créons une nouvelle page de connexion, avec un formulaire. Il s'agit maintenant
 - Afficher le login de l'utilisateur dans le menu à la soumission du formulaire
 - Cette valeur (`$_POST['login']`) pouvant ne pas exister, bien s'assurer de son existence avant affichage
 
-Correction des exercices 13 et 14 :
+### Correction des exercices 13 et 14
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/4d59234c41014fb59cfed2dfef982aba" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -221,7 +221,7 @@ if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
 }
 ```
 
-Correction des exercices 15 et 16 en vidéo :
+### Correction des exercices 15 et 16
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/40eb9f646d0d432facb212ff04491be2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -246,7 +246,7 @@ Validons maintenant les données entrées dans le formulaire, pour être dans de
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
-Correction de l'exercice 17 :
+### Correction
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/9239329039304a7da2ea339bebcd5929" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
@@ -309,7 +309,7 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge) 
 
-Correction des exercices 19 et 20 :
+### Correction des exercices 19 et 20
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/2482646b145c4f009f97bea3058e7bd2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
