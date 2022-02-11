@@ -246,6 +246,10 @@ Validons maintenant les données entrées dans le formulaire, pour être dans de
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
+Correction de l'exercice 17 :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/9239329039304a7da2ea339bebcd5929" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## 18. Créer un front controller
 
 Le but du front controller est de réduire (encore) les répétitions de code, en gérant **tous** les éléments constants (inclusions, démarrage de session, etc.).
@@ -263,8 +267,12 @@ ob_start();
 //
 // ... contenu du script ...
 //
-echo ob_end_flush();
+ob_end_flush();
 ```
+
+Correction de l'exercice 18 :
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/0aef072ce1a547f4a7dc2e49ca7dbf92" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 19. Ajouter des éléments au panier
 
@@ -301,11 +309,9 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge) 
 
-## Correction des exercices 17 à 20
+Correction des exercices 19 et 20 :
 
-La correction en vidéo :
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/99b6ad7900ab4f23b632f43af20ef8c8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/2482646b145c4f009f97bea3058e7bd2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 21. Ajouter un formulaire de contact
 
@@ -318,7 +324,7 @@ La correction en vidéo :
   - Email valide (non vide et de la forme `test@test.test`)
   - Message non vide (Attention au cas `' '`)
 
-**Indices**
+### Indices
 
 - Il existe une fonction PHP qui va vérifier la validité d'une variable (dont un email)
 - Il faut passer les données en POST dans votre formulaire
@@ -332,6 +338,10 @@ La correction en vidéo :
 - Relisez le code et faites vos retours (vérifiez que le code valide bien les normes PSR-1 **et** PSR-12, par exemple)
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
+
+### Correction
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/bdb0d2fbd02c4a78900795d9a8f6ce8b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 22. Utilisation des objets
 
@@ -350,6 +360,10 @@ La correction en vidéo :
 - Relisez le code et faites vos retours (vérifiez que le code valide bien les normes PSR-12 **et** PSR-4, par exemple)
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge) 
+
+### Correction
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/c9a97caf0c784c46a7fa2d0cbf5555b2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 23. Liste et filtres
 
