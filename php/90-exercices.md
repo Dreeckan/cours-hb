@@ -4,6 +4,11 @@ Pré-requis :
 - avoir un environnement de travail ([Wamp](https://www.wampserver.com/) / [Xampp](https://www.apachefriends.org/fr/index.html) / [Mamp](https://www.mamp.info/en/downloads/) ou équivalent)
 - avoir des bases de PHP
 
+Correction :
+
+- En vidéo, tout le long des exercices (après l'énoncé correspondant)
+- Dans le code, sur [le repository dédié aux corrections sur GitHub](https://github.com/Dreeckan/beanies/pulls?q=is%3Apr). 
+
 ## 1. Utilisation des tableaux
 
 Commençons par afficher une première page. Pour cela, il nous faut quelques données de base et une structure HTML basique :
@@ -185,7 +190,7 @@ Créons une nouvelle page de connexion, avec un formulaire. Il s'agit maintenant
 
 ## 15. Mise en place de la session
 
-Mettons en route la session et ajoutons-y le login de l'utilisateu lors de sa connexion.
+Mettons en route la session et ajoutons-y le login de l'utilisateur lors de sa connexion.
 
 - Ajouter le `session_start()` à l'endroit adéquat
 - Lors de la connexion de l'utilisateur, mettre son login en session
@@ -395,6 +400,10 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
 
+### Correction des exercices 23 et 24
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/129ebf5575bb411180767033c7116866" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## 25. Continuer la conversion en objets
 
 - Créer les classes suivantes et les utiliser dans le code existant (dans tous les cas, je vous laisse libre pour les propriétés et les méthodes) :
@@ -412,6 +421,10 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
 - Relisez le code et faites vos retours (vérifiez que le code valide bien les normes PSR-12 **et** PSR-4, par exemple)
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
+
+### Correction
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/7cea0beb1d9846e48245a82aeb737cc2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 26. Créer une base de données
 
@@ -432,11 +445,13 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
   
 ## 28. Utiliser les données de la BdD
 
-- Créer une classe `BeanieFactory` dans `classes/Factory/BeanieFactory.php` qui va avoir une méthode `create()` 
-  - ayant pour paramètre un tableau (une ligne récupérée dans la BdD) 
-  - renvoyant un objet `Beanie` contenant les données venues de la table
+Choisissez **l'une des deux** méthodes suivantes pour remplir nos bonnets depuis la BdD :
+  - Créer une classe `BeanieFactory` dans `classes/Factory/BeanieFactory.php` qui va avoir une méthode `create()` 
+    - ayant pour paramètre un tableau (une ligne récupérée dans la BdD) 
+    - renvoyant un objet `Beanie` contenant les données venues de la table
+  - Utilisez le flag `FETCH_CLASS` de PDO pour remplir les objets à l'aide de la BdD
 - Modifier vos pages pour récupérer les données depuis la table `beanie`, plutôt qu'une variable
-  - Adapter le code des différentes pages pour utiliser la BdD plutôt que le tableau (fixe) qu'on utilisait jusqu'à présent
+  - Adapter le code des différentes pages pour utiliser la BdD plutôt que le tableau (fixe), utilisé jusqu'à présent
 
 ### Pull Request
 
