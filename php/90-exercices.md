@@ -438,11 +438,19 @@ Nous avons des produits, il ne nous reste plus qu'à les acheter ! (faire sembla
   - dans PhpMyAdmin, ajouter des données dans la table `beanie` (avec les valeurs de votre fichier `variables.php` par exemple)
   - écrire un script PHP `includes/fixtures.php` insérant les données
   
+### Correction
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/83cf03d0bd08402db4eadcc00e3cc8ab" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## 27. Formulaire de contact, en BdD
 
 - Modifier votre page de contact pour insérer les données du formulaire dans la table `contact`
   - N'insérer les données **que** si aucune erreur n'est remontée
   
+### Correction
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/c9e3d9aa6dc04ae1800c6292268bdeaf" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## 28. Utiliser les données de la BdD
 
 Choisissez **l'une des deux** méthodes suivantes pour remplir nos bonnets depuis la BdD :
@@ -461,6 +469,24 @@ Choisissez **l'une des deux** méthodes suivantes pour remplir nos bonnets depui
 - Relisez le code et faites vos retours (vérifiez que le code valide bien les normes PSR-12 **et** PSR-4, par exemple)
 - Approuvez (ou non) sa PR
 - Une fois votre PR validée par un.e pair.e, vous pouvez la fusionner (merge)
+
+### Correction
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/f4566ed9b7944d3aac0233bab24cb9c9" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+
+## 29. MVC et namespaces (:warning: difficile)
+
+Notre site ne suit pas parfaitement [le modèle MVC](04-mvc.md). Il nous faudrait améliorer ça et re-structurer un peu les fichiers et leur organisation.
+Ce que nous voulons faire :
+- Renommer le dossier `class` en `src` et y créer **au moins** 3 sous-dossiers : `Model`, `View` et `Controller`
+- Déplacer les vues (pages) dans `View`
+- Ranger les classes que vous aviez créées dans `Model` ou dans un autre dossier (par exemple, j'ai un dossier `Service` pour certaines classes)
+- Créer un objet Controller par page et y déplacer la logique (calculs PHP actuellement dans les pages)
+- Faire en sorte que le front controller (`index.php`) appelle le bon contrôleur en fonction de l'url
+
+:warning: Pensez bien à mettre à jour les namespaces de vos classes et **tous** les appels à ces classes.
+
 
 ## Révisions
 

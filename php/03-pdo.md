@@ -281,6 +281,53 @@ foreach ($contacts as $contact) {
 }
 ```
 
+La même chose, sans l'appel à `bindParam()` :
+
+:warning: Notez que l'écriture est plus courte, mais la vérification des données est moins efficace.
+
+```php
+$sql = "INSERT INTO contact (subject, message, email) VALUES (:subject, :message, :email)";
+
+$pdoStatement = $connection->prepare($sql);
+
+$contacts = [
+    [
+        'subject' => 'Test',
+        'message' => 'Un message de test super long !',
+        'email'   => 'test@test.com',
+    ],
+    [
+        'subject' => 'Test2',
+        'message' => 'Un message de test2 super long !',
+        'email'   => 'test2@test.com',
+    ],
+    [
+        'subject' => 'Test3',
+        'message' => 'Un message de test3 super long !',
+        'email'   => 'test3@test.com',
+    ],
+    [
+        'subject' => 'Test4',
+        'message' => 'Un message de test4 super long !',
+        'email'   => 'test4@test.com',
+    ],
+    [
+        'subject' => 'Test5',
+        'message' => 'Un message de test5 super long !',
+        'email'   => 'test5@test.com',
+    ],
+];
+
+foreach ($contacts as $contact) {
+    $count = $pdoStatement->execute([
+        ':subject' => $contact['subject'],
+        ':message' => $contact['message'],
+        ':email'   => $contact['email'],
+    ]);
+    var_dump($count);
+}
+```
+
 Un exemple de récupération de données :
 
 ```php
