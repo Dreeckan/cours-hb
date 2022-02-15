@@ -16,7 +16,11 @@ Apprendre la Programmation Orientée Objet (POO) en PHP
 
 Utiliser une base de données MySQL grâce à l'objet PDO de PHP
 
-## 5. [REST](04-rest.md)
+## 5. [MVC](04-mvc.md)
+
+L'utilisation du modèle MVC, pour séparer Modèle, vues et contrôleurs
+
+## 6. [REST](05-rest.md)
 
 Les grands principes des API REST (voir Symfony pour la mise en place rapide d'une API REST avec Api Platform)
 

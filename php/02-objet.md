@@ -398,7 +398,11 @@ class Foo implements Test, Test2, Test3
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/4b9cd3e24b604c799d6e7ec10d40de06" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-Un trait fonctionne comme une classe et permet de regrouper des propriétés et des méthodes qui vont ête utilisées dans d'autres classes. Un trait ne peut pas être instancié. Il s'utilise avec `use` (oui, encore !) pour **inclure** le code du trait dans une classe.
+Un trait fonctionne comme une classe et permet de regrouper des propriétés et des méthodes qui vont ête utilisées dans d'autres classes. Un trait ne peut pas être instancié. Il s'utilise avec `use` (oui, encore !) pour **inclure** le code du trait dans une classe. 
+
+Pensez l'utilisation d'un trait comme un copier-coller dans une classe : vous prenez tout le contenu du trait et le collez là où l'appel est fait.
+
+Un exemple de déclaration de trait, où on déclare une propriété et un getter :
 
 ```php
 trait TestTrait 
@@ -409,13 +413,19 @@ trait TestTrait
         // ...
     }
 }
+```
 
+Un exemple d'utilisation de ce trait dans une classe :
+
+```php
 class Test
 {
     use TestTrait; 
     use TestTrait2;
     // Ici, on peut utiliser $this->test et $this->getTest(),
-    // meme s'ils sont privés !  
+    // meme s'ils sont privés ! 
+    // Comme les éléments sont inclus, $this->test
+    // est déclaré privé dans la classe Test
 }
 ```
 
@@ -449,6 +459,7 @@ trait TestTrait
 {
 // ...
 }
+
 
 // classes/Traits/Truc/TestTrait2.php
 namespace Traits\Truc;
@@ -490,4 +501,4 @@ try {
 
 ## Exercices
 
-Pour vous entrainer à manipuler des objets PHP, utiliser le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/). Les exercices 1 à 7 concernent cette partie
+Pour vous entrainer à manipuler des objets PHP, utiliser le [repository Github dédié à divers exercices](https://github.com/Dreeckan/exercices-php/). Les exercices 1 à 7 concernent cette partie.
