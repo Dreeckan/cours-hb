@@ -13,7 +13,7 @@ Le modèle <abbr title="Model View Controller">MVC</abbr> (Modèle Vue Contrôle
 
 ![Schéma présentant le modèle MVC](https://upload.wikimedia.org/wikipedia/commons/b/b2/Mod%C3%A8le-vue-contr%C3%B4leur_%28MVC%29_-_fr.png)
 
-Détails du schéma (honteusement piqué sur Wikipédia ;) ) :
+Détails du schéma (honteusement piqué sur [Wikipédia](https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur) ;) ) :
 
 1. L'utilisateur envoie une requête HTTP (demande une URL), qui va être reçue par un contrôleur
 2. Le contrôleur va demander des données au modèle (généralement, la <abbr title="Base de Données">BdD</abbr>)
@@ -24,6 +24,8 @@ Détails du schéma (honteusement piqué sur Wikipédia ;) ) :
 Ce découpage facilite la maintenabilité du code, force une séparation entre les éléments et permet divers rangements pour retrouver plus efficacement les fichiers.
 
 ## Mise en place dans un projet
+
+Pour plus d'exemples et de détails, je vous conseille [le tuto dédié au MVC sur Open ClassRoom](https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php)
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/2d33b6fca8694c5dac87171284420aa8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
