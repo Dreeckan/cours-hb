@@ -4,7 +4,7 @@
 
 [La documentation sur PDO](https://www.php.net/manual/fr/book.pdo.php)
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/4408730a90d64b3e90ba7a0a4c8f4042" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/fc75e45d8a0c48b8bb3f487febb136bc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 PDO est une extension de PHP, permettant la gestion de la <abbr title="Base de Données">BdD</abbr> (connexion et utilisation de requêtes SQL pour créer/modifier les données).
 
@@ -28,7 +28,7 @@ Dans les faits, PDO offre des classes pour gérer :
 
 ## Se connecter à la base
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/1006a6f41c8a456cb3d02f4595e7ec2f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/6b42ca476091438eb83254eea75cd2ae" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 PDO fournit un objet (`PDO`) de connexion à la BdD, que l'on va utiliser pour faire ensuite nos requêtes. On en crée en général une instance, que l'on inclue dans nos autres scripts, pour faire des requêtes. Cet objet peut renvoyer une exception, pour vous permettre de détecter les problèmes de connexion dès que possible.
 
@@ -73,6 +73,8 @@ try {
 - La [documentation officielle sur la classe PDOException](https://www.php.net/manual/fr/class.pdoexception.php)
 - Le [chapitre de la documentation sur les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/2d1b828fb9a744bc9b82fc2f718ce6bc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 Dans la connexion, vous allez principalement avoir un seul type d'exception `PDOException`, mais vous pourriez avoir d'autres types d'exception :
 
 ```php
@@ -95,7 +97,7 @@ Lorsque vous exécutez des requêtes avec PDO, des exceptions peuvent être lev�
 
 ## Requêtes directes
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/178954ac7e05426587a5b96882a843ad" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/7b8de596a0bc4ebc82152e05a11ac467" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### PDO::query()
 
@@ -146,13 +148,14 @@ $count = $connection->exec($sql);
 // $count contient également 3 (on modifie toutes les lignes)
 ```
 
+### Quelques exemples en vidéo
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/2d438dae5ffc49abb7728848adc61376" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## Les requêtes préparées
 
-Les principaux intérêts d'une requête préparée sont si on veut exécuter une requête avec des nombreux éléments, plusieurs fois ou si on souhaite passer des paramètres sans risquer des erreurs d'écriture (les concaténations de chaines peuvent être dangereuses et pénibles à debugger). Une requête préparée sera exécutée plus vite, si elle est appelée plusieurs fois. Personnellement, je préfère préparer toutes mes requêtes, pour des simplicités d'écriture.
-
-En passant des paramètres, nous allons également pouvoir en vérifier le type, ce qui évitera pas mal d'erreurs côté SQL.
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/254380e2a5b34e26bbe8e19806dc1814" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+Une requête préparée permet d'exécuter une requête complexe, d'en simplifier l'écriture (surtout pour les requêtes avec paramètres) et d'éviter les erreurs tant d'écriture que d'injection SQL (sécurisation des données). 
+Une requête préparée sera exécutée plus vite, si elle est appelée plusieurs fois. Personnellement, je préfère préparer toutes mes requêtes, pour simplifier leur écriture et éviter de concaténer des chaînes de caractères.
 
 ### PDOStatement
 
@@ -167,8 +170,9 @@ Un squelette minimal :
 /** @var PDOStatement $statement */
 $statement = $connection->prepare($sql);
 
-// On peut lui passer des paramètres directement au moment de l'exécution,
-// mais nous allons utiliser la méthode bindParam() à la place, plus pratique
+// On peut lui passer des paramètres directement au moment de l'exécution.
+// Nous allons utiliser la méthode bindParam() pour des exécutions dans des boucles
+// ou avec un tableau en paramètre pour une requête unique
 $statement->execute($parameters);
 
 // Si la requête a réussi, on peut récupérer les résultats
@@ -191,6 +195,26 @@ $statement->bindParam(1, $param, PDO::PARAM_STR);
 $statement->execute();
 ```
 
+L'exemple ci-dessus est équivalent à :
+
+```php
+// la méthode bindParam() attend une variable en second paramètre (passage par référence).
+// Lui donner une valeur directement provoque une erreur.
+$statement = $connection->prepare('SELECT fullname FROM student WHERE fullname LIKE ?');
+// Attention, la numérotation des paramètres commence à 1, pas à 0
+$statement->bindValue(1, "Test", PDO::PARAM_STR);
+$statement->execute();
+```
+
+L'exemple ci-dessus est équivalent à :
+
+```php
+$statement = $connection->prepare('SELECT fullname FROM student WHERE fullname LIKE ?');
+$statement->execute([
+    "Test",
+]);
+```
+
 L'un des grands avantages des requêtes préparées est l'utilisation dans des boucles :
 
 ```php
@@ -201,7 +225,7 @@ $statement->bindParam(1, $param, PDO::PARAM_STR);
 // et on insère la donnée modifiée au fur et à mesure
 // (le contenu de $param est lu à chaque itération, grâce à bindParam)
 for ($i = 0; $i < 10; $i++) {
-    $param += $i;
+    $param .= $i;
     $statement->execute();
 }
 ```
@@ -220,14 +244,37 @@ $statement = $connection->prepare('INSERT INTO student (fullname) VALUES (:name)
 // Notre paramètre :name sera remplacé par la valeur de $param, à l'exécution de la requête
 $statement->bindParam(':name', $param, PDO::PARAM_STR);
 for ($i = 0; $i < 10; $i++) {
-    $param += $i;
+    $param .= $i;
     $statement->execute();
 }
 ```
 
-#### Exemples concrets
+L'exemple ci-dessus est équivalent à :
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/81e77c3d3570497bb95da67d06c3628f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+```php
+$statement = $connection->prepare('INSERT INTO student (fullname) VALUES (:name)');
+// Notre paramètre :name sera remplacé par la valeur de $param, à l'exécution de la requête
+for ($i = 0; $i < 10; $i++) {
+    $statement->bindValue(':name', "Test".$i, PDO::PARAM_STR);
+    $statement->execute();
+}
+```
+
+L'exemple ci-dessus est équivalent à :
+
+```php
+$statement = $connection->prepare('INSERT INTO student (fullname) VALUES (:name)');
+// Notre paramètre :name sera remplacé par la valeur de $param, à l'exécution de la requête
+for ($i = 0; $i < 10; $i++) {
+    $param .= $i;
+    $statement->execute([
+        // Ici les : ne sont pas obligatoires
+        ':name' => 'Test'.$i,
+    ]);
+}
+```
+
+#### Exemples concrets
 
 Un exemple d'une requête préparée, insérant un tableau de données dans une table `contact`
 
@@ -281,7 +328,52 @@ foreach ($contacts as $contact) {
 }
 ```
 
-La même chose, sans l'appel à `bindParam()` :
+La même chose, avec `bindValue()` :
+
+```php
+$sql = "INSERT INTO contact (subject, message, email) VALUES (:subject, :message, :email)";
+
+$pdoStatement = $connection->prepare($sql);
+
+$contacts = [
+    [
+        'subject' => 'Test',
+        'message' => 'Un message de test super long !',
+        'email'   => 'test@test.com',
+    ],
+    [
+        'subject' => 'Test2',
+        'message' => 'Un message de test2 super long !',
+        'email'   => 'test2@test.com',
+    ],
+    [
+        'subject' => 'Test3',
+        'message' => 'Un message de test3 super long !',
+        'email'   => 'test3@test.com',
+    ],
+    [
+        'subject' => 'Test4',
+        'message' => 'Un message de test4 super long !',
+        'email'   => 'test4@test.com',
+    ],
+    [
+        'subject' => 'Test5',
+        'message' => 'Un message de test5 super long !',
+        'email'   => 'test5@test.com',
+    ],
+];
+
+foreach ($contacts as $contact) {
+    $pdoStatement->bindParam(':subject', $contact['subject']);
+    $pdoStatement->bindParam(':message', $contact['message']);
+    $pdoStatement->bindParam(':email', $contact['email']);
+
+    $count = $pdoStatement->execute();
+    var_dump($count);
+}
+```
+
+La même chose, sans l'appel à `bindXXX()` :
 
 :warning: Notez que l'écriture est plus courte, mais la vérification des données est moins efficace.
 
@@ -363,7 +455,7 @@ $id = $connection->lastInsertId();
 
 ## Remplir des objets avec nos données
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/5978bf8f11184b8e8d7b271ab69d5060" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/42852fca3e194ec9a5658009e3a87dd7" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Avec PDO, vous pouvez remplir directement vos objets avec les constantes `PDO::FETCH_CLASS` ou `PDO::FETCH_INTO`. Dans les deux cas, votre objet PHP sera rempli avec les données récupérées en base !
 Le premier crée une instance de la classe demandée, quoiqu'il arrive. Le second met à jour une instance existante.
