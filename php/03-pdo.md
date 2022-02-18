@@ -32,7 +32,7 @@ Dans les faits, PDO offre des classes pour gérer :
 
 PDO fournit un objet (`PDO`) de connexion à la BdD, que l'on va utiliser pour faire ensuite nos requêtes. On en crée en général une instance, que l'on inclue dans nos autres scripts, pour faire des requêtes. Cet objet peut renvoyer une exception, pour vous permettre de détecter les problèmes de connexion dès que possible.
 
-Pour se connecter, on crée (en général), un fichier spécifique, qu'on appelle sur nos pages (par exemple `includes/config.inc.php`)
+Pour se connecter, on crée (en général), un fichier spécifique, qu'on appelle sur nos pages (par exemple `includes/db.inc.php`)
 
 ```php
 <?php
@@ -75,7 +75,7 @@ try {
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/2d1b828fb9a744bc9b82fc2f718ce6bc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-Dans la connexion, vous allez principalement avoir un seul type d'exception `PDOException`, mais vous pourriez avoir d'autres types d'exception :
+Dans la connexion, vous allez principalement avoir un seul type d'exception `PDOException`, mais vous pourriez récupérer d'autres types d'exception si vous le souhaitiez :
 
 ```php
 $dsn = 'mysql:dbname=cours;host=127.0.0.1';
