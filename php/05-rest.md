@@ -7,6 +7,7 @@
 - JSON
 - HTTP, les ["status codes"](https://restfulapi.net/http-status-codes/)
 
+
 ## Définition de REST
 
 On parle d'un système REST (en général, une API REST) pour désigner un système servant à cadrer les échanges entre plusieurs programmes / applications. En général une API REST sert de point central pour les données. D'autres programmes lui envoient des données ou les récupèrent et les autres programmes n'ont pas à se soucier du fonctionnement interne de l'API.
@@ -37,6 +38,7 @@ Une interface uniforme est définie par :
 - Messages auto-descriptifs (l'information fournie donne toutes les informations nécessaires à l'interprétation de la donnée)
 - Des liens pour accéder aux autres représentations et découvrir les autres urls
 
+
 ## Créer un client REST
 
 Pour créer un client REST, il faut :
@@ -48,6 +50,7 @@ Pour créer un client REST, il faut :
 
 Il est aisé de créer un client REST avec javascript, en utilisant AJAX (`fetch()` par exemple), pour récupérer des données JSON.
 En général, en AJAX, on peut aisément récupérer des données *via* n'importe quel verbe (GET, POST, PUT, etc.) et traiter la réponse dans la foulée.
+
 
 ## Un service REST
 
@@ -72,7 +75,6 @@ Les urls prenant un identifiant permettent d'agir sur un objet `recipe` précis 
 - PUT `/api/recipes/{id}` remplace un objet `recipe`
 - DELETE `/api/recipes/{id}` supprime un objet `recipe`
 - PATCH `/api/recipes/{id}` pour mettre à jour un objet `recipe`
-
 
 ### Aller un peu plus loin
 

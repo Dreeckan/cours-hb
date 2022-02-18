@@ -364,16 +364,16 @@ $contacts = [
 ];
 
 foreach ($contacts as $contact) {
-    $pdoStatement->bindParam(':subject', $contact['subject']);
-    $pdoStatement->bindParam(':message', $contact['message']);
-    $pdoStatement->bindParam(':email', $contact['email']);
+    $pdoStatement->bindValue(':subject', $contact['subject']);
+    $pdoStatement->bindValue(':message', $contact['message']);
+    $pdoStatement->bindValue(':email', $contact['email']);
 
     $count = $pdoStatement->execute();
     var_dump($count);
 }
 ```
 
-La même chose, sans l'appel à `bindXXX()` :
+La même chose, sans l'appel à `bindParam()` ou `bindValue()` :
 
 :warning: Notez que l'écriture est plus courte, mais la vérification des données est moins efficace.
 
