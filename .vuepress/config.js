@@ -76,6 +76,7 @@ module.exports = {
         ],
         ['@vuepress/nprogress'],
         ['@vuepress/back-to-top'],
-        ['@vuepress/last-updated']
+        ['@vuepress/last-updated'],
+        ['vuepress-plugin-mermaidjs']
     ]
 }
