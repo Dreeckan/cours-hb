@@ -152,6 +152,67 @@ Lors d'une partie, les joueurs comme le <abbr title="Maître de Jeu">MJ</abbr> a
 Les lancés de dés se font dans le cadre d'une partie et sont liés à un personnage ou un <abbr title="Maître de Jeu">MJ</abbr> et on veut un historique des lancers de chaque joueur et du <abbr title="Maître de Jeu">MJ</abbr>. Chaque joueur ne peut voir que ses lancers, alors que le <abbr title="Maître de Jeu">MJ</abbr> peut voir les lancers de tout le monde et leurs historiques.
 
 
+### Filtres et tris
+
+Pour facilité la gestion d'un grand nombre de personnages, d'équipements et de compétences, on aimerait un ensemble de tris et de filtres sur les différentes listes.
+
+#### Équipements 
+
+Il faudrait pouvoir filtrer la liste des équipements par :
+- portée (avec un min et un max)
+- dégâts (avec un min et un max)
+
+On veut pouvoir trier (ordres croissant ou décroissant) la liste par :
+- nom
+- portée
+- dégâts
+
+#### Compétences 
+
+Il faudrait pouvoir filtrer la liste des compétences par :
+- caractéristique associée
+- un niveau (avec un min et un max)
+
+On veut pouvoir trier (ordres croissant ou décroissant) la liste par :
+- nom
+- niveau
+
+#### Fiches de personnages
+
+Il faudrait pouvoir filtrer la liste des personnages par :
+- nom du personnage (champ de recherche, où l'on veut entrer tout ou partie du nom)
+- nom du joueur / de la joueuse (choisir dans les joueurs disponibles)
+
+On veut pouvoir trier (ordres croissant ou décroissant) la liste par :
+- nom du personnage
+- nom du joueur
+
+### Gestionnaire de parties
+
+Un utilisateur ayant les droits <abbr title="Maître de Jeu">MJ</abbr> doit pouvoir gérer les parties : les lister, les mettre à jour, en archiver (on ne les supprime pas, mais une partie archivée n'est plus visible par défaut) ou en créer de nouvelles. 
+
+Une partie a :
+- un <abbr title="Maître de Jeu">MJ</abbr>
+- des joueurs (peut ne pas en avoir)
+- des fiches de personnage
+- une date de création
+- des dates de jeu (dates où la partie a été ou va être jouée par les joueurs et le <abbr title="Maître de Jeu">MJ</abbr>)
+
+Il faudrait pouvoir filtrer la liste des parties par :
+- joueur
+- date de création
+- date de jeu
+
+On veut pouvoir trier (ordres croissant ou décroissant) la liste par :
+- nombre de joueurs
+- date de création
+- date de jeu
+
+### Extension des parties à tous les joueurs
+
+Pour étendre le système, 
+
+
 ## Critères d'acceptation (notation)
 
 Pour valider le rendu, voici ce qui est attendu par votre chef de projet, pour chacun d'entre vous : 
