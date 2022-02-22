@@ -210,7 +210,9 @@ On veut pouvoir trier (ordres croissant ou décroissant) la liste par :
 
 ### Extension des parties à tous les joueurs
 
-Pour étendre le système, 
+Pour étendre le système et refléter au mieux la réalité des <abbr title="Jeu de Rôle">JdR</abbr>, il faut que les joueurs puissent devenir <abbr title="Maître de Jeu">MJ</abbr> et *vice versa*. Un utilisateur sera <abbr title="Maître de Jeu">MJ</abbr> sur une ou des parties, pourra en créer, etc. et pourra être joueur sur d'autres.
+
+Un utilisateur pourra donc modifier/archiver des parties où il est <abbr title="Maître de Jeu">MJ</abbr>, mais pas celles où il est simplement joueur.
 
 
 ## Critères d'acceptation (notation)
