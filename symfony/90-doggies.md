@@ -24,6 +24,12 @@ Le site sera partagé en plusieurs espaces :
 - "Mon compte adoptant" qui permettra aux adoptants de gérer leurs demandes et leurs informations
 - Administration, utilisable uniquement par des administrateurs (une ou deux personnes)
 
+Une API **publique** sera également à ajouter, pour permettre de récupérer des données du site dans des applications. Dans cette API, on veut seulement lire les données suivantes :
+- Liste des annonces
+- Détails d'une annonce (avec toutes les informations sur le chien, la race, etc.)
+- Liste des chiens
+- Détails des chiens
+- Liste des races avec les chiens associés
 
 ## Partie "adoptant"
 
@@ -118,6 +124,18 @@ J'ai accès à plusieurs CRUD :
 - Races de chiens
 - Associations/SPA
 
+## Api
+
+L'Api doit être publique (tout le monde peut y accéder) et ne doit donc pas afficher de données sensibles (mots de passe, identifiants, informations personnelles, etc.). 
+
+Une documentation (générée) doit être disponible et permettre de savoir ce que l'Api peut retourner et sous quel format.
+
+Nous voulons des routes pour récupérer les éléments suivants :
+- Liste des annonces
+- Détails d'une annonce (avec toutes les informations sur le chien, la race, etc.)
+- Liste des chiens (il doit être possible de filtrer par chiens adoptés ou non)
+- Détails des chiens
+- Liste des races avec les chiens associés
 
 ## Améliorations
 
