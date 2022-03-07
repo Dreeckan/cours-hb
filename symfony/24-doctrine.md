@@ -184,8 +184,7 @@ Créons la classe `Tag`
     - Valider une dernière fois pour terminer les modifications
 
 Nous avons maintenant 4 fichiers créés, dont ces 2 entités :
-
-- `src/Entity/Tag.php` :
+`src/Entity/Tag.php`
 
 ```php
 <?php
@@ -274,7 +273,7 @@ class Tag
 
 ```
 
-- `src/Entity/Article.php` :
+`src/Entity/Article.php`
 
 ```php
 <?php
@@ -381,7 +380,7 @@ php bin/console make:migration
 
 La commande `php bin/console doctrine:migrations:diff -n` fait exactement la même chose.
 
-**:warning: Conseil** : il peut être utile d'exécuter les migrations *avant* d'en générer une nouvelle en exécutant `php bin/console doctrine:migrations:migrate -n` avant la commande `make:migration` / `doctrine:migrations:diff`
+:warning: **Conseil** : il peut être utile d'exécuter les migrations *avant* d'en générer une nouvelle en exécutant `php bin/console doctrine:migrations:migrate -n` avant la commande `make:migration` / `doctrine:migrations:diff`
 
 Dans notre exemple, notre migration ressemblera à ceci :
 
@@ -431,7 +430,7 @@ php bin/console doctrine:migrations:migrate -n
 
 Cette commande exécutera toutes les migrations qui n'ont pas déjà été lancées (la liste des migrations déjà exécutées se trouve dans la table `doctrine_migration_versions` de votre BdD).
 
-**:warning: Conseil :** Il est important que votre base puisse être construite de 0 avec les migrations (et éventuellement des fixtures). Vous pouvez tester
+:warning: **Conseil :** Il est important que votre base puisse être construite de 0 avec les migrations (et éventuellement des fixtures). Vous pouvez tester
 
 ### Annuler une migration
 
@@ -748,7 +747,7 @@ Par défaut, l'installation de ce bundle crée un fichier `src/DataFixtures/AppF
 
 Conservons notre exemple de blog, pour créer 2 jeux de fixtures (fausses données). Il faut d'abord choisir dans quel ordre nous allons faire l'insertion. Dans notre cas (2 entités), nous pouvons le faire aussi bien dans un sens que dans l'autre. Je choisis de commencer par les tags, puis les articles :
 
-- `src/DataFixtures/TagFixtures.php` :
+`src/DataFixtures/TagFixtures.php`
 
 ```php
 <?php
@@ -795,7 +794,7 @@ class TagFixtures extends Fixture
 }
 ```
 
-- `src/DataFixtures/ArticleFixtures.php` :
+`src/DataFixtures/ArticleFixtures.php`
 
 ```php
 <?php
