@@ -142,3 +142,21 @@ Nous voulons des routes pour récupérer les éléments suivants :
 Le client aimerait également que l'équipe de développement soit force de proposition pour améliorer le site. 
 
 Pour cela, veuillez remplir le fichier `README.md` et créer une liste des améliorations que vous imaginez.
+
+
+## Critères d'acceptation (notation)
+
+Pour valider le rendu, voici ce qui est attendu par votre chef de projet, pour chacun d'entre vous : 
+
+- Création/manipulation d'au moins une entité (affichage, création, modification, suppression)
+- Création de routes et de controllers
+- Création de vues Twig (avec utilisation d'héritage)
+- Mise en place d'au moins un formulaire
+- Création de services
+
+Bonus :
+- Respect des normes PSR (1, 12 et 4) pour tout le code
+- Chaque ticket fait l'objet d'une <abbr title="Pull Request">PR</abbr> relue et approuvée
+
+Éléments communs à fournir :
+- Un schéma de base de données

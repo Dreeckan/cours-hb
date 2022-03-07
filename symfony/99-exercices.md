@@ -1,7 +1,5 @@
 # Exercices
 
-Une [autre série d'exercices est disponible sur Gitlab](https://gitlab.com/drakona-formation/exercices-symfony-cda17) (annonces d'adoption de chiens)
-
 La correction de ces exercices est disponible sur un [repository Github dédié](https://github.com/Dreeckan/test-symfony)
 
 ## 1. Créer une première page avec Symfony (exercice guidé)
@@ -17,6 +15,7 @@ La correction de ces exercices est disponible sur un [repository Github dédié]
 - On crée notre controller (nous sommes dans un projet neuf, nous n'en avons pas), avec la commande `php bin/console make:controller`. Nommons-le `DefaultController`
 - Nous avons une nouvelle classe créée dans `src/Controller/DefaultController.php` et un nouveau template (une nouvelle vue) dans `template/default/index.html.twig`
 - Regardons `src/Controller/DefaultController.php` :
+
 ```php
 <?php
 
@@ -39,6 +38,7 @@ class DefaultController extends AbstractController
     }
 }
 ```
+
 - Il contient une classe `DefaultController` (qui étend `AbstractController`, venu de Symfony) et une méthode `index()` (c'est elle qui va particulièrement nous intéresser)
 - Cette méthode `index()` a une annotation (commentaire commençant par `@`) nommée `Route`. Il s'agit d'une annotation permettant à Symfony de faire le lien entre une URi et une méthode de controller (aussi appelée action) à exécuter. Ici, `index()` sera appelée si nous chargeons la racine du site (`http://127.0.0.1:8000/`, en somme).
 - `index()` va faire une seule chose : renvoyer un html, construit à partir du fichier `default/index.html.twig` (qui se trouve dans le dossier `templates`). Pour se faire, on va appeler la méthode `render()` du controller, qui va créer un rendu de notre fichier Twig (en faire un html), en utilisant le tableau de paramètres, passé en deuxième argument.
