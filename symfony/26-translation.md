@@ -269,6 +269,6 @@ Quand vous ajoutez un fichier de traduction, les traductions ne sont pas forcém
 
 Il existe également une commande `php bin/console debug:translation` qui peut vous rendre de grands services :
 - `php bin/console debug:translation fr` permet de voir toutes les traductions disponibles pour le français et montre l'état (si la traduction est manquante dans la langue, par exemple)
-- `php bin/console debug:translation fr --domain=messages` permet de voir toutes les traductions disponibles dans le domaine (fichier) messages, pour le français, et montre l'état (si la traduction est manquante dans la langue, par exemple)
+- `php bin/console debug:translation fr --domain=messages` permet de voir toutes les traductions disponibles dans le domaine (fichier) messages, pour le français et montre l'état (si la traduction est manquante dans la langue, par exemple)
 - `php bin/console debug:translation fr --only-unused` permet de voir toutes les traductions non utilisées (ni dans le PHP, ni dans les Twig, mais définies dans les fichiers de traduction)
 - `php bin/console debug:translation fr --only-missing` permet de voir toutes les traductions présentes dans le PHP ou les Twig, mais pas présentes dans les fichiers de traduction

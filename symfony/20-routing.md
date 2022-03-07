@@ -2,6 +2,16 @@
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/12a92f13e0354bfcbfc291f50222ca51" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+
+## Pour résumer
+
+- Les routes font le lien entre les urls et les actions (méthodes de controllers).
+- Elles sont définies par (au moins) un chemin (premier paramètre) et un nom.
+- Elles sont associées à une action sous forme d'annotations.
+- Elles peuvent prendre des paramètres, notés dans le chemin `{nomDuParametre}` et le paramètre est disponible comme paramètre de l'action `$nomDuParametre`.
+  - Ces paramètres peuvent avoir des contraintes de forme (paramètre `requirements` des routes) ou des valeurs par défaut
+
+
 ## De l'URL du navigateur
 
 Lors de l'appel d'une URL par le navigateur (`https://formation-hb.drakolab.fr/php` par exemple), le serveur (Nginx ou Apache, la plupart du temps) va transmettre la requête (`/php`) au fichier `public/index.php`. Symfony va alors appeler différents éléments pour traiter la requête :
@@ -39,17 +49,14 @@ class BlogController extends AbstractController
     
     /**
      * Ici, on peut s'assurer que le paramètre page est un entier (l'expression régulière \d+ fait cette vérification)
-     * 
-     * @Route("/blog/{page}", name="blog_list", requirements={"page"="\d+"})
      */
+     #[Route("/blog/{page}", name="blog_list", requirements={"page"="\d+"})]
     public function list(int $page = 1): Response
     {
         // ...
     }
 
-    /**
-     * @Route("/blog/{slug}", name="blog_show")
-     */
+    #[Route("/blog/{slug}", name="blog_show")]
     public function show(string $slug): Response
     {
         // $slug va prendre la valeur déclarée dans l'url ({slug})
@@ -145,10 +152,3 @@ Si vous avez des problèmes avec vos routes (qui ne sont pas prises correctement
 - `php bin/console debug:router` qui vous permet de lister toutes les routes de votre application, avec cette variante pour ne pas avoir les routes du profiler et des outils de débug de Symfony : `php bin/console debug:router --env=prod`
 - `php bin/console router:match /un/chemin/a/tester` pour savoir quel controller et quelle action sont appelées pour le chemin donné
 
-## Pour résumer
-
-- Les routes font le lien entre les urls et les actions (méthodes de controllers).
-- Elles sont définies par (au moins) un chemin (premier paramètre) et un nom.
-- Elles sont associées à une action sous forme d'annotations.
-- Elles peuvent prendre des paramètres, notés dans le chemin `{nomDuParametre}` et le paramètre est disponible comme paramètre de l'action `$nomDuParametre`.
-  - Ces paramètres peuvent avoir des contraintes de form (paramètre `requirements` des routes) ou des valeurs par défaut

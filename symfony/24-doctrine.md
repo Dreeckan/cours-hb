@@ -549,13 +549,22 @@ Un objet Repository est lié à une entité précise et permet de faire des requ
 
 Dans l'exemple précédent, le ParamConverter utilise une méthode pratique et commune à tous les Repositories : `find($id)`. Il y a 4 méthodes disponibles dans tous les repositories, détaillons-les :
 
-- `findAll()` : Récupère tous les objets de la table (`SELECT * FROM article` par exemple)
-- `find($id)` prend en paramètre un identifiant (colonne `id` d'une table) et renvoie l'objet correspondant (`SELECT * FROM article WHERE id = $id` par exemple)
-- `findOneBy(array $criteria, array $orderBy = null)` prend 2 paramètres, un tableau de critères (les colonnes et les valeurs à mettre dans un `WHERE`) et un tableau pour ordonner (avec la colonne et l'ordre) et renvoie **un** objet correspondant aux critères (`SELECT * FROM article WHERE title = $title ORDER BY id DESC LIMIT 1` par exemple).
+### `findAll()`
+
+`findAll()` récupère tous les objets de la table (`SELECT * FROM article` par exemple)
+
+### `find($id)`
+
+Find prend en paramètre un identifiant (colonne `id` d'une table) et renvoie l'objet correspondant (`SELECT * FROM article WHERE id = $id` par exemple)
+
+### `findOneBy(array $criteria, array $orderBy = null)`
+
+`findOneBy(array $criteria, array $orderBy = null)` prend 2 paramètres, un tableau de critères (les colonnes et les valeurs à mettre dans un `WHERE`) et un tableau pour ordonner (avec la colonne et l'ordre) et renvoie **un** objet correspondant aux critères (`SELECT * FROM article WHERE title = $title ORDER BY id DESC LIMIT 1` par exemple).
+
 
 ```php
     /**
-     * @Route("/{title}", name="show")
+     * @Route("/{title}", name="blog_show")
      * 
      * On récupère le paramètre title de notre route
      * et on injecte le repository dont nous allons avoir besoin.
@@ -564,45 +573,43 @@ Dans l'exemple précédent, le ParamConverter utilise une méthode pratique et c
      */
     public function show(string $title, ArticleRepository $repository): Response
     {
-        // On ne veut récupérer qu'un seul article
+        // On récupère plusieurs articles
         $article = $repository->findOneBy([
             // On passe un tableau de critères, ne contenant qu'une entrée :
             // on cherche dans la colonne title de la table, avec la valeur $title
             // Ce qui revient à faire en SQL : WHERE title = '$title'
-            'title' => $title,  
-        ], [
-            // On précise comment trier les résultats
-            // Ce qui revient à faire en SQL : ORDER BY id DESC
-            // Ce tri nous est utile si plusieurs articles ont le même titre
-            // On ne prend ainsi que celui ayant l'id le plus élevé
-            'id' => 'DESC',
-        ]);
-        return $this->render('blog/show.html.twig', [
+            'title' => $title,
+        ]
+        );
+        return $this->render('blog/index.html.twig', [
             'article' => $article,
         ]);
     }
 ```
 
-- `findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)` : prend 4 paramètres, un tableau de critères, un tableau pour ordonner, la quantité maximum d'objets à retourner (`LIMIT` en SQL), et le premier élément à retourner (premier paramètre de `LIMIT`) (`SELECT * FROM article WHERE title = $title ORDER BY id DESC LIMIT 0,5` par
+### `findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)`
+
+`findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)` : prend 4 paramètres, un tableau de critères, un tableau pour ordonner, la quantité maximum d'objets à retourner (`LIMIT` en SQL), et le premier élément à retourner (premier paramètre de `LIMIT`) (`SELECT * FROM article WHERE title = $title ORDER BY id DESC LIMIT 0,5` par
   exemple).
+
 
 ```php
     /**
-     * @Route("/{title}", name="show")
+     * @Route("/{tag}", name="blog_index")
      * 
      * On récupère le paramètre title de notre route
      * et on injecte le repository dont nous allons avoir besoin.
      * 
      * Noter que l'on aurait pu utiliser le ParamConverter de Doctrine pour récupérer plus simplement l'article par son titre
      */
-    public function show(string $title, ArticleRepository $repository): Response
+    public function index(string $tag, ArticleRepository $repository): Response
     {
-        // On ne veut récupérer qu'un seul article
-        $article = $repository->findBy([
+        // On récupère plusieurs articles
+        $articles = $repository->findBy([
             // On passe un tableau de critères, ne contenant qu'une entrée :
-            // on cherche dans la colonne title de la table, avec la valeur $title
-            // Ce qui revient à faire en SQL : WHERE title = '$title'
-            'title' => $title,  
+            // on cherche dans la colonne tag de la table, avec la valeur $tag
+            // Ce qui revient à faire en SQL : WHERE tag = '$tag'
+            'tag' => $tag,  
         ], [
             // On précise comment trier les résultats
             // Ce qui revient à faire en SQL : ORDER BY id DESC
@@ -611,8 +618,8 @@ Dans l'exemple précédent, le ParamConverter utilise une méthode pratique et c
         5, // On veut récupérer 5 résultats maximum
         0 // On commence au premier enregistrement, nous avons donc l'équivalent de LIMIT 0,5
         );
-        return $this->render('blog/show.html.twig', [
-            'article' => $article,
+        return $this->render('blog/index.html.twig', [
+            'articles' => $articles,
         ]);
     }
 ```
@@ -626,13 +633,23 @@ Nous allons presque toujours utiliser le QueryBuilder pour faire nos requêtes. 
 ```php
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('a') // On crée un objet QueryBuilder, en mettant "a" comme alias de notre table article
-            ->andWhere('a.exampleField = :val') // On ajoute un WHERE, avec un paramètre ":val" (voir le cours sur PDO et les paramètres nommés)
-            ->setParameter('val', $value) // On donne une valeur au paramètre. Contrairement à PDO, il n'est pas obligatoire de donner une variable ici, vous pourriez mettre une valeur directement.
-            ->orderBy('a.id', 'ASC') // On tri nos éléments par "id" croissant
-            ->setMaxResults(10) // On ne veut que 10 résultats maximum
-            ->getQuery() // On récupère la requête générée, qui va correspondre à quelque chose comme "SELECT * FROM article a WHERE a.exampleField = '$value' ORDER BY a.id LIMIT 10"
-            ->getResult() // On exécute la requête et on récupère les résultats. On les retourne sous la forme d'un tableau (qui contient des objets Article)
+        // On crée un objet QueryBuilder, en mettant "a" comme alias de notre table article
+        return $this->createQueryBuilder('a') 
+            // On ajoute un WHERE, avec un paramètre ":val"
+            // (voir le cours sur PDO et les paramètres nommés)
+            ->andWhere('a.exampleField = :val') 
+            // On donne une valeur au paramètre. 
+            ->setParameter('val', $value) 
+            // On trie nos éléments par "id" croissant
+            ->orderBy('a.id', 'ASC')
+            // On ne veut que 10 résultats maximum 
+            ->setMaxResults(10) 
+            // On récupère la requête générée, qui va correspondre à quelque chose comme
+            // "SELECT * FROM article a WHERE a.exampleField = '$value' ORDER BY a.id LIMIT 10"
+            ->getQuery() 
+            // On exécute la requête et on récupère les résultats.
+            // On les retourne sous la forme d'un tableau (qui contient des objets Article)
+            ->getResult() 
         ;
     }
 ```
@@ -643,19 +660,29 @@ Voyons comment ajouter une condition dans cet exemple :
     // On ajoute un paramètre $inverseOrder : s'il vaut true, nous allons trier par ordre décroissant
     public function findByExampleField($value, $inverseOrder = false)
     {
-        $qb = $this->createQueryBuilder('a') // On crée un objet QueryBuilder, en mettant "a" comme alias de notre table article
-            ->andWhere('a.exampleField = :val') // On ajoute un WHERE, avec un paramètre ":val" (voir le cours sur PDO et les paramètres nommés)
-            ->setParameter('val', $value) // On donne une valeur au paramètre. Contrairement à PDO, il n'est pas obligatoire de donner une variable ici, vous pourriez mettre une valeur directement.
-            ->setMaxResults(10) // On ne veut que 10 résultats maximum
+        // On crée un objet QueryBuilder, en mettant "a" comme alias de notre table article
+        $qb = $this->createQueryBuilder('a')
+            // On ajoute un WHERE, avec un paramètre ":val" (voir le cours sur PDO et les paramètres nommés)
+            ->andWhere('a.exampleField = :val')
+            // On donne une valeur au paramètre. 
+            ->setParameter('val', $value)
+            // On ne veut que 10 résultats maximum
+            ->setMaxResults(10)
         ;
         if ($inverseOrder === true) {
-            $qb->orderBy('a.id', 'DESC'); // On tri nos éléments par "id" décroissant
+            // On tri nos éléments par "id" décroissant
+            $qb->orderBy('a.id', 'DESC');
         } else {
-            $qb->orderBy('a.id', 'ASC'); // On tri nos éléments par "id" croissant
+            // On tri nos éléments par "id" croissant
+            $qb->orderBy('a.id', 'ASC');
         }
         return $qb
-            ->getQuery() // On récupère la requête générée, qui va correspondre à quelque chose comme "SELECT * FROM article a WHERE a.exampleField = '$value' ORDER BY a.id LIMIT 10"
-            ->getResult() // On exécute la requête et on récupère les résultats. On les retourne sous la forme d'un tableau (qui contient des objets Article)
+            // On récupère la requête générée, qui va correspondre à quelque chose comme
+            // "SELECT * FROM article a WHERE a.exampleField = '$value' ORDER BY a.id LIMIT 10"
+            ->getQuery()
+            // On exécute la requête et on récupère les résultats.
+            // On les retourne sous la forme d'un tableau (qui contient des objets Article)
+            ->getResult()
         ;
     }
 ```
@@ -669,14 +696,26 @@ Imaginons que nous voulons créer un moteur de recherche pour notre blog et que 
 ```php
     public function search(string $text)
     {
-        return $this->createQueryBuilder('a') // On crée un objet QueryBuilder, en mettant "a" comme alias de notre table article
-            ->join('a.tag', 't') // Ici, on suit les propriétés de notre entité : on demande à Doctrine une jointure sur la propriété tag de notre article (il se débrouille ensuite pour faire la correspondance par id), et on lui dit de l'appeler t dans la suite de la requête
-            ->where('a.content LIKE :val') // On ajoute un WHERE, avec un paramètre ":val" (voir le cours sur PDO et les paramètres nommés)
+        // On crée un objet QueryBuilder, en mettant "a" comme alias de notre table article
+        return $this->createQueryBuilder('a') 
+            // Ici, on suit les propriétés de notre entité :
+            // on demande à Doctrine une jointure sur la propriété tag de notre article
+            // (il se débrouille ensuite pour faire la correspondance par id),
+            // et on lui dit de l'appeler t dans la suite de la requête
+            ->join('a.tag', 't') 
+            // On ajoute un WHERE, avec un paramètre ":val"
+            // (voir le cours sur PDO et les paramètres nommés)
+            ->where('a.content LIKE :val') 
             ->orWhere('a.title LIKE :val')
-            ->orWhere('t.name LIKE :val')// On peut ensuite utiliser notre table t (les tags) pour regarder le champs name
-            ->setParameter('val', '%'.$text.'%') // On donne une valeur au paramètre. Contrairement à PDO, il n'est pas obligatoire de donner une variable ici, vous pourriez mettre une valeur directement.
-            ->getQuery() // On récupère la requête générée
-            ->getResult() // On exécute la requête et on récupère les résultats. On les retourne sous la forme d'un tableau (qui contient des objets Article)
+            // On peut ensuite utiliser notre table t (les tags) pour regarder le champ name
+            ->orWhere('t.name LIKE :val')
+            // On donne une valeur au paramètre.
+            ->setParameter('val', '%'.$text.'%') 
+            // On récupère la requête générée
+            ->getQuery()
+            // On exécute la requête et on récupère les résultats.
+            // On les retourne sous la forme d'un tableau (qui contient des objets Article)
+            ->getResult() 
         ;
     }
 ```
@@ -724,9 +763,12 @@ class BlogController extends AbstractController
     public function search(ArticleRepository $repo, string $text): Response
     {
         $articles = $repo->search($text);
-        
-        dump($articles); // Cette fonction va afficher la variable $articles et son contenu (un peu comme un var_dump(), mais en plus beau et plus pratique) dans le profiler de Symfony
-        dd($articles); // Cette fonction va afficher la variable $articles et son contenu, mais aussi arrêter le programme (dump and die) (comme un exit(var_dump()))
+        // Cette fonction va afficher la variable $articles et son contenu
+        // (un peu comme un var_dump(), mais en plus beau et plus pratique) dans le profiler de Symfony
+        dump($articles); 
+        // Cette fonction va afficher la variable $articles et son contenu,
+        // mais aussi arrêter le programme (dump and die) (comme un exit(var_dump()))
+        dd($articles); 
         
         return $this->render('blog/search.html.twig', [
             'results' => $articles,
@@ -780,7 +822,7 @@ class TagFixtures extends Fixture
         ];
         
         foreach ($tagNames as $tagName) {
-            // Je crée des objets tags et les rempli
+            // Je crée des objets tags et les remplie
             // avant d'en demander l'enregistrement à l'ObjectManager
             $tag = new Tag();
             $tag->setName($tagName);

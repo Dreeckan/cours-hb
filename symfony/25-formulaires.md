@@ -30,7 +30,6 @@ Avec Symfony, les formulaires sont des objets et nous allons en aborder 3 aspect
 Avant toute chose, nous devons avoir une entité ou un objet à associer à notre formulaire. Reprenons la classe `src/Entity/Tag.php`, définie dans la partie précédente : 
 
 ```php
-<?php
 
 namespace App\Entity;
 
@@ -121,7 +120,6 @@ Pour créer un formulaire associé, utilisons la commande `php bin/console make:
 Nous obtenons un fichier `src/Form/TagType.php` (commenté et un peu amélioré par rapport à ce que génère la commande) :
 
 ```php
-<?php
 
 namespace App\Form;
 
@@ -168,7 +166,7 @@ Pour les différents [types de champs disponibles et leurs options](https://symf
 Pour créer un formulaire à partir de notre `TagType` (qui est un plan de fabrication, ou formulaire type), Symfony et son `AbstractController` nous offre une méthode `createForm` :
 
 ```php
-/**
+    /**
      * @Route("/new", name="tag_new")
      */
     public function new(Request $request, EntityManagerInterface $em): Response
@@ -273,7 +271,7 @@ twig:
 Pour que notre thème fonctionne, il nous faut ajouter le css de Bootstrap dans notre fichier `base.html.twig` : 
 
 ```Twig
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 ```
 
 Il y a également d'autres thèmes disponibles, que vous pouvez voir dans le dossier `vendor/symfony/twig-bridge/Resources/views/Form/` de votre projet (par défaut, Symfony utilise le thème `form_div_layout.html.twig`).
@@ -471,7 +469,6 @@ Pour vérifier que notre entité est valide, [Symfony met à notre disposition u
 Par exemple, nous pouvons vérifier que la propriété `name` de notre objet `Tag` n'est pas vide :
 
 ```php
-<?php
 
 namespace App\Entity;
 

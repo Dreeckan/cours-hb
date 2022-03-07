@@ -36,7 +36,7 @@ Pour installer un plugin dans VSCode, aller dans le menu de gauche, partie Exten
 - DotENV pour mettre de la couleurs dans les fichiers d'environnement (`.env`)
 - MySQL (de cweijan) pour faire le lien avec votre base de données ([je vous ai fait une vidéo d'installation et de configuration](https://www.loom.com/share/09f79db6bd6b4226972ac1017d048257))
 - php cs fixer (de junstyle)
-- PHP Debug (de Felix Becker)
+- PHP Debug (de XDebug)
 - PHP Getters & Setters (de phproberto)
 - PHP Intelephense (de Ben Mewburn)
 - Symfony for VSCode (de TheNouillet)
@@ -98,4 +98,4 @@ Pour éviter de retenir des chemins complexes, nous pouvons préciser des script
 
 Ajouter les 2 lignes `fix` et `analyse` dans vos scripts, permet de définir des raccourcis pour lancer Php CS Fixer et PHPStan, sans avoir à se rappeler le détail des commandes ;) .
 
-Ces commandes peuvent $etre lancées avec `composer fix` et `composer analyse`
+Ces commandes peuvent être lancées avec `composer fix` et `composer analyse`
