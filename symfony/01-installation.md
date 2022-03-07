@@ -12,7 +12,7 @@ Si vous utilisez Windows, je vous conseille d'utiliser Powershell pour éviter d
 Pour créer un projet Symfony, nous pouvons maintenant utiliser notre ligne de commande (PowerShell dans mon cas) :
 
 ```shell
-  symfony new --full my_project
+  symfony new --webapp my_project --php=8.1
 ```
 
 Vous pouvez alors ouvrir ce nouveau dossier avec votre IDE favori. Les deux sous-parties suivantes sont consacrées à la gestion d'un projet Symfony dans notre IDE. Pour la base de données, nous aurons besoin de Wamp/Mamp.
