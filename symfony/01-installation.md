@@ -42,7 +42,47 @@ Pour installer un plugin dans VSCode, aller dans le menu de gauche, partie Exten
 - Symfony for VSCode (de TheNouillet)
 - Twig Language 2 (de mblode)
 
-## Outils d'amélioration du code
+
+## Requis techniques
+
+Avant de commencer à créer un site avec Symfony, certaines notions sont nécessaires :
+- Une bonne maîtrise du [PHP orienté objet](../php/02-objet.md) (y compris les espaces de nom)
+- Le [principe <abbr title="Model View Controller">MVC</abbr>](../php/04-mvc.md) pour organiser nos fichiers
+- Les annotations et attributs en PHP (voir point suivant)
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/f1d89de2d2264c8a8a80fc84c3dc0dad" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+### Annotations et attributs
+
+Je vous invite à lire le [très bon article de Maxime Colin, de la société Elao sur les attributs](https://www.elao.com/blog/dev/les-attributs-php-8-dans-symfony)
+
+Dans plusieurs langages, et particulièrement en PHP avec Symfony, nous avons besoin de fournir des informations supplémentaires sur des symboles (classes, interfaces, traits, etc.), propriétés ou méthodes. Cela permet notamment de générer une documentation, d'améliorer la complétion des <abbr title="Environnement de développement">IDE</abbr> (comme PHP Storm ou VsCode), mais aussi définir le fonctionnement de certaines librairies !
+Nous pouvons le faire via des commentaires ou des attributs, 2 éléments du langage PHP que nous allons détailler un peu plus ici.
+
+C'est le cas en Symfony, notamment pour la [définition des routes](20-routing.md) ou la [définition des entités](24-doctrine.md).
+
+Les annotations sont des commentaires spéciaux (au format PHPDoc). Dans l'exemple suivant, on appelle **une classe** Route avec les paramètres de son constructeur, que l'on peut nommer (pour les utiliser dans le désordre). L'inconvénient est le besoin d'un parser (librairie qui va lire nos fichiers PHP pour chercher les annotations) qui, bien que fourni avec Symfony, rajoute un travail supplémentaire dans l'interprétation de notre code.
+
+Un exemple d'annotation :
+
+```php
+/**
+ * @Route('/', name="default_index")
+ */
+```
+
+Un attribut est une expression du langage PHP, qui ne nécessite donc pas l'appel à un parser et qui permet le même fonctionnement.
+
+Le même exemple, en attribut :
+
+```php
+#[Route('/', name: "default_index")]
+```
+
+
+## Outils de qualité de code
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/d57e65a6e18a43188c054304bd3daf4b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### Php CS Fixer
 
