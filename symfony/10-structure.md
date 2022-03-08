@@ -1,5 +1,7 @@
 # Structure et utilisation d'un projet
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/622baa4b041c4db7a4afaacc93b9509d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## Pour résumer
 
 - `composer install` pour télécharger le contenu du dossier `vendor` (non versionné) ou le mettre à jour à partir du `composer.lock`
