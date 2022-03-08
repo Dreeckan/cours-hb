@@ -59,32 +59,21 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- */
+#[ORM\Entity(repositoryClass: UserRepository::class)]
 abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
+    #[ORM\Column(type: "string", length: 180, unique: true)]
     private $email;
 
-    /**
-     * @ORM\Column(type="json")
-     */
+    #[ORM\Column(type: "json")]
     private $roles = [];
 
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: "string")]
     private $password;
 
     public function getId(): ?int
@@ -322,9 +311,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    /**
-     * @Route("/login", name="app_login")
-     */
+    #[Route("/login", name: "app_login")]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // if ($this->getUser()) {
@@ -339,9 +326,7 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-    /**
-     * @Route("/logout", name="app_logout")
-     */
+    #[Route("/logout", name: "app_logout")]
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
@@ -468,16 +453,14 @@ Dans un contrôleur :
    
     /**
      * Pour accéder à TOUTES les méthodes de ce contrôleur, il faut avoir le ROLE_ADMIN
-     *
-     * @IsGranted("ROLE_ADMIN")
      */
+     #[IsGranted("ROLE_ADMIN")]
     class AdminController extends AbstractController
     {
        /**
         * Il faut avoir le rôle ROLE_ADMIN pour cette méthode seulement
-        *
-        * @IsGranted("ROLE_ADMIN")
         */
+        #[IsGranted("ROLE_ADMIN")]
         public function adminDashboard(): Response
         {
             // Fait exactement la même chose que l'annotation au-dessus.

@@ -38,26 +38,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=TagRepository::class)
- */
+#[ORM\Entity(repositoryClass: TagRepository::class)]
 class Tag
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=128)
-     */
+    #[ORM\Column(type: "string", length: 128)]
     private $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="tag")
-     */
+    #[ORM\OneToMany(targetEntity: Article::class, mappedBy: "tag")]
     private $articles;
 
     public function __construct()
@@ -166,9 +158,7 @@ Pour les différents [types de champs disponibles et leurs options](https://symf
 Pour créer un formulaire à partir de notre `TagType` (qui est un plan de fabrication, ou formulaire type), Symfony et son `AbstractController` nous offre une méthode `createForm` :
 
 ```php
-    /**
-     * @Route("/new", name="tag_new")
-     */
+    #[Route("/new", name: "tag_new")]
     public function new(Request $request, EntityManagerInterface $em): Response
     {
         $tag = new Tag();
@@ -478,25 +468,19 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=TagRepository::class)
- */
+#[ORM\Entity(repositoryClass: TagRepository::class)]
 class Tag
 {
     // ...
     
-    /**
-     * @ORM\Column(type="string", length=128)
-     * // Une assertion pour vérifier que notre name n'est pas vide
-     * @Assert\NotBlank()
-     * // Une autre pour vérifier qu'il contienne au moins 4 caractères
-     * @Assert\Length(min=4)
-     */
+    #[ORM\Column(type: "string", length: 128)]
+    // Une assertion pour vérifier que notre name n'est pas vide
+    #[Assert\NotBlank()]
+    // Une autre pour vérifier qu'il contienne au moins 4 caractères
+    #[Assert\Length(min: 4)]
     private $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="tag")
-     */
+    #[ORM\OneToMany(targetEntity: Article::class, mappedBy: "tag")]
     private $articles;
 
     // ... 

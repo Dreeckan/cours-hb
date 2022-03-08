@@ -29,14 +29,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route(host="blog.example.com", requirements={"_locale": "en|es|fr"}, name="blog_")
- */
+#[Route(host: "blog.example.com", requirements: ["_locale" => "en|es|fr"], name: "blog_"]
 class BlogController extends AbstractController // Notre controller hérite du AbstractController de Symfony, ce qui nous permet d'avoir plusieurs méthodes très utiles. Ca n'est toutefois pas obligatoire, nous pourrions tout à fait définir des controllers qui n'étendent pas AbstractController.
 {
-    /**
-     * @Route("/{_locale}", name="list")
-     */
+    #[Route("/{_locale}", name: "list")]
     public function list(): Response
     {
         // Disons que nous avons une liste d'articles de blog
@@ -47,7 +43,7 @@ class BlogController extends AbstractController // Notre controller hérite du A
         // On prépare le html à afficher à l'utilisateur
         $html = '<html><body>Articles : '.implode($posts).'</body></html>';
         
-        // On préparer un objet Response qui va non seulement contenir notre html, mais également toutes les informations HTTP nécessaires (headers par exemple)
+        // On prépare un objet Response qui va non seulement contenir notre html, mais également toutes les informations HTTP nécessaires (headers par exemple)
         $response = new Response($html);
         
         // On renvoie la réponse destinée au navigateur

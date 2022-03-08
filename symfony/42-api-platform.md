@@ -54,15 +54,11 @@ namespace App\Entity;
 use APIPlatform\Core\Annotation\APIResource;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- */
+#[ORM\Entity]
 #[APIResource]
 class Test 
 {
-    /**
-     * @ORM\Column 
-     */
+    #[ORM\Column]
     protected string $property = "";
     // ...
 }

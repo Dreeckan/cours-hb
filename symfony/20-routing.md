@@ -50,7 +50,7 @@ class BlogController extends AbstractController
     /**
      * Ici, on peut s'assurer que le paramètre page est un entier (l'expression régulière \d+ fait cette vérification)
      */
-     #[Route("/blog/{page}", name="blog_list", requirements={"page"="\d+"})]
+     #[Route("/blog/{page}", name="blog_list", requirements: ["page"="\d+"])]
     public function list(int $page = 1): Response
     {
         // ...
@@ -85,22 +85,17 @@ use Symfony\Component\Routing\Annotation\Route;
  * Toutes les URi liées aux routes de ce controller commencent par /blog
  * Les noms de toutes les routes commencent par blog_ (on a donc blog_list et blog_show ici)
  * On force tous les paramètres _locale des différentes actions à 3 valeurs possibles : en, es ou fr
- * 
- * @Route("/blog", requirements={"_locale": "en|es|fr"}, name="blog_")
  */
+ #[Route("/blog", name: "blog_", requirements: ["_locale" => "en|es|fr"])]
 class BlogController extends AbstractController
 {
-    /**
-     * @Route("/{_locale}", name="list")
-     */
+    #[Route("/{_locale}", name: "list")]
     public function list(): Response
     {
         // ...
     }
 
-    /**
-     * @Route("/{_locale}/posts/{slug}", name="show")
-     */
+    #[Route("/{_locale}/posts/{slug}", name: "show")]
     public function show(string $slug): Response
     {
         // ...
@@ -122,22 +117,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route(host="blog.example.com", requirements={"_locale": "en|es|fr"}, name="blog_")
- */
+#[Route(host: "blog.example.com", requirements: ["_locale" => "en|es|fr"], name: "blog_"]
 class BlogController extends AbstractController
 {
-    /**
-     * @Route("/{_locale}", name="list")
-     */
+    #[Route("/{_locale}", name: "list")]
     public function list(): Response
     {
         // ...
     }
 
-    /**
-     * @Route("/{_locale}/posts/{slug}", name="show")
-     */
+    #[Route("/{_locale}/posts/{slug}", name: "show")]
     public function show(string $slug): Response
     {
         // ...

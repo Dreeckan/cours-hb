@@ -269,14 +269,11 @@ final class OrderEvents
      * Pour simplifier la completion par les IDE 
      * et se rappeler plus aisément l'événement associé, 
      * on ajoute une annotation pour l'indiquer
-     * 
-     * @Event("App\Event\OrderStartedEvent")
      */
+    #[Event("App\Event\OrderStartedEvent")]
     public const STARTED = 'order.started';
     
-    /**
-     * @Event("App\Event\OrderPlacedEvent")
-     */
+    #[Event("App\Event\OrderPlacedEvent")]
     public const PLACED = 'order.placed';
 
     // On ajoute des aliases, qui peuvent être utilisés 

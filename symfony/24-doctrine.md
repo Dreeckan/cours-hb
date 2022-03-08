@@ -196,26 +196,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=TagRepository::class)
- */
+ #[ORM\Entity(repositoryClass: TagRepository::class)]
 class Tag
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+     #[ORM\Id]
+     #[ORM\GeneratedValue]
+     #[ORM\Column(type="integer")]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=128)
-     */
+     #[ORM\Column(type="string", length=128)]
     private $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="tag")
-     */
+     #[ORM\OneToMany(targetEntity=Article::class, mappedBy="tag")]
     private $articles;
 
     public function __construct()
@@ -283,32 +275,22 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=ArticleRepository::class)
- */
+ #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type="integer")]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type="string", length=255)]
     private $title;
 
-    /**
-     * @ORM\Column(type="text")
-     */
+    #[ORM\Column(type="text")]
     private $content;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Tag::class, inversedBy="articles")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity=Tag::class, inversedBy="articles")]
+    #[ORM\JoinColumn(nullable=false)]
     private $tag;
 
 
@@ -374,23 +356,25 @@ Avec cette stratégie, on ne crée que des tables utiles et on évite de devoir 
 ```php
 use Doctrine\ORM;
 
-/** @ORM\MappedSuperclass */
+#[ORM\MappedSuperclass]
 class Person
 {
-    /** @ORM\Column(type="integer") */
+    #[ORM\Column(type="integer")]
     protected $mapped1;
-    /** @ORM\Column(type="string") */
+    #[ORM\Column(type="string")]
     protected $mapped2;
 
     // ...
 }
 
-/** @ORM\Entity */
+#[ORM\Entity]
 class Employee extends Person
 {
-    /** @ORM\Id @ORM\Column(type="integer") */
+    #[ORM\Id] 
+    #[ORM\Column(type="integer")] 
     private $id;
-    /** @ORM\Column(type="string") */
+    
+    #[ORM\Column(type="string")]
     private $name;
 
     // ...
@@ -399,7 +383,7 @@ class Employee extends Person
 
 Le script va alors créer une seule table `Employee`, contenant les propriétés de `Employee` et de `Person` :
 
-```sqlite
+```mysql
 CREATE TABLE Employee (
     mapped1 INTEGER NOT NULL, 
     mapped2 TEXT NOT NULL, 
@@ -415,20 +399,16 @@ CREATE TABLE Employee (
 Dans cette stratégie, on ne va créer qu'une seule table pour nos deux entités, avec les propriétés cumulées de `Person` et de toutes ses classes filles. Noter ici la partie `DiscriminatorColumn`, qui définit une colonne supplémentaire pour distinguer les objets `Person`, des objets `Employee` (la propriété `DiscriminatorMap` permet de définir les valeurs qui iront dans cette colonne)
 
 ```php
-/**
- * @ORM\Entity
- * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"person" = "Person", "employee" = "Employee"})
- */
+#[ORM\Entity]
+#[ORM\InheritanceType("SINGLE_TABLE")]
+#[ORM\DiscriminatorColumn(name: "discr", type: "string")]
+#[ORM\DiscriminatorMap(["person" => "Person", "employee" => "Employee"])]
 class Person
 {
     // ...
 }
 
-/**
- * @ORM\Entity
- */
+#[ORM\Entity]
 class Employee extends Person
 {
     // ...
@@ -442,18 +422,16 @@ Cette stratégie permet de créer une table par entité, dont l'entité parente 
 Cette manière de faire permet d'éviter les répétitions dans les tables ou les données vides dans la table. C'est en général la solution recommandée si vous utilisez [la méthode Merise pour créer votre MCD](https://fr.wikipedia.org/wiki/Merise_(informatique)#MCD_:_mod%C3%A8le_conceptuel_des_donn%C3%A9es).
 
 ```php
-/**
- * @ORM\Entity
- * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"person" = "Person", "employee" = "Employee"})
- */
+#[ORM\Entity]
+#[ORM\InheritanceType("JOINED")]
+#[ORM\DiscriminatorColumn(name: "discr", type: "string")]
+#[ORM\DiscriminatorMap(["person" => "Person", "employee" => "Employee"])]
 class Person
 {
     // ...
 }
 
-/** @ORM\Entity */
+#[ORM\Entity]
 class Employee extends Person
 {
     // ...
@@ -560,19 +538,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/blog", name="blog_")
- */
+#[Route("/blog", name: "blog_"]
 class BlogController extends AbstractController
 {
     // ...
 
-    /**
-     * @Route("/fixtures", name="fixtures")
-     * @param EntityManagerInterface $entityManager
-     *
-     * @return Response
-     */
+    #[Route("/fixtures", name: "fixtures"]
     public function fixtures(EntityManagerInterface $entityManager): Response
     {
         // On crée un objet Tag (nous n'en avons actuellement aucun)
@@ -623,13 +594,7 @@ La [documentation des ParamConverter](https://symfony.com/doc/current/bundles/Se
 Dans un controller, vous pouvez utiliser les paramètres de votre route pour récupérer directement une entité (une ligne de votre table)
 
 ```php
-    /**
-     * @Route("/{id}", name="show")
-     *
-     * @param Article $article
-     *
-     * @return Response
-     */
+    #[Route("/{id}", name: "show")]
     public function show(Article $article): Response
     {
         return $this->render('blog/show.html.twig', [
@@ -670,13 +635,12 @@ Find prend en paramètre un identifiant (colonne `id` d'une table) et renvoie l'
 
 ```php
     /**
-     * @Route("/{title}", name="blog_show")
-     * 
      * On récupère le paramètre title de notre route
      * et on injecte le repository dont nous allons avoir besoin.
      * 
      * Noter que l'on aurait pu utiliser le ParamConverter de Doctrine pour récupérer plus simplement l'article par son titre
      */
+    #[Route("/{title}", name: "blog_show")]
     public function show(string $title, ArticleRepository $repository): Response
     {
         // On récupère plusieurs articles
@@ -701,13 +665,12 @@ Find prend en paramètre un identifiant (colonne `id` d'une table) et renvoie l'
 
 ```php
     /**
-     * @Route("/{tag}", name="blog_index")
-     * 
      * On récupère le paramètre title de notre route
      * et on injecte le repository dont nous allons avoir besoin.
      * 
      * Noter que l'on aurait pu utiliser le ParamConverter de Doctrine pour récupérer plus simplement l'article par son titre
      */
+    #[Route("/{tag}", name: "blog_index")]
     public function index(string $tag, ArticleRepository $repository): Response
     {
         // On récupère plusieurs articles
@@ -863,9 +826,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController 
 {
-    /**
-     * @Route("/blog/search/{text}", name="blog_search")
-     */
+    #[Route("/blog/search/{text}", name: "blog_search")]
     public function search(ArticleRepository $repo, string $text): Response
     {
         $articles = $repo->search($text);
