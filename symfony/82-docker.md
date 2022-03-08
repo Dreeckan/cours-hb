@@ -39,6 +39,7 @@ volumes:
 Par défaut, ce fichier permet de créer un serveur de <abbr title="Base de Données">BdD</abbr> [PostgreSQL](https://www.postgresql.org/). Vous n'avez alors rien à changer pour commencer à travailler !
 
 Avec cette configuration, vérifiez bien que votre fichier `.env` (ou `.env.local`) contient : 
+
 ```dotenv
 DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 ```

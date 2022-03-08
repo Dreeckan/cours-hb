@@ -6,6 +6,8 @@ Cette partie concerne des **bases** d'[API Platform](https://api-platform.com/),
 
 [Un tutoriel très complet sur API Platform (grandement recommandé)](https://grafikart.fr/formations/api-plaform) sur lequel je me suis basé pour l'écriture de ce cours.
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/605225f8ca7242f9930b0a626e74b603" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## En résumé
 
 - Pour créer une API rapidement, on utilise API Platform (mais ça n'est pas le seul moyen disponible)
@@ -15,6 +17,8 @@ Cette partie concerne des **bases** d'[API Platform](https://api-platform.com/),
 - On peut valider les données entrées à l'aide d'annotations / d'attributs
 
 ## La sérialisation
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/3d99a532f7134703b175c8eff3830d51" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Le processus de sérialisation est lié à Symfony et API Platform l'exploite pour ses propres besoins. Commençons par quelques définitions :
 
@@ -32,6 +36,8 @@ Schéma récapitulatif (venu de la [documentation d'API Platform sur la sériali
 ![](https://api-platform.com/static/f5bf57af8c8a3275d8ba1c9ced6e890d/39a20/SerializerWorkflow.png)
 
 ## Mettre en place une API avec API Platform
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/27c0fb72fb3643acb006410a35e0e902" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Nous partons du principe que nous allons initialiser une API dans une application Symfony existante (créée avec `symfony new --webapp` par exemple).
 
@@ -152,7 +158,7 @@ Une idée de nommage (venue des [vidéos de Grafikart](https://grafikart.fr/tuto
 - `type` est le type d'opération : `item` ou `collection`
 
 
-## Validation des données
+### Validation des données
 
 Lors de l'insertion ou la modification de nos données, il est courant de confirmer leur validité. Le faire dans une API ne change pas cette règle et plusieurs outils sont à notre disposition pour cela.
 

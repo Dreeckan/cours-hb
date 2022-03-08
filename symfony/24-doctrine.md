@@ -355,6 +355,112 @@ class Article
 }
 ```
 
+
+### Gérer les héritages entre les objets
+
+[La documentation Doctrine sur l'héritage](https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/reference/inheritance-mapping.html)
+
+Si vous avez des héritages entre vos tables / vos entités, il faut ajouter quelques annotations / attributs pour prévenir Doctrine et lui expliquer comment les gérer.
+
+Il y a 3 types d'héritages :
+- [Une classe par entité fille (Mapped Superclasses)](https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/reference/inheritance-mapping.html#mapped-superclasses), avec les champs de la classe parente répétés dans chacune, pour réduire le nombre de jointures
+- [Une table pour toutes les entités](https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/reference/inheritance-mapping.html#single-table-inheritance), pour réduire le nombre de tables et de jointures
+- [Une table par entité, y compris la parente](https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/reference/inheritance-mapping.html#class-table-inheritance), pour réduire la répétition de données (solution que je préfère le plus souvent)
+
+#### Mapped Superclasses
+
+Avec cette stratégie, on ne crée que des tables utiles et on évite de devoir faire des jointures pour récupérer les données. Par contre, on duplique une information qui pourrait être factorisée.
+
+```php
+use Doctrine\ORM;
+
+/** @ORM\MappedSuperclass */
+class Person
+{
+    /** @ORM\Column(type="integer") */
+    protected $mapped1;
+    /** @ORM\Column(type="string") */
+    protected $mapped2;
+
+    // ...
+}
+
+/** @ORM\Entity */
+class Employee extends Person
+{
+    /** @ORM\Id @ORM\Column(type="integer") */
+    private $id;
+    /** @ORM\Column(type="string") */
+    private $name;
+
+    // ...
+}
+```
+
+Le script va alors créer une seule table `Employee`, contenant les propriétés de `Employee` et de `Person` :
+
+```sqlite
+CREATE TABLE Employee (
+    mapped1 INTEGER NOT NULL, 
+    mapped2 TEXT NOT NULL, 
+    id INTEGER NOT NULL, 
+    name TEXT NOT NULL, 
+    related1_id INTEGER DEFAULT NULL, 
+    PRIMARY KEY(id)
+)
+```
+
+### Single Table Inheritance
+
+Dans cette stratégie, on ne va créer qu'une seule table pour nos deux entités, avec les propriétés cumulées de `Person` et de toutes ses classes filles. Noter ici la partie `DiscriminatorColumn`, qui définit une colonne supplémentaire pour distinguer les objets `Person`, des objets `Employee` (la propriété `DiscriminatorMap` permet de définir les valeurs qui iront dans cette colonne)
+
+```php
+/**
+ * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"person" = "Person", "employee" = "Employee"})
+ */
+class Person
+{
+    // ...
+}
+
+/**
+ * @ORM\Entity
+ */
+class Employee extends Person
+{
+    // ...
+}
+```
+
+### Class Table Inheritance
+
+Cette stratégie permet de créer une table par entité, dont l'entité parente (`Person`) et une jointure sera faite par Doctrine pour récupérer les éléments des tables nécessaires. Noter ici la partie `DiscriminatorColumn`, qui définit une colonne supplémentaire pour distinguer les objets `Person`, des objets `Employee` (la propriété `DiscriminatorMap` permet de définir les valeurs qui iront dans cette colonne).
+
+Cette manière de faire permet d'éviter les répétitions dans les tables ou les données vides dans la table. C'est en général la solution recommandée si vous utilisez [la méthode Merise pour créer votre MCD](https://fr.wikipedia.org/wiki/Merise_(informatique)#MCD_:_mod%C3%A8le_conceptuel_des_donn%C3%A9es).
+
+```php
+/**
+ * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"person" = "Person", "employee" = "Employee"})
+ */
+class Person
+{
+    // ...
+}
+
+/** @ORM\Entity */
+class Employee extends Person
+{
+    // ...
+}
+```
+
+
 ## Les migrations
 
 Si vous n'avez pas créé la BdD, Symfony met à votre disposition une commande pour le faire :
