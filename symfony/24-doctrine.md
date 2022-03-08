@@ -410,7 +410,7 @@ CREATE TABLE Employee (
 )
 ```
 
-### Single Table Inheritance
+#### Single Table Inheritance
 
 Dans cette stratégie, on ne va créer qu'une seule table pour nos deux entités, avec les propriétés cumulées de `Person` et de toutes ses classes filles. Noter ici la partie `DiscriminatorColumn`, qui définit une colonne supplémentaire pour distinguer les objets `Person`, des objets `Employee` (la propriété `DiscriminatorMap` permet de définir les valeurs qui iront dans cette colonne)
 
@@ -435,7 +435,7 @@ class Employee extends Person
 }
 ```
 
-### Class Table Inheritance
+#### Class Table Inheritance
 
 Cette stratégie permet de créer une table par entité, dont l'entité parente (`Person`) et une jointure sera faite par Doctrine pour récupérer les éléments des tables nécessaires. Noter ici la partie `DiscriminatorColumn`, qui définit une colonne supplémentaire pour distinguer les objets `Person`, des objets `Employee` (la propriété `DiscriminatorMap` permet de définir les valeurs qui iront dans cette colonne).
 
