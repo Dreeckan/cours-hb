@@ -50,13 +50,13 @@ class BlogController extends AbstractController
     /**
      * Ici, on peut s'assurer que le paramètre page est un entier (l'expression régulière \d+ fait cette vérification)
      */
-     #[Route("/blog/{page}", name="blog_list", requirements: ["page"="\d+"])]
+    #[Route("/blog/{page}", name: "blog_list", requirements: ["page" => "\d+"])]
     public function list(int $page = 1): Response
     {
         // ...
     }
 
-    #[Route("/blog/{slug}", name="blog_show")]
+    #[Route("/blog/{slug}", name: "blog_show")]
     public function show(string $slug): Response
     {
         // $slug va prendre la valeur déclarée dans l'url ({slug})

@@ -196,18 +196,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
- #[ORM\Entity(repositoryClass: TagRepository::class)]
+#[ORM\Entity(repositoryClass: TagRepository::class)]
 class Tag
 {
-     #[ORM\Id]
-     #[ORM\GeneratedValue]
-     #[ORM\Column(type="integer")]
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
     private $id;
 
-     #[ORM\Column(type="string", length=128)]
+    #[ORM\Column(type: "string", length: 128)]
     private $name;
 
-     #[ORM\OneToMany(targetEntity=Article::class, mappedBy="tag")]
+    #[ORM\OneToMany(targetEntity: Article::class, mappedBy: "tag")]
     private $articles;
 
     public function __construct()
@@ -275,22 +275,22 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
- #[ORM\Entity(repositoryClass: ArticleRepository::class)]
+#[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type="integer")]
+    #[ORM\Column(type: "integer")]
     private $id;
 
-    #[ORM\Column(type="string", length=255)]
+    #[ORM\Column(type: "string", length: 255)]
     private $title;
 
-    #[ORM\Column(type="text")]
+    #[ORM\Column(type: "text")]
     private $content;
 
-    #[ORM\ManyToOne(targetEntity=Tag::class, inversedBy="articles")]
-    #[ORM\JoinColumn(nullable=false)]
+    #[ORM\ManyToOne(targetEntity: Tag::class, inversedBy: "articles")]
+    #[ORM\JoinColumn(nullable: false)]
     private $tag;
 
 
@@ -359,9 +359,9 @@ use Doctrine\ORM;
 #[ORM\MappedSuperclass]
 class Person
 {
-    #[ORM\Column(type="integer")]
+    #[ORM\Column(type: "integer")]
     protected $mapped1;
-    #[ORM\Column(type="string")]
+    #[ORM\Column(type: "string")]
     protected $mapped2;
 
     // ...
@@ -371,10 +371,10 @@ class Person
 class Employee extends Person
 {
     #[ORM\Id] 
-    #[ORM\Column(type="integer")] 
+    #[ORM\Column(type: "integer")] 
     private $id;
     
-    #[ORM\Column(type="string")]
+    #[ORM\Column(type: "string")]
     private $name;
 
     // ...
