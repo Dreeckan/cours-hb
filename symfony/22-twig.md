@@ -1,5 +1,7 @@
 # Twig
 
+<div style="position: relative; padding-bottom: 52.916666666666664%; height: 0;"><iframe src="https://www.loom.com/embed/03f9d867c736446caddf9c542a070c3d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## Pour résumer
 
 - Twig est un moteur de template, il permet d'écrire du HTML plus confortablement, avec de nombreux outils dans nos fichiers `.twig`

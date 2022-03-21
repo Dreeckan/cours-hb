@@ -34,7 +34,8 @@ Une API **publique** sera également à ajouter, pour permettre de récupérer d
 ## Partie "adoptant"
 
 Ici, nous appelons "adoptant" tout visiteur du site souhaitant adopter un ou plusieurs chiens présentés sur le site. Ils doivent pouvoir :
-- consulter une annonce,
+- voir toutes les annonces
+- consulter une annonce
 - créer un compte (obligatoire pour répondre à une annonce)
 - envoyer une demande à une annonce ("je veux adopter ce(s) chien(s)")
 - être notifié (sur le site) et lire les réponses des éleveurs/SPA et échanger avec ces derniers (fil de discussion)
@@ -51,11 +52,25 @@ Ces éléments seront répartis en 2 blocs :
   - le nombre de chiens concernés
   - les races des chiens concernés
   - la date de mise à jour de l'annonce
-- Une liste exhaustive des éleveurs et des SPA présentes sur le site. Elles devront être présentées en fonction des dernières annonces mises à jour (plus l'association/SPA a mis à jour une annonce récemment, plus elle apparait en tête). Chaque élément doit présenter :
+- Une liste exhaustive des éleveurs et des SPA présentes sur le site. Elles devront être présentées en fonction des dernières annonces mises à jour (plus l'association/SPA a mis à jour une annonce récemment, plus elle apparait haut dans la liste). Chaque élément doit présenter :
   - Le nom de l'association/SPA
   - Le nombre d'annonces actuellement à pourvoir de cette association/SPA
   - Le nombre d'annonces pourvues de cette association/SPA
-  
+
+### Liste de toutes les annonces
+
+Cette liste présente toutes les annonces à pourvoir présentes sur le site (dont au moins un chien n'a pas été adopté). Chaque annonce devant présenter : 
+  - les 3 premières photos de l'annonce
+  - le titre de l'annonce
+  - le nombre de chiens concernés
+  - les races des chiens concernés
+  - la date de mise à jour de l'annonce
+
+Vous devez aussi pouvoir filtrer cette liste par :
+- races
+- contenant au moins un chien LOF
+ 
+
 ### Page annonce
 
 Une page d'annonce doit comporter les éléments suivants :
