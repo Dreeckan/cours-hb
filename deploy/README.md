@@ -73,7 +73,7 @@ Dans la vidéo ci-dessus, je vous présente la configuration avec Nginx, mais je
 
 Des exemples de configuration Nginx, présentés dans la vidéo :
 
-- Une configuration simple, pour afficher un site statique (site en HTML, CSS et JS) :
+#### Une configuration simple, pour afficher un site statique (site en HTML, CSS et JS)
 
 ```nginx
 server {
@@ -88,7 +88,7 @@ server {
 }
 ```
 
-- Une configuration complexe, pour un site Symfony (récupérée de [la documentation de Symfony](https://symfony.com/doc/current/setup/web_server_configuration.html#nginx)) :
+#### Une configuration complexe, pour un site Symfony (récupérée de [la documentation de Symfony](https://symfony.com/doc/current/setup/web_server_configuration.html#nginx))
 
 ```nginx
 server {
