@@ -41,6 +41,7 @@ Pour installer un plugin dans VSCode, aller dans le menu de gauche, partie Exten
 - PHP Intelephense (de Ben Mewburn)
 - Symfony for VSCode (de TheNouillet)
 - Twig Language 2 (de mblode)
+- [Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) (de Don Jayamanne)
 
 
 ## Requis techniques
