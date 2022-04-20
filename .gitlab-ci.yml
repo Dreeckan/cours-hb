@@ -50,6 +50,8 @@ deploy:
     - make ansible.install
   # Ce job se lance lors du stage deploy
   stage: deploy
+  tags:
+    - docker
   # Le script à exécuter
   script: make deploy
   # Ce déploiement n'a lieu que si l'on fait une action sur main
