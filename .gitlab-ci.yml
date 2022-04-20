@@ -46,7 +46,7 @@ deploy:
     # On s'assure d'avoir un dossier .ssh et qu'il ait des droits corrects
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - apt install ansible
+    - apt install ansible -y
     - make ansible.install
   # Ce job se lance lors du stage deploy
   stage: deploy
