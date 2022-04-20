@@ -37,7 +37,7 @@ deploy: ## Déploie sur le serveur de prod
 .PHONY: deploy
 
 ansible.install:
-	ansible-galaxy install ansistrano.deploy ansistrano.rollback -p ansible/roles
+	ansible-galaxy install ansistrano.deploy ansistrano.rollback -p ansible/deploy/roles
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-9s\033[0m %s\n", $$1, $$2}'
