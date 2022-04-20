@@ -46,13 +46,12 @@ deploy:
     # On s'assure d'avoir un dossier .ssh et qu'il ait des droits corrects
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - apt install ansible -y
   # Ce job se lance lors du stage deploy
   stage: deploy
   tags:
-    - docker
+    - shell
   # Le script à exécuter
-  script: 
+  script:
     - make ansible.install
     - make deploy
   # Ce déploiement n'a lieu que si l'on fait une action sur main
