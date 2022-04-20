@@ -25,6 +25,8 @@ pages:
   # Le script que va utiliser ce job. Ici, on profite de notre Makefile !
   script:
     - make update build
+  tags:
+    - docker
   artifacts:
     paths:
       - public
