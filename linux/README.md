@@ -567,3 +567,7 @@ En vidéo :
 - [Télécharger Wamp](https://www.wampserver.com/)
 - [Télécharger Virtualbox](https://www.virtualbox.org/wiki/Downloads) et (optionnel) [Vagrant](https://www.vagrantup.com/downloads)
 - [Télécharger Docker](https://docs.docker.com/docker-for-windows/install/)
+
+## Aller plus loin 
+
+Pour aller plus loin, je vous recommande fortement [une playlist dédiée à Linux de la (très bonne) chaîne Youtube Xavki](https://www.youtube.com/watch?v=-6MA0OCTXko&list=PLn6POgpklwWp1yRsq3-PyyisSIDg94ct9)
