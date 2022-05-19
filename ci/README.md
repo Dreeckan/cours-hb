@@ -2,8 +2,8 @@
 
 ## Pré-requis
 
-- Git
-- GitLab / GitHub / Bitbucket / équivalent
+- [Git](https://git-scm.com/book/fr/v2)
+- [GitLab](https://gitlab.com/) / [GitHub](https://github.com/) / [Bitbucket](https://bitbucket.org/) / équivalent
 - Yaml ([apprendre le YAML en 5 minutes](https://www.codeproject.com/Articles/1214409/Learn-YAML-in-five-minutes))
 
 ## Définitions
