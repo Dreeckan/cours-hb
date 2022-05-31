@@ -3,6 +3,7 @@
 ## Bon à savoir avant de commencer
 
 - Un [très bon tuto sur OpenClassroom](https://openclassrooms.com/fr/courses/6573181-adoptez-les-api-rest-pour-vos-projets-web)
+- Une [autre très bonne explication de ce qu'est une API REST](https://code-garage.fr/blog/qu-est-ce-qu-une-api-rest/)
 - XML
 - JSON
 - HTTP, les ["status codes"](https://restfulapi.net/http-status-codes/)
@@ -12,11 +13,17 @@
 
 On parle d'un système REST (en général, une API REST) pour désigner un système servant à cadrer les échanges entre plusieurs programmes / applications. En général une API REST sert de point central pour les données. D'autres programmes lui envoient des données ou les récupèrent et les autres programmes n'ont pas à se soucier du fonctionnement interne de l'API.
 
+Toute l'organisation d'une API REST est centrée sur les données. C'est l'une de ses principales caractéristiques : 
+- on récupère des listes d'un type de données 
+- ou on ajoute / modifie / crée une donnée d'un type
+
+Par exemple, une API de gestion de films fournira une route (url) pour créer / ajouter / modifier un film, une autre pour lister les films. Si l'on souhaite modifier les acteurs liés à un film, cela se passera sur une autre route.
+
 Pour créer un système REST, il y a **6 grands principes** à respecter, définis ci-après.
 
 ### Client-serveur
 
-Un ou des clients cont **consommer** les données. Le système REST est un serveur (et peut en cacher plusieurs autres) pour **stocker** les données et **traiter** les requêtes
+Un ou des clients cont **consommer** les données. Le système REST est un serveur (et peut en cacher plusieurs autres) pour **stocker** les données et **traiter** les requêtes.
 
 ### Sans état
 
