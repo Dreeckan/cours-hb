@@ -6,6 +6,8 @@ Présentation de ce cours en vidéo :
 
 Dans ce cours Linux, nous allons discuter du fonctionnement général d'une distribution Linux/Unix, mais aussi de virtualisation (avec Virtualbox) et de conteneurisation (avec Docker). 
 
+Si vous souhaitez aller (bien) plus en profondeur, je vous recommande [l'excellente série de vidéos de Xavki sur Linux](https://www.youtube.com/watch?v=-6MA0OCTXko&list=PLn6POgpklwWp1yRsq3-PyyisSIDg94ct9)
+
 
 ## Installer VirtualBox et créer une Machine virtuelle
 
