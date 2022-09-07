@@ -6,7 +6,7 @@ Introduction en vidéo :
 
 Git est un logiciel de gestion de versions, simplifiant grandement le travail en équipe dans les projets informatiques (mais pas que ;) ). Nous allons voir ensemble comment s'en servir et en quoi il peut nous être utile.
 
-Je vous recommande également [le très bon tutoriel sur Git, par Xavki](https://www.youtube.com/watch?v=0sGQgfUdCAY&list=PLn6POgpklwWpUfM8BaIU1deH6peqHdmWL)
+Je vous recommande également [le très bon tutoriel sur Git, par Xavki](https://www.youtube.com/watch?v=0sGQgfUdCAY&list=PLn6POgpklwWpUfM8BaIU1deH6peqHdmWL) ou [la formation Git de GrafikArt](https://grafikart.fr/formations/git)
 
 ## Pré-requis
 
