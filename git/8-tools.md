@@ -22,7 +22,7 @@ Pour des exemples visuels, je vous conseille la vidéo ci-dessous :
 
 :warning: Outil payant pour les dépôts privés et certaines fonctionnalités ! Voir [les tarifs de GitKraken](https://www.gitkraken.com/pricing), avant toute chose.
 
-Disponible sur [le site de GitKraken](https://www.gitkraken.com/), cet outil multi-plateforme permet de gérer Git de manière visuelle, mais aussi vos tickets ou vos <abbr title="Pull Request">PR</abbr>, si vous avez un compte payant ! 
+Disponible sur [le site de GitKraken](https://www.gitkraken.com/), cet outil multiplateforme permet de gérer Git de manière visuelle, mais aussi vos tickets ou vos <abbr title="Pull Request">PR</abbr>, si vous avez un compte payant ! 
 
 Une petite démonstration en vidéo :
 

@@ -4,7 +4,7 @@ Introduction en vidéo :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/b3e98e3f1df34ddfa2cf73f94b49b449" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-Pour la plupart des projets, le travail de groupe est primordial. Git nous permet de grandement le simplifier, mais le faire en ligne de commande serait bien pénible.
+Pour la plupart des projets, le travail de groupe est primordial. Git permet de grandement le simplifier, mais le faire en ligne de commande serait bien pénible.
 
 C'est pour ça (et bien d'autres choses) que des outils en ligne existent, tels que :
 - [GitHub](https://www.github.com)
