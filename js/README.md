@@ -11,7 +11,7 @@ Vous pourrez également retrouver toutes les vidéos (cours, corrigés d'exercic
 
 ## 4. [JQuery](4-jquery.md)
 
-## 5. [Traitements asynchrone avec AJAX et JSON](5-ajax.md)
+## 5. [Traitements asynchrones avec AJAX et JSON](5-ajax.md)
 
 ## 6. [Programmation orientée objet](6-poo.md)
 

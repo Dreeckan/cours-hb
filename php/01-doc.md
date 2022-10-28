@@ -38,8 +38,7 @@ On peut également aller un peu plus loin et découvrir d'autres fonctions de la
 ##### Exemples
 
 - Je cherche une fonction liée aux tableaux, je vais regarder la [page de la documentation sur les tableaux](https://www.php.net/manual/fr/ref.array.php)
-- Je cherche une fonction pour afficher la date du jour, [je fouille dans la doc liée aux fonctions de dates et heures](https://www.php.net/manual/fr/ref.datetime.php) ou je vais [demander à mon moteur de recherche](https://www.google.com/search?q=php+afficher+date+du+jour) qui me permettra
-  de [tomber sur la doc que je cherchais](https://www.php.net/manual/fr/function.date.php) (je peux aussi chercher au hasard dans le moteur de recherche de la documentation)
+- Je cherche une fonction pour afficher la date du jour, [fouille dans la doc liée aux fonctions de dates et heures](https://www.php.net/manual/fr/ref.datetime.php) ou vais [demander à mon moteur de recherche](https://www.google.com/search?q=php+afficher+date+du+jour) qui me permettra de [tomber sur la doc que je cherchais](https://www.php.net/manual/fr/function.date.php) (je peux aussi chercher au hasard dans le moteur de recherche de la documentation).
 - Je cherche comment remplacer du texte dans un tableau. Le plus simple (à moins de connaître la fonction) est [mon moteur de recherche](https://www.google.com/search?q=php+remplacer+du+texte+dans+un+tableau)
 
 #### À quels sites puis-je faire confiance ?
