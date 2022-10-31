@@ -89,7 +89,7 @@
 - Une journée type
 - Choisir ses outils
 
-# Des resources utiles 
+# Des ressources utiles 
 
 Je vous mets quelques liens d'outils ou de sources de veille que j'utilise : 
 - [https://afup.org/home](https://afup.org/home) (événements autour de PHP, pour faire du réseau)
