@@ -37,7 +37,7 @@
 - Entreprises de services du numérique (ESN)
 - Agences web et de communication
 - Studios de développement
-- Entreprises consommatrice du numérique
+- Entreprises consommatrices du numérique
 - Collectivités
 - Vous-même
 
