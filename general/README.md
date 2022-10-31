@@ -105,10 +105,12 @@ Je vous mets quelques liens d'outils ou de sources de veille que j'utilise :
 - [https://color.review/](https://color.review/) (outil de test d'accessibilité de contraste des couleurs)
 - [https://www.accessguide.io/](https://www.accessguide.io/) pour apprendre et comprendre l'accessibilité d'un site web
 - [https://vuepress.vuejs.org](https://vuepress.vuejs.org) (l'outil que j'utilise pour créer mon site du cours. Utilise VueJS, mais pas besoin de code)
+- [ReDoc](https://redocly.github.io/redoc/)
 - [https://www.notion.so](https://www.notion.so) (super outil de note, style Wiki, mais plus complet)
 - [https://www.loom.com](https://www.loom.com) (enregistrer son écran et streamer)
 - [https://lesjoiesducode.fr/](https://lesjoiesducode.fr/) (pour se détendre ;) )
 - [https://dribbble.com/](https://dribbble.com/) pour voir les tendances de design
 - Des outils de gestion de tickets : [https://trello.com](https://trello.com), [https://github.com/new/project](https://github.com/new/project), [https://www.atlassian.com/fr/software/jira](https://www.atlassian.com/fr/software/jira), [https://glpi-project.org/fr/](https://glpi-project.org/fr/)
 - Pour les amateurs de la méthode pomodoro (travail de 25 minutes, 5 minutes de pause, et on recommence) : [https://pomodoro-tracker.com/](https://pomodoro-tracker.com/)
+- [Pierre Giraud](https://www.pierre-giraud.com/)
 - et bien sûr [https://formation-hb.drakolab.fr](https://formation-hb.drakolab.fr) ;)
