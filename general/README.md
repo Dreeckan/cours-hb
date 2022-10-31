@@ -80,8 +80,14 @@
 
 - Qualité
 - Initiative et esprit de conseil
+- Travail en équipe
 - Veille technologique
 - Et bien d'autres
+
+## Le quotidien d'un développeur
+
+- Une journée type
+- Choisir ses outils
 
 # Des resources utiles 
 
