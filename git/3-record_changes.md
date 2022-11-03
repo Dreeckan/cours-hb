@@ -91,6 +91,7 @@ Quelques usages courants :
 - `git log` affiche toutes les informations des commits, sous forme de liste (un peu rude à lire parfois)
 - `git log --graph` les affiche sous forme d'arbre (très pratique lorsque votre dépôt a des branches)
 - `git log --oneline` les affiche sous forme courte (identifiant de commit + message uniquement)
+- `git log -p nom-du-fichier` pour voir l'historique et les modifications d'**un** fichier
 
 ## Stash - Remiser des modifications
 

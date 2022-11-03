@@ -35,3 +35,4 @@ L'installation en Vidéo :
 8. [Réécrire l'histoire](7-rewrite-history.md)
 9. [Outils](8-tools.md)
 10. [Des exemples en vidéo](99-examples.md)
+11. [Exercices](10-exercices.md)
