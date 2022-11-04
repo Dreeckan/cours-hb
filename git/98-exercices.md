@@ -47,4 +47,3 @@ Maintenant que nous avons travaillé en solo, créons un projet à plusieurs et 
 - Une fois une `Pull Request` validée, elle peut être fusionnée
   - Si vous avez des conflits, les résoudre (conseil : faites-le en groupe ;) )
 
-- Une fois tout fusionné, félicitations, vous avez terminé.

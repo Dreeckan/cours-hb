@@ -53,9 +53,9 @@ Maintenant que nous avons notre dépôt distant et qu'il est lié à notre dép�
 
 Des commandes courantes :
 - `git fetch` récupère les informations **sans changer vos fichiers locaux** (permet simplement d'avoir les informations du distant, s'il y a de nouvelles branches, de nouveaux commits, etc.)
-- `git pull origin nomDeLaBranche` est à exécuter en étant sur la branche `nomDeLaBranche` sur votre dépôt local et permet de la mettre à jour par rapport à la branche `nomDeLaBranche` du distant (vos fichiers sont modifiés et vous récupérez les commits du distant)
-- `git push origin nomDeLaBranche` est à exécuter en étant sur la branche `nomDeLaBranche` sur votre dépôt local et permet de mettre à jour la branche distante avec les commits locaux
-- `git push -u origin nomDeLaBranche` est à exécuter en étant sur la branche `nomDeLaBranche` sur votre dépôt local et permet de mettre à jour le distant **et** de demander à Git de retenir le lien entre la branche locale et la branche distante. Avec ce lien, vous pourrez vous contenter de lancer `git push` ou `git pull` sans plus d'arguments (ce qui simplifie la vie ;) ).
+- `git pull origin nom-de-la-branche` est à exécuter en étant sur la branche `nom-de-la-branche` sur votre dépôt local et permet de la mettre à jour par rapport à la branche `nom-de-la-branche` du distant (vos fichiers sont modifiés et vous récupérez les commits du distant)
+- `git push origin nom-de-la-branche` est à exécuter en étant sur la branche `nom-de-la-branche` sur votre dépôt local et permet de mettre à jour la branche distante avec les commits locaux
+- `git push -u origin nom-de-la-branche` est à exécuter en étant sur la branche `nom-de-la-branche` sur votre dépôt local et permet de mettre à jour le distant **et** de demander à Git de retenir le lien entre la branche locale et la branche distante. Avec ce lien, vous pourrez vous contenter de lancer `git push` ou `git pull` sans plus d'arguments (ce qui simplifie la vie ;) ).
 
 ## Pull Request (PR)
 
@@ -64,6 +64,22 @@ En vidéo :
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/9d97b712d3ab448399f93663ccaaf42f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Dans un projet à plusieurs, personne ne doit modifier directement la branche principale (`main` ou `master` la plupart du temps), mais on travaille dans des branches séparées et, lorsqu'elles sont terminées, on crée une Pull Request sur le dépôt distant (GitHub pour nous), que l'on fait relire (vérifier) par un collègue jusqu'à validation. La branche peut alors être fusionnée dans la branche principale (ou une autre branche de destination, ça arrive aussi). Je vous invite à plutôt regarder la vidéo, pour des exemples concrets.
+
+## Conventions de travail
+
+Chez Drakona, nous utilisons un certain nombre de conventions pour travailler en équipe :
+- Tout développement (nouvelle fonctionnalité, correction de bug, etc.) a un ticket pour préciser le travail à faire.
+  - Ce ticket contient en général 3 sections : 
+    - Quoi : que doit faire le ticket (sa finalité) ?
+    - Comment : techniquement, comment répondre à la demande ?
+    - Test / Vérification : comment vérifier que le ticket a bien été résolu
+- Pour travailler, on crée une branche :
+  - Depuis la branche principale (`main`) à jour
+  - qui contient le numéro et le nom du ticket (exemple : `42-creation-formulaire-de-contact`)
+  - qu'on écrit en minuscule, en séparant chaque mot par un `-` ou un `_` (convention à définir au sein de l'équipe)
+  - on évite les caractères spéciaux (qui peuvent poser problème sur certains systèmes).
+- Quand on crée un commit, on reprend le numéro du ticket et on ajoute un message clair (Exemple : 42 - Création du HTML du formulaire)
+- Chaque branche est liée à un et un seul ticket (un ticket peut avoir plusieurs branches, dans certains cas)
 
 ## Merge, rebase, conflits
 
