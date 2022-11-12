@@ -19,6 +19,17 @@ Installation de VirtualBox et création d'une VM (machine virtuelle) en vidéo :
 - Installer Virtualbox ([pour Windows](https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-Win.exe) ou [pour Mac](https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-OSX.dmg))
 - Télécharger une VM : [Ubuntu 20.04](https://sourceforge.net/projects/linuxvmimages/files/VirtualBox/U/Ubuntu_20.10_VB.zip/download)
 
+## Alternative : <abbr>WSL</abbr>
+
+Vous pouvez utiliser [<abbr>WSL</abbr> (Windows Subsystem for Linux)](https://fr.wikipedia.org/wiki/Windows_Subsystem_for_Linux) pour avoir accès à une machine virtuelle Linux, directement dans Windows. Plus pratique et plus stable, il nous permettra de tester la ligne de commande Linux et d'utiliser une machine virtuelle plus efficacement que VirtualBox ou équivalent.
+
+:warning: Attention, pour un usage professionnel (avec Vagrant, par exemple), VirtualBox ou un équivalent est encore nécessaire.
+
+Pour l'installer, rien de plus simple : 
+- Ouvrir PowerShell
+- Installer <abbr>WSL</abbr> avec la commande `wsl --install`
+- Si vous aviez déjà <abbr>WSL</abbr> installé, mais pas Ubuntu, utiliser la commande `wsl --install -d Ubuntu`.
+
 ## Principes fondateurs
 
 En vidéo :
@@ -110,10 +121,11 @@ Exemples : Apache, Nginx, cron, Docker
 
 - Ou un peu moins
 
-### Personnaliser sont terminal
-
 ![Un exemple de terminal amélioré (zsh + oh my zsh)](/assets/img/linux/terminal_mine.png)
-Dans cet exemple, j'ai installé, zsh, [oh my zsh](https://ohmyz.sh/) et le [thème Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+
+### Personnaliser son terminal
+
+Dans l'exemple ci-dessus, j'ai installé zsh, [oh my zsh](https://ohmyz.sh/) et le [thème Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
 #### Sous Mac
 
@@ -573,3 +585,9 @@ En vidéo :
 ## Aller plus loin 
 
 Pour aller plus loin, je vous recommande fortement [une playlist dédiée à Linux de la (très bonne) chaîne Youtube Xavki](https://www.youtube.com/watch?v=-6MA0OCTXko&list=PLn6POgpklwWp1yRsq3-PyyisSIDg94ct9)
+
+
+## Exercices
+
+### Commandes de base
+
