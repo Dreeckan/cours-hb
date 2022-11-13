@@ -107,9 +107,9 @@ Exemples : Apache, Nginx, cron, Docker
 ### Accéder au terminal
 
 - Lancer un émulateur de terminal (application `Terminal`/`Konsole`/...)
-- Passer sur les interfaces de ligne du commande du système (`ctrl+alt+F2 à 6`, `ctrl+alt+F1` pour revenir au bureau)
+- Passer sur les interfaces de ligne de commande du système (`ctrl+alt+F2 à 6`, `ctrl+alt+F1` pour revenir au bureau)
 
-#### Sous Windows
+#### Avec Windows
 
 - Lancer Powershell ou Git Bash
 
@@ -127,7 +127,7 @@ Exemples : Apache, Nginx, cron, Docker
 
 Dans l'exemple ci-dessus, j'ai installé zsh, [oh my zsh](https://ohmyz.sh/) et le [thème Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
-#### Sous Mac
+#### Avec Mac
 
 Plusieurs articles expliquent comment [personnaliser le terminal](https://dev.to/equiman/iterm2--oh-my-zsh--powerlevel9k-best-terminal-combination-for-geeks-58l5) pour utiliser les mêmes éléments que sous Linux. (Un [autre exemple d'article](https://www.tronyxworld.be/2020/zsh_omz_p10k/))
 
@@ -179,8 +179,8 @@ La version en vidéo :
 #### Astuces
 
 - Voir les fichiers et dossiers cachés : `ls -a`
-- Avoir un listing contenant plus de détails (droits sur les dossiers, etc) : `ls -l`
-- Avoir un listing de différents fichiers et dossiers : `ls -l unFichier unAutreFichier unDossier` (vous affichera des informations sur les fichiers/dossiers demandés)
+- Avoir une liste contenant plus de détails (droits sur les dossiers, etc) : `ls -l`
+- Avoir une liste de différents fichiers et dossiers : `ls -l unFichier unAutreFichier unDossier` (vous affichera des informations sur les fichiers/dossiers demandés)
 
 ### Créer un dossier
 
@@ -435,6 +435,66 @@ Dans Git Bash :
 - Ouvrir Powershell **en tant qu'administrateur** 
 - Lancer cette commande : `Set-Service ssh-agent -StartupType Automatic`
 
+### Entrées et sorties
+
+Une commande Linux a une entrée : ce que vous tapez. Cela peut être ce que vous tapez, des paramètres, des options, etc.
+
+Par contre, une commande a 2 sorties :
+- la sortie standard : elle vous affiche quelque chose
+- la sortie d'erreur : elle vous affiche quelque chose, mais c'est une erreur !
+
+Notez bien que c'est un comportement par défaut et qu'il peut être modifié. Si on le souhaite, on peut envoyer les erreurs dans un fichier, mais pas les éléments de la sortie standard et *vice versa*.
+
+#### Opérateur `>`
+
+Cet opérateur vous permet de renvoyer la sortie standard d'une commande vers un fichier. Vous en remplacez alors le contenu.
+
+`cat monFichier.txt > copieDeMonFichier.txt`
+`echo "Ceci est un texte" > unFichierPassionnant.txt`
+
+#### Opérateur `>>`
+
+Cet opérateur est identique au précédent, mais écrit **à la fin du fichier** et permet de ne pas perdre le contenu précédent.
+
+`echo "Ceci est un texte" >> unFichierPassionnant.txt`
+`echo "Ceci est un texte" >> unFichierPassionnant.txt`
+
+`cat unFichierPassionnant.txt` affichera le contenu suivant :
+
+```
+Ceci est un texteCeci est un texte
+```
+
+#### Opérateur `<`
+
+Ici, la commande va prendre **en entrée** le contenu d'un fichier.
+
+`less < unFichierPassionnant.txt`
+
+#### Transmission entre commandes
+
+Avec l'opérateur `|` (appelé pipe), vous pouvez transmettre la sortie d'une commande, pour en faire l'entrée d'une autre.
+
+`ls -Alh | less` affiche le résultat de `ls -Alh` dans la commande `less`
+
+### Enchaîner les commandes
+
+#### Exécuter quoiqu'il arrive `||`
+
+Pour exécuter 2 commandes, même si la première renvoie une erreur, utiliser `||`.
+
+`ls unFichierPassionnant.txt || echo "je m'affiche tout le temps"`
+
+Dans l'exemple ci-dessus, si le fichier `unFichierPassionnant.txt` n'existe pas, le `echo` est quand même exécuté.
+
+#### Exécuter si la première réussie `&&`
+
+Pour exécuter 2 commandes, si la première réussie, utiliser `&&`.
+
+`ls unFichierPassionnant.txt && echo "je m'affiche si le fichier existe"`
+
+Dans l'exemple ci-dessus, si le fichier `unFichierPassionnant.txt` n'existe pas, le `echo` n'est pas exécuté.
+
 ## Virtualisation
 
 - Des machines dans la machine
@@ -585,9 +645,3 @@ En vidéo :
 ## Aller plus loin 
 
 Pour aller plus loin, je vous recommande fortement [une playlist dédiée à Linux de la (très bonne) chaîne Youtube Xavki](https://www.youtube.com/watch?v=-6MA0OCTXko&list=PLn6POgpklwWp1yRsq3-PyyisSIDg94ct9)
-
-
-## Exercices
-
-### Commandes de base
-
