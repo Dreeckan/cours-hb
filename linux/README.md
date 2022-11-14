@@ -652,7 +652,7 @@ Tous ces exercices prennent place dans un terminal Linux et sont testés avec un
 
 Avant de commencer, ouvrir un terminal.
 
-### Commandes de base
+### 1. Commandes de base
 
 - Créer un dossier `Work/Linux/exercices` dans votre dossier personnel
 - Se rendre dans ce dossier
@@ -667,3 +667,10 @@ Avant de commencer, ouvrir un terminal.
 - Ajouter un premier commit
 - Créer un projet GitHub et inviter `Dreeckan` sur votre projet pour relecture
 - Pousser votre commit
+
+### 2. Fonctionnement général
+
+Rester dans le dossier `Work/Linux/exercices`. Pour les questions ci-dessous, écrivez votre réponse dans le fichier `Work/Linux/exercices/2/exercice2.txt`.
+
+- Dans quel dossier est rangé la configuration d'un programme comme apt ?
+- Où se trouve **l'exécutable** de `apt` ?
