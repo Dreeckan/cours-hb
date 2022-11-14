@@ -26,7 +26,7 @@ Vous pouvez utiliser [<abbr>WSL</abbr> (Windows Subsystem for Linux)](https://fr
 :warning: Attention, pour un usage professionnel (avec Vagrant, par exemple), VirtualBox ou un équivalent est encore nécessaire.
 
 Pour l'installer, rien de plus simple : 
-- Ouvrir PowerShell
+- Ouvrir PowerShell en mode **administrateur**
 - Installer <abbr>WSL</abbr> avec la commande `wsl --install`
 - Si vous aviez déjà <abbr>WSL</abbr> installé, mais pas Ubuntu, utiliser la commande `wsl --install -d Ubuntu`.
 
@@ -111,7 +111,7 @@ Exemples : Apache, Nginx, cron, Docker
 
 #### Avec Windows
 
-- Lancer Powershell ou Git Bash
+- Lancer Git Bash
 
 ### L'interface
 
@@ -645,3 +645,25 @@ En vidéo :
 ## Aller plus loin 
 
 Pour aller plus loin, je vous recommande fortement [une playlist dédiée à Linux de la (très bonne) chaîne Youtube Xavki](https://www.youtube.com/watch?v=-6MA0OCTXko&list=PLn6POgpklwWp1yRsq3-PyyisSIDg94ct9)
+
+## Exercices
+
+Tous ces exercices prennent place dans un terminal Linux et sont testés avec une machine Ubuntu. Si des adaptations sont nécessaires pour un Mac ou d'autres systèmes UNIX, merci de me le signaler ;) .
+
+Avant de commencer, ouvrir un terminal.
+
+### Commandes de base
+
+- Créer un dossier `Work/Linux/exercices` dans votre dossier personnel
+- Se rendre dans ce dossier
+- Y créer un fichier `exercice1.txt` et insérer les commandes que vous avez entrées pour les énoncés précédents
+- Créer un fichier (vide) `exercice2.txt`
+- Créer un dossier `1` et un dossier `2`
+- Déplacer `exercice1.txt` dans `1` et `exercice2.txt` dans `2`
+- Afficher la liste des fichiers et dossiers dans `Work/Linux/exercices` (avec les droits sur les fichiers)
+- Ajouter cet affichage à la fin du fichier `exercice1.txt`
+- Copier le fichier `exercice1.txt` dans un nouveau fichier `Work/Linux/exercices/1/copie.txt`
+- Créer un projet Git dans le dossier `Work/Linux/exercices`
+- Ajouter un premier commit
+- Créer un projet GitHub et inviter `Dreeckan` sur votre projet pour relecture
+- Pousser votre commit
