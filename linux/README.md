@@ -219,7 +219,7 @@ La version en vidéo :
 - less
   - `less chemin/vers/le/fichier` ouvre une interface pour lire le fichier `fichier` et permet d'y naviguer, d'y faire des recherches, etc.
 - more
-  - `less chemin/vers/le/fichier` ouvre une interface pour lire le fichier `fichier` et permet d'y naviguer, d'y faire des recherches, etc.
+  - `more chemin/vers/le/fichier` affiche le contenu du fichier progressivement (écran par écran), jusqu'à la fin du fichier.
 - tail
   - `tail chemin/vers/le/fichier` affiche les 10 dernières lignes du fichier `fichier` dans la sortie standard
 
@@ -327,14 +327,14 @@ Il y a 2 types d'utilisateurs :
 
 Chaque utilisateur appartient (toujours) a un groupe à son propre nom. Il peut en avoir d'autres.
 
-Chaque processus et chaque fichier appartient **toujours** à un utilisateur **et** un groupe.
+Chaque processus et chaque fichier appartiennent **toujours** à un utilisateur **et** un groupe.
 
 Voir le fichier `/etc/passwd` pour la liste des utilisateurs et `/etc/shadow` pour les mots de passe (chiffrés).
 
 #### Root
 
-Sur tous les systèmes UNIX, il existe un utilisateur `root` (dont le UID est 0), ayant tous les pouvoirs (lui seul peut modifier les fichiers systèmes). Il est très fortement déconseillé de s'en servir comme un utilisateur normal.
-Toutefois, sur les distributions basées sur Debian (et sûrement d'autres ;) ), il existe une commande `sudo` (Super User DO) permettant d'exécuter une commande avec les droits `root`.
+Sur tous les systèmes UNIX, il existe un utilisateur `root` (dont le UID est 0), ayant tous les pouvoirs (lui seul peut modifier les fichiers systèmes). Il est très fortement déconseillé de s'en servir comme d'un utilisateur normal.
+Toutefois, sur les distributions basées sur Debian (et sûrement d'autres ;) ), il existe une commande `sudo` (Super User DO) permettant d'exécuter une commande avec les mêmes droits que `root`.
 
 #### Commandes de gestion des utilisateurs
 
@@ -396,7 +396,7 @@ En vidéo :
 
 ### Installer des programmes
 
-`apt` est un programme qui offre un ensemble de commandes vous permettant de gérer les programmes installés sur votre machine. Il faut avoir les droits de super-utilisateur pour s'en servir (en général, il faut utiliser la commande `sudo` avant votre programme).
+`apt` (Another Packaging Tool) est un gestionnaire de paquets qui offre un ensemble de commandes vous permettant de gérer les programmes et librairies installés sur votre machine. Il faut avoir les droits de super-utilisateur pour s'en servir (en général, il faut utiliser la commande `sudo` avant votre programme).
 
 - `sudo apt update` pour mettre à jour la liste des programmes (et leur version) utilisables
 - `sudo apt upgrade` pour mettre à jour les programmes installés
@@ -418,7 +418,7 @@ OpenSSH est *normalement* installé par défaut sur toutes les distributions Lin
 - `ssh-copy-id user@un-serveur` pour ajouter les clés enregistrées à l'utilisateur sur un serveur distant
 - `ssh-agent -s` pour démarrer le service SSH si besoin (`eval $(ssh-agent -s)` si l'agent refuse *vraiment* de coopérer)
 
-#### OpenSSH sous Windows
+#### OpenSSH avec Windows
 
 :warning: OpenSSH n'est pas installé par défaut sur Windows, veuillez suivre les instructions de la vidéo pour l'installer.
 
@@ -509,7 +509,7 @@ En vidéo :
 - Développée dans les années 70-80
 - Popularisée dans les années 90 (émulateurs de vieilles machines)
 - Véritable boom ensuite dans les environnements de travail
-- Très utilisée de nos jours dans les grands parcs informatiques (y compris hébergeurs)
+- Très utilisée de nos jours dans les grands parcs informatiques (y compris hébergeurs).
 
 ### Intérêts
 
@@ -672,5 +672,31 @@ Avant de commencer, ouvrir un terminal.
 
 Rester dans le dossier `Work/Linux/exercices`. Pour les questions ci-dessous, écrivez votre réponse dans le fichier `Work/Linux/exercices/2/exercice2.txt`.
 
-- Dans quel dossier est rangé la configuration d'un programme comme apt ?
-- Où se trouve **l'exécutable** de `apt` ?
+- Quel est la taille (le poids en octets / kilo-octets) de `exercice1.txt` ?
+- Dans quel dossier est rangé **la configuration** d'un programme comme apt ?
+- Où se trouve **l'exécutable** de `apt` ? Trouverez-vous une commande (non indiquée dans le cours) permettant d'avoir cette information ? Si oui, l'indiquer avec votre réponse.
+- Quelle commande utiliser pour lister les processus actuellement actifs ? Afficher les résultats pour **tous les utilisateurs** du système et les ajouter à votre fichier.
+- Quelles sont les différences entre les commandes `less` et `more` ?
+- Quelle commande utiliser pour demander "poliment" l'arrêt du programme java ?
+- Quelle commande utiliser pour arrêter le processus ayant l'identifiant 5240 ?
+
+- Créer un nouveau commit et le pousser sur GitHub.
+
+### 3. Commandes avancées
+
+- Créer un dossier `Work/Linux/exercices/3`
+- Se rendre dans ce dossier
+- Y créer un fichier `exercice3.txt`
+- En une seule **ligne**, créer un dossier `Work/Linux/exercices/3/chaine/` et y créer un fichier `nouveau`
+- Utiliser `cat` pour ouvrir vos 3 fichiers d'exercice à la fois et afficher le contenu avec less. Écrire ensuite la commande utilisée à la fin de `exercice3.txt`
+- Utiliser une seule **commande** pour :
+  - afficher la liste des fichiers, dossiers et tout leur contenu dans `Work/Linux/exercices` (avec les droits sur les fichiers) 
+  - et les ajouter dans le fichier `exercice3.txt`
+
+- Donner les droits suivants aux dossiers et fichiers de `Work/Linux/exercices/3` :
+  - les utilisateurs peuvent lire et écrire
+  - le groupe peut lire
+  - les autres n'ont aucun droit
+- Changer le groupe du dossier `Work/Linux/exercices/3/chaine/` pour appartenir au groupe `root`.
+
+- Créer un commit et le pousser.
