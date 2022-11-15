@@ -684,7 +684,9 @@ Rester dans le dossier `Work/Linux/exercices`. Pour les questions ci-dessous, é
 
 ### 3. Commandes avancées
 
+- Créer une branche `exercice3`
 - Créer un dossier `Work/Linux/exercices/3`
+- Que se passe-t-il si vous faites un commit ? (vous écrirez votre réponse après avoir créé le fichier `exercice3.txt`)
 - Se rendre dans ce dossier
 - Y créer un fichier `exercice3.txt`
 - En une seule **ligne**, créer un dossier `Work/Linux/exercices/3/chaine/` et y créer un fichier `nouveau`
@@ -699,4 +701,10 @@ Rester dans le dossier `Work/Linux/exercices`. Pour les questions ci-dessous, é
   - les autres n'ont aucun droit
 - Changer le groupe du dossier `Work/Linux/exercices/3/chaine/` pour appartenir au groupe `root`.
 
-- Créer un commit et le pousser.
+- Créer un commit
+
+- En une commande, supprimer tous les fichiers avec l'extension `.txt`, sans supprimer les dossiers
+- Annuler cette suppression
+- Écrire les deux commandes dans `exercice3.txt`
+
+- Créer un commit, pousser les modifications et créer une PR (Pull Request)
