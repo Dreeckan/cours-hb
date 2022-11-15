@@ -21,7 +21,7 @@ Installation de VirtualBox et création d'une VM (machine virtuelle) en vidéo :
 
 ## Alternative : <abbr>WSL</abbr>
 
-Vous pouvez utiliser [<abbr>WSL</abbr> (Windows Subsystem for Linux)](https://fr.wikipedia.org/wiki/Windows_Subsystem_for_Linux) pour avoir accès à une machine virtuelle Linux, directement dans Windows. Plus pratique et plus stable, il nous permettra de tester la ligne de commande Linux et d'utiliser une machine virtuelle plus efficacement que VirtualBox ou équivalent.
+Vous pouvez utiliser [<abbr>WSL</abbr> (Windows Subsystem for Linux)](https://fr.wikipedia.org/wiki/Windows_Subsystem_for_Linux) pour avoir accès à une machine virtuelle Linux, directement avec Windows. Plus pratique et plus stable, il nous permettra de tester la ligne de commande Linux et d'utiliser une machine virtuelle plus efficacement que VirtualBox ou équivalent.
 
 :warning: Attention, pour un usage professionnel (avec Vagrant, par exemple), VirtualBox ou un équivalent est encore nécessaire.
 
@@ -325,7 +325,7 @@ Il y a 2 types d'utilisateurs :
 - les utilisateurs système ne sont pas réels et sont dédiés à *une* tâche du système (pour certains services (ftp, serveur web, etc.) ou certaines tâches (backups, etc.)). Ils ne peuvent pas se connecter.
 - les utilisateurs réels peuvent se connecter, ont un nom d'utilisateur unique et, entre autre un UID (identifiant unique, attribué par le système).
 
-Chaque utilisateur appartient (toujours) a un groupe à son propre nom. Il peut en avoir d'autres.
+Chaque utilisateur appartient (toujours) à un groupe à son propre nom (ex : `toto` appartient au groupe `toto`). Il peut en avoir d'autres.
 
 Chaque processus et chaque fichier appartiennent **toujours** à un utilisateur **et** un groupe.
 
@@ -506,24 +506,24 @@ En vidéo :
 
 ### Historique
 
-- Développée dans les années 70-80
-- Popularisée dans les années 90 (émulateurs de vieilles machines)
-- Véritable boom ensuite dans les environnements de travail
+- Développée dans les années 70-80.
+- Popularisée dans les années 90 (émulateurs de vieilles machines).
+- Véritable boom ensuite dans les environnements de travail.
 - Très utilisée de nos jours dans les grands parcs informatiques (y compris hébergeurs).
 
 ### Intérêts
 
-- Une VM fonctionne de manière identique quel que soit l'hôte (en théorie)
-- allocation de resources dynamiques
-- mutualisation des resources
-- destructible/redimensionnable à l'infini sans casser l'hôte
-- isolation des différents systèmes
+- Une VM fonctionne de manière identique quel que soit l'hôte (en théorie).
+- Allocation de resources dynamiques.
+- Mutualisation des resources.
+- Destructible/redimensionnable à l'infini sans casser l'hôte.
+- Isolation des différents systèmes.
 
 ### Inconvénients
 
-- Problèmes très variables de performances
-- les systèmes virtualisés sont dépendant de leur hôte
-- coûteux, long et souvent difficile à mettre en place
+- Problèmes très variables de performances.
+- Les systèmes virtualisés sont dépendants de leur hôte.
+- Coûteux, long et souvent difficile à mettre en place.
 
 ### Les virtualisations
 
@@ -533,31 +533,31 @@ En vidéo :
 
 - Ensemble de données éparpillées regroupées en une source unique
 
-![height:300px](/assets/img/linux/virtualization-data.png)
+![](/assets/img/linux/virtualization-data.png)
 
 #### Virtualisation des postes de travail
 
 - Permet de déployer, administrer et surveiller des postes de travail depuis un seul outil
 
-![height:300px](/assets/img/linux/virtualization-desktop.png)
+![](/assets/img/linux/virtualization-desktop.png)
 
 #### Virtualisation de serveurs
 
 - Une même machine héberge plusieurs serveurs et répartie les resources
 
-![height:300px](/assets/img/linux/virtualization-server.png)
+![](/assets/img/linux/virtualization-server.png)
 
 #### Virtualisation des systèmes d'exploitation
 
 - Avoir accès à d'autres OS dans une même machine
 
-![height:300px](/assets/img/linux/virtualization-os.png)
+![](/assets/img/linux/virtualization-os.png)
 
 #### Virtualisation de réseau
 
 - Séparation des fonctions clés d'un réseau en différents environnements et regroupement des machines physiques
 
-![height:300px](/assets/img/linux/virtualization-network.png)
+![](/assets/img/linux/virtualization-network.png)
 
 ### Hyperviseurs
 
@@ -571,12 +571,12 @@ En vidéo :
 
 ##### Hyperviseur de type 1 (bare metal)
 
-- Directement sur la machine (hardware) et les OS s'exécutent par-dessus
-- Principalement pour virtualiser des parcs de machines (serveurs, réseau d'entreprise)
+- Directement sur la machine (hardware) et les OS s'exécutent par-dessus.
+- Principalement pour virtualiser des parcs de machines (serveurs, réseau d'entreprise).
 
 ##### Hyperviseur de type 2 (host metal)
 
-- Fonctionne à l'intérieur d'un système d'exploitation
+- Fonctionne à l'intérieur d'un système d'exploitation.
 - Oracle VM VirtualBox, VMWare, KVM, etc.
 
 ## Conteneurisation
@@ -585,8 +585,8 @@ La conteneurisation permet de packager tous les services, scripts, API, librairi
 
 Un conteneur utilise ce noyau et ne fait pas appel à l'OS parent.
 
-- Un [tutoriel sur Docker](https://www.youtube.com/watch?v=XgKOC6X8W28) par [Grafikart](https://www.grafikart.fr/) ([très bonne chaine](https://www.youtube.com/channel/UCj_iGliGCkLcHSZ8eqVNPDQ) que je vous recommande)
-- Un [autre tutoriel Docker](https://www.youtube.com/watch?v=fdlZqRZXWOc&list=PLn6POgpklwWq0iz59-px2z-qjDdZKEvWd) par [Xavki](https://www.youtube.com/channel/UCs_AZuYXi6NA9tkdbhjItHQ) (encore une très bonne chaine)
+- Un [tutoriel sur Docker](https://www.youtube.com/watch?v=XgKOC6X8W28) par [Grafikart](https://www.grafikart.fr/) ([très bonne chaine](https://www.youtube.com/channel/UCj_iGliGCkLcHSZ8eqVNPDQ) que je vous recommande).
+- Un [autre tutoriel Docker](https://www.youtube.com/watch?v=fdlZqRZXWOc&list=PLn6POgpklwWq0iz59-px2z-qjDdZKEvWd) par [Xavki](https://www.youtube.com/channel/UCs_AZuYXi6NA9tkdbhjItHQ) (encore une très bonne chaine).
 
 En vidéo : 
 
@@ -594,16 +594,16 @@ En vidéo :
 
 ### Différences avec la virtualisation
 
-- Légèreté : peu d'espace occupé
-- élasticité : pas d'allocation de resource d'avance
-- performance : pas d'hyperviseur pas d'OS invité
+- Légèreté : peu d'espace occupé.
+- élasticité : pas d'allocation de resource d'avance.
+- performance : pas d'hyperviseur pas d'OS invité.
 
 ![](/assets/img/linux/container-vs-vm.png)
 
 ### Docker et Kubernetes
 
-- Docker : logiciel de conteneurisation
-- Kubernetes : orchestrateur de conteneurs (fourni des outils de déploiement, de gestion de montée en charge sur des clusters de serveurs)
+- Docker : logiciel de conteneurisation.
+- Kubernetes : orchestrateur de conteneurs (fourni des outils de déploiement, de gestion de montée en charge sur des clusters de serveurs).
 
 ## Quel environnement choisir ?
 
@@ -613,27 +613,27 @@ En vidéo :
 
 ### Local (Wamp)
 
-- Très performant (directement sur votre machine, sans intermédiaire)
-- Relativement simple d'utilisation
-- Compliqué à configurer (surtout pour plusieurs applications) et maintenir
-- Relativement simple à faire évoluer (nécessite de connaître le fonctionnement de php, apache et mysql dans certains cas)
+- Très performant (directement sur votre machine, sans intermédiaire).
+- Relativement simple d'utilisation.
+- Compliqué à configurer (surtout pour plusieurs applications) et maintenir.
+- Relativement simple à faire évoluer (nécessite de connaître le fonctionnement de php, apache et mysql dans certains cas).
 
 ### Virtualisation (Virtualbox / Vagrant)
 
-- Permet d'avoir un environnement de travail proche du serveur
-- Pas de configuration à faire, tout est prêt
-- Compliqué à mettre en place initialement (créer la VM)
-- Très difficile de faire fonctionner plusieurs applications en parallèle et à les faire communiquer
-- Moins performant que du local (partage des fichiers et des resources avec l'hôte)
-- Peut être difficile à faire évoluer (mais pas toujours)
+- Permet d'avoir un environnement de travail proche du serveur.
+- Pas de configuration à faire, tout est prêt.
+- Compliqué à mettre en place initialement (créer la VM).
+- Très difficile de faire fonctionner plusieurs applications en parallèle et à les faire communiquer.
+- Moins performant que du local (partage des fichiers et des resources avec l'hôte).
+- Peut être difficile à faire évoluer (mais pas toujours).
 
 ### Conteneurisation (Docker)
 
-- Permet d'avoir un environnement de travail proche du serveur
-- Peut être géré depuis quelques fichiers de configuration (relativement simples)
-- Permet de gérer plusieurs applications en parallèle, voir à les faire communiquer *simplement*
-- Un peu moins performant que du local (partage des fichiers)
-- Peut être modifié facilement
+- Permet d'avoir un environnement de travail proche du serveur.
+- Peut être géré depuis quelques fichiers de configuration (relativement simples).
+- Permet de gérer plusieurs applications en parallèle, voir à les faire communiquer *simplement*.
+- Un peu moins performant que du local (partage des fichiers).
+- Peut être modifié facilement.
 
 ### Installer des environnements
 
@@ -656,7 +656,7 @@ Avant de commencer, ouvrir un terminal.
 
 - Créer un dossier `Work/Linux/exercices` dans votre dossier personnel
 - Se rendre dans ce dossier
-- Y créer un fichier `exercice1.txt` et insérer les commandes que vous avez entrées pour les énoncés précédents
+- Y créer un fichier `exercice1.txt` et copier/coller les commandes que vous avez entrées pour les énoncés précédents
 - Créer un fichier (vide) `exercice2.txt`
 - Créer un dossier `1` et un dossier `2`
 - Déplacer `exercice1.txt` dans `1` et `exercice2.txt` dans `2`
