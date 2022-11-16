@@ -679,8 +679,8 @@ Avant de commencer, ouvrir un terminal.
 Rester dans le dossier `Work/Linux/exercices`. Pour les questions ci-dessous, écrivez votre réponse dans le fichier `Work/Linux/exercices/2/exercice2.txt`.
 
 - Quel est la taille (le poids en octets / kilo-octets) de `exercice1.txt` ?
-- Dans quel dossier est rangé **la configuration** d'un programme comme `apt` (ou `ls`, si vous utilisez un Mac) ?
-- Avec les explications du cours, où se trouve **l'exécutable** de `apt` (ou `ls`, si vous utilisez un Mac) ?
+- Dans quel dossier est rangé **la configuration** d'un programme comme `apt` (ou `zsh`, si vous utilisez un Mac) ?
+- Avec les explications du cours, où se trouve **l'exécutable** de `apt` (ou `zsh`, si vous utilisez un Mac) ?
 - Quelle commande utiliser pour lister les processus actuellement actifs ? Afficher les résultats pour **tous les utilisateurs** du système et les ajouter à votre fichier.
 - Quelles sont les différences entre les commandes `less` et `more` ?
 - Quelle commande utiliser pour demander "poliment" l'arrêt du programme java ?
@@ -702,10 +702,10 @@ Rester dans le dossier `Work/Linux/exercices`. Pour les questions ci-dessous, é
   - et les ajouter dans le fichier `exercice3.txt`
 
 - Donner les droits suivants aux dossiers et fichiers de `Work/Linux/exercices/3` :
-  - les utilisateurs peuvent lire et écrire
+  - les utilisateurs peuvent lire, écrire et exécuter
   - le groupe peut lire
   - les autres n'ont aucun droit
-- Changer le groupe du dossier `Work/Linux/exercices/3/chaine/` pour appartenir au groupe `root`.
+- Changer le groupe du dossier `Work/Linux/exercices/3/chaine/` pour appartenir au groupe `root` (`staff` pour Mac).
 
 - Créer un commit
 
