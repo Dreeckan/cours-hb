@@ -418,6 +418,8 @@ OpenSSH est *normalement* installé par défaut sur toutes les distributions Lin
 - `ssh-copy-id user@un-serveur` pour ajouter les clés enregistrées à l'utilisateur sur un serveur distant
 - `ssh-agent -s` pour démarrer le service SSH si besoin (`eval $(ssh-agent -s)` si l'agent refuse *vraiment* de coopérer)
 
+Xavki a fait une [très bonne vidéo explicative sur SSH](https://www.youtube.com/watch?v=3-MDtASgSo8) si vous souhaitez en comprendre les principes.
+
 #### OpenSSH avec Windows
 
 :warning: OpenSSH n'est pas installé par défaut sur Windows, veuillez suivre les instructions de la vidéo pour l'installer.
@@ -645,6 +647,10 @@ En vidéo :
 ## Aller plus loin 
 
 Pour aller plus loin, je vous recommande fortement [une playlist dédiée à Linux de la (très bonne) chaîne Youtube Xavki](https://www.youtube.com/watch?v=-6MA0OCTXko&list=PLn6POgpklwWp1yRsq3-PyyisSIDg94ct9)
+
+Pour pratiquer la ligne de commande, vous avez également des jeux, disponibles en ligne ou à installer :
+- [Utiliser less, cd, pwd, etc.](http://web.mit.edu/mprat/Public/web/Terminus/Web/main.html)
+- [Un jeu d'apprentissage général de la ligne de commande](https://linuxsurvival.com/) 
 
 ## Exercices
 
