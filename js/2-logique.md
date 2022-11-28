@@ -5,6 +5,7 @@
 Les opérations disponibles :
 
 - Addition `+` (attention, cet opérateur sert également à la concaténation de chaînes de caractères)
+
 ```js
 let result = 1 + 1;
 console.log(result); // Affiche 2
@@ -15,6 +16,7 @@ result++; // Ajoute 1 à result
 ```
 
 - Soustraction `-`
+
 ```js
 let result = 10 - 1;
 console.log(result); // Affiche 9
@@ -25,6 +27,7 @@ result--; // Enlève 1 à result
 ```
 
 - Division `/`
+
 ```js
 let result = 10 / 2;
 console.log(result); // Affiche 5
@@ -34,6 +37,7 @@ result /= 2; // Divise result par 2
 ```
 
 - Multiplication `*`
+
 ```js
 let result = 10 * 2;
 console.log(result); // Affiche 20
@@ -239,7 +243,7 @@ Les boucles sont le plus souvent utilisées pour parcourir des ensembles de donn
 3 éléments sont essentiels dans une boucle :
 - une initialisation (un contexte de départ, pour entrer dans la boucle)
 - une condition de sortie (on doit pouvoir sortir de la boucle)
-- un pas (à quel vitesse parcourt-on la boucle ? Parcourt-on tous les éléments ?)
+- un pas (à quelle vitesse parcourt-on la boucle ? Parcourt-on tous les éléments ?)
 
 Nous allons voir comment parcourir le tableau suivant de différente manière :
 
@@ -276,7 +280,7 @@ while (i < tab.length) {
 
 ### for
 
-Avec un boucle `for`, on définit directement un compteur, sa valeur maximum (cas d'arrêt) et sa progression (ou incrémentation) :
+Avec une boucle `for`, on définit directement un compteur, sa valeur maximum (cas d'arrêt) et sa progression (ou incrémentation) :
 
 ```js
 for (let i = 0; i < tab.length; i++) {
@@ -397,6 +401,7 @@ Un [corrigé est disponible sur Github](https://github.com/Dreeckan/exercices-js
 
 Indices / rappels utiles : 
 - Vous pouvez avoir la taille d'une chaine de caractères avec `.length` : 
+
 ```js
     let string = 'une chaine de caractères';
     console.log(string.length); // Renvoie le nombre de caractères

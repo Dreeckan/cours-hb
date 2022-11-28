@@ -86,6 +86,7 @@ On peut résumer ceci en disant que le contexte global représente l'entièreté
 Quelque exemple pour rendre ça plus clair :
 
 - Une variable globale
+
 ```js
 // On défini une variable test dans le contexte global
 let test = 'test';
@@ -100,6 +101,7 @@ console.log(test); // affiche 'test2'
 ```
 
 - Une variable locale
+
 ```js
 function testFonction() {
     // On déclare une variable locale, elle n'est disponible que dans la fonction
@@ -110,6 +112,7 @@ console.log(test); // "Error: test is not defined" car la variable n'existe pas 
 ```
 
 - utiliser une variable locale et une variable globale ayant le même nom
+
 ```js
 // On défini une variable test dans le contexte global
 let test = 'test';
@@ -145,6 +148,7 @@ Dans l'exemple ci-dessus, `variableLet` n'existe pas en dehors du bloc (défini 
 Que se passe-t-il si vous déclarer une nouvelle variable avec le même nom dans une condition ? 
 
 - Avec `var` :
+
 ```js
 var test = 'test';
 
@@ -158,6 +162,7 @@ console.log(test); // Affiche 42
 ```
 
 - Avec `let` :
+
 ```js
 var test = 'test';
 

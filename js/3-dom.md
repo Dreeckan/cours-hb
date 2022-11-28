@@ -263,7 +263,7 @@ Un événement est une **réaction** à une **action** de l'utilisateur. Vous po
 
 Le premier paramètre de cette méthode est le nom d'un événement, le second est une fonction (fonction de callback) ou le nom d'une fonction.
 
-L'un des plus courant : l'événement `click` qui se déclenche au clic de la souris dans un élément.
+L'un des plus courants : l'événement `click` qui se déclenche au clic de la souris dans un élément.
 
 ```js
 // On récupère le lien dont l'attribut id est jean-claude
@@ -481,8 +481,9 @@ Utiliser le HTML suivant :
 
 - lorsqu'on duplique un noeud avec `.cloneNode()`, il faut lui donner un parent (comme nous l'avons fait avec `createElement()`)
 - le clic sur un lien (balise `a`) recharge la page, il faut empêcher ça grâce à une méthode de l'objet `event` (paramètre des fonctions callback des événements)
-- la méthode `addEventListener()` s'appelle exclusivement sur un noeud
+- la méthode `addEventListener()` s'appelle exclusivement sur un nœud
 - Récupérer l'input `radio` coché à partir de son attribut `name` :
+
 ```js
 let checkedInput = document.querySelector('[name="jeSuisUnRadio"]:checked'); // On récupère l'input
 let checkedValue = checkedInput.value; // On récupère sa valeur (attribut value)
@@ -521,10 +522,12 @@ L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choi
   2. `armour` (`inputs` de type `radio`) pour choisir dans les armures
   3. un bouton de validation (type `submit`) pour valider le formulaire
 - un titre `<h2>` pour afficher le résultat de la bataille
+
 ```html
   <h2>Vous avez triomphé du Maître du Donjon !</h2>
 ```
 - une liste `<ol>` pour afficher les différents tours (plus besoin d'un compteur de tours) et ce qu'il s'y passe sous cette forme
+
 ```html
 <ol>
     <li>Le Maître du Donjon attaque ! Il vous inflige X points de dégâts ! Heureusement, il vous reste <strong>Y points de vie</strong></li>
@@ -575,10 +578,13 @@ Warning :
   2. `armour` (`radio` inputs) to choose the armour
   3. a `submit` button to submit the form
 - A `<h2>` to display the battle's result
+
 ```html
   <h2>You vanquished the Evil Master!</h2>
 ```
+
 - A `<ol>` to display every turn and its actions
+
 ```html
 <ol>
     <li>The Evil Master attacks! He deals X damages to you! Fortunately you still have<strong>Y health points</strong> left</li>

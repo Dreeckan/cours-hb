@@ -11,7 +11,7 @@ Il y a 2 moyens d'installer JQuery dans un projet : par un fichier stocké en li
 Avantages du CDN (fichier en ligne)
 
 - rien à télécharger
-- un ligne suffit pour s'en servir
+- une ligne suffit pour s'en servir
 
 Avantages du fichier local :
 
@@ -216,9 +216,9 @@ et dans la balise `head` un peu de style :
 ```
 
 - Ajouter le HTML ci-dessus dans votre `<body>`
-- Récupérer tous les noeuds `<a>` de la page (et les afficher avec un `console.log()`)
-- Récupérer le noeud ayant l'id `footer` (et l'afficher avec un `console.log()`)
-- Récupérer tous les noeuds ayant la classe `article` (et les afficher avec un `console.log()`)
+- Récupérer tous les nœuds `<a>` de la page (et les afficher avec un `console.log()`)
+- Récupérer le nœud ayant l'id `footer` (et l'afficher avec un `console.log()`)
+- Récupérer tous les nœuds ayant la classe `article` (et les afficher avec un `console.log()`)
 - Récupérer le second paragraphe de chaque `article` (et les afficher avec un `console.log()`)
 
 #### English version
@@ -239,7 +239,7 @@ $('#jean-claude').on('click', function () {
 });
 ```
 
-### Gestion d'événement sur un noeud qui n'existe pas encore
+### Gestion d'événement sur un nœud qui n'existe pas encore
 
 Il est même possible d'installer un event listener pour un/des noeuds qui n'ont pas encore été créés ! On cible un noeud existant et on précise que ses enfants qui seront créés avec un sélecteur précis, auront un événement associé.
 
@@ -440,25 +440,25 @@ element.val('Un texte de test');
 
 ## Récapitulatif des différences VanillaJS / JQuery
 
-| Notion | VanillaJS | JQuery |
-| ----- | ----- | ----- |
-| Cibler un noeud par son id | `document.getElementById('id')` | `$("#id")`|
-| Cibler **des** noeuds par sa classe | `document.getElementsByClassName('class')` | `$(".class")`|
-| Cibler **des** noeuds par le nom de la balise | `document.getElementsByTagName('h1')` | `$("h1")`|
-| Cibler **un** noeud avec un sélecteur CSS | `document.querySelector('.class')` | `$(".class").first()`|
-| Cibler **des** noeuds avec un sélecteur CSS | `document.querySelectorAll('.class')` | `$(".class")`|
-| Modifier le HTML d'un noeud | `element.innerHTML = ""` | `element.html("")`|
-| Modifier le texte d'un noeud | `element.textContent = ""` | `element.text("")`|
-| Modifier le style d'un noeud | `element.style.fontSize = "20px"` | `element.css('font-size', '20px')`|
-| Modifier un attribut d'un noeud | `element.setAttribute("id", "unId")` | `element.attr("id", "unId")`|
-| Modifier un data-attribut d'un noeud | `element.dataSet.test = "value"` | `element.data("test", "value")` (non visible dans le HTML) ou `element.attr("data-test", "value")` |
-| Récupérer le contenu d'un champ de formulaire | `document.querySelector('input[name="test"]').value` | `$('input[name="test"]').val()` |
-| Modifier le contenu d'un champ de formulaire | `document.querySelector('[name="test"]').value = 'newValue'` | `$('input[name="test"]').val('newValue')` |
-| Créer un nouveau noeud | `document.createElement("p")` | `$('<p>')` |
-| Copier un noeud | `element.cloneNode("p")` | `element.clone()` |
-| Ajouter un noeud à la fin d'un autre | `element.appendChild(elementToAdd)` | `element.append(elementToAdd)` ou `elementToAdd.appendTo(element)` |
-| Ajouter un noeud au début d'un autre | `element.prepend(elementToAdd)` | `element.prepend(elementToAdd)` ou `eelementToAdd.prependTo(lement)` |
-| Ajouter un event listener sur un noeud | `element.addEventListener('nomDeLEvent', function() {})` :warning: `element` **doit être un et un seul noeud** et pas un tableau | `element.on('nomDeLEvent', function() {})` :warning: `element` **peut** contenir plusieurs noeuds avec JQuery |
+| Notion                                        | VanillaJS                                                                                                                        | JQuery                                                                                                        |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| Cibler un noeud par son id                    | `document.getElementById('id')`                                                                                                  | `$("#id")`                                                                                                    |
+| Cibler **des** noeuds par sa classe           | `document.getElementsByClassName('class')`                                                                                       | `$(".class")`                                                                                                 |
+| Cibler **des** noeuds par le nom de la balise | `document.getElementsByTagName('h1')`                                                                                            | `$("h1")`                                                                                                     |
+| Cibler **un** noeud avec un sélecteur CSS     | `document.querySelector('.class')`                                                                                               | `$(".class").first()`                                                                                         |
+| Cibler **des** noeuds avec un sélecteur CSS   | `document.querySelectorAll('.class')`                                                                                            | `$(".class")`                                                                                                 |
+| Modifier le HTML d'un noeud                   | `element.innerHTML = ""`                                                                                                         | `element.html("")`                                                                                            |
+| Modifier le texte d'un noeud                  | `element.textContent = ""`                                                                                                       | `element.text("")`                                                                                            |
+| Modifier le style d'un noeud                  | `element.style.fontSize = "20px"`                                                                                                | `element.css('font-size', '20px')`                                                                            |
+| Modifier un attribut d'un noeud               | `element.setAttribute("id", "unId")`                                                                                             | `element.attr("id", "unId")`                                                                                  |
+| Modifier un data-attribut d'un noeud          | `element.dataSet.test = "value"`                                                                                                 | `element.data("test", "value")` (non visible dans le HTML) ou `element.attr("data-test", "value")`            |
+| Récupérer le contenu d'un champ de formulaire | `document.querySelector('input[name="test"]').value`                                                                             | `$('input[name="test"]').val()`                                                                               |
+| Modifier le contenu d'un champ de formulaire  | `document.querySelector('[name="test"]').value = 'newValue'`                                                                     | `$('input[name="test"]').val('newValue')`                                                                     |
+| Créer un nouveau noeud                        | `document.createElement("p")`                                                                                                    | `$('<p>')`                                                                                                    |
+| Copier un noeud                               | `element.cloneNode("p")`                                                                                                         | `element.clone()`                                                                                             |
+| Ajouter un noeud à la fin d'un autre          | `element.appendChild(elementToAdd)`                                                                                              | `element.append(elementToAdd)` ou `elementToAdd.appendTo(element)`                                            |
+| Ajouter un noeud au début d'un autre          | `element.prepend(elementToAdd)`                                                                                                  | `element.prepend(elementToAdd)` ou `eelementToAdd.prependTo(lement)`                                          |
+| Ajouter un event listener sur un noeud        | `element.addEventListener('nomDeLEvent', function() {})` :warning: `element` **doit être un et un seul noeud** et pas un tableau | `element.on('nomDeLEvent', function() {})` :warning: `element` **peut** contenir plusieurs noeuds avec JQuery |
 
 ## Exercices récapitulatifs
 
