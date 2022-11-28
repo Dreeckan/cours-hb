@@ -2,9 +2,7 @@
 
 ## Opérateurs arithmétiques
 
-Les opérations disponibles :
-
-- Addition `+` (attention, cet opérateur sert également à la concaténation de chaînes de caractères)
+### Addition `+` (attention, cet opérateur sert également à la concaténation de chaînes de caractères)
 
 ```js
 let result = 1 + 1;
@@ -15,7 +13,7 @@ result += 2; // Ajoute 2 à result
 result++; // Ajoute 1 à result
 ```
 
-- Soustraction `-`
+### Soustraction `-`
 
 ```js
 let result = 10 - 1;
@@ -26,7 +24,7 @@ result -= 2; // Enlève 2 à result
 result--; // Enlève 1 à result
 ```
 
-- Division `/`
+### Division `/`
 
 ```js
 let result = 10 / 2;
@@ -36,7 +34,7 @@ result = result / 2; // Divise result par 2
 result /= 2; // Divise result par 2
 ```
 
-- Multiplication `*`
+### Multiplication `*`
 
 ```js
 let result = 10 * 2;
@@ -46,7 +44,8 @@ result = result * 2; // Multiplie result par 2
 result *= 2; // Multiplie result par 2
 ```
 
-- Modulo `%` (reste de la division d'un nombre par un autre)
+### Modulo `%` (reste de la division d'un nombre par un autre)
+
 ```js
 let result = 5 % 4; // le reste de la division de 5 / 4 vaut 1
 result = result % 2; // le reste de 1 par 2 vaut 1
@@ -332,8 +331,7 @@ tab.forEach((element) => {
 
 ### For...in
 
-- Fonctionne sur les objets
-- Permet d'en parcourir les propriétés
+Fonctionne sur les objets et permet d'en parcourir les propriétés :
 
 ```js
 let player = {
@@ -400,7 +398,7 @@ Un [corrigé est disponible sur Github](https://github.com/Dreeckan/exercices-js
 - Écrire une fonction renvoyant le mot de plus long et appeler cette fonction (afficher le résultat dans un `console.log()`)
 
 Indices / rappels utiles : 
-- Vous pouvez avoir la taille d'une chaine de caractères avec `.length` : 
+Vous pouvez avoir la taille d'une chaine de caractères avec `.length` : 
 
 ```js
     let string = 'une chaine de caractères';

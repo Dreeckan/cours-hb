@@ -92,8 +92,8 @@ Une fois que vous avez récupéré un noeud, plusieurs attributs permettent de n
 
 Deux propriétés vous permettent de modifier rapidement le contenu d'un noeud `element` que vous avez récupéré :
 
-- `element.innerHTML`: permet d'accéder/modifier le contenu (sous forme de html) de l'élément (conserve donc la balise) ([Documentation](https://developer.mozilla.org/fr/docs/Web/API/Element/innerHTML))
-- `element.textContent` ou `element.innerText`: permet d'accéder/modifier le contenu (sous forme textuelle, sans balise) de l'élément (conserve donc la balise) ([Documentation](https://developer.mozilla.org/fr/docs/Web/API/Node/textContent))
+`element.innerHTML`: permet d'accéder/modifier le contenu (sous forme de html) de l'élément (conserve donc la balise) ([Documentation](https://developer.mozilla.org/fr/docs/Web/API/Element/innerHTML))
+`element.textContent` ou `element.innerText`: permet d'accéder/modifier le contenu (sous forme textuelle, sans balise) de l'élément (conserve donc la balise) ([Documentation](https://developer.mozilla.org/fr/docs/Web/API/Node/textContent))
 
 ```js
 let element = document.getElementById('main');
@@ -236,8 +236,8 @@ element.prepend(newElement);
 
 #### Supprimer / remplacer des éléments
 
-- [removeChild()](https://developer.mozilla.org/fr/docs/Web/API/Node/removeChild)
-- [replaceChild()](https://developer.mozilla.org/fr/docs/Web/API/Node/replaceChild)
+[removeChild()](https://developer.mozilla.org/fr/docs/Web/API/Node/removeChild)
+[replaceChild()](https://developer.mozilla.org/fr/docs/Web/API/Node/replaceChild)
 
 ```js
 // On crée notre élément
@@ -427,6 +427,7 @@ En javascript, faire les modifications suivantes :
 - Cibler toutes les balises `p` de la page et changer la couleur du texte (`#000F00`) et remplacer la classe `paragraph` par la classe `text`
 - Ajouter une balise `ul` dans la balise `header`, avec 4 `li` à l'intérieur pour obtenir le résultat suivant :
 
+
 ```html
 <header id="header">
     <ul class="list" id="important-list">
@@ -484,6 +485,7 @@ Utiliser le HTML suivant :
 - la méthode `addEventListener()` s'appelle exclusivement sur un nœud
 - Récupérer l'input `radio` coché à partir de son attribut `name` :
 
+
 ```js
 let checkedInput = document.querySelector('[name="jeSuisUnRadio"]:checked'); // On récupère l'input
 let checkedValue = checkedInput.value; // On récupère sa valeur (attribut value)
@@ -523,10 +525,12 @@ L'utilisateur est un aventurier qui entre dans un donjon. En entrant, il va choi
   3. un bouton de validation (type `submit`) pour valider le formulaire
 - un titre `<h2>` pour afficher le résultat de la bataille
 
+
 ```html
   <h2>Vous avez triomphé du Maître du Donjon !</h2>
 ```
 - une liste `<ol>` pour afficher les différents tours (plus besoin d'un compteur de tours) et ce qu'il s'y passe sous cette forme
+
 
 ```html
 <ol>
@@ -579,11 +583,13 @@ Warning :
   3. a `submit` button to submit the form
 - A `<h2>` to display the battle's result
 
+
 ```html
   <h2>You vanquished the Evil Master!</h2>
 ```
 
 - A `<ol>` to display every turn and its actions
+
 
 ```html
 <ol>
