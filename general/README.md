@@ -32,7 +32,7 @@
 - Community Manager
 - Responsable (ou non) presse et partenaires
 
-# Les entreprises
+## Les entreprises
 
 - Entreprises de services du numérique (ESN)
 - Agences web et de communication
@@ -41,7 +41,7 @@
 - Collectivités
 - Vous-même
 
-## ESN
+### ESN
 
 - Emploie et place de nombreux développeurs (et autres métiers du numérique) dans d'autres entreprises
 - Fourni des missions aux employés, d'une durée plus ou moins longue
@@ -49,7 +49,7 @@
 - Souvent opaque quant au prix facturé au client
 - Paie ses employés même en l'absence de mission
 
-## Agences web et de communication
+### Agences web et de communication
 
 - Emploie une équipe cohérente (permanente) pour répondre à des demandes clients précises
 - Se spécialise en général sur certains types de clients ou technologies
@@ -57,26 +57,26 @@
 - Plus petite échelle que les ESN
 - Peut gérer à la fois le développement et la communication
 
-## Studio de développement
+### Studio de développement
 
 - En général une petite équipe
 - Travaille pour d'autres entreprises (clients directs, mais souvent sous-traitant)
 - N'a généralement pas d'équipe de communication / commerciale
 - Vient renforcer des équipes existantes
 
-## Entreprises liées au numérique
+### Entreprises liées au numérique
 
 - A besoin du numérique pour exister
 - A créé une équipe (parfois une personne) pour ses besoins en dev plutôt que de passer par des prestataires
 - Tout type de profil d'entreprise (Start Up, etc.)
 
-## Collectivités
+### Collectivités
 
 - Équipe interne pour répondre à des besoins en général variés
 - Ou externe (passe par les marchés publics et des appels d'offre)
 - Emploie fonctionnaires ou contractuels
 
-# Enjeux du métier du développeur
+## Enjeux du métier du développeur
 
 - Qualité
 - Initiative et esprit de conseil
@@ -84,14 +84,15 @@
 - Veille technologique
 - Et bien d'autres
 
-## Le quotidien d'un développeur
+### Le quotidien d'un développeur
 
 - Une journée type
 - Choisir ses outils
 
-# Des ressources utiles 
+## Des ressources utiles
 
-Je vous mets quelques liens d'outils ou de sources de veille que j'utilise : 
+Je vous mets quelques liens d'outils ou de sources de veille que j'utilise :
+
 - [https://afup.org/home](https://afup.org/home) (événements autour de PHP, pour faire du réseau)
 - [https://caniuse.com/](https://caniuse.com/) (est-ce que je peux utiliser cette fonctionnalité de js, html ou css sur d'anciens navigateurs ?)
 - [https://css-tricks.com/](https://css-tricks.com/) (de l'actu, des tutos et des conseils autour du css)

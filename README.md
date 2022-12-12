@@ -6,42 +6,42 @@ Il a été généré avec [VuePress](https://vuepress.vuejs.org/), générateur 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/7ca52359cf444251a56f40b668617798" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 
-- [Général](general/)
+## [Général](general/)
 
 Des cours généraux autour du métier de développeur.
 
-- [Linux](linux/)
+## [Linux](linux/)
 
 Des cours sur Linux et son maniement au quotidien dans le métier de développeur.
- 
-- [Git](git/)
+
+## [Git](git/)
 
 La gestion de version avec Git.
 
-- [PHP](php/)
+## [PHP](php/)
 
 Php, des bases du langage (sous forme procédurale) à la programmation orientée objet.
 
-- [Symfony](symfony/)
+## [Symfony](symfony/)
 
 Grâce aux bases de PHP objet, utiliser le framework Symfony pour développer un site complet et complexe.
 
-- [Javascript](js/)
+## [Javascript](js/)
 
-Javascript, des bases du langage à la programmation orientée objet. 
+Javascript, des bases du langage à la programmation orientée objet.
 
-- [LAMP](lamp/)
+## [LAMP](lamp/)
 
 Mettre en place un serveur LAMP (Linux, Apache, MySQL et Php).
 
-- [Déploiement](deploy/)
+## [Déploiement](deploy/)
 
 Des exercices de déploiement de projets PHP et autres
 
-- [Docker](docker/)
+## [Docker](docker/)
 
 Créer un environnement de travail en utilisant Docker
 
-- [Intégration continue](ci/)
+## [Intégration continue](ci/)
 
-Les grands principes et la mise en place de l'intégration continue, à l'aide de Gitlab. 
+Les grands principes et la mise en place de l'intégration continue, à l'aide de Gitlab.
