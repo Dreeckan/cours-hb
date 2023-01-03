@@ -4,14 +4,16 @@
 
 Dans un premier temps, voyons pour manipuler Git sur un projet individuel, pour personnaliser votre profil GitHub et en faire un CV.
 
-- Créer un dépôt sur GitHub, portant le même nom que votre compte (mon pseudo GitHub est Dreeckan, je crée un dépôt Dreeckan). 
+- Créer un dépôt sur GitHub, portant le même nom que votre compte (mon pseudo GitHub est `Dreeckan`, je crée un dépôt `Dreeckan`). 
 - Récupérer ce projet sur votre machine 
 - Ouvrir le projet dans VS Code
+
 - Créer/modifier le fichier `README.md`
   - Ajouter/modifier un titre de niveau 1 cohérent (par exemple, votre nom)
   - Ajouter un autre titre, de niveau 2 (par exemple, "Mes compétences")
   - Ajouter d'autres titres pour définir un squelette/plan pour votre profil
 - Créer un commit avec ces nouvelles informations
+
 - Ajouter du contenu dans les différentes sections créées (par exemple, une liste de vos compétences). Créer au moins :
   - une liste à puce
   - un paragraphe de texte
@@ -20,6 +22,60 @@ Dans un premier temps, voyons pour manipuler Git sur un projet individuel, pour 
 - Pousser ces modifications sur GitHub
 - Vérifier que toutes vos modifications sont présentes sur GitHub et visible sur votre profil publique ([https://github.com/Dreeckan](https://github.com/Dreeckan) dans mon cas)
 
+
+## Bonnes pratiques Git
+
+Nous allons maintenant créer un nouveau projet en solitaire, pour nous habituer aux bonnes pratiques de Git et GitHub.
+
+- Créer un dépôt privé sur GitHub
+- Récupérer ce projet sur votre machine 
+- Ouvrir le projet dans VS Code
+
+- Créer un fichier `README.md`
+- Lui donner un titre principal (comme `Une documentation intéressante`)
+- Créer un commit 
+- Pousser ces modifications sur GitHub
+
+- Créer deux nouveaux fichiers `index.html` et `index.js`
+- Ajouter un titre secondaire (comme `Une section passionnante`)
+- Modifier le commit précédent pour intégrer ces modifications
+- Pousser ces modifications sur GitHub (s'attendre à un souci, nous avons modifié l'historique ;) )
+
+- Créer une nouvelle branche `2-la-suite`
+- Ajouter du contenu dans `index.js` :
+
+```js
+console.log('OK');
+```
+
+- Ajouter du contenu dans `index.html` :
+
+```html
+<p>Un texte de test</p>
+```
+
+- Pousser cette branche et créer une Pull Request
+
+- Revenir sur la branche principale (`main`)
+- Créer une nouvelle branche `3-gestion-de-conflit`
+- Ajouter du contenu dans `index.js` :
+
+```js
+console.log('Conflit en approche');
+```
+
+- Ajouter du contenu dans `index.html` :
+
+```html
+<p>Un texte de test, qui va poser problème, non ?</p>
+```
+
+- Pousser cette branche et créer une Pull Request
+- Fusionner une première Pull Request
+- Constater le conflit empêchant de fusionner la seconde Pull Request
+- Résoudre le conflit sur votre machine
+- Pousser à nouveau la branche
+- Fusionner la Pull Request correspondante
 
 ## Travailler en équipe
 
