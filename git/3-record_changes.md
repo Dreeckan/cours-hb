@@ -61,7 +61,6 @@ Quelques usages courants :
 - `git reset` pour sortir **tous** les fichiers de l'index (vous conservez les modifications)
 - `git reset nomDuFichier` pour sortir **uniquement** le fichier `nomDuFichier` de l'index (vous conservez les modifications)
 - `git reset --hard` pour sortir **tous** les fichiers de l'index **et supprimer toutes les modifications**
-- `git reset --hard nomDuFichier` pour sortir **uniquement** le fichier `nomDuFichier` de l'index **et supprimer toutes les modifications de ce fichier**
 
 ## Commit - Valider des modifications
 
