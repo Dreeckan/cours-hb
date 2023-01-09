@@ -195,11 +195,12 @@ Avec l'opérateur `|` (appelé pipe), vous pouvez transmettre la sortie d'une co
 
 ### Exécuter quoiqu'il arrive `||`
 
-Pour exécuter 2 commandes, même si la première renvoie une erreur, utiliser `||`.
+Pour exécuter une commande, **uniquement si la précédente renvoie une erreur**, utiliser `||`.
 
-`ls unFichierPassionnant.txt || echo "je m'affiche tout le temps"`
+`ls unFichierPassionnant.txt || echo "je m'affiche si la première plante"`
 
-Dans l'exemple ci-dessus, si le fichier `unFichierPassionnant.txt` n'existe pas, le `echo` est quand même exécuté.
+Dans l'exemple ci-dessus, si le fichier `unFichierPassionnant.txt` n'existe pas, le `echo` est exécuté.
+Si `unFichierPassionnant.txt` existe, seule la première commande est lancée.
 
 ### Exécuter si la première réussie `&&`
 
@@ -208,3 +209,11 @@ Pour exécuter 2 commandes, si la première réussie, utiliser `&&`.
 `ls unFichierPassionnant.txt && echo "je m'affiche si le fichier existe"`
 
 Dans l'exemple ci-dessus, si le fichier `unFichierPassionnant.txt` n'existe pas, le `echo` n'est pas exécuté.
+
+### Exécuter si la première réussie `;`
+
+Pour exécuter 2 commandes, si la première réussie, utiliser `&&`.
+
+`ls unFichierPassionnant.txt ; echo "je m'affiche tout le temps"`
+
+Dans l'exemple ci-dessus, quel que soit le résultat de la commande précédente, le `echo` est pas exécuté.
