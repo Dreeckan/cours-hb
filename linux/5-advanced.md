@@ -67,22 +67,35 @@ Ils ont tous un nom unique, un GID unique, des membres (utilisateurs), etc.
 
 ## Gestion des permissions
 
-- `chmod` défini les droits (lecture, modification et exécution) sur un fichier
-- `chown` défini le propriétaire et le groupe propriétaire sur un fichier
+### Chmod - Modifier les droits
 
-Exemples : 
-- `chmod 666 -R .` ou `chmod a+rw -R .`
-- `chown utilisateur:groupe README.md`
+`chmod` défini les droits (lecture, modification et exécution) sur un fichier ou un dossier.
 
-### Plus de détails sur les droits
-
-- Tout utilisateur a un groupe à son nom
-- Les droits sont définis pour un utilisateur, un groupe et les autres
-- Peuvent être écrit sous la forme `rwx` (lecture, écriture, exécution)
-- Ou sous forme numérale (`666` par exemple), somme de :
+Les droits peuvent être écrits : 
+- sous la forme `rwx` (lecture, écriture, exécution)
+- sous forme numérale (`666` par exemple), somme de :
     + 1 pour exécution 
     + 2 pour l'écriture 
     + 4 pour la lecture
+
+Exemples : 
+- `chmod 666 -R .` ou `chmod a+rw -R .` pour donner à tout le monde (utilisateur, groupe et autres) le droit de lire et écrire dans le dossier en cours, les sous-dossiers et tous les fichiers qu'ils contiennent.
+- `chmod u+wx test.txt` ajoute les droits d'écriture et d'exécution au propriétaire du fichier
+- `chmod g-rx test.txt` enlève les droits de lecture et d'exécution au groupe du fichier
+- `chmod o=r test.txt` défini les droits des autres : il ne peuvent **que** lire
+
+
+### Chown - Modifier le propriétaire
+
+`chown` défini le propriétaire et le groupe propriétaire sur un fichier
+
+- Tout utilisateur a un groupe à son nom
+- Les droits sont définis pour un utilisateur, un groupe et les autres
+
+Exemples : 
+- `chown utilisateur:groupe README.md` pour définir que le fichier `README.md` appartient à `utilisateur` et au groupe `groupe`
+- `chown :groupe README.md` pour définir que le fichier `README.md` appartient au groupe `groupe`, sans changer l'utilisateur
+- `chown utilisateur README.md` pour définir que le fichier `README.md` appartient à `utilisateur`, sans changer le groupe
 
 ## Connaître l'espace disponible
 
