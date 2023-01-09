@@ -216,4 +216,4 @@ Pour exécuter des commandes, quoiqu'il arrive, les séparer par `;`.
 
 `ls unFichierPassionnant.txt ; echo "je m'affiche tout le temps"`
 
-Dans l'exemple ci-dessus, quel que soit le résultat de la commande précédente, le `echo` n'est pas exécuté.
+Dans l'exemple ci-dessus, quel que soit le résultat de la commande précédente, le `echo` est exécuté.
