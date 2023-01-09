@@ -28,7 +28,8 @@ module.exports = {
                 title: 'Linux',
                 path: '/linux/',
                 collapsable: true,
-                children: linuxFiles
+                children: linuxFiles,
+                sidebarDepth: 2
             },
             {
                 title: 'PHP',

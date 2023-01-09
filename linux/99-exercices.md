@@ -36,7 +36,7 @@ Rester dans le dossier `Work/Linux/exercices`. Pour les questions ci-dessous, é
 
 ## 3. Commandes avancées
 
-- Créer une branche `exercice3`
+- Créer une branche (et s'y rendre) `exercice3`
 - Créer un dossier `Work/Linux/exercices/3`
 - Que se passe-t-il si vous faites un commit ? (vous écrirez votre réponse après avoir créé le fichier `exercice3.txt`)
 - Se rendre dans ce dossier
@@ -61,7 +61,12 @@ Rester dans le dossier `Work/Linux/exercices`. Pour les questions ci-dessous, é
 
 - Créer un commit, pousser les modifications et créer une PR (Pull Request)
 
-## 4. D'autres exercices en ligne
+## 4. Refaire les exercices précédents - version difficile
+
+- Refaire les exercices précédents, sans utiliser `nano`, `vim`, `VSCode` ou autre éditeur de texte
+- Essayer de grouper autant que possible les commandes, pour les faire en une seule ligne
+
+## 5. D'autres exercices en ligne
 
 - [Utiliser less, cd, pwd, etc.](http://web.mit.edu/mprat/Public/web/Terminus/Web/main.html)
 - [Un jeu d'apprentissage général de la ligne de commande](https://linuxsurvival.com/) 
