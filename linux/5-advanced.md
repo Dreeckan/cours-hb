@@ -108,7 +108,7 @@ En vidéo :
 
 ## Installer des programmes
 
-`apt` (Another Packaging Tool) est un gestionnaire de paquets qui offre un ensemble de commandes vous permettant de gérer les programmes et librairies installés sur votre machine. Il faut avoir les droits de super-utilisateur pour s'en servir (en général, il faut utiliser la commande `sudo` avant votre programme).
+`apt` (Advanced Packaging Tool) est un gestionnaire de paquets qui offre un ensemble de commandes vous permettant de gérer les programmes et librairies installés sur votre machine. Il faut avoir les droits de super-utilisateur pour s'en servir (en général, il faut utiliser la commande `sudo` avant votre programme).
 
 - `sudo apt update` pour mettre à jour la liste des programmes (et leur version) utilisables
 - `sudo apt upgrade` pour mettre à jour les programmes installés
