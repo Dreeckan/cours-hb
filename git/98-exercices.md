@@ -27,6 +27,8 @@ Dans un premier temps, voyons pour manipuler Git sur un projet individuel, pour 
 
 Nous allons maintenant créer un nouveau projet en solitaire, pour nous habituer aux bonnes pratiques de Git et GitHub.
 
+### Démarrage du projet
+
 - Créer un dépôt privé sur GitHub
 - Récupérer ce projet sur votre machine 
 - Ouvrir le projet dans VS Code
@@ -40,6 +42,8 @@ Nous allons maintenant créer un nouveau projet en solitaire, pour nous habituer
 - Ajouter un titre secondaire (comme `Une section passionnante`)
 - Modifier le commit précédent pour intégrer ces modifications
 - Pousser ces modifications sur GitHub (s'attendre à un souci, nous avons modifié l'historique ;) )
+
+### De la branche à la <abbr title="Pull Request">PR</abbr>
 
 - Créer une nouvelle branche `2-la-suite`
 - Ajouter du contenu dans `index.js` :
@@ -55,6 +59,8 @@ console.log('OK');
 ```
 
 - Pousser cette branche et créer une Pull Request
+
+### PR et conflits
 
 - Revenir sur la branche principale (`main`)
 - Créer une nouvelle branche `3-gestion-de-conflit`

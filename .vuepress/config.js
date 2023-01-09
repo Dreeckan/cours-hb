@@ -4,6 +4,7 @@ let phpFiles = glob.sync('php/!(README).md');
 let symfonyFiles = glob.sync('symfony/!(README).md');
 let ciFiles = glob.sync('ci/**/!(README).md');
 let gitFiles = glob.sync('git/**/!(README).md');
+let linuxFiles = glob.sync('linux/**/!(README).md');
 let jsFiles = glob.sync('js/**/!(README).md');
 
 module.exports = {
@@ -23,7 +24,12 @@ module.exports = {
                 collapsable: true,
                 children: gitFiles
             },
-            '/linux/',
+            {
+                title: 'Linux',
+                path: '/linux/',
+                collapsable: true,
+                children: linuxFiles
+            },
             {
                 title: 'PHP',
                 path: '/php/',
