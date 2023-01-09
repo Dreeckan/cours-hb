@@ -212,8 +212,8 @@ Dans l'exemple ci-dessus, si le fichier `unFichierPassionnant.txt` n'existe pas,
 
 ### Exécuter si la première réussie `;`
 
-Pour exécuter 2 commandes, si la première réussie, utiliser `&&`.
+Pour exécuter des commandes, quoiqu'il arrive, les séparer par `;`.
 
 `ls unFichierPassionnant.txt ; echo "je m'affiche tout le temps"`
 
-Dans l'exemple ci-dessus, quel que soit le résultat de la commande précédente, le `echo` est pas exécuté.
+Dans l'exemple ci-dessus, quel que soit le résultat de la commande précédente, le `echo` n'est pas exécuté.
