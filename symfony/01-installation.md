@@ -47,8 +47,8 @@ Pour installer un plugin dans VSCode, aller dans le menu de gauche, partie Exten
 ## Requis techniques
 
 Avant de commencer à créer un site avec Symfony, certaines notions sont nécessaires :
-- Une bonne maîtrise du [PHP orienté objet](../php/02-objet.md) (y compris les espaces de nom)
-- Le [principe <abbr title="Model View Controller">MVC</abbr>](../php/04-mvc.md) pour organiser nos fichiers
+- Une bonne maîtrise du [PHP orienté objet](../php/20-objet.md) (y compris les espaces de nom)
+- Le [principe <abbr title="Model View Controller">MVC</abbr>](../php/40-mvc.md) pour organiser nos fichiers
 - Les annotations et attributs en PHP (voir point suivant)
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/f1d89de2d2264c8a8a80fc84c3dc0dad" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
