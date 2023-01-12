@@ -39,9 +39,14 @@ switch ($variable) {
 }
 ```
 
-Condition ternaire
+### Condition ternaire
+
+Une variante "courte" existe pour les conditions simples.
 
 ```php
+// Avant le ?, on met notre condition (les parenthèses ne sont pas obligatoires)
+// Après le ?, l'instruction à exécuter si la condition est vraie
+// Après le :, l'instruction à exécuter si la condition est fausse
 ($variable === 1) ? echo 'ok' : echo 'pas ok';
 ```
 
