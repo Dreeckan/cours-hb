@@ -163,7 +163,7 @@ Correction en vidéo :
 
 ## 13. Mettre en place un menu
 
-À partir de cet exercice, nous allons commencer à manipuler les [variables superglobales](00-intro.md#interagir-avec-l-utilisateur). Dans un premier temps, facilitons la navigation de l'utilisateur.
+À partir de cet exercice, nous allons commencer à manipuler les [variables superglobales](01-bases.md#interagir-avec-l-utilisateur). Dans un premier temps, facilitons la navigation de l'utilisateur.
 
 - Créer une nouvelle branche (git) (nommée par exemple `ajout-session`) et y travailler
 - Ajouter un menu en haut de toutes les pages
@@ -477,7 +477,7 @@ Choisissez **l'une des deux** méthodes suivantes pour remplir nos bonnets depui
 
 ## 29. MVC et namespaces (:warning: difficile)
 
-Notre site ne suit pas parfaitement [le modèle MVC](04-mvc.md). Il nous faudrait améliorer ça et re-structurer un peu les fichiers et leur organisation.
+Notre site ne suit pas parfaitement [le modèle MVC](40-mvc.md). Il nous faudrait améliorer ça et re-structurer un peu les fichiers et leur organisation.
 Ce que nous voulons faire :
 - Renommer le dossier `class` en `src` et y créer **au moins** 3 sous-dossiers : `Model`, `View` et `Controller`
 - Déplacer les vues (pages) dans `View`

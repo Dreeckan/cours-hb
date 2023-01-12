@@ -383,7 +383,7 @@ class Employee extends Person
 
 Le script va alors créer une seule table `Employee`, contenant les propriétés de `Employee` et de `Person` :
 
-```mysql
+```sql
 CREATE TABLE Employee (
     mapped1 INTEGER NOT NULL, 
     mapped2 TEXT NOT NULL, 
