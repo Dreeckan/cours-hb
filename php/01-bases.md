@@ -1,19 +1,22 @@
-## Un script PHP
+# Un script PHP
 
-En vidéo : 
+En vidéo :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/2b0103e886da43269245ba58934e0065" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Les fichiers de PHP ont l'extension `.php` et peuvent contenir du HTML aussi bien que du PHP. Un script PHP (que ce soit un fichier entier ou une portion de code) se trouve entre `<?php` et `?>`.
 
-Un exemple de Php dans un fichier HTML : 
+Un exemple de Php dans un fichier HTML :
 
 ```html
 <html lang="fr">
     <body>
         <h1>Un fichier d'exemple</h1>
-    
-        <p>Affichage de la date : <?php echo date('d/m/Y H:i:s'); ?></p>
+
+        <p>
+            Affichage de la date :
+            <?php echo date('d/m/Y H:i:s'); ?>
+        </p>
     </body>
 </html>
 ```
@@ -27,25 +30,22 @@ Dans un fichier PHP seul :
     echo '</p>';
 ```
 
-
 ## Commentaires
 
-En vidéo : 
+En vidéo :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/3250bf737da7426194f22493a53f32b4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-Vous pouvez ajouter des éléments en commentaire : visible uniquement dans le code source, et non dans le rendu final. 
+Vous pouvez ajouter des éléments en commentaire : visible uniquement dans le code source, et non dans le rendu final.
 L'intérêt est de donner des informations supplémentaires aux autres développeurs (ou au "vous" du futur) sur ce que fait le code, prévenir de certains problèmes, etc.
 
-```php 
+```php
 // Une ligne de texte commenté, vous pouvez mettre n'importe quoi
 
 /*
- * Un commentaire multiligne 
- * (il DOIT commencé par /* et terminer par */)
+ * Un commentaire multiligne
  */
 ```
-
 
 ## Variables
 
@@ -74,18 +74,17 @@ $unTexte = 'Un texte';
 $unTexte .= ' de test'; // $unTexte = $unTexte . ' de test';
 ```
 
-
 ## Constantes
 
 La [documentation PHP](https://www.php.net/manual/fr/language.constants.php)
 
-En vidéo : 
+En vidéo :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/07b90132b4a14729b9a98c31d0d76828" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 Nous n'allons pratiquement pas nous servir de ces constantes dans ce cours, mais il est utile de savoir comment les utiliser (pour un site Wordpress, par exemple).
 
-Une constante est toujours écrite en screaming snake case (tout en majuscule, les mots séparés par des `_`). Comme une variable, une constante contient une valeur, mais qui **ne peut pas être modifiée**. 
+Une constante est toujours écrite en screaming snake case (tout en majuscule, les mots séparés par des `_`). Comme une variable, une constante contient une valeur, mais qui **ne peut pas être modifiée**.
 
 L'intérêt est de conserver en mémoire une valeur qui peut être utilisée à plusieurs endroits dans le code (nom d'éléments par page dans des listes, un texte répété à travers le site, etc.) et que l'on veut éviter de répéter.
 
@@ -97,22 +96,21 @@ define("UNE_CONSTANTE", "et sa valeur");
 echo UNE_CONSTANTE;
 ```
 
-
 ## Types
 
 La [documentation PHP](https://www.php.net/manual/fr/language.types.php)
 
-En vidéo : 
+En vidéo :
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/f9aa8834e50f41e1af97a3ab7443dffe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-- integer `12` pour représenter les nombres (entiers)
-- float `25.45` pour représenter les nombres à virgule
-- string `'un texte'` ou `"un texte"` pour représenter les textes
-- bool `true` ou `false` pour représenter les valeurs logiques (booléennes)
-- null `NULL` ou `null` pour représenter une valeur vide
-- array `[1, 2, 3]` pour représenter des ensembles de données (en Php, les données sont quelconques, elles n'ont pas besoin d'être du même type)
-- Object `new PDO()` pour représenter des données plus complexes
+-   integer `12` pour représenter les nombres (entiers)
+-   float `25.45` pour représenter les nombres à virgule
+-   string `'un texte'` ou `"un texte"` pour représenter les textes
+-   bool `true` ou `false` pour représenter les valeurs logiques (booléennes)
+-   null `NULL` ou `null` pour représenter une valeur vide
+-   array `[1, 2, 3]` pour représenter des ensembles de données (en Php, les données sont quelconques, elles n'ont pas besoin d'être du même type)
+-   Object `new PDO()` pour représenter des données plus complexes
 
 ### Tableaux
 
@@ -137,7 +135,7 @@ $mesProduits = [
 
 ### Manipuler les tableaux
 
-- Accéder à une entrée
+-   Accéder à une entrée
 
 On utilise alors l'index correspondant à la ligne qu'on veut récupérer.
 
@@ -152,7 +150,7 @@ $unProduit = $mesProduits[0];
 $unAutreProduit = $mesProduits['uneEntrée'];
 ```
 
-- Ajouter une entrée
+-   Ajouter une entrée
 
 ```php
 $mesProduits = [
@@ -167,9 +165,9 @@ $mesProduits[2] = 'un texte de test';
 $mesProduits[] = 'un texte de test';
 ```
 
-Note : le dernier exemple ci-dessus (`$mesProduits[] = $value`) est équivalent à `.push(value)` de Javascript. Un index numérique est calculé (PHP récupère le dernier index numérique, et l'incrémente pour avoir le nouvel index) et `$value` est ajouté à cet index. 
+Note : le dernier exemple ci-dessus (`$mesProduits[] = $value`) est équivalent à `.push(value)` de Javascript. Un index numérique est calculé (PHP récupère le dernier index numérique, et l'incrémente pour avoir le nouvel index) et `$value` est ajouté à cet index.
 
-- Modifier une entrée
+-   Modifier une entrée
 
 ```php
 $mesProduits = [
@@ -182,7 +180,7 @@ $mesProduits = [
 $mesProduits[0] = 'no more foo';
 ```
 
-- Supprimer une entrée
+-   Supprimer une entrée
 
 ```php
 $mesProduits = [
@@ -194,7 +192,7 @@ $mesProduits = [
 unset($mesProduits[0]);
 ```
 
-- Fonctions utiles
+-   Fonctions utiles
 
 ```php
 $mesProduits = [
@@ -207,7 +205,7 @@ $mesProduits = [
 // renvoie true si l'entrée existe
 $test = isset($mesProduits[0]);// true
 $test = isset($mesProduits[666]); // false
- 
+
 // renvoie true si l'entrée n'est pas définie ou est une valeur vide (0, '', null, [], false, etc.)
 $test = empty($mesProduits[0]); // false
 $test = empty($mesProduits['vide']); // true
@@ -217,6 +215,5 @@ $test = empty($mesProduits['vide']); // true
 unset($mesProduits[0]);
 
 // compter le nombre d'éléments dans un tableau
-$compte = count($mesProduits); 
+$compte = count($mesProduits);
 ```
-
